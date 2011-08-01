@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
+		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
+		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
+		0057FF9813E670B0001556C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0057FF9613E670B0001556C4 /* InfoPlist.strings */; };
+		0057FF9A13E670B0001556C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FF9913E670B0001556C4 /* main.m */; };
+		0057FF9E13E670B0001556C4 /* CoffeeTimerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FF9D13E670B0001556C4 /* CoffeeTimerAppDelegate.m */; };
+		0057FFA213E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFA113E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m */; };
+		0057FFA513E670B0001556C4 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFA313E670B0001556C4 /* MainWindow_iPhone.xib */; };
+		0057FFA913E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFA813E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m */; };
+		0057FFAC13E670B1001556C4 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFAA13E670B1001556C4 /* MainWindow_iPad.xib */; };
+		0057FFB413E670B1001556C4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FFB313E670B1001556C4 /* SenTestingKit.framework */; };
+		0057FFB513E670B1001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
+		0057FFB613E670B1001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
+		0057FFB713E670B1001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
+		0057FFBF13E670B1001556C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFBD13E670B1001556C4 /* InfoPlist.strings */; };
+		0057FFC113E670B1001556C4 /* CoffeeTimerTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */; };
+		0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0057FFB813E670B1001556C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0057FF8013E670AC001556C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0057FF8813E670B0001556C4;
+			remoteInfo = CoffeeTimer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0057FF9113E670B0001556C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0057FF9513E670B0001556C4 /* CoffeeTimer-Info.plist */ = {isa = PBXFileReference; path = "CoffeeTimer-Info.plist"; sourceTree = "<group>"; };
+		0057FF9713E670B0001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0057FF9913E670B0001556C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0057FF9B13E670B0001556C4 /* CoffeeTimer-Prefix.pch */ = {isa = PBXFileReference; path = "CoffeeTimer-Prefix.pch"; sourceTree = "<group>"; };
+		0057FF9C13E670B0001556C4 /* CoffeeTimerAppDelegate.h */ = {isa = PBXFileReference; path = CoffeeTimerAppDelegate.h; sourceTree = "<group>"; };
+		0057FF9D13E670B0001556C4 /* CoffeeTimerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeTimerAppDelegate.m; sourceTree = "<group>"; };
+		0057FFA013E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = CoffeeTimerAppDelegate_iPhone.h; path = iPhone/CoffeeTimerAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		0057FFA113E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerAppDelegate_iPhone.m; path = iPhone/CoffeeTimerAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		0057FFA413E670B0001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		0057FFA713E670B0001556C4 /* CoffeeTimerAppDelegate_iPad.h */ = {isa = PBXFileReference; name = CoffeeTimerAppDelegate_iPad.h; path = iPad/CoffeeTimerAppDelegate_iPad.h; sourceTree = "<group>"; };
+		0057FFA813E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerAppDelegate_iPad.m; path = iPad/CoffeeTimerAppDelegate_iPad.m; sourceTree = "<group>"; };
+		0057FFAB13E670B1001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		0057FFB213E670B1001556C4 /* CoffeeTimerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeTimerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0057FFB313E670B1001556C4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0057FFBC13E670B1001556C4 /* CoffeeTimerTests-Info.plist */ = {isa = PBXFileReference; path = "CoffeeTimerTests-Info.plist"; sourceTree = "<group>"; };
+		0057FFBE13E670B1001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeTimerTests.h; sourceTree = "<group>"; };
+		0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeTimerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0057FF8613E670B0001556C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */,
+				0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */,
+				0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0057FFAE13E670B1001556C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0057FFB413E670B1001556C4 /* SenTestingKit.framework in Frameworks */,
+				0057FFB513E670B1001556C4 /* UIKit.framework in Frameworks */,
+				0057FFB613E670B1001556C4 /* Foundation.framework in Frameworks */,
+				0057FFB713E670B1001556C4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0057FF7E13E670AB001556C4 = {
+			isa = PBXGroup;
+			children = (
+				0057FF9313E670B0001556C4 /* CoffeeTimer */,
+				0057FFBA13E670B1001556C4 /* CoffeeTimerTests */,
+				0057FF8C13E670B0001556C4 /* Frameworks */,
+				0057FF8A13E670B0001556C4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0057FF8A13E670B0001556C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0057FF8913E670B0001556C4 /* CoffeeTimer.app */,
+				0057FFB213E670B1001556C4 /* CoffeeTimerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0057FF8C13E670B0001556C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0057FF8D13E670B0001556C4 /* UIKit.framework */,
+				0057FF8F13E670B0001556C4 /* Foundation.framework */,
+				0057FF9113E670B0001556C4 /* CoreGraphics.framework */,
+				0057FFB313E670B1001556C4 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0057FF9313E670B0001556C4 /* CoffeeTimer */ = {
+			isa = PBXGroup;
+			children = (
+				0057FF9C13E670B0001556C4 /* CoffeeTimerAppDelegate.h */,
+				0057FF9D13E670B0001556C4 /* CoffeeTimerAppDelegate.m */,
+				0057FF9F13E670B0001556C4 /* iPhone */,
+				0057FFA613E670B0001556C4 /* iPad */,
+				0057FF9413E670B0001556C4 /* Supporting Files */,
+			);
+			path = CoffeeTimer;
+			sourceTree = "<group>";
+		};
+		0057FF9413E670B0001556C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0057FF9513E670B0001556C4 /* CoffeeTimer-Info.plist */,
+				0057FF9613E670B0001556C4 /* InfoPlist.strings */,
+				0057FF9913E670B0001556C4 /* main.m */,
+				0057FF9B13E670B0001556C4 /* CoffeeTimer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0057FF9F13E670B0001556C4 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFA013E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.h */,
+				0057FFA113E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m */,
+				0057FFA313E670B0001556C4 /* MainWindow_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		0057FFA613E670B0001556C4 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFA713E670B0001556C4 /* CoffeeTimerAppDelegate_iPad.h */,
+				0057FFA813E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m */,
+				0057FFAA13E670B1001556C4 /* MainWindow_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		0057FFBA13E670B1001556C4 /* CoffeeTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */,
+				0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */,
+				0057FFBB13E670B1001556C4 /* Supporting Files */,
+			);
+			path = CoffeeTimerTests;
+			sourceTree = "<group>";
+		};
+		0057FFBB13E670B1001556C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFBC13E670B1001556C4 /* CoffeeTimerTests-Info.plist */,
+				0057FFBD13E670B1001556C4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0057FF8813E670B0001556C4 /* CoffeeTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0057FFC613E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimer" */;
+			buildPhases = (
+				0057FF8513E670B0001556C4 /* Sources */,
+				0057FF8613E670B0001556C4 /* Frameworks */,
+				0057FF8713E670B0001556C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoffeeTimer;
+			productName = CoffeeTimer;
+			productReference = 0057FF8913E670B0001556C4 /* CoffeeTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0057FFB113E670B1001556C4 /* CoffeeTimerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0057FFC913E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimerTests" */;
+			buildPhases = (
+				0057FFAD13E670B1001556C4 /* Sources */,
+				0057FFAE13E670B1001556C4 /* Frameworks */,
+				0057FFAF13E670B1001556C4 /* Resources */,
+				0057FFB013E670B1001556C4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0057FFB913E670B1001556C4 /* PBXTargetDependency */,
+			);
+			name = CoffeeTimerTests;
+			productName = CoffeeTimerTests;
+			productReference = 0057FFB213E670B1001556C4 /* CoffeeTimerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0057FF8013E670AC001556C4 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 0057FF8313E670AC001556C4 /* Build configuration list for PBXProject "CoffeeTimer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0057FF7E13E670AB001556C4;
+			productRefGroup = 0057FF8A13E670B0001556C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0057FF8813E670B0001556C4 /* CoffeeTimer */,
+				0057FFB113E670B1001556C4 /* CoffeeTimerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0057FF8713E670B0001556C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0057FF9813E670B0001556C4 /* InfoPlist.strings in Resources */,
+				0057FFA513E670B0001556C4 /* MainWindow_iPhone.xib in Resources */,
+				0057FFAC13E670B1001556C4 /* MainWindow_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0057FFAF13E670B1001556C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0057FFBF13E670B1001556C4 /* InfoPlist.strings in Resources */,
+				0057FFC113E670B1001556C4 /* CoffeeTimerTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0057FFB013E670B1001556C4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0057FF8513E670B0001556C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0057FF9A13E670B0001556C4 /* main.m in Sources */,
+				0057FF9E13E670B0001556C4 /* CoffeeTimerAppDelegate.m in Sources */,
+				0057FFA213E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m in Sources */,
+				0057FFA913E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0057FFAD13E670B1001556C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0057FFB913E670B1001556C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0057FF8813E670B0001556C4 /* CoffeeTimer */;
+			targetProxy = 0057FFB813E670B1001556C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0057FF9613E670B0001556C4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0057FF9713E670B0001556C4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0057FFA313E670B0001556C4 /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0057FFA413E670B0001556C4 /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		0057FFAA13E670B1001556C4 /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0057FFAB13E670B1001556C4 /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		0057FFBD13E670B1001556C4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0057FFBE13E670B1001556C4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0057FFC413E670B2001556C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0057FFC513E670B2001556C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0057FFC713E670B2001556C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
+				INFOPLIST_FILE = "CoffeeTimer/CoffeeTimer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0057FFC813E670B2001556C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
+				INFOPLIST_FILE = "CoffeeTimer/CoffeeTimer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0057FFCA13E670B2001556C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CoffeeTimer.app/CoffeeTimer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
+				INFOPLIST_FILE = "CoffeeTimerTests/CoffeeTimerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		0057FFCB13E670B2001556C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CoffeeTimer.app/CoffeeTimer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
+				INFOPLIST_FILE = "CoffeeTimerTests/CoffeeTimerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0057FF8313E670AC001556C4 /* Build configuration list for PBXProject "CoffeeTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0057FFC413E670B2001556C4 /* Debug */,
+				0057FFC513E670B2001556C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0057FFC613E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0057FFC713E670B2001556C4 /* Debug */,
+				0057FFC813E670B2001556C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0057FFC913E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0057FFCA13E670B2001556C4 /* Debug */,
+				0057FFCB13E670B2001556C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0057FF8013E670AC001556C4 /* Project object */;
+}
