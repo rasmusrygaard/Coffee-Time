@@ -144,6 +144,37 @@
 
 }
 
+#pragma mark - TableView functionality
+
+-(UITableViewCell *)tableView:(UITableView *)tableView 
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoCell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"infoCell"];
+    }
+    [[cell textLabel] setText:[[currentMethod firstTimerStep] description]];
+
+    // Set up background image
+    UIImageView *background = [[UIImageView alloc] 
+                               initWithImage:[UIImage imageNamed:@"InfoTableCell.png"]];
+
+    [cell setBackgroundView:background];
+    [[cell textLabel] setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSArray *steps = [currentMethod descriptionArray];
+    int numSteps = [steps count];
+    return numSteps < 4 ? 4 : numSteps;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -173,6 +204,27 @@
     stbView = [[SliderTabBarView alloc] initWithFrame:rect];
     [stbView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:stbView];
+    
+    
+    // infoTableView setup
+    CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
+                                 INFO_WINDOW_Y,
+                                 INFO_WINDOW_W, 
+                                 INFO_WINDOW_H);
+    infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
+
+    // Set up delegate and datasource roles
+    infoTableView.delegate = self;
+    infoTableView.dataSource = self;
+    
+    // Set table style
+    infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    infoTableView.backgroundColor = [UIColor clearColor];
+    infoTableView.opaque = NO;
+    
+    // Set no bounce
+    infoTableView.bounces = NO;
+    [self.view addSubview:infoTableView];
     
     [nameLabel setText:[currentMethod name]];
     [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];

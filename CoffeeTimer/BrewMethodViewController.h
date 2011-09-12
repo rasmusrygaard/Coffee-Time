@@ -10,7 +10,7 @@
 #import "BrewMethod.h"
 #import "SliderTabBarView.h"
 
-@interface BrewMethodViewController : UIViewController
+@interface BrewMethodViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     BrewMethod *currentMethod;
     
@@ -23,6 +23,7 @@
     IBOutlet UIButton *stopTimerButton;
     
     IBOutlet UITableView *infoTableView;
+    
     NSTimer *timer;
     NSString *methodBeingTimed;
     

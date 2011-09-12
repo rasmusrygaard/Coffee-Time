@@ -107,6 +107,15 @@
     return next;
 }
 
+- (NSArray *)descriptionArray
+{
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
+    for (TimerStep *t in timerSteps) {
+        [arr addObject:[t description]];
+    }
+    return [arr autorelease];
+}
+
 - (NSString *)commaSeparatedTimerSteps
 {
     NSString *result = [NSString stringWithFormat:@"%@", [[self firstTimerStep] description]];

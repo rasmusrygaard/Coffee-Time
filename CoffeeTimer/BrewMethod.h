@@ -23,6 +23,7 @@
 
 - (TimerStep *)firstTimerStep;
 - (TimerStep *)nextTimerStep;
+- (NSArray *)descriptionArray;
 - (NSString *)commaSeparatedTimerSteps;
 
 @property (nonatomic, copy) NSString *name;
