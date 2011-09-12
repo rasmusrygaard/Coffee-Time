@@ -20,7 +20,7 @@ double const SLIDER_TAB_BAR_W = 288.0;
 double const SLIDER_TAB_BAR_H = 230.0;
 
 double const INFO_WINDOW_X = 20.0;
-double const INFO_WINDOW_Y = 209.0;
+double const INFO_WINDOW_Y = 208.0;
 double const INFO_WINDOW_W = 281.0;
 double const INFO_WINDOW_H = 176.0;
 

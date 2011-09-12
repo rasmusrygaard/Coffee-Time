@@ -149,27 +149,60 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoCell"];
+    NSArray *descriptions = [currentMethod descriptionArray];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:@"infoCell"];
+    UITableViewCell *cell;
+    
+    // Set last, rounded cell
+    if (([descriptions count] >= 4 && indexPath.row == [descriptions count] -1) ||
+        ([descriptions count] < 4 && indexPath.row == 3)) {
+        NSLog(@"las cell");
+        cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoRoundedCell"];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"infoRoundedCell"];
+        }
+        
+        // Set up background image
+        UIImageView *background = [[UIImageView alloc] 
+                                   initWithImage:[UIImage imageNamed:@"InfoTableBottomCell.png"]];
+        [cell setBackgroundView:background];
+    } else {
+        // Set up regular cell
+        cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoCell"];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"infoCell"];
+        }
+        
+        // Set up background image
+        UIImageView *background = [[UIImageView alloc] 
+                                   initWithImage:[UIImage imageNamed:@"InfoTableCell.png"]];
+        [cell setBackgroundView:background];
     }
-    [[cell textLabel] setText:[[currentMethod firstTimerStep] description]];
 
-    // Set up background image
-    UIImageView *background = [[UIImageView alloc] 
-                               initWithImage:[UIImage imageNamed:@"InfoTableCell.png"]];
+    // Fill extra rows with an empty string
+    if (indexPath.row >= [descriptions count]) {
+        cell.textLabel.text = @"";
+    } else {
+        cell.textLabel.text = [descriptions objectAtIndex:indexPath.row];
+    }
 
-    [cell setBackgroundView:background];
-    [[cell textLabel] setBackgroundColor:[UIColor clearColor]];
-    [cell setBackgroundColor:[UIColor clearColor]];
+    // Font styling
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+    cell.textLabel.textColor = [UIColor darkTextColor];
+    cell.textLabel.shadowColor = [UIColor lightTextColor];
+    cell.textLabel.shadowOffset = CGSizeMake(0, 0.5);
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    // Make sure that at least four cells are being displayed
     NSArray *steps = [currentMethod descriptionArray];
     int numSteps = [steps count];
     return numSteps < 4 ? 4 : numSteps;
@@ -226,10 +259,10 @@
     infoTableView.bounces = NO;
     [self.view addSubview:infoTableView];
     
+    // Set labels
     [nameLabel setText:[currentMethod name]];
     [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
     
-    NSLog(@"current: %@ nameLabel: %@", methodBeingTimed, [nameLabel text]);
     if (timer && 
         ![[nameLabel text] isEqualToString:methodBeingTimed]) {
         // If we're on a new method, forget about the old timer
