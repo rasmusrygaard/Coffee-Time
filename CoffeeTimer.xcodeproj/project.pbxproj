@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000C6FC11418DE2E0064EEBE /* BackButton in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBA1418DE2E0064EEBE /* BackButton */; };
+		000C6FC21418DE2E0064EEBE /* InfoWindow in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBB1418DE2E0064EEBE /* InfoWindow */; };
+		000C6FC31418DE2E0064EEBE /* InnerRectangle in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBC1418DE2E0064EEBE /* InnerRectangle */; };
+		000C6FC41418DE2E0064EEBE /* Noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBD1418DE2E0064EEBE /* Noise.png */; };
+		000C6FC51418DE2E0064EEBE /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBE1418DE2E0064EEBE /* Slider */; };
+		000C6FC61418DE2E0064EEBE /* TabBar in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBF1418DE2E0064EEBE /* TabBar */; };
+		000C6FC71418DE2E0064EEBE /* TimerWindow in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FC01418DE2E0064EEBE /* TimerWindow */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -24,6 +31,20 @@
 		0057FFBF13E670B1001556C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFBD13E670B1001556C4 /* InfoPlist.strings */; };
 		0057FFC113E670B1001556C4 /* CoffeeTimerTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */; };
 		0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */; };
+		0057FFCE13E671A5001556C4 /* BrewMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFCD13E671A4001556C4 /* BrewMethod.m */; };
+		0057FFD213E672AF001556C4 /* BrewMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFD013E672AE001556C4 /* BrewMethodViewController.m */; };
+		0057FFD313E672AF001556C4 /* BrewMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFD113E672AF001556C4 /* BrewMethodViewController.xib */; };
+		0057FFD613E67677001556C4 /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFD513E67677001556C4 /* TimerStep.m */; };
+		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
+		00D54CED13F310290032585C /* BrewMethodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D54CEB13F310290032585C /* BrewMethodListViewController.m */; };
+		00D54CEE13F310290032585C /* BrewMethodListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D54CEC13F310290032585C /* BrewMethodListViewController.xib */; };
+		00E0D552141A442900A58B05 /* SliderTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E0D551141A442900A58B05 /* SliderTabBarView.m */; };
+		00F46674141E0BD800523C16 /* InfoTableBottomCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46670141E0BD700523C16 /* InfoTableBottomCell.png */; };
+		00F46675141E0BD800523C16 /* InfoTableBottomCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46671141E0BD700523C16 /* InfoTableBottomCell@2x.png */; };
+		00F46676141E0BD800523C16 /* InfoTableCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46672141E0BD700523C16 /* InfoTableCell.png */; };
+		00F46677141E0BD800523C16 /* InfoTableCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46673141E0BD800523C16 /* InfoTableCell@2x.png */; };
+		00F4667E141E0EFD00523C16 /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F4667D141E0EFD00523C16 /* InfoTableViewController.m */; };
+		00FB5BF113EAB0BE001C30E2 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FB5BF013EAB0BE001C30E2 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,28 +58,56 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000C6FBA1418DE2E0064EEBE /* BackButton */ = {isa = PBXFileReference; lastKnownFileType = file; path = BackButton; sourceTree = "<group>"; };
+		000C6FBB1418DE2E0064EEBE /* InfoWindow */ = {isa = PBXFileReference; lastKnownFileType = file; path = InfoWindow; sourceTree = "<group>"; };
+		000C6FBC1418DE2E0064EEBE /* InnerRectangle */ = {isa = PBXFileReference; lastKnownFileType = file; path = InnerRectangle; sourceTree = "<group>"; };
+		000C6FBD1418DE2E0064EEBE /* Noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noise.png; sourceTree = "<group>"; };
+		000C6FBE1418DE2E0064EEBE /* Slider */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slider; sourceTree = "<group>"; };
+		000C6FBF1418DE2E0064EEBE /* TabBar */ = {isa = PBXFileReference; lastKnownFileType = file; path = TabBar; sourceTree = "<group>"; };
+		000C6FC01418DE2E0064EEBE /* TimerWindow */ = {isa = PBXFileReference; lastKnownFileType = file; path = TimerWindow; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0057FF9113E670B0001556C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		0057FF9513E670B0001556C4 /* CoffeeTimer-Info.plist */ = {isa = PBXFileReference; path = "CoffeeTimer-Info.plist"; sourceTree = "<group>"; };
+		0057FF9513E670B0001556C4 /* CoffeeTimer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeTimer-Info.plist"; sourceTree = "<group>"; };
 		0057FF9713E670B0001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0057FF9913E670B0001556C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0057FF9B13E670B0001556C4 /* CoffeeTimer-Prefix.pch */ = {isa = PBXFileReference; path = "CoffeeTimer-Prefix.pch"; sourceTree = "<group>"; };
-		0057FF9C13E670B0001556C4 /* CoffeeTimerAppDelegate.h */ = {isa = PBXFileReference; path = CoffeeTimerAppDelegate.h; sourceTree = "<group>"; };
+		0057FF9B13E670B0001556C4 /* CoffeeTimer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoffeeTimer-Prefix.pch"; sourceTree = "<group>"; };
+		0057FF9C13E670B0001556C4 /* CoffeeTimerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeTimerAppDelegate.h; sourceTree = "<group>"; };
 		0057FF9D13E670B0001556C4 /* CoffeeTimerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeTimerAppDelegate.m; sourceTree = "<group>"; };
-		0057FFA013E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = CoffeeTimerAppDelegate_iPhone.h; path = iPhone/CoffeeTimerAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		0057FFA013E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoffeeTimerAppDelegate_iPhone.h; path = iPhone/CoffeeTimerAppDelegate_iPhone.h; sourceTree = "<group>"; };
 		0057FFA113E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerAppDelegate_iPhone.m; path = iPhone/CoffeeTimerAppDelegate_iPhone.m; sourceTree = "<group>"; };
 		0057FFA413E670B0001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
-		0057FFA713E670B0001556C4 /* CoffeeTimerAppDelegate_iPad.h */ = {isa = PBXFileReference; name = CoffeeTimerAppDelegate_iPad.h; path = iPad/CoffeeTimerAppDelegate_iPad.h; sourceTree = "<group>"; };
+		0057FFA713E670B0001556C4 /* CoffeeTimerAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoffeeTimerAppDelegate_iPad.h; path = iPad/CoffeeTimerAppDelegate_iPad.h; sourceTree = "<group>"; };
 		0057FFA813E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerAppDelegate_iPad.m; path = iPad/CoffeeTimerAppDelegate_iPad.m; sourceTree = "<group>"; };
 		0057FFAB13E670B1001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
 		0057FFB213E670B1001556C4 /* CoffeeTimerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeTimerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FFB313E670B1001556C4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		0057FFBC13E670B1001556C4 /* CoffeeTimerTests-Info.plist */ = {isa = PBXFileReference; path = "CoffeeTimerTests-Info.plist"; sourceTree = "<group>"; };
+		0057FFBC13E670B1001556C4 /* CoffeeTimerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeTimerTests-Info.plist"; sourceTree = "<group>"; };
 		0057FFBE13E670B1001556C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeTimerTests.h; sourceTree = "<group>"; };
 		0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeTimerTests.m; sourceTree = "<group>"; };
+		0057FFCC13E671A4001556C4 /* BrewMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrewMethod.h; sourceTree = "<group>"; };
+		0057FFCD13E671A4001556C4 /* BrewMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrewMethod.m; sourceTree = "<group>"; };
+		0057FFCF13E672AE001556C4 /* BrewMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrewMethodViewController.h; sourceTree = "<group>"; };
+		0057FFD013E672AE001556C4 /* BrewMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrewMethodViewController.m; sourceTree = "<group>"; };
+		0057FFD113E672AF001556C4 /* BrewMethodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodViewController.xib; sourceTree = "<group>"; };
+		0057FFD413E67677001556C4 /* TimerStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerStep.h; sourceTree = "<group>"; };
+		0057FFD513E67677001556C4 /* TimerStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerStep.m; sourceTree = "<group>"; };
+		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		00D54CEA13F310290032585C /* BrewMethodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrewMethodListViewController.h; sourceTree = "<group>"; };
+		00D54CEB13F310290032585C /* BrewMethodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrewMethodListViewController.m; sourceTree = "<group>"; };
+		00D54CEC13F310290032585C /* BrewMethodListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListViewController.xib; sourceTree = "<group>"; };
+		00E0D550141A442900A58B05 /* SliderTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderTabBarView.h; sourceTree = "<group>"; };
+		00E0D551141A442900A58B05 /* SliderTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderTabBarView.m; sourceTree = "<group>"; };
+		00F46670141E0BD700523C16 /* InfoTableBottomCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoTableBottomCell.png; sourceTree = "<group>"; };
+		00F46671141E0BD700523C16 /* InfoTableBottomCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoTableBottomCell@2x.png"; sourceTree = "<group>"; };
+		00F46672141E0BD700523C16 /* InfoTableCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoTableCell.png; sourceTree = "<group>"; };
+		00F46673141E0BD800523C16 /* InfoTableCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoTableCell@2x.png"; sourceTree = "<group>"; };
+		00F4667C141E0EFD00523C16 /* InfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewController.h; sourceTree = "<group>"; };
+		00F4667D141E0EFD00523C16 /* InfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewController.m; sourceTree = "<group>"; };
+		00FB5BEF13EAB0BE001C30E2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		00FB5BF013EAB0BE001C30E2 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */,
 				0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */,
 				0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */,
 				0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */,
@@ -89,6 +139,7 @@
 		0057FF7E13E670AB001556C4 = {
 			isa = PBXGroup;
 			children = (
+				00A226C2141CE2D9006EEE4F /* QuartzCore.framework */,
 				0057FF9313E670B0001556C4 /* CoffeeTimer */,
 				0057FFBA13E670B1001556C4 /* CoffeeTimerTests */,
 				0057FF8C13E670B0001556C4 /* Frameworks */,
@@ -121,6 +172,11 @@
 			children = (
 				0057FF9C13E670B0001556C4 /* CoffeeTimerAppDelegate.h */,
 				0057FF9D13E670B0001556C4 /* CoffeeTimerAppDelegate.m */,
+				00D54CF413F3115B0032585C /* TableView Controller */,
+				0057FFD913E67722001556C4 /* Single View Controller */,
+				00D54CF513F311700032585C /* Constants */,
+				0057FFD713E676E4001556C4 /* TimerStep */,
+				0057FFD813E67712001556C4 /* BrewMethod */,
 				0057FF9F13E670B0001556C4 /* iPhone */,
 				0057FFA613E670B0001556C4 /* iPad */,
 				0057FF9413E670B0001556C4 /* Supporting Files */,
@@ -131,6 +187,17 @@
 		0057FF9413E670B0001556C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00F46670141E0BD700523C16 /* InfoTableBottomCell.png */,
+				00F46671141E0BD700523C16 /* InfoTableBottomCell@2x.png */,
+				00F46672141E0BD700523C16 /* InfoTableCell.png */,
+				00F46673141E0BD800523C16 /* InfoTableCell@2x.png */,
+				000C6FBA1418DE2E0064EEBE /* BackButton */,
+				000C6FBB1418DE2E0064EEBE /* InfoWindow */,
+				000C6FBC1418DE2E0064EEBE /* InnerRectangle */,
+				000C6FBD1418DE2E0064EEBE /* Noise.png */,
+				000C6FBE1418DE2E0064EEBE /* Slider */,
+				000C6FBF1418DE2E0064EEBE /* TabBar */,
+				000C6FC01418DE2E0064EEBE /* TimerWindow */,
 				0057FF9513E670B0001556C4 /* CoffeeTimer-Info.plist */,
 				0057FF9613E670B0001556C4 /* InfoPlist.strings */,
 				0057FF9913E670B0001556C4 /* main.m */,
@@ -176,6 +243,57 @@
 				0057FFBD13E670B1001556C4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0057FFD713E676E4001556C4 /* TimerStep */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFD413E67677001556C4 /* TimerStep.h */,
+				0057FFD513E67677001556C4 /* TimerStep.m */,
+			);
+			name = TimerStep;
+			sourceTree = "<group>";
+		};
+		0057FFD813E67712001556C4 /* BrewMethod */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFCC13E671A4001556C4 /* BrewMethod.h */,
+				0057FFCD13E671A4001556C4 /* BrewMethod.m */,
+			);
+			name = BrewMethod;
+			sourceTree = "<group>";
+		};
+		0057FFD913E67722001556C4 /* Single View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFCF13E672AE001556C4 /* BrewMethodViewController.h */,
+				0057FFD013E672AE001556C4 /* BrewMethodViewController.m */,
+				00E0D550141A442900A58B05 /* SliderTabBarView.h */,
+				00E0D551141A442900A58B05 /* SliderTabBarView.m */,
+				00F4667C141E0EFD00523C16 /* InfoTableViewController.h */,
+				00F4667D141E0EFD00523C16 /* InfoTableViewController.m */,
+				0057FFD113E672AF001556C4 /* BrewMethodViewController.xib */,
+			);
+			name = "Single View Controller";
+			sourceTree = "<group>";
+		};
+		00D54CF413F3115B0032585C /* TableView Controller */ = {
+			isa = PBXGroup;
+			children = (
+				00D54CEA13F310290032585C /* BrewMethodListViewController.h */,
+				00D54CEB13F310290032585C /* BrewMethodListViewController.m */,
+				00D54CEC13F310290032585C /* BrewMethodListViewController.xib */,
+			);
+			name = "TableView Controller";
+			sourceTree = "<group>";
+		};
+		00D54CF513F311700032585C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				00FB5BEF13EAB0BE001C30E2 /* Constants.h */,
+				00FB5BF013EAB0BE001C30E2 /* Constants.m */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +366,19 @@
 				0057FF9813E670B0001556C4 /* InfoPlist.strings in Resources */,
 				0057FFA513E670B0001556C4 /* MainWindow_iPhone.xib in Resources */,
 				0057FFAC13E670B1001556C4 /* MainWindow_iPad.xib in Resources */,
+				0057FFD313E672AF001556C4 /* BrewMethodViewController.xib in Resources */,
+				00D54CEE13F310290032585C /* BrewMethodListViewController.xib in Resources */,
+				000C6FC11418DE2E0064EEBE /* BackButton in Resources */,
+				000C6FC21418DE2E0064EEBE /* InfoWindow in Resources */,
+				000C6FC31418DE2E0064EEBE /* InnerRectangle in Resources */,
+				000C6FC41418DE2E0064EEBE /* Noise.png in Resources */,
+				000C6FC51418DE2E0064EEBE /* Slider in Resources */,
+				000C6FC61418DE2E0064EEBE /* TabBar in Resources */,
+				000C6FC71418DE2E0064EEBE /* TimerWindow in Resources */,
+				00F46674141E0BD800523C16 /* InfoTableBottomCell.png in Resources */,
+				00F46675141E0BD800523C16 /* InfoTableBottomCell@2x.png in Resources */,
+				00F46676141E0BD800523C16 /* InfoTableCell.png in Resources */,
+				00F46677141E0BD800523C16 /* InfoTableCell@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +418,13 @@
 				0057FF9E13E670B0001556C4 /* CoffeeTimerAppDelegate.m in Sources */,
 				0057FFA213E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m in Sources */,
 				0057FFA913E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m in Sources */,
+				0057FFCE13E671A5001556C4 /* BrewMethod.m in Sources */,
+				0057FFD213E672AF001556C4 /* BrewMethodViewController.m in Sources */,
+				0057FFD613E67677001556C4 /* TimerStep.m in Sources */,
+				00FB5BF113EAB0BE001C30E2 /* Constants.m in Sources */,
+				00D54CED13F310290032585C /* BrewMethodListViewController.m in Sources */,
+				00E0D552141A442900A58B05 /* SliderTabBarView.m in Sources */,
+				00F4667E141E0EFD00523C16 /* InfoTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +602,7 @@
 				0057FFC813E670B2001556C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0057FFC913E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimerTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +611,7 @@
 				0057FFCB13E670B2001556C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

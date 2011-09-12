@@ -7,6 +7,9 @@
 //
 
 #import "CoffeeTimerAppDelegate.h"
+#import "BrewMethodViewController.h"
+#import "BrewMethodListViewController.h"
+#import "BrewMethod.h"
 
 @implementation CoffeeTimerAppDelegate
 
@@ -14,7 +17,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    bmlViewController = [[BrewMethodListViewController alloc] init];
+    
+    NSArray *methods = [BrewMethod initBrewMethods];
+    
+    [bmlViewController setBrewMethods:methods];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bmlViewController];
+    
+	[[self window] setRootViewController:navController];
+    [navController release];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
