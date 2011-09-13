@@ -30,6 +30,7 @@
     NSDate *finishTime;
     
     SliderTabBarView *stbView;
+    NSString *tabDisplayed;
 }
 
 - (IBAction)startTimerClicked:(id)sender;

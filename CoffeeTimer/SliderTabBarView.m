@@ -170,7 +170,7 @@
     
     // Set up sliding animation
     CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"position"];
-    [move setDuration:0.3 ];
+    [move setDuration:SLIDER_DURATION];
     [move setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     [move setRemovedOnCompletion:YES];
     

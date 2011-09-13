@@ -266,15 +266,39 @@
 		0057FFD913E67722001556C4 /* Single View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0057FFCF13E672AE001556C4 /* BrewMethodViewController.h */,
-				0057FFD013E672AE001556C4 /* BrewMethodViewController.m */,
-				00E0D550141A442900A58B05 /* SliderTabBarView.h */,
-				00E0D551141A442900A58B05 /* SliderTabBarView.m */,
-				00F4667C141E0EFD00523C16 /* InfoTableViewController.h */,
-				00F4667D141E0EFD00523C16 /* InfoTableViewController.m */,
-				0057FFD113E672AF001556C4 /* BrewMethodViewController.xib */,
+				00B865D8141F3C2B00EE1CF4 /* BrewMethodViewController */,
+				00B865DA141F3C3800EE1CF4 /* New Group */,
+				00B865DB141F3C4F00EE1CF4 /* New Group1 */,
 			);
 			name = "Single View Controller";
+			sourceTree = "<group>";
+		};
+		00B865D8141F3C2B00EE1CF4 /* BrewMethodViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0057FFD113E672AF001556C4 /* BrewMethodViewController.xib */,
+				0057FFCF13E672AE001556C4 /* BrewMethodViewController.h */,
+				0057FFD013E672AE001556C4 /* BrewMethodViewController.m */,
+			);
+			name = BrewMethodViewController;
+			sourceTree = "<group>";
+		};
+		00B865DA141F3C3800EE1CF4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				00E0D550141A442900A58B05 /* SliderTabBarView.h */,
+				00E0D551141A442900A58B05 /* SliderTabBarView.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		00B865DB141F3C4F00EE1CF4 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				00F4667C141E0EFD00523C16 /* InfoTableViewController.h */,
+				00F4667D141E0EFD00523C16 /* InfoTableViewController.m */,
+			);
+			name = "New Group1";
 			sourceTree = "<group>";
 		};
 		00D54CF413F3115B0032585C /* TableView Controller */ = {

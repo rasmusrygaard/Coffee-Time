@@ -14,6 +14,10 @@
     NSString *name; // Name of brew method
 
     NSArray *timerSteps; // Timer steps
+
+    NSArray *prepArray; // Array of preparation 
+    NSArray *equipArray; // Array of equipment
+    
     int stepCounter;
 }
 
@@ -21,12 +25,21 @@
 
 - (id)initWithName:(NSString *)name timerStepArray:(NSArray *)steps;
 
+- (id)initWithName:(NSString *)methodName 
+    timerStepArray:(NSArray *)steps
+       preparation:(NSArray *)prepArray
+         equipment:(NSArray *)equipArray;
+
+
 - (TimerStep *)firstTimerStep;
 - (TimerStep *)nextTimerStep;
-- (NSArray *)descriptionArray;
+- (NSArray *)descriptionsForTab:(NSString *)tabName;
+
 - (NSString *)commaSeparatedTimerSteps;
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, retain) NSArray *timerSteps;
+@property (nonatomic, retain) NSArray *prepArray;
+@property (nonatomic, retain) NSArray *equipArray;
 
 @end

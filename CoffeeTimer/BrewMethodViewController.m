@@ -22,6 +22,9 @@
 {
     [super initWithNibName:@"BrewMethodViewController" bundle:nil];
     
+    tabDisplayed = @"Instructions";
+    [[self navigationItem] setTitle:@"Hello!"];
+    
     return self;
 }
 
@@ -133,15 +136,27 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
     UITouch *t = [touches anyObject];
+    
+    // If touch is inside tabBar
     if ([t view] == stbView) {
-//        NSLog(@"Touch in %@", [stbView tabTitleForTouch:t]);
         NSString *tab = [stbView tabTitleForTouch:t];
         [stbView updateDisplayForTab:tab
                            forMethod:currentMethod];
-    } else {
-        NSLog(@"Touches in viewcontroller");        
+        
+        tabDisplayed = tab;
+        [NSTimer scheduledTimerWithTimeInterval:SLIDER_DURATION
+                                         target:self
+                                       selector:@selector(updateTable:) 
+                                       userInfo:nil
+                                        repeats:NO];
     }
 
+}
+
+- (void)updateTable:(NSTimer *)theTimer
+{
+    NSLog(@"reloading");
+    [infoTableView reloadData];
 }
 
 #pragma mark - TableView functionality
@@ -149,14 +164,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *descriptions = [currentMethod descriptionArray];
+    NSArray *descriptions = [currentMethod descriptionsForTab:tabDisplayed];
     
     UITableViewCell *cell;
     
     // Set last, rounded cell
     if (([descriptions count] >= 4 && indexPath.row == [descriptions count] -1) ||
         ([descriptions count] < 4 && indexPath.row == 3)) {
-        NSLog(@"las cell");
+        
         cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoRoundedCell"];
         
         if (!cell) {
@@ -195,6 +210,8 @@
     cell.textLabel.textColor = [UIColor darkTextColor];
     cell.textLabel.shadowColor = [UIColor lightTextColor];
     cell.textLabel.shadowOffset = CGSizeMake(0, 0.5);
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
@@ -203,7 +220,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Make sure that at least four cells are being displayed
-    NSArray *steps = [currentMethod descriptionArray];
+    NSArray *steps = [currentMethod descriptionsForTab:tabDisplayed];
     int numSteps = [steps count];
     return numSteps < 4 ? 4 : numSteps;
 }

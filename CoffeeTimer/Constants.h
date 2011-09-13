@@ -17,6 +17,8 @@ extern double const SLIDER_TAB_BAR_Y;
 extern double const SLIDER_TAB_BAR_W;
 extern double const SLIDER_TAB_BAR_H;
 
+extern double const SLIDER_DURATION;
+
 extern double const INFO_WINDOW_X;
 extern double const INFO_WINDOW_Y;
 extern double const INFO_WINDOW_W;

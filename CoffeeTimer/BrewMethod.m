@@ -11,7 +11,7 @@
 
 @implementation BrewMethod
 
-@synthesize name, timerSteps;
+@synthesize name, timerSteps, prepArray, equipArray;
 
 - (id)init
 {
@@ -30,11 +30,31 @@
     if (self = [super init]) {
         [self setName:methodName];
         
-        [steps retain];
         [self setTimerSteps:steps];
         
         stepCounter = 1;
     }
+    return self;
+}
+
+- (id)initWithName:(NSString *)methodName 
+    timerStepArray:(NSArray *)steps
+       preparation:(NSArray *)preparation
+         equipment:(NSArray *)equipment
+{
+    if (self = [super init]) {
+        [self setName:methodName];
+        
+        [steps retain];
+        [self setTimerSteps:steps];
+        [preparation retain];
+        [self setPrepArray:preparation];
+        [equipment retain];
+        [self setEquipArray:equipment];
+        
+        stepCounter = 1;
+    }
+    
     return self;
 }
 
@@ -52,14 +72,31 @@
     [testStepArray release];
     
     // Aeropress initialization
-    TimerStep *apStepOne = [[TimerStep alloc] initWithDescription:@"Pour water over grounds"
+    TimerStep *apStepOne = [[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
                                                     timeInSeconds:45];
-    TimerStep *apStepTwo = [[TimerStep alloc] initWithDescription:@"Press the plunger slowly"
+    TimerStep *apStepTwo = [[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
                                                     timeInSeconds:20];
+    
     NSArray *apStepArray = [NSArray arrayWithObjects:apStepOne, apStepTwo, nil];
     
+
+    NSArray *apPrepArray = [NSArray arrayWithObjects:
+                            @"Grind the beans medium fine",
+                            @"Pre-wet the filter with plenty of cold water",
+                            @"Turn the Aeropress upside down",
+                            @"Push the plunger to the \"4\" mark", nil];
+    
+    NSArray *apEquipArray = [NSArray arrayWithObjects:
+                             @"Aeropress", 
+                             @"14g of coffee beans",
+                             @"300 ml water at 90 degrees", nil];
+    
+    
+    
     BrewMethod *aeropress = [[BrewMethod alloc] initWithName:@"Aeropress" 
-                                              timerStepArray:apStepArray];
+                                              timerStepArray:apStepArray
+                                                 preparation:apPrepArray
+                                                   equipment:apEquipArray];
     [apStepArray release];
     
     // Chemex initialization
@@ -107,13 +144,22 @@
     return next;
 }
 
-- (NSArray *)descriptionArray
+- (NSArray *)descriptionsForTab:(NSString *)tabName
 {
-    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
-    for (TimerStep *t in timerSteps) {
-        [arr addObject:[t description]];
+    NSMutableArray *copyArr;
+    
+    if ([tabName isEqualToString:@"Equipment"]) {
+        copyArr = [equipArray copy];
+    } else if ([tabName isEqualToString:@"Preparation"]) {
+        copyArr = [prepArray copy];
+    } else {
+        copyArr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
+        for (TimerStep *t in timerSteps) {
+            [copyArr addObject:[t description]];
+        }
     }
-    return [arr autorelease];
+
+    return [copyArr autorelease];
 }
 
 - (NSString *)commaSeparatedTimerSteps

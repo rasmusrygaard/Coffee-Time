@@ -29,6 +29,7 @@
 - (NSString *)tabTitleForTouch:(UITouch *)t;
 - (void)updateDisplayForTab:(NSString *)tab 
                   forMethod:(BrewMethod *)method;
+- (void)slideTabToIndex:(int)index;
 
 -(double) xCoordForRectAtIndex:(int)index;
 - (void)styleLabel:(UILabel *)label;
