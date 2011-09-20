@@ -31,7 +31,7 @@
     
     // Tab bar
     // Get image, draw in context at upper left corner
-    background = [UIImage imageNamed:@"TabBar.png"];
+    background = [UIImage imageNamed:@"TabBackground.png"];
     
     CGPoint upperLeft = CGPointMake(bounds.origin.x, bounds.origin.y);
     [background drawAtPoint:upperLeft];
@@ -48,7 +48,7 @@
     
     // Get upper left corner of slider
     CGPoint sliderUpperLeft = CGPointMake(center.x - sliderImg.size.width / 2.0,
-                                          upperLeft.x + 1);
+                                          upperLeft.x + 2);
     [slider setFrame:CGRectMake(sliderUpperLeft.x, 
                                 sliderUpperLeft.y,
                                 sliderImg.size.width,
@@ -166,7 +166,7 @@
     CGRect oldFrame = [slider frame];   
     double x = [self xCoordForRectAtIndex:index];
     
-    CGRect newFrame = CGRectMake(x - index, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height);
+    CGRect newFrame = CGRectMake(x + index, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height);
     
     // Set up sliding animation
     CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"position"];
@@ -176,7 +176,7 @@
     
     [move setFromValue:[NSValue valueWithCGPoint:CGPointMake(oldFrame.origin.x + oldFrame.size.width / 2.0 - index, 
                                                              oldFrame.origin.y + oldFrame.size.height / 2.0)]];
-    [move setToValue:[NSValue valueWithCGPoint:CGPointMake(x + oldFrame.size.width / 2.0 - index - 1, 
+    [move setToValue:[NSValue valueWithCGPoint:CGPointMake(x + oldFrame.size.width / 2.0, 
                                                            oldFrame.origin.y + oldFrame.size.height / 2.0)]];
     
     [[slider layer] addAnimation:move forKey:@"moveAnimation"];

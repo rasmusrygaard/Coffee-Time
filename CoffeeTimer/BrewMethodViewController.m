@@ -155,7 +155,6 @@
 
 - (void)updateTable:(NSTimer *)theTimer
 {
-    NSLog(@"reloading");
     [infoTableView reloadData];
 }
 
@@ -181,7 +180,7 @@
         
         // Set up background image
         UIImageView *background = [[UIImageView alloc] 
-                                   initWithImage:[UIImage imageNamed:@"InfoTableBottomCell.png"]];
+                                   initWithImage:[UIImage imageNamed:@"Cell.png"]];
         [cell setBackgroundView:background];
     } else {
         // Set up regular cell
@@ -194,7 +193,7 @@
         
         // Set up background image
         UIImageView *background = [[UIImageView alloc] 
-                                   initWithImage:[UIImage imageNamed:@"InfoTableCell.png"]];
+                                   initWithImage:[UIImage imageNamed:@"Cell.png"]];
         [cell setBackgroundView:background];
     }
 
@@ -202,7 +201,7 @@
     if (indexPath.row >= [descriptions count]) {
         cell.textLabel.text = @"";
     } else {
-        cell.textLabel.text = [descriptions objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@" - %@", [descriptions objectAtIndex:indexPath.row]];
     }
 
     // Font styling
@@ -215,6 +214,11 @@
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 43;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

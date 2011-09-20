@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000C6FC11418DE2E0064EEBE /* BackButton in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBA1418DE2E0064EEBE /* BackButton */; };
-		000C6FC21418DE2E0064EEBE /* InfoWindow in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBB1418DE2E0064EEBE /* InfoWindow */; };
-		000C6FC31418DE2E0064EEBE /* InnerRectangle in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBC1418DE2E0064EEBE /* InnerRectangle */; };
-		000C6FC41418DE2E0064EEBE /* Noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBD1418DE2E0064EEBE /* Noise.png */; };
-		000C6FC51418DE2E0064EEBE /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBE1418DE2E0064EEBE /* Slider */; };
-		000C6FC61418DE2E0064EEBE /* TabBar in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FBF1418DE2E0064EEBE /* TabBar */; };
-		000C6FC71418DE2E0064EEBE /* TimerWindow in Resources */ = {isa = PBXBuildFile; fileRef = 000C6FC01418DE2E0064EEBE /* TimerWindow */; };
+		0024F81B1428CBCB00779E2B /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8151428CBCB00779E2B /* Background@2x.png */; };
+		0024F81C1428CBCB00779E2B /* Cell@2x in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8161428CBCB00779E2B /* Cell@2x */; };
+		0024F81D1428CBCB00779E2B /* TabBackground@2x in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8171428CBCB00779E2B /* TabBackground@2x */; };
+		0024F81E1428CBCB00779E2B /* Slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8181428CBCB00779E2B /* Slider@2x.png */; };
+		0024F81F1428CBCB00779E2B /* Timer@2x in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8191428CBCB00779E2B /* Timer@2x */; };
+		0024F8201428CBCB00779E2B /* Buttons@2x in Resources */ = {isa = PBXBuildFile; fileRef = 0024F81A1428CBCB00779E2B /* Buttons@2x */; };
+		0024F8271428CCD400779E2B /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8211428CCD400779E2B /* Background.png */; };
+		0024F8281428CCD400779E2B /* Cell in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8221428CCD400779E2B /* Cell */; };
+		0024F8291428CCD400779E2B /* TabBackground in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8231428CCD400779E2B /* TabBackground */; };
+		0024F82A1428CCD400779E2B /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8241428CCD400779E2B /* Slider */; };
+		0024F82B1428CCD400779E2B /* Timer in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8251428CCD400779E2B /* Timer */; };
+		0024F82C1428CCD400779E2B /* Buttons in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8261428CCD400779E2B /* Buttons */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -39,10 +44,6 @@
 		00D54CED13F310290032585C /* BrewMethodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D54CEB13F310290032585C /* BrewMethodListViewController.m */; };
 		00D54CEE13F310290032585C /* BrewMethodListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D54CEC13F310290032585C /* BrewMethodListViewController.xib */; };
 		00E0D552141A442900A58B05 /* SliderTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E0D551141A442900A58B05 /* SliderTabBarView.m */; };
-		00F46674141E0BD800523C16 /* InfoTableBottomCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46670141E0BD700523C16 /* InfoTableBottomCell.png */; };
-		00F46675141E0BD800523C16 /* InfoTableBottomCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46671141E0BD700523C16 /* InfoTableBottomCell@2x.png */; };
-		00F46676141E0BD800523C16 /* InfoTableCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46672141E0BD700523C16 /* InfoTableCell.png */; };
-		00F46677141E0BD800523C16 /* InfoTableCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F46673141E0BD800523C16 /* InfoTableCell@2x.png */; };
 		00F4667E141E0EFD00523C16 /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F4667D141E0EFD00523C16 /* InfoTableViewController.m */; };
 		00FB5BF113EAB0BE001C30E2 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FB5BF013EAB0BE001C30E2 /* Constants.m */; };
 /* End PBXBuildFile section */
@@ -58,13 +59,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000C6FBA1418DE2E0064EEBE /* BackButton */ = {isa = PBXFileReference; lastKnownFileType = file; path = BackButton; sourceTree = "<group>"; };
-		000C6FBB1418DE2E0064EEBE /* InfoWindow */ = {isa = PBXFileReference; lastKnownFileType = file; path = InfoWindow; sourceTree = "<group>"; };
-		000C6FBC1418DE2E0064EEBE /* InnerRectangle */ = {isa = PBXFileReference; lastKnownFileType = file; path = InnerRectangle; sourceTree = "<group>"; };
-		000C6FBD1418DE2E0064EEBE /* Noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noise.png; sourceTree = "<group>"; };
-		000C6FBE1418DE2E0064EEBE /* Slider */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slider; sourceTree = "<group>"; };
-		000C6FBF1418DE2E0064EEBE /* TabBar */ = {isa = PBXFileReference; lastKnownFileType = file; path = TabBar; sourceTree = "<group>"; };
-		000C6FC01418DE2E0064EEBE /* TimerWindow */ = {isa = PBXFileReference; lastKnownFileType = file; path = TimerWindow; sourceTree = "<group>"; };
+		0024F8151428CBCB00779E2B /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
+		0024F8161428CBCB00779E2B /* Cell@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cell@2x"; sourceTree = "<group>"; };
+		0024F8171428CBCB00779E2B /* TabBackground@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TabBackground@2x"; sourceTree = "<group>"; };
+		0024F8181428CBCB00779E2B /* Slider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slider@2x.png"; sourceTree = "<group>"; };
+		0024F8191428CBCB00779E2B /* Timer@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Timer@2x"; sourceTree = "<group>"; };
+		0024F81A1428CBCB00779E2B /* Buttons@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Buttons@2x"; sourceTree = "<group>"; };
+		0024F8211428CCD400779E2B /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		0024F8221428CCD400779E2B /* Cell */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cell; sourceTree = "<group>"; };
+		0024F8231428CCD400779E2B /* TabBackground */ = {isa = PBXFileReference; lastKnownFileType = file; path = TabBackground; sourceTree = "<group>"; };
+		0024F8241428CCD400779E2B /* Slider */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slider; sourceTree = "<group>"; };
+		0024F8251428CCD400779E2B /* Timer */ = {isa = PBXFileReference; lastKnownFileType = file; path = Timer; sourceTree = "<group>"; };
+		0024F8261428CCD400779E2B /* Buttons */ = {isa = PBXFileReference; lastKnownFileType = file; path = Buttons; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -100,10 +106,6 @@
 		00D54CEC13F310290032585C /* BrewMethodListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListViewController.xib; sourceTree = "<group>"; };
 		00E0D550141A442900A58B05 /* SliderTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderTabBarView.h; sourceTree = "<group>"; };
 		00E0D551141A442900A58B05 /* SliderTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderTabBarView.m; sourceTree = "<group>"; };
-		00F46670141E0BD700523C16 /* InfoTableBottomCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoTableBottomCell.png; sourceTree = "<group>"; };
-		00F46671141E0BD700523C16 /* InfoTableBottomCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoTableBottomCell@2x.png"; sourceTree = "<group>"; };
-		00F46672141E0BD700523C16 /* InfoTableCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoTableCell.png; sourceTree = "<group>"; };
-		00F46673141E0BD800523C16 /* InfoTableCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoTableCell@2x.png"; sourceTree = "<group>"; };
 		00F4667C141E0EFD00523C16 /* InfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewController.h; sourceTree = "<group>"; };
 		00F4667D141E0EFD00523C16 /* InfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewController.m; sourceTree = "<group>"; };
 		00FB5BEF13EAB0BE001C30E2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -187,17 +189,18 @@
 		0057FF9413E670B0001556C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				00F46670141E0BD700523C16 /* InfoTableBottomCell.png */,
-				00F46671141E0BD700523C16 /* InfoTableBottomCell@2x.png */,
-				00F46672141E0BD700523C16 /* InfoTableCell.png */,
-				00F46673141E0BD800523C16 /* InfoTableCell@2x.png */,
-				000C6FBA1418DE2E0064EEBE /* BackButton */,
-				000C6FBB1418DE2E0064EEBE /* InfoWindow */,
-				000C6FBC1418DE2E0064EEBE /* InnerRectangle */,
-				000C6FBD1418DE2E0064EEBE /* Noise.png */,
-				000C6FBE1418DE2E0064EEBE /* Slider */,
-				000C6FBF1418DE2E0064EEBE /* TabBar */,
-				000C6FC01418DE2E0064EEBE /* TimerWindow */,
+				0024F8211428CCD400779E2B /* Background.png */,
+				0024F8151428CBCB00779E2B /* Background@2x.png */,
+				0024F8221428CCD400779E2B /* Cell */,
+				0024F8161428CBCB00779E2B /* Cell@2x */,
+				0024F8231428CCD400779E2B /* TabBackground */,
+				0024F8171428CBCB00779E2B /* TabBackground@2x */,
+				0024F8241428CCD400779E2B /* Slider */,
+				0024F8181428CBCB00779E2B /* Slider@2x.png */,
+				0024F8251428CCD400779E2B /* Timer */,
+				0024F8191428CBCB00779E2B /* Timer@2x */,
+				0024F8261428CCD400779E2B /* Buttons */,
+				0024F81A1428CBCB00779E2B /* Buttons@2x */,
 				0057FF9513E670B0001556C4 /* CoffeeTimer-Info.plist */,
 				0057FF9613E670B0001556C4 /* InfoPlist.strings */,
 				0057FF9913E670B0001556C4 /* main.m */,
@@ -267,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				00B865D8141F3C2B00EE1CF4 /* BrewMethodViewController */,
-				00B865DA141F3C3800EE1CF4 /* New Group */,
+				00B865DA141F3C3800EE1CF4 /* SliderTabBarView */,
 				00B865DB141F3C4F00EE1CF4 /* New Group1 */,
 			);
 			name = "Single View Controller";
@@ -283,13 +286,13 @@
 			name = BrewMethodViewController;
 			sourceTree = "<group>";
 		};
-		00B865DA141F3C3800EE1CF4 /* New Group */ = {
+		00B865DA141F3C3800EE1CF4 /* SliderTabBarView */ = {
 			isa = PBXGroup;
 			children = (
 				00E0D550141A442900A58B05 /* SliderTabBarView.h */,
 				00E0D551141A442900A58B05 /* SliderTabBarView.m */,
 			);
-			name = "New Group";
+			name = SliderTabBarView;
 			sourceTree = "<group>";
 		};
 		00B865DB141F3C4F00EE1CF4 /* New Group1 */ = {
@@ -392,17 +395,18 @@
 				0057FFAC13E670B1001556C4 /* MainWindow_iPad.xib in Resources */,
 				0057FFD313E672AF001556C4 /* BrewMethodViewController.xib in Resources */,
 				00D54CEE13F310290032585C /* BrewMethodListViewController.xib in Resources */,
-				000C6FC11418DE2E0064EEBE /* BackButton in Resources */,
-				000C6FC21418DE2E0064EEBE /* InfoWindow in Resources */,
-				000C6FC31418DE2E0064EEBE /* InnerRectangle in Resources */,
-				000C6FC41418DE2E0064EEBE /* Noise.png in Resources */,
-				000C6FC51418DE2E0064EEBE /* Slider in Resources */,
-				000C6FC61418DE2E0064EEBE /* TabBar in Resources */,
-				000C6FC71418DE2E0064EEBE /* TimerWindow in Resources */,
-				00F46674141E0BD800523C16 /* InfoTableBottomCell.png in Resources */,
-				00F46675141E0BD800523C16 /* InfoTableBottomCell@2x.png in Resources */,
-				00F46676141E0BD800523C16 /* InfoTableCell.png in Resources */,
-				00F46677141E0BD800523C16 /* InfoTableCell@2x.png in Resources */,
+				0024F81B1428CBCB00779E2B /* Background@2x.png in Resources */,
+				0024F81C1428CBCB00779E2B /* Cell@2x in Resources */,
+				0024F81D1428CBCB00779E2B /* TabBackground@2x in Resources */,
+				0024F81E1428CBCB00779E2B /* Slider@2x.png in Resources */,
+				0024F81F1428CBCB00779E2B /* Timer@2x in Resources */,
+				0024F8201428CBCB00779E2B /* Buttons@2x in Resources */,
+				0024F8271428CCD400779E2B /* Background.png in Resources */,
+				0024F8281428CCD400779E2B /* Cell in Resources */,
+				0024F8291428CCD400779E2B /* TabBackground in Resources */,
+				0024F82A1428CCD400779E2B /* Slider in Resources */,
+				0024F82B1428CCD400779E2B /* Timer in Resources */,
+				0024F82C1428CCD400779E2B /* Buttons in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
