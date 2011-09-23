@@ -111,14 +111,17 @@
 {
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:14];
     [label setFont:font];
-    [label setTextColor:[UIColor colorWithRed:.2 green:.2 blue:.2 alpha:.9]];
+    [label setTextColor:[UIColor colorWithRed:.8 green:.8 blue:.8 alpha:1]];
+    
+    label.shadowColor = [UIColor darkTextColor];
+    label.shadowOffset = CGSizeMake(0, 1);
     
     // Text shadow
-    label.layer.shadowOpacity = 0.8;
+/*    label.layer.shadowOpacity = 0.8;
     label.layer.shadowRadius = 1;
     label.layer.shadowOffset = CGSizeMake(0, .5);
     label.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-    
+*/    
     [label setBackgroundColor:[UIColor clearColor]];
     
     [label setTextAlignment:UITextAlignmentCenter];

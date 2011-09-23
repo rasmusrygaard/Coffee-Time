@@ -21,10 +21,10 @@ double const SLIDER_TAB_BAR_H = 230.0;
 
 double const SLIDER_DURATION = 0.3;
 
-double const INFO_WINDOW_X = 8.0;
-double const INFO_WINDOW_Y = 233.0;
-double const INFO_WINDOW_W = 302.0;
-double const INFO_WINDOW_H = 165.0;
+double const INFO_WINDOW_X = 9.0;
+double const INFO_WINDOW_Y = 232.0;
+double const INFO_WINDOW_W = 300.0;
+double const INFO_WINDOW_H = 167.0;
 
 
 double const TABBAR_INSET = 1.0;

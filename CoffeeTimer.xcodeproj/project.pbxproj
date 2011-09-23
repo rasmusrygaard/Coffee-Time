@@ -19,6 +19,12 @@
 		0024F82A1428CCD400779E2B /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8241428CCD400779E2B /* Slider */; };
 		0024F82B1428CCD400779E2B /* Timer in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8251428CCD400779E2B /* Timer */; };
 		0024F82C1428CCD400779E2B /* Buttons in Resources */ = {isa = PBXBuildFile; fileRef = 0024F8261428CCD400779E2B /* Buttons */; };
+		003A4CB5142CC7E5004C9963 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 003A4CB1142CC7E5004C9963 /* Tile.png */; };
+		003A4CB6142CC7E5004C9963 /* Tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003A4CB2142CC7E5004C9963 /* Tile@2x.png */; };
+		003A4CB7142CC7E5004C9963 /* TileRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 003A4CB3142CC7E5004C9963 /* TileRoundedTop.png */; };
+		003A4CB8142CC7E5004C9963 /* TileRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003A4CB4142CC7E5004C9963 /* TileRoundedTop@2x.png */; };
+		003A4CBC142CCBCF004C9963 /* MatteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 003A4CBA142CCBCF004C9963 /* MatteBackground.png */; };
+		003A4CBD142CCBCF004C9963 /* MatteBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003A4CBB142CCBCF004C9963 /* MatteBackground@2x.png */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -71,6 +77,12 @@
 		0024F8241428CCD400779E2B /* Slider */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slider; sourceTree = "<group>"; };
 		0024F8251428CCD400779E2B /* Timer */ = {isa = PBXFileReference; lastKnownFileType = file; path = Timer; sourceTree = "<group>"; };
 		0024F8261428CCD400779E2B /* Buttons */ = {isa = PBXFileReference; lastKnownFileType = file; path = Buttons; sourceTree = "<group>"; };
+		003A4CB1142CC7E5004C9963 /* Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tile.png; sourceTree = "<group>"; };
+		003A4CB2142CC7E5004C9963 /* Tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tile@2x.png"; sourceTree = "<group>"; };
+		003A4CB3142CC7E5004C9963 /* TileRoundedTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileRoundedTop.png; sourceTree = "<group>"; };
+		003A4CB4142CC7E5004C9963 /* TileRoundedTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TileRoundedTop@2x.png"; sourceTree = "<group>"; };
+		003A4CBA142CCBCF004C9963 /* MatteBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MatteBackground.png; sourceTree = "<group>"; };
+		003A4CBB142CCBCF004C9963 /* MatteBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MatteBackground@2x.png"; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,6 +201,12 @@
 		0057FF9413E670B0001556C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				003A4CBA142CCBCF004C9963 /* MatteBackground.png */,
+				003A4CBB142CCBCF004C9963 /* MatteBackground@2x.png */,
+				003A4CB1142CC7E5004C9963 /* Tile.png */,
+				003A4CB2142CC7E5004C9963 /* Tile@2x.png */,
+				003A4CB3142CC7E5004C9963 /* TileRoundedTop.png */,
+				003A4CB4142CC7E5004C9963 /* TileRoundedTop@2x.png */,
 				0024F8211428CCD400779E2B /* Background.png */,
 				0024F8151428CBCB00779E2B /* Background@2x.png */,
 				0024F8221428CCD400779E2B /* Cell */,
@@ -407,6 +425,12 @@
 				0024F82A1428CCD400779E2B /* Slider in Resources */,
 				0024F82B1428CCD400779E2B /* Timer in Resources */,
 				0024F82C1428CCD400779E2B /* Buttons in Resources */,
+				003A4CB5142CC7E5004C9963 /* Tile.png in Resources */,
+				003A4CB6142CC7E5004C9963 /* Tile@2x.png in Resources */,
+				003A4CB7142CC7E5004C9963 /* TileRoundedTop.png in Resources */,
+				003A4CB8142CC7E5004C9963 /* TileRoundedTop@2x.png in Resources */,
+				003A4CBC142CCBCF004C9963 /* MatteBackground.png in Resources */,
+				003A4CBD142CCBCF004C9963 /* MatteBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

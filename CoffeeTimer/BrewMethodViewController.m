@@ -165,37 +165,18 @@
 {
     NSArray *descriptions = [currentMethod descriptionsForTab:tabDisplayed];
     
-    UITableViewCell *cell;
-    
-    // Set last, rounded cell
-    if (([descriptions count] >= 4 && indexPath.row == [descriptions count] -1) ||
-        ([descriptions count] < 4 && indexPath.row == 3)) {
+    UITableViewCell *cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoRoundedCell"];
         
-        cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoRoundedCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"infoRoundedCell"];
-        }
-        
-        // Set up background image
-        UIImageView *background = [[UIImageView alloc] 
-                                   initWithImage:[UIImage imageNamed:@"Cell.png"]];
-        [cell setBackgroundView:background];
-    } else {
-        // Set up regular cell
-        cell = [infoTableView dequeueReusableCellWithIdentifier:@"infoCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"infoCell"];
-        }
-        
-        // Set up background image
-        UIImageView *background = [[UIImageView alloc] 
-                                   initWithImage:[UIImage imageNamed:@"Cell.png"]];
-        [cell setBackgroundView:background];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"infoRoundedCell"];
     }
+    
+    // Set up background image
+    UIImageView *background = [[UIImageView alloc] 
+                               initWithImage:[UIImage imageNamed:@"Tile.png"]];
+            [[cell backgroundView] setContentMode:UIViewContentModeScaleToFill];
+    [cell setBackgroundView:background];
 
     // Fill extra rows with an empty string
     if (indexPath.row >= [descriptions count]) {
@@ -206,9 +187,9 @@
 
     // Font styling
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-    cell.textLabel.textColor = [UIColor darkTextColor];
-    cell.textLabel.shadowColor = [UIColor lightTextColor];
-    cell.textLabel.shadowOffset = CGSizeMake(0, 0.5);
+    cell.textLabel.textColor = [UIColor lightTextColor];
+    cell.textLabel.shadowColor = [UIColor darkTextColor];
+    cell.textLabel.shadowOffset = CGSizeMake(0, -0.5);
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;
     
