@@ -47,16 +47,18 @@
 {
     UITableViewCell *cell;
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0) { // Top cell
         cell = [tableView dequeueReusableCellWithIdentifier:@"BrewMethodTopCell"];
     
         if (!cell) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                    reuseIdentifier:@"BrewMethodTopCell"] autorelease];
-        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TileRoundedTop.png"]];
-        [cell setBackgroundView:img];
+            UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TileRoundedTop.png"]];
+            [cell setBackgroundView:img];
+            [cell setContentMode:UIViewContentModeScaleToFill];
         } 
-    } else {
+             
+    } else { // Remaining Cells
         cell = [tableView dequeueReusableCellWithIdentifier:@"BrewMethodCell"];
         
         if (!cell) {
@@ -64,6 +66,7 @@
                                            reuseIdentifier:@"BrewMethodCell"] autorelease];
             UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Tile.png"]];
             [cell setBackgroundView:img]; 
+            [cell setContentMode:UIViewContentModeScaleToFill];
         }
     }
     
@@ -85,6 +88,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     [bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
+    [[bmViewController navigationItem] setTitle:[[bmViewController currentMethod] name]];
+    
     [[self navigationController] pushViewController:bmViewController 
                                            animated:YES];
 }
@@ -107,7 +112,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [[self view] setBackgroundColor:background];
     
     [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
-    [[self navigationItem] setTitle:@"Brew Methods"];
+    [[self navigationItem] setTitle:@"Methods"];
     // Do any additional setup after loading the view from its nib.
 }
 

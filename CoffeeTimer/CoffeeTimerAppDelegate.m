@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
     bmlViewController = [[BrewMethodListViewController alloc] init];
     
     NSArray *methods = [BrewMethod initBrewMethods];

@@ -21,9 +21,9 @@
 - (id)init
 {
     [super initWithNibName:@"BrewMethodViewController" bundle:nil];
-    
+
     tabDisplayed = @"Instructions";
-    [[self navigationItem] setTitle:@"Hello!"];
+    [[[self navigationItem] backBarButtonItem] setTitle:@"Methods"];
     
     return self;
 }
@@ -187,19 +187,14 @@
 
     // Font styling
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-    cell.textLabel.textColor = [UIColor lightTextColor];
+    cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.9];
     cell.textLabel.shadowColor = [UIColor darkTextColor];
-    cell.textLabel.shadowOffset = CGSizeMake(0, -0.5);
+    cell.textLabel.shadowOffset = CGSizeMake(0, -1);
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 43;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
