@@ -71,9 +71,15 @@
     }
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[method name]];
+
+    cell.textLabel.text = [method name];
     
     cell.textLabel.backgroundColor = [UIColor clearColor];
+    
+    cell.textLabel.textColor = [UIColor lightTextColor];
+    cell.textLabel.shadowColor = [UIColor darkGrayColor];
+    cell.textLabel.shadowOffset = CGSizeMake(0, -1);
+    cell.textLabel.textAlignment = UITextAlignmentCenter;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
