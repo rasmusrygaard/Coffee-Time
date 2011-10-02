@@ -38,6 +38,7 @@
 		000F1D6814337984006CD04F /* Timer@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4514337984006CD04F /* Timer@2x */; };
 		000F1D6914337984006CD04F /* SliderTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4814337984006CD04F /* SliderTabBarView.m */; };
 		000F1D6A14337984006CD04F /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4B14337984006CD04F /* TimerStep.m */; };
+		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -55,6 +56,20 @@
 		0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
+		00D359461437E9FA00BFA6E0 /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
+		00D359471437E9FA00BFA6E0 /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359391437E9FA00BFA6E0 /* Cell@2x.png */; };
+		00D359481437E9FA00BFA6E0 /* CellRoundedBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */; };
+		00D359491437E9FA00BFA6E0 /* CellRoundedBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593B1437E9FA00BFA6E0 /* CellRoundedBottom@2x.png */; };
+		00D3594A1437E9FA00BFA6E0 /* CellRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */; };
+		00D3594B1437E9FA00BFA6E0 /* CellRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */; };
+		00D3594C1437E9FA00BFA6E0 /* CellRoundedTopBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */; };
+		00D3594D1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */; };
+		00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */; };
+		00D3594F1437E9FA00BFA6E0 /* CellWRoundedBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D359411437E9FA00BFA6E0 /* CellWRoundedBottom.psd */; };
+		00D359501437E9FA00BFA6E0 /* CellWRoundedMask.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D359421437E9FA00BFA6E0 /* CellWRoundedMask.psd */; };
+		00D359511437E9FA00BFA6E0 /* CellWRoundedTop.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D359431437E9FA00BFA6E0 /* CellWRoundedTop.psd */; };
+		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
+		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +121,7 @@
 		000F1D4814337984006CD04F /* SliderTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderTabBarView.m; sourceTree = "<group>"; };
 		000F1D4A14337984006CD04F /* TimerStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerStep.h; sourceTree = "<group>"; };
 		000F1D4B14337984006CD04F /* TimerStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerStep.m; sourceTree = "<group>"; };
+		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,6 +143,20 @@
 		0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeTimerTests.m; sourceTree = "<group>"; };
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		00D359381437E9FA00BFA6E0 /* Cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell.png; sourceTree = "<group>"; };
+		00D359391437E9FA00BFA6E0 /* Cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cell@2x.png"; sourceTree = "<group>"; };
+		00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedBottom.png; sourceTree = "<group>"; };
+		00D3593B1437E9FA00BFA6E0 /* CellRoundedBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedBottom@2x.png"; sourceTree = "<group>"; };
+		00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedTop.png; sourceTree = "<group>"; };
+		00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedTop@2x.png"; sourceTree = "<group>"; };
+		00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedTopBottom.png; sourceTree = "<group>"; };
+		00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellRoundedTopBottom.psd; sourceTree = "<group>"; };
+		00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedTopBottom@2x.png"; sourceTree = "<group>"; };
+		00D359411437E9FA00BFA6E0 /* CellWRoundedBottom.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellWRoundedBottom.psd; sourceTree = "<group>"; };
+		00D359421437E9FA00BFA6E0 /* CellWRoundedMask.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellWRoundedMask.psd; sourceTree = "<group>"; };
+		00D359431437E9FA00BFA6E0 /* CellWRoundedTop.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellWRoundedTop.psd; sourceTree = "<group>"; };
+		00D359441437E9FA00BFA6E0 /* MethodBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MethodBackground.png; sourceTree = "<group>"; };
+		00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MethodBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */,
 				00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */,
 				0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */,
 				0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */,
@@ -196,6 +227,20 @@
 		000F1D2F14337984006CD04F /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				00D359381437E9FA00BFA6E0 /* Cell.png */,
+				00D359391437E9FA00BFA6E0 /* Cell@2x.png */,
+				00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */,
+				00D3593B1437E9FA00BFA6E0 /* CellRoundedBottom@2x.png */,
+				00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */,
+				00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */,
+				00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */,
+				00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */,
+				00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */,
+				00D359411437E9FA00BFA6E0 /* CellWRoundedBottom.psd */,
+				00D359421437E9FA00BFA6E0 /* CellWRoundedMask.psd */,
+				00D359431437E9FA00BFA6E0 /* CellWRoundedTop.psd */,
+				00D359441437E9FA00BFA6E0 /* MethodBackground.png */,
+				00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */,
 				000F1D3014337984006CD04F /* Background.png */,
 				000F1D3114337984006CD04F /* Background@2x.png */,
 				000F1D3214337984006CD04F /* Buttons */,
@@ -243,6 +288,7 @@
 		0057FF7E13E670AB001556C4 = {
 			isa = PBXGroup;
 			children = (
+				001103C11437B9DB00C6467B /* AudioToolbox.framework */,
 				00A226C2141CE2D9006EEE4F /* QuartzCore.framework */,
 				0057FF9313E670B0001556C4 /* CoffeeTimer */,
 				0057FFBA13E670B1001556C4 /* CoffeeTimerTests */,
@@ -434,6 +480,20 @@
 				000F1D6614337984006CD04F /* TileRoundedTop@2x.png in Resources */,
 				000F1D6714337984006CD04F /* Timer in Resources */,
 				000F1D6814337984006CD04F /* Timer@2x in Resources */,
+				00D359461437E9FA00BFA6E0 /* Cell.png in Resources */,
+				00D359471437E9FA00BFA6E0 /* Cell@2x.png in Resources */,
+				00D359481437E9FA00BFA6E0 /* CellRoundedBottom.png in Resources */,
+				00D359491437E9FA00BFA6E0 /* CellRoundedBottom@2x.png in Resources */,
+				00D3594A1437E9FA00BFA6E0 /* CellRoundedTop.png in Resources */,
+				00D3594B1437E9FA00BFA6E0 /* CellRoundedTop@2x.png in Resources */,
+				00D3594C1437E9FA00BFA6E0 /* CellRoundedTopBottom.png in Resources */,
+				00D3594D1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd in Resources */,
+				00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */,
+				00D3594F1437E9FA00BFA6E0 /* CellWRoundedBottom.psd in Resources */,
+				00D359501437E9FA00BFA6E0 /* CellWRoundedMask.psd in Resources */,
+				00D359511437E9FA00BFA6E0 /* CellWRoundedTop.psd in Resources */,
+				00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */,
+				00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
