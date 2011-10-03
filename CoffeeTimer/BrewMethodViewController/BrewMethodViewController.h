@@ -26,6 +26,7 @@
     IBOutlet UIButton *stopTimerButton;
     
     IBOutlet UITableView *infoTableView;
+    UITableViewCell *tvCell;
     
     NSTimer *timer;
     NSString *methodBeingTimed;
@@ -41,6 +42,8 @@
 
 - (NSArray *)descriptionsForCurrentTab;
 
+- (void)removeTopInstructionsCell;
+
 - (void)setAndStartTimerForStep:(TimerStep *)step;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
 
@@ -49,5 +52,6 @@
 @property (nonatomic, retain) NSArray *preparation;
 @property (nonatomic, retain) NSArray *equipment;
 @property (nonatomic, assign) NSString *tabDisplayed;
+@property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
 
 @end

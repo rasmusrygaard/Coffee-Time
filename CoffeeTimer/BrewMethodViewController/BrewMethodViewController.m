@@ -15,7 +15,7 @@
 
 @implementation BrewMethodViewController
 
-@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed;
+@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell;
 
 - (id)init
 {
@@ -81,6 +81,19 @@
     }
 }
 
+- (void)removeTopInstructionsCell
+{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    [infoTableView beginUpdates];
+    [instructions removeObjectAtIndex:0];
+    [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
+                         withRowAnimation:UITableViewRowAnimationTop];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    [infoTableView endUpdates];
+
+}
+
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     NSDate *currentTime = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -102,14 +115,9 @@
             [self setAndStartTimerForStep:nextStep];
             
             // Delete first cell
-            NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-            
-            [infoTableView beginUpdates];
-            [instructions removeObjectAtIndex:0];
-            [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
-                                 withRowAnimation:UITableViewRowAnimationTop];
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            [infoTableView endUpdates];
+            if ([tabDisplayed isEqualToString:@"Instructions"]) {
+                [self removeTopInstructionsCell];
+            }
         } else {
             [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
 
@@ -132,6 +140,9 @@
     } else {
         NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:currentTime];
         [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
+        
+        UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathWithIndexes:0 length:0]];
+        
     }
 }
 
@@ -225,7 +236,7 @@
         image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
         
     } else {*/
-    
+/*
     UITableViewCellStyle style;
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         style = UITableViewCellStyleValue1;
@@ -262,6 +273,43 @@
     cell.detailTextLabel.text = @"00:20";
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+ 
+ */
+    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        NSLog(@"instructions");
+        cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewCell"];
+        
+        if (!cell) {
+            NSLog(@"not cell");
+            [[NSBundle mainBundle] loadNibNamed:@"BrewMethodTableViewCell" owner:self options:nil];
+            cell = tvCell;
+            [self setTvCell:nil];
+        }
+    } else {
+        cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewSimpleCell"];
+        
+        if (!cell) {
+            [[NSBundle mainBundle] loadNibNamed:@"BrewMethodTableViewSimpleCell" owner:self options:nil];
+            cell = tvCell;
+            [self setTvCell:nil];
+        }
+    }
+    
+    [[cell backgroundView] setContentMode:UIViewContentModeScaleToFill];
+    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+    [cell setBackgroundView:img];
+    [img release];
+    
+    UILabel *label;
+    label = (UILabel *)[cell viewWithTag:1];
+    label.text = [descriptions objectAtIndex:indexPath.row];
+    label.numberOfLines = 0;
+    
+    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        label = (UILabel *)[cell viewWithTag:2];
+        label.text = @"00:20";
+    }
+    
     return cell;
 }
 
@@ -269,6 +317,19 @@
 {
     NSArray *steps = ([tabDisplayed isEqualToString:@"Instructions"]) ? instructions : [currentMethod descriptionsForTab:tabDisplayed];
     return [steps count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *descriptions = [self descriptionsForCurrentTab];
+    NSString *text = [descriptions objectAtIndex:indexPath.row];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
+    CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(240, MAXFLOAT)];
+    
+    CGFloat height = (size.height + 15 < 44) ? 44 : size.height + 15;
+
+    return height;
+    
 }
 
 #pragma mark - View lifecycle
