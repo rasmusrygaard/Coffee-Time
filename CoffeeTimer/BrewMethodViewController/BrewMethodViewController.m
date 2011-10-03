@@ -78,20 +78,51 @@
         // Update the info on the screen to reflect the first step
         TimerStep *firstStep = [currentMethod firstTimerStep];
         [self setupLabelsForTimerStep:firstStep];
+        [self resetInstructions];
+        [currentMethod resetTimerSteps];
     }
 }
+
+/* - (void)removeTopInstructionsCell
+ * Removes the top cell from the infoTableView. Should only be called
+ * when the Instructions tab is active, since this method will remove
+ * the top cell regardless of which tab is displayed.
+ */
 
 - (void)removeTopInstructionsCell
 {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
     [infoTableView beginUpdates];
+    
     [instructions removeObjectAtIndex:0];
     [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
                          withRowAnimation:UITableViewRowAnimationTop];
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
     [infoTableView endUpdates];
 
+}
+
+/* - (void)resetInstructions
+ * Grab the array of instructions and populate the tableview with the cells. This will
+ * add any cells that were previously removed during the runtime of the timer. 
+ */
+
+- (void)resetInstructions
+{
+    NSArray *instArr = [currentMethod descriptionsForTab:@"Instructions"];
+    [self setInstructions:[NSMutableArray arrayWithArray:instArr]];
+    [infoTableView reloadData];
+}
+
+- (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed 
+{
+    UILabel *label;
+    UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
+                                                                                       inSection:0]];
+    label = (UILabel *)[topCell viewWithTag:2];
+    [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
 }
 
 - (void)checkTimerStatus:(NSTimer *)theTimer
@@ -130,10 +161,8 @@
             [alertView show];
             
             // Reset the data in the instructions window
-            NSArray *instArr = [currentMethod descriptionsForTab:@"Instructions"];
-            [self setInstructions:[NSMutableArray arrayWithArray:instArr]];
-            [infoTableView reloadData];
-            
+            [self resetInstructions];
+        
             [currentMethod resetTimerSteps];
         }
         
@@ -141,8 +170,10 @@
         NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:currentTime];
         [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
         
-        UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathWithIndexes:0 length:0]];
         
+        if ([tabDisplayed isEqualToString:@"Instructions"]) {
+            [self updateTimeOnTopCell:timeElapsed];
+        }
     }
 }
 
@@ -276,11 +307,9 @@
  
  */
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
-        NSLog(@"instructions");
         cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewCell"];
         
         if (!cell) {
-            NSLog(@"not cell");
             [[NSBundle mainBundle] loadNibNamed:@"BrewMethodTableViewCell" owner:self options:nil];
             cell = tvCell;
             [self setTvCell:nil];
@@ -326,7 +355,7 @@
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
     CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(240, MAXFLOAT)];
     
-    CGFloat height = (size.height + 15 < 44) ? 44 : size.height + 15;
+    CGFloat height = (size.height + 10 < 44) ? 44 : size.height + 10;
 
     return height;
     

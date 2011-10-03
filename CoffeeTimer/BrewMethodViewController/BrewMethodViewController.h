@@ -43,6 +43,8 @@
 - (NSArray *)descriptionsForCurrentTab;
 
 - (void)removeTopInstructionsCell;
+- (void)resetInstructions;
+- (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
 
 - (void)setAndStartTimerForStep:(TimerStep *)step;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
