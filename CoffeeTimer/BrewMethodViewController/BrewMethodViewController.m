@@ -183,18 +183,26 @@
 
 #pragma mark - TableView functionality
 
+- (NSArray *)descriptionsForCurrentTab
+{
+    NSArray *tabArray;
+    
+    if (tabDisplayed == @"Instructions") {
+        tabArray = instructions;
+    } else if (tabDisplayed == @"Preparation") {
+        tabArray = preparation;
+    } else {
+        tabArray = equipment;
+    }
+    
+    return tabArray;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Get the array of descriptions
-    NSArray *descriptions;
-    if (tabDisplayed == @"Instructions") {
-        descriptions = instructions;
-    } else if (tabDisplayed == @"Preparation") {
-        descriptions = preparation;
-    } else {
-        descriptions = equipment;
-    }
+    NSArray *descriptions = [self descriptionsForCurrentTab];
     
     UITableViewCell *cell;
     UIImageView *image;

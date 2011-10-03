@@ -39,6 +39,8 @@
 - (IBAction)startTimerClicked:(id)sender;
 - (IBAction)stopTimerClicked:(id)sender;
 
+- (NSArray *)descriptionsForCurrentTab;
+
 - (void)setAndStartTimerForStep:(TimerStep *)step;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
 

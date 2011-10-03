@@ -45,6 +45,11 @@
     return [NSString stringWithFormat:@"%@ (%d sec)", stepDescription, timeInSeconds];
 }
 
+- (NSString *)descriptionWithoutTime
+{
+    return [self stepDescription];
+}
+
 - (NSString *)formattedTimeInSeconds
 {
     return [TimerStep formattedTimeInSecondsForInterval:timeInSeconds];

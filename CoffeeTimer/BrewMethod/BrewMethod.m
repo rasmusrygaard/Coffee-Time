@@ -193,7 +193,7 @@
     } else {
         copyArr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
         for (TimerStep *t in timerSteps) {
-            [copyArr addObject:[t description]];
+            [copyArr addObject:[t descriptionWithoutTime]];
         }
     }
 

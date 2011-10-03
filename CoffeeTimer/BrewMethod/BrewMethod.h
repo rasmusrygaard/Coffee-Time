@@ -30,7 +30,6 @@
        preparation:(NSArray *)prepArray
          equipment:(NSArray *)equipArray;
 
-
 - (TimerStep *)firstTimerStep;
 - (TimerStep *)nextTimerStep;
 - (void)resetTimerSteps;

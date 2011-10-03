@@ -22,5 +22,7 @@
 - (id)initWithDescription:(NSString *)desc timeInSeconds:(int)time;
 - (NSString *)formattedTimeInSeconds;
 
+- (NSString *)descriptionWithoutTime;
+
 
 @end
