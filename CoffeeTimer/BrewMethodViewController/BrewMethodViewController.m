@@ -101,6 +101,7 @@
             [self setupLabelsForTimerStep:nextStep];
             [self setAndStartTimerForStep:nextStep];
             
+            // Delete first cell
             NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
             
             [infoTableView beginUpdates];
@@ -120,6 +121,7 @@
                                                       otherButtonTitles:nil];
             [alertView show];
             
+            // Reset the data in the instructions window
             NSArray *instArr = [currentMethod descriptionsForTab:@"Instructions"];
             [self setInstructions:[NSMutableArray arrayWithArray:instArr]];
             [infoTableView reloadData];
@@ -223,14 +225,23 @@
         image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
         
     } else {*/
-        cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"Cell"];
-        }
-        
-        image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+    
+    UITableViewCellStyle style;
+    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        style = UITableViewCellStyleValue1;
+    } else {
+        NSLog(@"Default");
+        style = UITableViewCellStyleDefault;
+    }
+    
+    cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodCell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:style
+                                      reuseIdentifier:@"Cell"];
+    }
+    
+    image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
 //    }
     
     [[cell backgroundView] setContentMode:UIViewContentModeScaleToFill];
@@ -247,6 +258,8 @@
     cell.textLabel.shadowOffset = CGSizeMake(0, -.5);
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;
+    
+    cell.detailTextLabel.text = @"00:20";
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
