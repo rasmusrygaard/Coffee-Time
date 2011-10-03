@@ -58,35 +58,42 @@
     return self;
 }
 
-+ (NSArray *)initBrewMethods
++(BrewMethod *)initTestMethod
 {
+    // Initialize instructions
     TimerStep *ts1 = [[[TimerStep alloc] initWithDescription:@"first step" 
-                                              timeInSeconds:10] autorelease];
+                                               timeInSeconds:10] autorelease];
     TimerStep *ts2 = [[[TimerStep alloc] initWithDescription:@"second step" 
-                                              timeInSeconds:5] autorelease];
+                                               timeInSeconds:5] autorelease];
     TimerStep *ts3 = [[[TimerStep alloc] initWithDescription:@"third, final step" 
-                                              timeInSeconds:15] autorelease];
+                                               timeInSeconds:15] autorelease];
     NSArray *testStepArray = [NSArray arrayWithObjects:ts1, ts2, ts3, nil];
-    BrewMethod *test = [[[BrewMethod alloc] initWithName:@"Test Method"
-                                         timerStepArray:testStepArray] autorelease];
-    [testStepArray release];
     
-    // Aeropress initialization
-    TimerStep *apStepOne = [[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
-                                                    timeInSeconds:5];
-    TimerStep *apStepTwo = [[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
-                                                    timeInSeconds:20];
-    NSArray *apStepArray = [NSArray arrayWithObjects:apStepOne, apStepTwo, nil];
-    [apStepOne release];
-    [apStepTwo release];
+    BrewMethod *method = [[BrewMethod alloc] initWithName:@"Test Method"
+                                           timerStepArray:testStepArray];
     
+    return [method autorelease];
+}
 
++(BrewMethod *)initAeropressMethod
+{
+    // Initialize instructions
+    TimerStep *apStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
+                                                    timeInSeconds:5] autorelease];
+    TimerStep *apStepTwo = [[[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
+                                                    timeInSeconds:20] autorelease];
+    
+    NSArray *apStepArray = [NSArray arrayWithObjects:apStepOne, apStepTwo, nil];
+    
+    
+    // Initialize preparation
     NSArray *apPrepArray = [NSArray arrayWithObjects:
                             @"Grind the beans medium fine",
                             @"Pre-wet the filter with plenty of cold water",
                             @"Turn the Aeropress upside down",
                             @"Push the plunger to the \"4\" mark", nil];
     
+    // Initialize equipment
     NSArray *apEquipArray = [NSArray arrayWithObjects:
                              @"Aeropress", 
                              @"14g of coffee beans",
@@ -94,23 +101,25 @@
     
     
     
-    BrewMethod *aeropress = [[BrewMethod alloc] initWithName:@"Aeropress" 
-                                              timerStepArray:apStepArray
-                                                 preparation:apPrepArray
-                                                   equipment:apEquipArray];
-
+    BrewMethod *method = [[BrewMethod alloc] initWithName:@"Aeropress" 
+                                           timerStepArray:apStepArray
+                                              preparation:apPrepArray
+                                                equipment:apEquipArray];
     
-    // Chemex initialization
-    TimerStep *cStepOne = [[TimerStep alloc] initWithDescription:@"Pour water over grounds to start the bloom" 
-                                                   timeInSeconds:45];
-    TimerStep *cStepTwo = [[TimerStep alloc] initWithDescription:@"Pour more water to fully saturate the grounds" 
-                                                   timeInSeconds:60];
-    TimerStep *cStepThree = [[TimerStep alloc] initWithDescription:@"Pour more water until the weight reaches 700g" 
-                                                     timeInSeconds:135];
-    NSArray *cStepArray = [NSArray arrayWithObjects:cStepOne, cStepTwo, cStepThree, nil];\
-    [cStepOne release];
-    [cStepTwo release];
-    [cStepThree release];
+    return [method autorelease];
+}
+
++(BrewMethod *)initChemexMethod
+{
+    // Initialize instructions
+    TimerStep *cStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over grounds to start the bloom" 
+                                                   timeInSeconds:45] autorelease];
+    TimerStep *cStepTwo = [[[TimerStep alloc] initWithDescription:@"Pour more water to fully saturate the grounds" 
+                                                   timeInSeconds:60] autorelease];
+    TimerStep *cStepThree = [[[TimerStep alloc] initWithDescription:@"Pour more water until the weight reaches 700g" 
+                                                     timeInSeconds:135] autorelease];
+    NSArray *cStepArray = [NSArray arrayWithObjects:cStepOne, cStepTwo, cStepThree, nil];
+    
     
     NSArray *cPrepArray = [NSArray arrayWithObjects:
                            @"Place the filter with the three-layered side by the sprout",
@@ -123,15 +132,24 @@
                             @"45 g of coffee beans",
                             @"700 ml of water at 90 degrees", nil];
     
-    BrewMethod *chemex = [[BrewMethod alloc] initWithName:@"Chemex"
+    BrewMethod *method = [[BrewMethod alloc] initWithName:@"Chemex"
                                            timerStepArray:cStepArray
                                               preparation:cPrepArray 
-                                                equipment:cEquipArray];
+                                                equipment:cEquipArray];  
+    
+    return [method autorelease];
+}
+
++ (NSArray *)initBrewMethods
+{
+    BrewMethod *test = [self initTestMethod];
+    
+    BrewMethod *aeropress = [self initAeropressMethod];
+    NSLog(@"Aeropress: %@", aeropress);
+
+    BrewMethod *chemex = [self initChemexMethod];
     
     NSArray *brewMethods = [NSArray arrayWithObjects:test, aeropress, chemex, nil];
-    [test release];
-    [aeropress release];
-    [chemex release];
     
     return brewMethods;
 }
@@ -198,6 +216,16 @@
     }
 
     return [copyArr autorelease];
+}
+
+- (NSArray *)timeIntervals
+{
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
+
+    for (TimerStep *t in timerSteps) {
+        [array addObject:[t formattedTimeInSeconds]];
+    }
+    return [array autorelease];
 }
 
 - (NSString *)commaSeparatedTimerSteps

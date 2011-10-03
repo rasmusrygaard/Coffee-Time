@@ -136,7 +136,7 @@
         [finishTime release];
         
         TimerStep *nextStep = [currentMethod nextTimerStep];
-        
+
         // Clear the timer
         [theTimer invalidate]; 
         timer = nil;
@@ -168,7 +168,8 @@
         
     } else {
         NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:currentTime];
-        [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
+        int timeLeft = (int)timeElapsed + (int)remainingTime;
+        [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
         
         
         if ([tabDisplayed isEqualToString:@"Instructions"]) {
@@ -184,7 +185,7 @@
 
 - (void)setupLabelsForTimerStep:(TimerStep *)step
 {
-    [timerLabel setText:[step formattedTimeInSeconds]];
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTime]];
     [descriptionLabel setText:[step description]];
 }
 
@@ -336,7 +337,8 @@
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         label = (UILabel *)[cell viewWithTag:2];
-        label.text = @"00:20";
+        NSString *text = [[currentMethod timeIntervals] objectAtIndex:indexPath.row];
+        label.text = text;
     }
     
     return cell;

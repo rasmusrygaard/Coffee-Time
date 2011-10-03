@@ -32,6 +32,7 @@
     NSString *methodBeingTimed;
     
     NSDate *finishTime;
+    int remainingTime;
     
     SliderTabBarView *stbView;
     NSString *tabDisplayed;

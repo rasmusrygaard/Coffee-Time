@@ -21,6 +21,11 @@
     int stepCounter;
 }
 
+// Initialize methods
++(BrewMethod *)initTestMethod;
++(BrewMethod *)initAeropressMethod;
++(BrewMethod *)initChemexMethod;
+
 +(NSMutableArray *)initBrewMethods;
 
 - (id)initWithName:(NSString *)name timerStepArray:(NSArray *)steps;
@@ -34,6 +39,8 @@
 - (TimerStep *)nextTimerStep;
 - (void)resetTimerSteps;
 - (NSString *)totalTime;
+- (NSArray *)timeIntervals;
+
 - (NSArray *)descriptionsForTab:(NSString *)tabName;
 
 - (NSString *)commaSeparatedTimerSteps;
