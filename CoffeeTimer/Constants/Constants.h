@@ -28,4 +28,7 @@ extern double const TABBAR_INSET;
 extern double const TEXTFIELD_WIDTH;
 extern double const TEXTFIELD_HEIGHT;
 
+extern double const MIN_CELL_HEIGHT;
+extern double const CELL_INSET;
+
 @end

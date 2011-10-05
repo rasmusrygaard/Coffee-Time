@@ -45,7 +45,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%d", [brewMethods retainCount]);
     UITableViewCell *cell;
     UIImageView *img;
     
@@ -107,7 +106,6 @@
 - (void) tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%d", [brewMethods retainCount]);
     if (!bmViewController) {
         bmViewController = [[BrewMethodViewController alloc] init];
     }

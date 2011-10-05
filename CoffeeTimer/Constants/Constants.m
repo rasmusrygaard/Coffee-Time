@@ -31,6 +31,9 @@ double const TABBAR_INSET = 1.0;
 double const TEXTFIELD_WIDTH = 99.0; // (284 - 2 * TABBAR_INSET) / 3.0
 double const TEXTFIELD_HEIGHT = 49;
 
+double const MIN_CELL_HEIGHT = 44;
+double const CELL_INSET = 10;
+
 
 - (id)init
 {

@@ -250,63 +250,7 @@
     NSArray *descriptions = [self descriptionsForCurrentTab];
     
     UITableViewCell *cell;
-    UIImageView *image;
     
-//    NSLog(@"itv retain %@", [infoTableView retainCount]);
-/*    
-    if (indexPath.row == [descriptions count] - 1) {
-        if (cell == nil) {
-            NSLog(@"nil");
-        }
-        cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodBottomCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"BrewMethodBottomCell"];
-        }
-        
-        image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
-        
-    } else {*/
-/*
-    UITableViewCellStyle style;
-    if ([tabDisplayed isEqualToString:@"Instructions"]) {
-        style = UITableViewCellStyleValue1;
-    } else {
-        NSLog(@"Default");
-        style = UITableViewCellStyleDefault;
-    }
-    
-    cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodCell"];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:style
-                                      reuseIdentifier:@"Cell"];
-    }
-    
-    image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
-//    }
-    
-    [[cell backgroundView] setContentMode:UIViewContentModeScaleToFill];
-    [cell setBackgroundView:image];
-    [image release];
-    
-    NSString *text = [descriptions objectAtIndex:indexPath.row];
-    cell.textLabel.text = text;
-
-    // Font styling
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-    cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.8];
-    cell.textLabel.shadowColor = [UIColor darkTextColor];
-    cell.textLabel.shadowOffset = CGSizeMake(0, -.5);
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 0;
-    
-    cell.detailTextLabel.text = @"00:20";
-    
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
- 
- */
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewCell"];
         
@@ -355,9 +299,10 @@
     NSArray *descriptions = [self descriptionsForCurrentTab];
     NSString *text = [descriptions objectAtIndex:indexPath.row];
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
-    CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(240, MAXFLOAT)];
     
-    CGFloat height = (size.height + 10 < 44) ? 44 : size.height + 10;
+    CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(240, MAXFLOAT)];
+    
+    CGFloat height = (textSize.height + CELL_INSET < MIN_CELL_HEIGHT) ? MIN_CELL_HEIGHT : textSize.height + CELL_INSET;
 
     return height;
     
@@ -435,8 +380,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"Disappearing");
-
     
 }
 
