@@ -279,6 +279,7 @@
     label.text = [descriptions objectAtIndex:indexPath.row];
     label.numberOfLines = 0;
     
+    // Display time for cells under "Instructions"
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         label = (UILabel *)[cell viewWithTag:2];
         NSString *text = [[currentMethod timeIntervals] objectAtIndex:indexPath.row];

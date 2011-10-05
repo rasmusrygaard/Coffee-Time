@@ -20,20 +20,12 @@
 		000F1D5614337984006CD04F /* Buttons@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3314337984006CD04F /* Buttons@2x */; };
 		000F1D5714337984006CD04F /* Cell in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3414337984006CD04F /* Cell */; };
 		000F1D5814337984006CD04F /* Cell@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3514337984006CD04F /* Cell@2x */; };
-		000F1D5914337984006CD04F /* InfoTableBottomCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3614337984006CD04F /* InfoTableBottomCell.png */; };
-		000F1D5A14337984006CD04F /* InfoTableBottomCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3714337984006CD04F /* InfoTableBottomCell@2x.png */; };
-		000F1D5B14337984006CD04F /* InfoTableCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3814337984006CD04F /* InfoTableCell.png */; };
-		000F1D5C14337984006CD04F /* InfoTableCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3914337984006CD04F /* InfoTableCell@2x.png */; };
 		000F1D5D14337984006CD04F /* MatteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3A14337984006CD04F /* MatteBackground.png */; };
 		000F1D5E14337984006CD04F /* MatteBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3B14337984006CD04F /* MatteBackground@2x.png */; };
 		000F1D5F14337984006CD04F /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3C14337984006CD04F /* Slider */; };
 		000F1D6014337984006CD04F /* Slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3D14337984006CD04F /* Slider@2x.png */; };
 		000F1D6114337984006CD04F /* TabBackground in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3E14337984006CD04F /* TabBackground */; };
 		000F1D6214337984006CD04F /* TabBackground@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3F14337984006CD04F /* TabBackground@2x */; };
-		000F1D6314337984006CD04F /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4014337984006CD04F /* Tile.png */; };
-		000F1D6414337984006CD04F /* Tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4114337984006CD04F /* Tile@2x.png */; };
-		000F1D6514337984006CD04F /* TileRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4214337984006CD04F /* TileRoundedTop.png */; };
-		000F1D6614337984006CD04F /* TileRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4314337984006CD04F /* TileRoundedTop@2x.png */; };
 		000F1D6714337984006CD04F /* Timer in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4414337984006CD04F /* Timer */; };
 		000F1D6814337984006CD04F /* Timer@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4514337984006CD04F /* Timer@2x */; };
 		000F1D6914337984006CD04F /* SliderTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4814337984006CD04F /* SliderTabBarView.m */; };
@@ -67,9 +59,6 @@
 		00D3594C1437E9FA00BFA6E0 /* CellRoundedTopBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */; };
 		00D3594D1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */; };
 		00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */; };
-		00D3594F1437E9FA00BFA6E0 /* CellWRoundedBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D359411437E9FA00BFA6E0 /* CellWRoundedBottom.psd */; };
-		00D359501437E9FA00BFA6E0 /* CellWRoundedMask.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D359421437E9FA00BFA6E0 /* CellWRoundedMask.psd */; };
-		00D359511437E9FA00BFA6E0 /* CellWRoundedTop.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D359431437E9FA00BFA6E0 /* CellWRoundedTop.psd */; };
 		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
 /* End PBXBuildFile section */
@@ -103,20 +92,12 @@
 		000F1D3314337984006CD04F /* Buttons@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Buttons@2x"; sourceTree = "<group>"; };
 		000F1D3414337984006CD04F /* Cell */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cell; sourceTree = "<group>"; };
 		000F1D3514337984006CD04F /* Cell@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cell@2x"; sourceTree = "<group>"; };
-		000F1D3614337984006CD04F /* InfoTableBottomCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoTableBottomCell.png; sourceTree = "<group>"; };
-		000F1D3714337984006CD04F /* InfoTableBottomCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoTableBottomCell@2x.png"; sourceTree = "<group>"; };
-		000F1D3814337984006CD04F /* InfoTableCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoTableCell.png; sourceTree = "<group>"; };
-		000F1D3914337984006CD04F /* InfoTableCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoTableCell@2x.png"; sourceTree = "<group>"; };
 		000F1D3A14337984006CD04F /* MatteBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MatteBackground.png; sourceTree = "<group>"; };
 		000F1D3B14337984006CD04F /* MatteBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MatteBackground@2x.png"; sourceTree = "<group>"; };
 		000F1D3C14337984006CD04F /* Slider */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slider; sourceTree = "<group>"; };
 		000F1D3D14337984006CD04F /* Slider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slider@2x.png"; sourceTree = "<group>"; };
 		000F1D3E14337984006CD04F /* TabBackground */ = {isa = PBXFileReference; lastKnownFileType = file; path = TabBackground; sourceTree = "<group>"; };
 		000F1D3F14337984006CD04F /* TabBackground@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TabBackground@2x"; sourceTree = "<group>"; };
-		000F1D4014337984006CD04F /* Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tile.png; sourceTree = "<group>"; };
-		000F1D4114337984006CD04F /* Tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tile@2x.png"; sourceTree = "<group>"; };
-		000F1D4214337984006CD04F /* TileRoundedTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileRoundedTop.png; sourceTree = "<group>"; };
-		000F1D4314337984006CD04F /* TileRoundedTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TileRoundedTop@2x.png"; sourceTree = "<group>"; };
 		000F1D4414337984006CD04F /* Timer */ = {isa = PBXFileReference; lastKnownFileType = file; path = Timer; sourceTree = "<group>"; };
 		000F1D4514337984006CD04F /* Timer@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Timer@2x"; sourceTree = "<group>"; };
 		000F1D4714337984006CD04F /* SliderTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderTabBarView.h; sourceTree = "<group>"; };
@@ -156,9 +137,6 @@
 		00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedTopBottom.png; sourceTree = "<group>"; };
 		00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellRoundedTopBottom.psd; sourceTree = "<group>"; };
 		00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedTopBottom@2x.png"; sourceTree = "<group>"; };
-		00D359411437E9FA00BFA6E0 /* CellWRoundedBottom.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellWRoundedBottom.psd; sourceTree = "<group>"; };
-		00D359421437E9FA00BFA6E0 /* CellWRoundedMask.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellWRoundedMask.psd; sourceTree = "<group>"; };
-		00D359431437E9FA00BFA6E0 /* CellWRoundedTop.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellWRoundedTop.psd; sourceTree = "<group>"; };
 		00D359441437E9FA00BFA6E0 /* MethodBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MethodBackground.png; sourceTree = "<group>"; };
 		00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MethodBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,9 +220,6 @@
 				00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */,
 				00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */,
 				00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */,
-				00D359411437E9FA00BFA6E0 /* CellWRoundedBottom.psd */,
-				00D359421437E9FA00BFA6E0 /* CellWRoundedMask.psd */,
-				00D359431437E9FA00BFA6E0 /* CellWRoundedTop.psd */,
 				00D359441437E9FA00BFA6E0 /* MethodBackground.png */,
 				00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */,
 				000F1D3014337984006CD04F /* Background.png */,
@@ -253,20 +228,12 @@
 				000F1D3314337984006CD04F /* Buttons@2x */,
 				000F1D3414337984006CD04F /* Cell */,
 				000F1D3514337984006CD04F /* Cell@2x */,
-				000F1D3614337984006CD04F /* InfoTableBottomCell.png */,
-				000F1D3714337984006CD04F /* InfoTableBottomCell@2x.png */,
-				000F1D3814337984006CD04F /* InfoTableCell.png */,
-				000F1D3914337984006CD04F /* InfoTableCell@2x.png */,
 				000F1D3A14337984006CD04F /* MatteBackground.png */,
 				000F1D3B14337984006CD04F /* MatteBackground@2x.png */,
 				000F1D3C14337984006CD04F /* Slider */,
 				000F1D3D14337984006CD04F /* Slider@2x.png */,
 				000F1D3E14337984006CD04F /* TabBackground */,
 				000F1D3F14337984006CD04F /* TabBackground@2x */,
-				000F1D4014337984006CD04F /* Tile.png */,
-				000F1D4114337984006CD04F /* Tile@2x.png */,
-				000F1D4214337984006CD04F /* TileRoundedTop.png */,
-				000F1D4314337984006CD04F /* TileRoundedTop@2x.png */,
 				000F1D4414337984006CD04F /* Timer */,
 				000F1D4514337984006CD04F /* Timer@2x */,
 			);
@@ -470,20 +437,12 @@
 				000F1D5614337984006CD04F /* Buttons@2x in Resources */,
 				000F1D5714337984006CD04F /* Cell in Resources */,
 				000F1D5814337984006CD04F /* Cell@2x in Resources */,
-				000F1D5914337984006CD04F /* InfoTableBottomCell.png in Resources */,
-				000F1D5A14337984006CD04F /* InfoTableBottomCell@2x.png in Resources */,
-				000F1D5B14337984006CD04F /* InfoTableCell.png in Resources */,
-				000F1D5C14337984006CD04F /* InfoTableCell@2x.png in Resources */,
 				000F1D5D14337984006CD04F /* MatteBackground.png in Resources */,
 				000F1D5E14337984006CD04F /* MatteBackground@2x.png in Resources */,
 				000F1D5F14337984006CD04F /* Slider in Resources */,
 				000F1D6014337984006CD04F /* Slider@2x.png in Resources */,
 				000F1D6114337984006CD04F /* TabBackground in Resources */,
 				000F1D6214337984006CD04F /* TabBackground@2x in Resources */,
-				000F1D6314337984006CD04F /* Tile.png in Resources */,
-				000F1D6414337984006CD04F /* Tile@2x.png in Resources */,
-				000F1D6514337984006CD04F /* TileRoundedTop.png in Resources */,
-				000F1D6614337984006CD04F /* TileRoundedTop@2x.png in Resources */,
 				000F1D6714337984006CD04F /* Timer in Resources */,
 				000F1D6814337984006CD04F /* Timer@2x in Resources */,
 				00D359461437E9FA00BFA6E0 /* Cell.png in Resources */,
@@ -495,9 +454,6 @@
 				00D3594C1437E9FA00BFA6E0 /* CellRoundedTopBottom.png in Resources */,
 				00D3594D1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd in Resources */,
 				00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */,
-				00D3594F1437E9FA00BFA6E0 /* CellWRoundedBottom.psd in Resources */,
-				00D359501437E9FA00BFA6E0 /* CellWRoundedMask.psd in Resources */,
-				00D359511437E9FA00BFA6E0 /* CellWRoundedTop.psd in Resources */,
 				00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */,
 				00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */,
 				003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */,
