@@ -162,6 +162,17 @@
             compar == NSOrderedDescending);
 }
 
+- (void)updateRemainingTime
+{
+    NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    int timeLeft = remainingTimeAfterCurrentStep + (int)timeElapsed;
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
+    
+    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        [self updateTimeOnTopCell:timeElapsed];
+    }
+}
+
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     if ([self timerIsDone]) {
@@ -179,7 +190,6 @@
                 [self removeTopInstructionsCell];
             }
         } else {
-            
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
                                                                 message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
                                                                delegate:self
@@ -192,15 +202,7 @@
         }
         
     } else {
-        NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
-        NSLog(@"%f", timeElapsed);
-        int timeLeft = remainingTimeAfterCurrentStep + (int)timeElapsed;
-        [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
-        
-        
-        if ([tabDisplayed isEqualToString:@"Instructions"]) {
-            [self updateTimeOnTopCell:timeElapsed];
-        }
+        [self updateRemainingTime];
     }
 }
 

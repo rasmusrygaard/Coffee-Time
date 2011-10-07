@@ -135,6 +135,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"MatteBackground.png"]];
     [[self view] setBackgroundColor:background];
+    [background release];
     
     [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
     [[self navigationItem] setTitle:@"Methods"];
