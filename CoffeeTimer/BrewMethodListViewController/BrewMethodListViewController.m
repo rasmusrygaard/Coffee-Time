@@ -92,7 +92,7 @@
     cell.textLabel.textAlignment = UITextAlignmentCenter;
     
     // Subtitle styling
-    cell.detailTextLabel.text = [method totalTime];
+    cell.detailTextLabel.text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.textColor = [UIColor lightTextColor];
     cell.detailTextLabel.shadowColor = [UIColor blackColor];

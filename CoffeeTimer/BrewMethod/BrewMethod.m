@@ -154,12 +154,6 @@
     return brewMethods;
 }
 
-/*
- * Function: - (TimerStep *)firstTimerStep
- * ---------------------------------------
- * Returns the first step for the brew method
- */
-
 - (TimerStep *)firstTimerStep
 {
     return [timerSteps objectAtIndex:0];
@@ -187,7 +181,7 @@
  * E.G a total time of 70 seconds would return the string "01:10";
  */
 
-- (NSString *)totalTime
+- (int)totalTimeInSeconds;
 {
     int total = 0;
     
@@ -195,20 +189,20 @@
         total += [t timeInSeconds];
     }
     
-    return [TimerStep formattedTimeInSecondsForInterval:total];
+    return total;
 }
 
 // Returns a copy of the array!
 
 - (NSArray *)descriptionsForTab:(NSString *)tabName
 {
-    NSMutableArray *copyArr;
+    NSMutableArray *copyArr = nil;
     
     if ([tabName isEqualToString:@"Equipment"]) {
         copyArr = [equipArray copy];
     } else if ([tabName isEqualToString:@"Preparation"]) {
         copyArr = [prepArray copy];
-    } else {
+    } else if ([tabName isEqualToString:@"Instructions"]) {
         copyArr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
         for (TimerStep *t in timerSteps) {
             [copyArr addObject:[t descriptionWithoutTime]];
