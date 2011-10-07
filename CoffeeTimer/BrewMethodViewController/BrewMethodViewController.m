@@ -45,6 +45,7 @@
 {
     if (!timer) {
         TimerStep *step = [currentMethod firstTimerStep];
+        remainingTimeAfterCurrentStep -= [step timeInSeconds];
 
         [self setAndStartTimerForStep:step];
         
@@ -66,20 +67,47 @@
     
 }
 
+/*
+ * Function: - (void)resetDisplay
+ * Reset the current state of the display to reflect the first
+ * TimerStep for the current method
+ */
+
+- (void)resetDisplay
+{
+    [self resetInstructions];
+
+    [currentMethod resetTimerSteps];
+}
+
+
+- (void)clearTimer:(NSTimer *)theTimer
+{
+    [finishTime release];
+    
+    // Clear the timer
+    [theTimer invalidate]; 
+    timer = nil;
+}
+
+- (void)resetTimerLabel
+{
+    remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
+}
+
 - (IBAction)stopTimerClicked:(id)sender
 {
     if (timer) { // If there is a running timer
 
-        [timer invalidate];
-        timer = nil;
-        
-        [finishTime release];
+        [self resetDisplay];
+        [self clearTimer:timer];
         
         // Update the info on the screen to reflect the first step
-        TimerStep *firstStep = [currentMethod firstTimerStep];
-        [self setupLabelsForTimerStep:firstStep];
         [self resetInstructions];
         [currentMethod resetTimerSteps];
+        
+        [self resetTimerLabel];
     }
 }
 
@@ -125,20 +153,6 @@
     [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
 }
 
-/*
- * Function: - (void)resetDisplay
- * Reset the current state of the display to reflect the first
- * TimerStep for the current method
- */
-
-- (void)resetDisplay
-{
-    [self resetInstructions];
-    [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
-    
-    [currentMethod resetTimerSteps];
-}
-
 - (BOOL)timerIsDone
 {
     NSDate *currentTime = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -151,14 +165,10 @@
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     if ([self timerIsDone]) {
+        [self clearTimer:theTimer];
 
-        [finishTime release];
         
         TimerStep *nextStep = [currentMethod nextTimerStep];
-
-        // Clear the timer
-        [theTimer invalidate]; 
-        timer = nil;
         
         if (nextStep) { // If there is a next step
             [self setupLabelsForTimerStep:nextStep];
@@ -184,7 +194,7 @@
     } else {
         NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
         NSLog(@"%f", timeElapsed);
-        int timeLeft = (int)timeElapsed + (int)remainingTime;
+        int timeLeft = remainingTimeAfterCurrentStep + (int)timeElapsed;
         [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
         
         
@@ -201,7 +211,8 @@
 
 - (void)setupLabelsForTimerStep:(TimerStep *)step
 {
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTime]];
+    remainingTimeAfterCurrentStep -= [step timeInSeconds];
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -399,11 +410,7 @@
     // infoTableView setup
     [self initializeInfoTableView];
     
-    // Set labels
-    [nameLabel setText:[currentMethod name]];
-    [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
-    
-    if (timer && ![[nameLabel text] isEqualToString:methodBeingTimed]) {
+    if (timer && ![[[self navigationItem] title] isEqualToString:methodBeingTimed]) {
         // If we're on a new method, forget about the old timer
         [timer invalidate];
         timer = nil;
@@ -413,6 +420,8 @@
     [self initializeDescriptions];
     
     [self setTabDisplayed:@"Instructions"];
+    
+    [self resetTimerLabel];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -427,14 +436,8 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     
-    [nameLabel release];
-    nameLabel = nil;
-    
     [timerLabel release];
     timerLabel = nil;
-    
-    [changeMethodButton release];
-    changeMethodButton = nil;
     
     [startTimerButton release];
     startTimerButton = nil;
@@ -457,11 +460,9 @@
     [stbView release];
     
     [currentMethod release];
-    
-    [nameLabel release];
+
     [timerLabel release];
     
-    [changeMethodButton release];
     [startTimerButton release];
     [stopTimerButton release];
     [timer release];

@@ -111,7 +111,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
 
     [bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
-    [[bmViewController navigationItem] setTitle:[[bmViewController currentMethod] name]];
+    
+    NSString *methodToDisplay = [[bmViewController currentMethod] name];
+    [[bmViewController navigationItem] setTitle:methodToDisplay];
     
     [[self navigationController] pushViewController:bmViewController 
                                            animated:YES];

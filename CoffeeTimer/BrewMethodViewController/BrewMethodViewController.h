@@ -17,10 +17,8 @@
     NSArray *preparation;
     NSArray *equipment;
     
-    IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *timerLabel;
     
-    IBOutlet UIButton *changeMethodButton;
     IBOutlet UIButton *startTimerButton;
     IBOutlet UIButton *stopTimerButton;
     
@@ -31,7 +29,7 @@
     NSString *methodBeingTimed;
     
     NSDate *finishTime;
-    int remainingTime;
+    int remainingTimeAfterCurrentStep;
     
     SliderTabBarView *stbView;
     NSString *tabDisplayed;
