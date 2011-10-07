@@ -125,13 +125,32 @@
     [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
 }
 
-- (void)checkTimerStatus:(NSTimer *)theTimer
+/*
+ * Function: - (void)resetDisplay
+ * Reset the current state of the display to reflect the first
+ * TimerStep for the current method
+ */
+
+- (void)resetDisplay
+{
+    [self resetInstructions];
+    [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
+    
+    [currentMethod resetTimerSteps];
+}
+
+- (BOOL)timerIsDone
 {
     NSDate *currentTime = [NSDate dateWithTimeIntervalSinceNow:0];
     NSComparisonResult compar = [currentTime compare:finishTime];
     
-    if (compar == NSOrderedSame || // If the timer is done
-        compar == NSOrderedDescending) {
+    return (compar == NSOrderedSame ||
+            compar == NSOrderedDescending);
+}
+
+- (void)checkTimerStatus:(NSTimer *)theTimer
+{
+    if ([self timerIsDone]) {
 
         [finishTime release];
         
@@ -150,8 +169,6 @@
                 [self removeTopInstructionsCell];
             }
         } else {
-            [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
-
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
                                                                 message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
@@ -161,13 +178,12 @@
             [alertView show];
             
             // Reset the data in the instructions window
-            [self resetInstructions];
-        
-            [currentMethod resetTimerSteps];
+            [self resetDisplay];
         }
         
     } else {
-        NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:currentTime];
+        NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+        NSLog(@"%f", timeElapsed);
         int timeLeft = (int)timeElapsed + (int)remainingTime;
         [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
         
@@ -186,7 +202,6 @@
 - (void)setupLabelsForTimerStep:(TimerStep *)step
 {
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTime]];
-    [descriptionLabel setText:[step description]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -210,6 +225,7 @@
                            forMethod:currentMethod];
         
         tabDisplayed = tab;
+
         [NSTimer scheduledTimerWithTimeInterval:SLIDER_DURATION
                                          target:self
                                        selector:@selector(updateTable:) 
@@ -303,10 +319,51 @@
     
     CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(240, MAXFLOAT)];
     
-    CGFloat height = (textSize.height + CELL_INSET < MIN_CELL_HEIGHT) ? MIN_CELL_HEIGHT : textSize.height + CELL_INSET;
+    CGFloat height;
+    if (textSize.height + CELL_INSET < MIN_CELL_HEIGHT) {
+        height = MIN_CELL_HEIGHT;
+    } else {
+        height = textSize.height + CELL_INSET;
+    }
 
     return height;
     
+}
+
+/*
+ * Function: - (void)initializeInfoTableView
+ * Use this function to initialize the infoTableView displaying the tabs from
+ * the sliderTabBarView. Do any custom styling of the table and its properties
+ */
+
+- (void)initializeInfoTableView
+{
+    CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
+                                 INFO_WINDOW_Y,
+                                 INFO_WINDOW_W, 
+                                 INFO_WINDOW_H);
+    infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
+    
+    // Set up delegate and datasource roles
+    infoTableView.delegate = self;
+    infoTableView.dataSource = self;
+    
+    // Set table style
+    infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    infoTableView.backgroundColor = [UIColor clearColor];
+    infoTableView.opaque = NO;
+    
+    // Set no bounce
+    infoTableView.bounces = NO;
+    [self.view addSubview:infoTableView];
+}
+
+- (void)initializeDescriptions
+{
+    NSMutableArray *instr = [NSMutableArray arrayWithArray:[currentMethod descriptionsForTab:@"Instructions"]];
+    [self setInstructions:instr];
+    [self setPreparation:[currentMethod descriptionsForTab:@"Preparation"]];
+    [self setEquipment:[currentMethod descriptionsForTab:@"Equipment"]];
 }
 
 #pragma mark - View lifecycle
@@ -340,41 +397,21 @@
     
     
     // infoTableView setup
-    CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
-                                 INFO_WINDOW_Y,
-                                 INFO_WINDOW_W, 
-                                 INFO_WINDOW_H);
-    infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
-
-    // Set up delegate and datasource roles
-    infoTableView.delegate = self;
-    infoTableView.dataSource = self;
-    
-    // Set table style
-    infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    infoTableView.backgroundColor = [UIColor clearColor];
-    infoTableView.opaque = NO;
-    
-    // Set no bounce
-    infoTableView.bounces = NO;
-    [self.view addSubview:infoTableView];
+    [self initializeInfoTableView];
     
     // Set labels
     [nameLabel setText:[currentMethod name]];
     [self setupLabelsForTimerStep:[currentMethod firstTimerStep]];
     
-    if (timer && 
-        ![[nameLabel text] isEqualToString:methodBeingTimed]) {
+    if (timer && ![[nameLabel text] isEqualToString:methodBeingTimed]) {
         // If we're on a new method, forget about the old timer
         [timer invalidate];
         timer = nil;
     }
     
     // Set up descriptions
-    NSMutableArray *instr = [NSMutableArray arrayWithArray:[currentMethod descriptionsForTab:@"Instructions"]];
-    [self setInstructions:instr];
-    [self setPreparation:[currentMethod descriptionsForTab:@"Preparation"]];
-    [self setEquipment:[currentMethod descriptionsForTab:@"Equipment"]];
+    [self initializeDescriptions];
+    
     [self setTabDisplayed:@"Instructions"];
 }
 
@@ -395,9 +432,6 @@
     
     [timerLabel release];
     timerLabel = nil;
-    
-    [descriptionLabel release];
-    descriptionLabel = nil;
     
     [changeMethodButton release];
     changeMethodButton = nil;
@@ -426,7 +460,6 @@
     
     [nameLabel release];
     [timerLabel release];
-    [descriptionLabel release];
     
     [changeMethodButton release];
     [startTimerButton release];

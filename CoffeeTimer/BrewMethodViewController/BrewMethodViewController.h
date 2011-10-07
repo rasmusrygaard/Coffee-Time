@@ -19,7 +19,6 @@
     
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *timerLabel;
-    IBOutlet UILabel *descriptionLabel;
     
     IBOutlet UIButton *changeMethodButton;
     IBOutlet UIButton *startTimerButton;
