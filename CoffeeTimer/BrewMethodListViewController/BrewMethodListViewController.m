@@ -42,6 +42,28 @@
     return [brewMethods count];
 }
 
+- (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
+{
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    
+    cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    cell.textLabel.shadowColor = [UIColor blackColor];
+    cell.textLabel.shadowOffset = CGSizeMake(0, -1);
+    cell.textLabel.textAlignment = UITextAlignmentCenter;
+}
+
+/*
+ * Function: - (void)styleInfoTableSubtitleLabelForCell:(UITableViewCell *)cell
+ */
+
+- (void)styleInfoTableSubtitleLabelForCell:(UITableViewCell *)cell
+{
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.textColor = [UIColor lightTextColor];
+    cell.detailTextLabel.shadowColor = [UIColor blackColor];
+    cell.detailTextLabel.shadowOffset = CGSizeMake(0, -1);
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView 
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -84,19 +106,11 @@
 
     // Text styling
     cell.textLabel.text = [method name];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    
-    cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.9];
-    cell.textLabel.shadowColor = [UIColor blackColor];
-    cell.textLabel.shadowOffset = CGSizeMake(0, -1);
-    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    [self styleInfoTableTextLabelForCell:cell];
     
     // Subtitle styling
     cell.detailTextLabel.text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.textColor = [UIColor lightTextColor];
-    cell.detailTextLabel.shadowColor = [UIColor blackColor];
-    cell.detailTextLabel.shadowOffset = CGSizeMake(0, -1);
+    [self styleInfoTableSubtitleLabelForCell:cell];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
