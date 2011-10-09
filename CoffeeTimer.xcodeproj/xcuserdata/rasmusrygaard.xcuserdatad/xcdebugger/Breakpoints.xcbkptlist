@@ -65,11 +65,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CoffeeTimer/BrewMethodViewController/BrewMethodViewController.m"
-         timestampString = "339873569.762146"
+         timestampString = "339879133.778833"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "426"
-         endingLineNumber = "426"
+         startingLineNumber = "433"
+         endingLineNumber = "433"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CoffeeTimer/BrewMethod/BrewMethod.m"
-         timestampString = "339375809.279335"
+         timestampString = "339880314.889028"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
          landmarkName = "+initBrewMethods"
          landmarkType = "5">
       </FileBreakpoint>

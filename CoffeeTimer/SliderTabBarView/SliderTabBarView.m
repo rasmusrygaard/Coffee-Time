@@ -32,11 +32,12 @@
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TabBackground.png"]];
     [background setContentMode:UIViewContentModeScaleAspectFill];
     
-    CGPoint upperLeft = CGPointMake(bounds.origin.x, bounds.origin.y);
     [background setFrame:CGRectMake(bounds.origin.x, bounds.origin.y, SLIDER_TAB_BAR_W, SLIDER_TAB_BAR_H)];
-//    [background drawAtPoint:upperLeft];
+
     [self addSubview:background];
     [self setBackgroundColor:[UIColor clearColor]];
+    
+    CGPoint upperLeft = CGPointMake(bounds.origin.x, bounds.origin.y);
     
     // Get center of TabBar image
     CGPoint center = CGPointMake(upperLeft.x + background.frame.size.width / 2.0,
@@ -87,6 +88,7 @@
     NSString *text = [tabs objectAtIndex:index];
     [label setText:text];
     [self styleLabel:label];
+    
     [self addSubview:label];
     [label release];
 }
@@ -96,7 +98,7 @@
     // Font
     UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     [label setFont:font];
-    [label setTextColor:[UIColor colorWithRed:.8 green:.8 blue:.8 alpha:0.9]];
+    [label setTextColor:[UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1]];
     
     // Shadow
     label.shadowColor = [UIColor darkTextColor];
@@ -112,7 +114,7 @@
 
 -(double) xCoordForRectAtIndex:(int)index
 {
-    return TABBAR_INSET + index * TEXTFIELD_WIDTH;
+    return index * TEXTFIELD_WIDTH;
 }
 
 /* - (NSString *)tabTitleForTouch:(UITouch *)t

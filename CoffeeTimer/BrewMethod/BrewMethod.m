@@ -97,7 +97,7 @@
     NSArray *apEquipArray = [NSArray arrayWithObjects:
                              @"Aeropress", 
                              @"14g of coffee beans",
-                             @"300 ml water at 90 degrees", nil];
+                             @"300 ml of boiling water", nil];
     
     
     
@@ -105,6 +105,35 @@
                                            timerStepArray:apStepArray
                                               preparation:apPrepArray
                                                 equipment:apEquipArray];
+    
+    return [method autorelease];
+}
+
++(BrewMethod *)initFrenchPressMethod
+{
+    TimerStep *fpStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
+                                                     timeInSeconds:60] autorelease];
+    TimerStep *fpStepTwo = [[[TimerStep alloc] initWithDescription:@"Break the crust and stir"
+                                                     timeInSeconds:170] autorelease];
+    TimerStep *fpStepThree = [[[TimerStep alloc] initWithDescription:@"Press down slowly"
+                                                       timeInSeconds:10] autorelease];
+    
+    NSArray *fpStepArray = [NSArray arrayWithObjects:fpStepOne, fpStepTwo, fpStepThree, nil];
+    
+    NSArray *fpPrepArray = [NSArray arrayWithObjects:
+                            @"Pre-heat the pot with hot water",
+                            @"Grind the beans medium coarse",
+                            @"Place the ground beans in the pot", nil];
+    
+    NSArray *fpEquipArray = [NSArray arrayWithObjects:
+                             @"French Press pot (6 cup)",
+                             @"34g of coffee beans",
+                             @"500 ml of boiling water",nil];
+    
+    BrewMethod *method = [[BrewMethod alloc] initWithName:@"French Press"
+                                           timerStepArray:fpStepArray 
+                                              preparation:fpPrepArray
+                                                equipment:fpEquipArray];
     
     return [method autorelease];
 }
@@ -140,16 +169,51 @@
     return [method autorelease];
 }
 
++(BrewMethod *)initV60Method
+{
+//    TimerStep *v60StepOne = [[[TimerStep alloc] initWithDescription:@" timeInSeconds:<#(int)#>
+    TimerStep *v60StepOne = [[[TimerStep alloc] initWithDescription:@"Pour just enough water to saturate the grounds evenly"
+                                                      timeInSeconds:30] autorelease];
+    
+    TimerStep *v60StepTwo = [[[TimerStep alloc] initWithDescription:@"Pour the remaining water in concentric circles"
+                                                      timeInSeconds:120] autorelease];
+    
+    NSArray *v60StepArray = [NSArray arrayWithObjects:v60StepOne, v60StepTwo, nil];
+    
+    
+    NSArray *v60PrepArray = [NSArray arrayWithObjects:
+                             @"Place the paper filter in the cone", 
+                             @"Rinse thoroughly with hot water",
+                             @"Grind the beans medium fine",
+                             @"Place the beans in the filter", nil];
+    
+    NSArray *v60EquipArray = [NSArray arrayWithObjects:
+                              @"Hario V60 Cone", 
+                              @"24 g of coffee beans",
+                              @"390 g of boiling water", nil];
+    
+    BrewMethod *method = [[BrewMethod alloc] initWithName:@"V60 Pourover" 
+                                           timerStepArray:v60StepArray 
+                                              preparation:v60PrepArray
+                                                equipment:v60EquipArray];
+    
+    return [method autorelease];
+    
+}
+
 + (NSArray *)initBrewMethods
 {
-    BrewMethod *test = [self initTestMethod];
+//    BrewMethod *test = [self initTestMethod];
     
     BrewMethod *aeropress = [self initAeropressMethod];
-    NSLog(@"Aeropress: %@", aeropress);
 
     BrewMethod *chemex = [self initChemexMethod];
     
-    NSArray *brewMethods = [NSArray arrayWithObjects:test, aeropress, chemex, nil];
+    BrewMethod *frenchPress = [self initFrenchPressMethod];
+    
+    BrewMethod *v60 = [self initV60Method];
+    
+    NSArray *brewMethods = [NSArray arrayWithObjects:aeropress, chemex, frenchPress, v60, nil];
     
     return brewMethods;
 }

@@ -68,7 +68,7 @@
 
 - (void)setAndStartTimerForStep:(TimerStep *)step
 {
-    finishTime = [NSDate dateWithTimeIntervalSinceNow:([step timeInSeconds] + 1)];
+    finishTime = [NSDate dateWithTimeIntervalSinceNow:([step timeInSeconds])];
     [finishTime retain];
     
     // Start timer
@@ -179,6 +179,7 @@
 {
     NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     int timeLeft = remainingTimeAfterCurrentStep + (int)timeElapsed;
+    
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
@@ -189,12 +190,13 @@
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     if ([self timerIsDone]) {
+        
         [self clearTimer:theTimer];
-
         
         TimerStep *nextStep = [currentMethod nextTimerStep];
         
         if (nextStep) { // If there is a next step
+            
             [self setupLabelsForTimerStep:nextStep];
             [self setAndStartTimerForStep:nextStep];
             
@@ -209,8 +211,7 @@
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
             [alertView show];
-            
-            // Reset the data in the instructions window
+
             [self resetDisplay];
         }
         
@@ -261,7 +262,10 @@
 
 }
 
-// Conforms to the timer firing method
+/*
+ * Function: - (void)updateTable:(NSTimer *)theTimer
+ * Update the tableView after the slider animation timer has fired
+ */
 
 - (void)updateTable:(NSTimer *)theTimer
 {
