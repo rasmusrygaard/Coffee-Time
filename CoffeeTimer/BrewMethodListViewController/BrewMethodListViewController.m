@@ -39,6 +39,7 @@
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%d", [brewMethods count]);
     return [brewMethods count];
 }
 
@@ -76,7 +77,7 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
                                    reuseIdentifier:@"BrewMethodTopCell"];
-            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTop.png"]];
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedTop.png"]];
         } 
              
     } else if (indexPath.row == [brewMethods count] - 1) {
@@ -85,7 +86,7 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
                                            reuseIdentifier:@"BrewMethodBottomCell"];
-            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedBottom.png"]];
         }
     } else { // Remaining Cells
         cell = [tableView dequeueReusableCellWithIdentifier:@"BrewMethodCell"];
@@ -93,14 +94,20 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
                                            reuseIdentifier:@"BrewMethodCell"];
-            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
 
         }
     }
 
     [cell setContentMode:UIViewContentModeScaleToFill];
-    [cell setBackgroundView:img];
-    [img release];
+    [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
+    if ([cell backgroundView] == nil) {
+        [cell setBackgroundView:img];
+         NSLog(@"img: %@", img);
+   
+        [img release];
+//            pNSLog(@"nil");
+    }
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
 
@@ -114,7 +121,7 @@
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (void) tableView:(UITableView *)tableView 
@@ -133,6 +140,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                            animated:YES];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 88;
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -147,9 +159,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewDidLoad];
     
-    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"MatteBackground.png"]];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
+
+    [[self view] setBackgroundColor:[UIColor blackColor]];
     [[self view] setBackgroundColor:background];
-    [background release];
+    
+    [background release];   
     
     [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
     [[self navigationItem] setTitle:@"Methods"];

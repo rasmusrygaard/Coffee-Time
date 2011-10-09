@@ -15,14 +15,14 @@ int const TIMER_UPDATE_INTERVAL = 0.1;
 // SliderTabBarView constants
 
 double const SLIDER_TAB_BAR_X = 11.0;
-double const SLIDER_TAB_BAR_Y = 188.0;
+double const SLIDER_TAB_BAR_Y = 160.0;
 double const SLIDER_TAB_BAR_W = 298.0;
 double const SLIDER_TAB_BAR_H = 49.0;
 
 double const SLIDER_DURATION = 0.3;
 
 double const INFO_WINDOW_X = 11.0;
-double const INFO_WINDOW_Y = 236.0;
+double const INFO_WINDOW_Y = 208.0;
 double const INFO_WINDOW_W = 298.0;
 double const INFO_WINDOW_H = 164.0;
 
