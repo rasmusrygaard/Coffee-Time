@@ -23,6 +23,19 @@
     
     [[[self navigationItem] backBarButtonItem] setTitle:@"Methods"];
     
+    if (!infoTableView) {
+        CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
+                                     INFO_WINDOW_Y,
+                                     INFO_WINDOW_W, 
+                                     INFO_WINDOW_H);
+        infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
+        
+        // Set up delegate and datasource roles
+        infoTableView.delegate = self;
+        infoTableView.dataSource = self;
+    }
+    
+    
     return self;
 }
 
@@ -351,15 +364,6 @@
 
 - (void)initializeInfoTableView
 {
-    CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
-                                 INFO_WINDOW_Y,
-                                 INFO_WINDOW_W, 
-                                 INFO_WINDOW_H);
-    infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
-    
-    // Set up delegate and datasource roles
-    infoTableView.delegate = self;
-    infoTableView.dataSource = self;
     
     // Set table style
     infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -422,7 +426,7 @@
     [self initializeDescriptions];
     
     [self setTabDisplayed:@"Instructions"];
-    
+    [infoTableView reloadData];
     [self resetTimerLabel];
 }
 
