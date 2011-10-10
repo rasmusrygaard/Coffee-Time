@@ -15,7 +15,7 @@
 
 @implementation BrewMethodViewController
 
-@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell;
+@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed;
 
 /*
  * Function: - (void)initializeInfoTableView
@@ -141,6 +141,8 @@
         // Update the info on the screen to reflect the first step
         [self resetInstructions];
         [currentMethod resetTimerSteps];
+
+        methodBeingTimed = nil;
         
         [self resetTimerLabel];
     }
@@ -435,6 +437,8 @@
             [timer invalidate];
             timer = nil;
         
+            methodBeingTimed = nil;
+            
             [self initializeDescriptions];
             [self resetTimerLabel];
         }

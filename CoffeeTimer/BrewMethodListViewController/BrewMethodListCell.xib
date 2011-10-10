@@ -31,21 +31,21 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUITableViewCell" id="824008374">
+			<object class="IBUITableViewCell" id="589496834">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="422169415">
-						<reference key="NSNextResponder" ref="824008374"/>
+					<object class="IBUIView" id="837083974">
+						<reference key="NSNextResponder" ref="589496834"/>
 						<int key="NSvFlags">256</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUILabel" id="606658924">
-								<reference key="NSNextResponder" ref="422169415"/>
+							<object class="IBUILabel" id="830888372">
+								<reference key="NSNextResponder" ref="837083974"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{0, -3}, {300, 67}}</string>
-								<reference key="NSSuperview" ref="422169415"/>
+								<reference key="NSSuperview" ref="837083974"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="317254452"/>
+								<reference key="NSNextKeyView" ref="778029529"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -56,10 +56,10 @@
 								<string key="IBUIText">Aeropress</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC45MjA4OTg0Mzc1IDAuOTIwODk4NDM3NSAwLjkyMDg5ODQzNzUAA</bytes>
+									<bytes key="NSRGB">MSAxIDEAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor" id="703449767">
+								<object class="NSColor" key="IBUIShadowColor" id="268810876">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
@@ -79,11 +79,11 @@
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
-							<object class="IBUILabel" id="317254452">
-								<reference key="NSNextResponder" ref="422169415"/>
+							<object class="IBUILabel" id="778029529">
+								<reference key="NSNextResponder" ref="837083974"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{0, 52}, {300, 21}}</string>
-								<reference key="NSSuperview" ref="422169415"/>
+								<reference key="NSSuperview" ref="837083974"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
@@ -99,7 +99,7 @@
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<reference key="IBUIShadowColor" ref="703449767"/>
+								<reference key="IBUIShadowColor" ref="268810876"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
@@ -115,9 +115,9 @@
 							</object>
 						</array>
 						<string key="NSFrameSize">{300, 87}</string>
-						<reference key="NSSuperview" ref="824008374"/>
+						<reference key="NSSuperview" ref="589496834"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="606658924"/>
+						<reference key="NSNextKeyView" ref="830888372"/>
 						<string key="NSReuseIdentifierKey">_NS:395</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -133,12 +133,12 @@
 				<string key="NSFrameSize">{300, 88}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="422169415"/>
+				<reference key="NSNextKeyView" ref="837083974"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISelectionStyle">0</int>
 				<float key="IBUIIndentationWidth">0.0</float>
-				<reference key="IBUIContentView" ref="422169415"/>
+				<reference key="IBUIContentView" ref="837083974"/>
 				<string key="IBUIReuseIdentifier">BrewMethodListCell</string>
 			</object>
 		</array>
@@ -148,7 +148,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">tvlCell</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="824008374"/>
+						<reference key="destination" ref="589496834"/>
 					</object>
 					<int key="connectionID">5</int>
 				</object>
@@ -174,22 +174,22 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2</int>
-						<reference key="object" ref="824008374"/>
+						<reference key="object" ref="589496834"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="606658924"/>
-							<reference ref="317254452"/>
+							<reference ref="830888372"/>
+							<reference ref="778029529"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="606658924"/>
-						<reference key="parent" ref="824008374"/>
+						<reference key="object" ref="830888372"/>
+						<reference key="parent" ref="589496834"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="317254452"/>
-						<reference key="parent" ref="824008374"/>
+						<reference key="object" ref="778029529"/>
+						<reference key="parent" ref="589496834"/>
 					</object>
 				</array>
 			</object>
@@ -213,20 +213,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">BrewMethodListViewController</string>
 					<string key="superclassName">UITableViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="tvCell">UITableViewCell</string>
-						<string key="tvlCell">UITableViewCell</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="tvCell">
-							<string key="name">tvCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tvlCell">
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">tvlCell</string>
+						<string key="NS.object.0">UITableViewCell</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">tvlCell</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">tvlCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/BrewMethodListViewController.h</string>

@@ -54,4 +54,6 @@
 @property (nonatomic, assign) NSString *tabDisplayed;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
 
+@property (nonatomic, readonly) NSString *methodBeingTimed;
+
 @end
