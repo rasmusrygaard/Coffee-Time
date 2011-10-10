@@ -39,7 +39,6 @@
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d", [brewMethods count]);
     return [brewMethods count];
 }
 
@@ -123,7 +122,9 @@
     [cell setContentMode:UIViewContentModeScaleToFill];
     [cell setBackgroundView:image];
     
-    [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+//    [cell backgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
@@ -132,7 +133,6 @@
     [self styleLabelsForCell:cell 
                    forMethod:method];
 
-    
     return cell;
 }
 
@@ -175,6 +175,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
     [[self view] setBackgroundColor:[UIColor blackColor]];
     [[self view] setBackgroundColor:background];
+    
+    CGRect tvbounds = [[self tableView] bounds];
+    [[self tableView] setBounds:CGRectMake(tvbounds.origin.x, 
+                                           tvbounds.origin.y, 
+                                           tvbounds.size.width, 
+                                           tvbounds.size.height - 44)];
     
     [background release];   
     

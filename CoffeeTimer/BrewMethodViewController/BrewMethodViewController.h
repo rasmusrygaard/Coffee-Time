@@ -40,7 +40,7 @@
 
 - (NSArray *)descriptionsForCurrentTab;
 
-- (void)removeTopInstructionsCell;
+- (void)removeTopInstructionsCellWithAnimation;
 - (void)resetInstructions;
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
 

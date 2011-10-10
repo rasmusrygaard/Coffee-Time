@@ -127,9 +127,8 @@
 - (void)resetTimerLabel
 {
     remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
-    NSLog(@"before timerlabel: %@", [timerLabel text]);
+
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
-    NSLog(@"after timerlabel: %@", [timerLabel text]);
 }
 
 - (IBAction)stopTimerClicked:(id)sender
@@ -448,10 +447,7 @@
 
 - (void)viewDidUnload
 {
-    NSLog(@"unloading");
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
     
     [timerLabel release];
     timerLabel = nil;
