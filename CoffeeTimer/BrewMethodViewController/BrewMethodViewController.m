@@ -231,13 +231,8 @@
             NSLog(@"removing");
             
             // Delete first cell
-//            if ([tabDisplayed isEqualToString:@"Instructions"]) {
-                [self removeTopInstructionsCellWithAnimation];
-//            } else {
-
-//                [instructions removeObjectAtIndex:0];
-//                [infoTableView reloadData];
-         //   }
+            [self removeTopInstructionsCellWithAnimation];
+            
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
                                                                 message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
@@ -245,7 +240,7 @@
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
             [alertView show];
-
+            methodBeingTimed = nil;
             [self resetDisplay];
         }
         

@@ -101,21 +101,15 @@
     label.text = [method name];
     label.numberOfLines = 0;
     
-    UIFont *font;
-    
     if (bmViewController != nil &&
         [[method name] isEqualToString:[bmViewController methodBeingTimed]]) {
         label.textColor = [UIColor colorWithRed:(240.0 / 255.0) 
                                           green:(213.0 / 255.0) 
                                            blue:(132.0 / 255.0) 
                                           alpha:1];
-        //= [UIFont fontWithName:@"HelveticaNeue-Bold" size:30];
     } else {
         label.textColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
-        //font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
     }
-
-//    label.font = font;
     
     // Style time label
     label = (UILabel *)[cell viewWithTag:2];
