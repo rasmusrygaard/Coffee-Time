@@ -127,7 +127,7 @@
 - (void)resetTimerLabel
 {
     remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
-
+    NSLog(@"formatted: %@", [TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]);
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
 }
 
@@ -157,14 +157,18 @@
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
     [infoTableView beginUpdates];
-    
+    NSLog(@"actually removing");
     [instructions removeObjectAtIndex:0];
-    [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
-                         withRowAnimation:UITableViewRowAnimationTop];
+    NSLog(@"Instructions: %@", instructions);
+    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
+                             withRowAnimation:UITableViewRowAnimationTop];
+    }
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     [infoTableView endUpdates];
 
+    [infoTableView reloadData];
 }
 
 /* - (void)resetInstructions
@@ -221,14 +225,17 @@
             
             [self setupLabelsForTimerStep:nextStep];
             [self setAndStartTimerForStep:nextStep];
+
+            NSLog(@"removing");
             
             // Delete first cell
-            if ([tabDisplayed isEqualToString:@"Instructions"]) {
+//            if ([tabDisplayed isEqualToString:@"Instructions"]) {
                 [self removeTopInstructionsCellWithAnimation];
-            } else {
-                [instructions removeObjectAtIndex:0];
-                [infoTableView reloadData];
-            }
+//            } else {
+
+//                [instructions removeObjectAtIndex:0];
+//                [infoTableView reloadData];
+         //   }
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
                                                                 message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
@@ -423,20 +430,20 @@
     [self.view addSubview:stbView];
     
     if (timer) {
-        if (![self.navigationItem.title isEqualToString:methodBeingTimed]) {
-        // If we're on a new method, forget about the old timer
-        [timer invalidate];
-        timer = nil;
+        if(![self.navigationItem.title isEqualToString:methodBeingTimed]) {
+            // If we're on a new method, forget about the old timer
+            [timer invalidate];
+            timer = nil;
+        
+            [self initializeDescriptions];
+            [self resetTimerLabel];
         }
     } else {
-        // Set up descriptions
         [self initializeDescriptions];
-
-        [self setTabDisplayed:@"Instructions"];
-        
-        [self resetTimerLabel];
-    }
-
+        [self resetTimerLabel];   
+    } 
+     [self setTabDisplayed:@"Instructions"];
+    
     [infoTableView reloadData];
 }
 

@@ -171,21 +171,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewDidLoad];
     
+    [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
+    [[self tableView] setBounces:NO];
+    
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
 
     [[self view] setBackgroundColor:[UIColor blackColor]];
     [[self view] setBackgroundColor:background];
-    
-    CGRect tvbounds = [[self tableView] bounds];
-    [[self tableView] setBounds:CGRectMake(tvbounds.origin.x, 
-                                           tvbounds.origin.y, 
-                                           tvbounds.size.width, 
-                                           tvbounds.size.height - 44)];
-    
-    [background release];   
-    
-    [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
-    [[self navigationItem] setTitle:@"Methods"];
+    [background release]; 
 }
 
 - (void)viewDidUnload
