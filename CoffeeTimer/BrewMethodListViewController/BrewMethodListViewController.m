@@ -12,7 +12,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods;
+@synthesize brewMethods, tvlCell;
 
 - (id)init 
 {
@@ -65,60 +65,56 @@
     cell.detailTextLabel.shadowOffset = CGSizeMake(0, -1);
 }
 
+/*
+ * Function: - (UIImageView *)getImageForCellAtIndexPath:(NSIndexPath *)indexPath
+ * Returns an image based on where in the tableView the cell at indexPath is.
+ * Note that this method returns an autoreleased UIImageView.
+ */
+
+- (UIImageView *)getImageForCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIImageView *img;
+    
+    if (indexPath.row == 0) { // Top cell
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedTop.png"]];
+    } else if (indexPath.row == [brewMethods count] - 1) {
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedBottom.png"]];
+    } else { // Remaining Cells
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
+    }
+    
+    return [img autorelease];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView 
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    UIImageView *img;
     
-    if (indexPath.row == 0) { // Top cell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"BrewMethodTopCell"];
+    [[NSBundle mainBundle] loadNibNamed:@"BrewMethodListCell" owner:self options:nil];
+    cell = tvlCell;
+    [self setTvlCell:nil];
     
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                   reuseIdentifier:@"BrewMethodTopCell"];
-            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedTop.png"]];
-        } 
-             
-    } else if (indexPath.row == [brewMethods count] - 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"BrewMethodBottomCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                           reuseIdentifier:@"BrewMethodBottomCell"];
-            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedBottom.png"]];
-        }
-    } else { // Remaining Cells
-        cell = [tableView dequeueReusableCellWithIdentifier:@"BrewMethodCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                           reuseIdentifier:@"BrewMethodCell"];
-            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
-
-        }
-    }
-
+    UIImageView *image = [self getImageForCellAtIndexPath:indexPath];
+    
     [cell setContentMode:UIViewContentModeScaleToFill];
     [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
-    if ([cell backgroundView] == nil) {
-        [cell setBackgroundView:img];
-         NSLog(@"img: %@", img);
-   
-        [img release];
-//            pNSLog(@"nil");
-    }
+    [cell setBackgroundView:image];
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
+    
+    UILabel *label;
+    
+    // Style title label
+    label = (UILabel *)[cell viewWithTag:1];
+    label.text = [method name];
+    label.numberOfLines = 0;
+    
+    // Style time label
+    label = (UILabel *)[cell viewWithTag:2];
+    NSString *text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
+    label.text = text;
 
-    // Text styling
-    cell.textLabel.text = [method name];
-    [self styleInfoTableTextLabelForCell:cell];
-    
-    // Subtitle styling
-    cell.detailTextLabel.text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
-    [self styleInfoTableSubtitleLabelForCell:cell];
-    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;

@@ -12,8 +12,10 @@
 @interface BrewMethodListViewController : UITableViewController {
     NSArray *brewMethods;
     BrewMethodViewController *bmViewController;
+    UITableViewCell *tvlCell;
 }
 
 @property (nonatomic, retain) NSArray *brewMethods;
+@property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;
 
 @end

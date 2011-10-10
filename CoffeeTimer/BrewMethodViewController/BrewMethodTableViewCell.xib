@@ -47,7 +47,7 @@
 							<object class="IBUILabel" id="238264998">
 								<reference key="NSNextResponder" ref="858049886"/>
 								<int key="NSvFlags">316</int>
-								<string key="NSFrame">{{11, 10}, {43, 20}}</string>
+								<string key="NSFrame">{{11, 7}, {43, 20}}</string>
 								<reference key="NSSuperview" ref="858049886"/>
 								<reference key="NSNextKeyView" ref="684975173"/>
 								<string key="NSReuseIdentifierKey">_NS:311</string>
@@ -84,7 +84,7 @@
 							<object class="IBUILabel" id="684975173">
 								<reference key="NSNextResponder" ref="858049886"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{54, 3}, {239, 36}}</string>
+								<string key="NSFrame">{{54, 0}, {239, 36}}</string>
 								<reference key="NSSuperview" ref="858049886"/>
 								<string key="NSReuseIdentifierKey">_NS:311</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -108,7 +108,7 @@
 								<reference key="IBUIFont" ref="176594034"/>
 							</object>
 						</object>
-						<string key="NSFrameSize">{300, 43}</string>
+						<string key="NSFrameSize">{300, 40}</string>
 						<reference key="NSSuperview" ref="939354356"/>
 						<reference key="NSNextKeyView" ref="238264998"/>
 						<string key="NSReuseIdentifierKey">_NS:370</string>
@@ -123,7 +123,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{300, 44}</string>
+				<string key="NSFrameSize">{300, 41}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="858049886"/>
 				<string key="NSReuseIdentifierKey">_NS:358</string>
@@ -135,6 +135,7 @@
 				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="858049886"/>
 				<string key="IBUIReuseIdentifier">BrewMethodTableViewCell</string>
+				<real value="41" key="IBUIRowHeight"/>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
