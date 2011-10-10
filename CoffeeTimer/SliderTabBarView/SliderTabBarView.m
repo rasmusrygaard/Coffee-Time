@@ -173,33 +173,6 @@
     [slider setFrame:newFrame];
 }
 
-/*
-- (void)touchesBegan:(NSSet *)touches
-           withEvent:(UIEvent *)event
-{
-    UITouch *t = [touches anyObject];
-    CGPoint p = [t locationInView:self];
-    CGRect oldFrame = [slider frame];   
-    
-    int index = p.x / TEXTFIELD_WIDTH;
-    double x = [self xCoordForRectAtIndex:index];
-    
-    CGRect newFrame = CGRectMake(x - index, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height);
-    
-    // Set up sliding animation
-    CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"position"];
-    [move setDuration:0.3 ];
-    [move setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [move setRemovedOnCompletion:YES];
-    
-    [move setFromValue:[NSValue valueWithCGPoint:CGPointMake(oldFrame.origin.x + oldFrame.size.width / 2.0 - index, 
-                                                             oldFrame.origin.y + oldFrame.size.height / 2.0)]];
-    [move setToValue:[NSValue valueWithCGPoint:CGPointMake(x + oldFrame.size.width / 2.0 - index - 1, 
-                                                           oldFrame.origin.y + oldFrame.size.height / 2.0)]];
-    
-    [[slider layer] addAnimation:move forKey:@"moveAnimation"];
-    [slider setFrame:newFrame];
-}*/
 
 - (void)dealloc
 {
