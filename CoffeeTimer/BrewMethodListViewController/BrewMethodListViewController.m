@@ -86,23 +86,15 @@
     return [img autorelease];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView 
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+/*
+ * Function: - (void)styleLabelsForCell:(UITableViewCell *)cell 
+ *                            forMethod:(BrewMethod *)method
+ * Sets the text for the labels of the UITableViewCell.
+ */
+
+- (void)styleLabelsForCell:(UITableViewCell *)cell 
+                 forMethod:(BrewMethod *)method
 {
-    UITableViewCell *cell;
-    
-    [[NSBundle mainBundle] loadNibNamed:@"BrewMethodListCell" owner:self options:nil];
-    cell = tvlCell;
-    [self setTvlCell:nil];
-    
-    UIImageView *image = [self getImageForCellAtIndexPath:indexPath];
-    
-    [cell setContentMode:UIViewContentModeScaleToFill];
-    [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
-    [cell setBackgroundView:image];
-    
-    BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
-    
     UILabel *label;
     
     // Style title label
@@ -114,8 +106,32 @@
     label = (UILabel *)[cell viewWithTag:2];
     NSString *text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
     label.text = text;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    [[NSBundle mainBundle] loadNibNamed:@"BrewMethodListCell" owner:self options:nil];
+    cell = tvlCell;
+    [self setTvlCell:nil];
+    
+    // Set background
+    UIImageView *image = [self getImageForCellAtIndexPath:indexPath];
+    
+    [cell setContentMode:UIViewContentModeScaleToFill];
+    [cell setBackgroundView:image];
+    
+    [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
+    
+    // Set text
+    [self styleLabelsForCell:cell 
+                   forMethod:method];
+
     
     return cell;
 }
@@ -164,7 +180,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
     [[self navigationItem] setTitle:@"Methods"];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload

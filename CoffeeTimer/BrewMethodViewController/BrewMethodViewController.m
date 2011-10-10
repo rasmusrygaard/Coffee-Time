@@ -17,6 +17,25 @@
 
 @synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell;
 
+/*
+ * Function: - (void)initializeInfoTableView
+ * Use this function to initialize the infoTableView displaying the tabs from
+ * the sliderTabBarView. Do any custom styling of the table and its properties
+ */
+
+- (void)initializeInfoTableView
+{
+    
+    // Set table style
+    infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    infoTableView.backgroundColor = [UIColor clearColor];
+    infoTableView.opaque = NO;
+    
+    // Set no bounce
+    infoTableView.bounces = NO;
+    [self.view addSubview:infoTableView];
+}
+
 - (id)init
 {
     [super initWithNibName:@"BrewMethodViewController" bundle:nil];
@@ -33,6 +52,8 @@
         // Set up delegate and datasource roles
         infoTableView.delegate = self;
         infoTableView.dataSource = self;
+        
+        [self initializeInfoTableView];
     }
     
     
@@ -106,7 +127,9 @@
 - (void)resetTimerLabel
 {
     remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
+    NSLog(@"before timerlabel: %@", [timerLabel text]);
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
+    NSLog(@"after timerlabel: %@", [timerLabel text]);
 }
 
 - (IBAction)stopTimerClicked:(id)sender
@@ -124,13 +147,13 @@
     }
 }
 
-/* - (void)removeTopInstructionsCell
+/* - (void)removeTopInstructionsCellWithAnimation
  * Removes the top cell from the infoTableView. Should only be called
  * when the Instructions tab is active, since this method will remove
  * the top cell regardless of which tab is displayed.
  */
 
-- (void)removeTopInstructionsCell
+- (void)removeTopInstructionsCellWithAnimation
 {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
@@ -202,7 +225,10 @@
             
             // Delete first cell
             if ([tabDisplayed isEqualToString:@"Instructions"]) {
-                [self removeTopInstructionsCell];
+                [self removeTopInstructionsCellWithAnimation];
+            } else {
+                [instructions removeObjectAtIndex:0];
+                [infoTableView reloadData];
             }
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
@@ -360,25 +386,6 @@
     
 }
 
-/*
- * Function: - (void)initializeInfoTableView
- * Use this function to initialize the infoTableView displaying the tabs from
- * the sliderTabBarView. Do any custom styling of the table and its properties
- */
-
-- (void)initializeInfoTableView
-{
-    
-    // Set table style
-    infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    infoTableView.backgroundColor = [UIColor clearColor];
-    infoTableView.opaque = NO;
-    
-    // Set no bounce
-    infoTableView.bounces = NO;
-    [self.view addSubview:infoTableView];
-}
-
 - (void)initializeDescriptions
 {
     NSMutableArray *instr = [NSMutableArray arrayWithArray:[currentMethod descriptionsForTab:@"Instructions"]];
@@ -416,22 +423,22 @@
     [stbView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:stbView];
     
-    
-    // infoTableView setup
-    [self initializeInfoTableView];
-    
-    if (timer && ![[[self navigationItem] title] isEqualToString:methodBeingTimed]) {
+    if (timer) {
+        if (![self.navigationItem.title isEqualToString:methodBeingTimed]) {
         // If we're on a new method, forget about the old timer
         [timer invalidate];
         timer = nil;
+        }
+    } else {
+        // Set up descriptions
+        [self initializeDescriptions];
+
+        [self setTabDisplayed:@"Instructions"];
+        
+        [self resetTimerLabel];
     }
-    
-    // Set up descriptions
-    [self initializeDescriptions];
-    
-    [self setTabDisplayed:@"Instructions"];
+
     [infoTableView reloadData];
-    [self resetTimerLabel];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
