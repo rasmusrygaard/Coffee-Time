@@ -82,7 +82,7 @@
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
     }
     
-    return img;
+    return [img autorelease];
 }
 
 /*

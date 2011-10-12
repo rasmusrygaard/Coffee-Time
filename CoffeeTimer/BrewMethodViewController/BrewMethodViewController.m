@@ -131,20 +131,24 @@
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
 }
 
+- (void)resetState
+{
+    [self resetDisplay];
+    
+    // Update the info on the screen to reflect the first step
+    [self resetInstructions];
+    [currentMethod resetTimerSteps];
+    
+    methodBeingTimed = nil;
+    
+    [self resetTimerLabel];
+}
+
 - (IBAction)stopTimerClicked:(id)sender
 {
     if (timer) { // If there is a running timer
-
-        [self resetDisplay];
         [self clearTimer:timer];
-        
-        // Update the info on the screen to reflect the first step
-        [self resetInstructions];
-        [currentMethod resetTimerSteps];
-
-        methodBeingTimed = nil;
-        
-        [self resetTimerLabel];
+        [self resetState];
     }
 }
 
@@ -170,7 +174,7 @@
     
     [infoTableView endUpdates];
 
-    [infoTableView reloadData];
+//    [infoTableView reloadData];
 }
 
 /* - (void)resetInstructions
@@ -232,7 +236,7 @@
             [self removeTopInstructionsCellWithAnimation];
             
         } else {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+            AudioServicesPlayAlertSound(1000);
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
                                                                 message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
                                                                delegate:self
@@ -240,7 +244,8 @@
                                                       otherButtonTitles:nil];
             [alertView show];
             methodBeingTimed = nil;
-            [self resetDisplay];
+            [self resetState];
+//            [self resetDisplay];
         }
         
     } else {
