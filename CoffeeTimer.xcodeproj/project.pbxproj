@@ -19,7 +19,6 @@
 		0005C5481442429E00D8D825 /* SimpleMatteBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C5441442429E00D8D825 /* SimpleMatteBackground@2x.png */; };
 		000F1D4C14337984006CD04F /* BrewMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2014337984006CD04F /* BrewMethod.m */; };
 		000F1D4D14337984006CD04F /* BrewMethodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2314337984006CD04F /* BrewMethodListViewController.m */; };
-		000F1D4E14337984006CD04F /* BrewMethodListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D2414337984006CD04F /* BrewMethodListViewController.xib */; };
 		000F1D4F14337984006CD04F /* BrewMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2714337984006CD04F /* BrewMethodViewController.m */; };
 		000F1D5014337984006CD04F /* BrewMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D2814337984006CD04F /* BrewMethodViewController.xib */; };
 		000F1D5114337984006CD04F /* CoffeeTimerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2B14337984006CD04F /* CoffeeTimerAppDelegate.m */; };
@@ -58,6 +57,10 @@
 		0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
+		00CA63F214455578002CDDB7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F114455578002CDDB7 /* Default.png */; };
+		00CA63F51445557A002CDDB7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F41445557A002CDDB7 /* Default@2x.png */; };
+		00CA63F714455580002CDDB7 /* CoffeeTime57.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F614455580002CDDB7 /* CoffeeTime57.png */; };
+		00CA63F914455582002CDDB7 /* CoffeeTime112.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F814455582002CDDB7 /* CoffeeTime112.png */; };
 		00D359461437E9FA00BFA6E0 /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
 		00D359471437E9FA00BFA6E0 /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359391437E9FA00BFA6E0 /* Cell@2x.png */; };
 		00D359481437E9FA00BFA6E0 /* CellRoundedBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */; };
@@ -96,7 +99,6 @@
 		000F1D2014337984006CD04F /* BrewMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrewMethod.m; sourceTree = "<group>"; };
 		000F1D2214337984006CD04F /* BrewMethodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrewMethodListViewController.h; sourceTree = "<group>"; };
 		000F1D2314337984006CD04F /* BrewMethodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrewMethodListViewController.m; sourceTree = "<group>"; };
-		000F1D2414337984006CD04F /* BrewMethodListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListViewController.xib; sourceTree = "<group>"; };
 		000F1D2614337984006CD04F /* BrewMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrewMethodViewController.h; sourceTree = "<group>"; };
 		000F1D2714337984006CD04F /* BrewMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrewMethodViewController.m; sourceTree = "<group>"; };
 		000F1D2814337984006CD04F /* BrewMethodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +146,10 @@
 		0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeTimerTests.m; sourceTree = "<group>"; };
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		00CA63F114455578002CDDB7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		00CA63F41445557A002CDDB7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		00CA63F614455580002CDDB7 /* CoffeeTime57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoffeeTime57.png; sourceTree = "<group>"; };
+		00CA63F814455582002CDDB7 /* CoffeeTime112.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoffeeTime112.png; sourceTree = "<group>"; };
 		00D359381437E9FA00BFA6E0 /* Cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell.png; sourceTree = "<group>"; };
 		00D359391437E9FA00BFA6E0 /* Cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cell@2x.png"; sourceTree = "<group>"; };
 		00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedBottom.png; sourceTree = "<group>"; };
@@ -198,7 +204,6 @@
 			children = (
 				000F1D2214337984006CD04F /* BrewMethodListViewController.h */,
 				000F1D2314337984006CD04F /* BrewMethodListViewController.m */,
-				000F1D2414337984006CD04F /* BrewMethodListViewController.xib */,
 				0012F3901442B89600D12B55 /* BrewMethodListCell.xib */,
 			);
 			path = BrewMethodListViewController;
@@ -285,6 +290,10 @@
 		0057FF7E13E670AB001556C4 = {
 			isa = PBXGroup;
 			children = (
+				00CA63F814455582002CDDB7 /* CoffeeTime112.png */,
+				00CA63F614455580002CDDB7 /* CoffeeTime57.png */,
+				00CA63F41445557A002CDDB7 /* Default@2x.png */,
+				00CA63F114455578002CDDB7 /* Default.png */,
 				001103C11437B9DB00C6467B /* AudioToolbox.framework */,
 				00A226C2141CE2D9006EEE4F /* QuartzCore.framework */,
 				0057FF9313E670B0001556C4 /* CoffeeTimer */,
@@ -456,7 +465,6 @@
 				0057FF9813E670B0001556C4 /* InfoPlist.strings in Resources */,
 				0057FFA513E670B0001556C4 /* MainWindow_iPhone.xib in Resources */,
 				0057FFAC13E670B1001556C4 /* MainWindow_iPad.xib in Resources */,
-				000F1D4E14337984006CD04F /* BrewMethodListViewController.xib in Resources */,
 				000F1D5014337984006CD04F /* BrewMethodViewController.xib in Resources */,
 				000F1D5314337984006CD04F /* Background.png in Resources */,
 				000F1D5414337984006CD04F /* Background@2x.png in Resources */,
@@ -493,6 +501,10 @@
 				0005C5471442429E00D8D825 /* SimpleMatteBackground.png in Resources */,
 				0005C5481442429E00D8D825 /* SimpleMatteBackground@2x.png in Resources */,
 				0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */,
+				00CA63F214455578002CDDB7 /* Default.png in Resources */,
+				00CA63F51445557A002CDDB7 /* Default@2x.png in Resources */,
+				00CA63F714455580002CDDB7 /* CoffeeTime57.png in Resources */,
+				00CA63F914455582002CDDB7 /* CoffeeTime112.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +659,9 @@
 				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CoffeeTimer/CoffeeTimer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -659,7 +673,9 @@
 				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CoffeeTimer/CoffeeTimer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

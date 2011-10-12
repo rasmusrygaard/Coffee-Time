@@ -110,7 +110,7 @@
 - (void)resetDisplay
 {
     [self resetInstructions];
-
+    
     [currentMethod resetTimerSteps];
 }
 
@@ -127,7 +127,7 @@
 - (void)resetTimerLabel
 {
     remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
-    NSLog(@"formatted: %@", [TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]);
+
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
 }
 
@@ -159,9 +159,9 @@
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
     [infoTableView beginUpdates];
-    NSLog(@"actually removing");
+
     [instructions removeObjectAtIndex:0];
-    NSLog(@"Instructions: %@", instructions);
+
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
                              withRowAnimation:UITableViewRowAnimationTop];
@@ -227,13 +227,12 @@
             
             [self setupLabelsForTimerStep:nextStep];
             [self setAndStartTimerForStep:nextStep];
-
-            NSLog(@"removing");
             
             // Delete first cell
             [self removeTopInstructionsCellWithAnimation];
             
         } else {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
                                                                 message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
                                                                delegate:self
@@ -416,6 +415,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+//    startTimerButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24];
+//    stopTimerButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24];
+    
+//    [startTimerButton 
     
     // Create a rectangle for the sliderTabBarView
     CGRect rect = CGRectMake(SLIDER_TAB_BAR_X, 

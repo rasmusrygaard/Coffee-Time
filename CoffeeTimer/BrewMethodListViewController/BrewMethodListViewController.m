@@ -82,7 +82,7 @@
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
     }
     
-    return [img autorelease];
+    return img;
 }
 
 /*
@@ -103,10 +103,11 @@
     
     if (bmViewController != nil &&
         [[method name] isEqualToString:[bmViewController methodBeingTimed]]) {
-        label.textColor = [UIColor colorWithRed:(240.0 / 255.0) 
-                                          green:(213.0 / 255.0) 
-                                           blue:(132.0 / 255.0) 
-                                          alpha:1];
+        UIColor *color = [UIColor colorWithRed:(240.0 / 255.0) 
+                                         green:(213.0 / 255.0) 
+                                          blue:(132.0 / 255.0) 
+                                         alpha:1];
+        label.textColor = color;
     } else {
         label.textColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
     }

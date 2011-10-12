@@ -17,13 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"didFinishLaunching");
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
     bmlViewController = [[BrewMethodListViewController alloc] init];
-    NSLog(@"initializing");
+
     NSArray *methods = [BrewMethod initBrewMethods];
-    NSLog(@"done initializing");
+
     [bmlViewController setBrewMethods:methods];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bmlViewController];
