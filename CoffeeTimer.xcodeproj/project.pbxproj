@@ -57,7 +57,6 @@
 		0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
-		00CA63F214455578002CDDB7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F114455578002CDDB7 /* Default.png */; };
 		00CA63F51445557A002CDDB7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F41445557A002CDDB7 /* Default@2x.png */; };
 		00CA63F714455580002CDDB7 /* CoffeeTime57.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F614455580002CDDB7 /* CoffeeTime57.png */; };
 		00CA63F914455582002CDDB7 /* CoffeeTime112.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F814455582002CDDB7 /* CoffeeTime112.png */; };
@@ -72,6 +71,7 @@
 		00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */; };
 		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
+		00F94CBC14456D7F00F8BBEE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CA63F114455578002CDDB7 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -501,10 +501,10 @@
 				0005C5471442429E00D8D825 /* SimpleMatteBackground.png in Resources */,
 				0005C5481442429E00D8D825 /* SimpleMatteBackground@2x.png in Resources */,
 				0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */,
-				00CA63F214455578002CDDB7 /* Default.png in Resources */,
 				00CA63F51445557A002CDDB7 /* Default@2x.png in Resources */,
 				00CA63F714455580002CDDB7 /* CoffeeTime57.png in Resources */,
 				00CA63F914455582002CDDB7 /* CoffeeTime112.png in Resources */,
+				00F94CBC14456D7F00F8BBEE /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +628,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -647,7 +647,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -661,6 +661,7 @@
 				INFOPLIST_FILE = "CoffeeTimer/CoffeeTimer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -675,6 +676,7 @@
 				INFOPLIST_FILE = "CoffeeTimer/CoffeeTimer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -13,12 +13,10 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    tabs = [[NSArray alloc] initWithObjects:@"Preparation", @"Instructions", @"Equipment", nil];
-    oldIndex = -1;
-    
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        tabs = [[NSArray alloc] initWithObjects:@"Preparation", @"Instructions", @"Equipment", nil];
+        oldIndex = -1;
     }
     return self;
 }

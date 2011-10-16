@@ -38,24 +38,26 @@
 
 - (id)init
 {
-    [super initWithNibName:@"BrewMethodViewController" bundle:nil];
-    
-    [[[self navigationItem] backBarButtonItem] setTitle:@"Methods"];
-    
-    if (!infoTableView) {
-        CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
-                                     INFO_WINDOW_Y,
-                                     INFO_WINDOW_W, 
-                                     INFO_WINDOW_H);
-        infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
+    if (self = [super init]) {
+        [super initWithNibName:@"BrewMethodViewController" bundle:nil];
         
-        // Set up delegate and datasource roles
-        infoTableView.delegate = self;
-        infoTableView.dataSource = self;
+        [[[self navigationItem] backBarButtonItem] setTitle:@"Methods"];
         
-        [self initializeInfoTableView];
+        if (!infoTableView) {
+            CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
+                                         INFO_WINDOW_Y,
+                                         INFO_WINDOW_W, 
+                                         INFO_WINDOW_H);
+            infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
+            
+            // Set up delegate and datasource roles
+            infoTableView.delegate = self;
+            infoTableView.dataSource = self;
+            
+            [self initializeInfoTableView];
+        }
+
     }
-    
     
     return self;
 }
@@ -237,12 +239,14 @@
             
         } else {
             AudioServicesPlayAlertSound(1000);
+            NSString *msg = [NSString stringWithFormat:@"Your %@ is done", [currentMethod name]];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
-                                                                message:[NSString stringWithFormat:@"Your %@ is done", [currentMethod name]]
+                                                                message:msg
                                                                delegate:self
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
             [alertView show];
+            [alertView release];
             methodBeingTimed = nil;
             [self resetState];
 //            [self resetDisplay];

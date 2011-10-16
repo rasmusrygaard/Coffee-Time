@@ -16,15 +16,12 @@
 
 - (id)init 
 {
-    [super initWithStyle:UITableViewStyleGrouped];
-    [[self navigationItem] setTitle:@"Brew Methods"];
+    if (self = [super init]) {
+        [super initWithStyle:UITableViewStyleGrouped];
+        [[self navigationItem] setTitle:@"Brew Methods"];   
+    }
     
     return self;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-	return [self init];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -82,7 +79,7 @@
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
     }
     
-    return [img autorelease];
+    return img;///
 }
 
 /*

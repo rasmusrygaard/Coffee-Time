@@ -79,9 +79,9 @@
 {
     // Initialize instructions
     TimerStep *apStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
-                                                    timeInSeconds:4] autorelease];
+                                                    timeInSeconds:45] autorelease];
     TimerStep *apStepTwo = [[[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
-                                                    timeInSeconds:2] autorelease];
+                                                    timeInSeconds:20] autorelease];
     
     NSArray *apStepArray = [NSArray arrayWithObjects:apStepOne, apStepTwo, nil];
     
@@ -89,9 +89,10 @@
     // Initialize preparation
     NSArray *apPrepArray = [NSArray arrayWithObjects:
                             @"Grind the beans medium fine",
-                            @"Pre-wet the filter with plenty of cold water",
+                            @"Pre-wet the filter with plenty of water",
                             @"Turn the Aeropress upside down",
-                            @"Push the plunger to the \"4\" mark", nil];
+                            @"Push the plunger to the \"4\" mark",
+                            @"Place the beans in the Aeropress", nil];
     
     // Initialize equipment
     NSArray *apEquipArray = [NSArray arrayWithObjects:
@@ -128,7 +129,7 @@
     NSArray *fpEquipArray = [NSArray arrayWithObjects:
                              @"French Press pot (6 cup)",
                              @"34g of coffee beans",
-                             @"500 ml of boiling water",nil];
+                             @"500 ml of nearly boiling water",nil];
     
     BrewMethod *method = [[BrewMethod alloc] initWithName:@"French Press"
                                            timerStepArray:fpStepArray 
@@ -141,11 +142,11 @@
 +(BrewMethod *)initChemexMethod
 {
     // Initialize instructions
-    TimerStep *cStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over grounds to start the bloom" 
+    TimerStep *cStepOne = [[[TimerStep alloc] initWithDescription:@"Pour just enough water to saturate the grounds" 
                                                    timeInSeconds:45] autorelease];
-    TimerStep *cStepTwo = [[[TimerStep alloc] initWithDescription:@"Pour more water to fully saturate the grounds" 
+    TimerStep *cStepTwo = [[[TimerStep alloc] initWithDescription:@"Pour more water until the level is one inch below the rim of the Chemex" 
                                                    timeInSeconds:60] autorelease];
-    TimerStep *cStepThree = [[[TimerStep alloc] initWithDescription:@"Pour more water until the weight reaches 700g" 
+    TimerStep *cStepThree = [[[TimerStep alloc] initWithDescription:@"Pour more water until the scale reaches 700g" 
                                                      timeInSeconds:135] autorelease];
     NSArray *cStepArray = [NSArray arrayWithObjects:cStepOne, cStepTwo, cStepThree, nil];
     
@@ -159,7 +160,7 @@
     NSArray *cEquipArray = [NSArray arrayWithObjects:
                             @"Chemex",
                             @"45 g of coffee beans",
-                            @"700 ml of water at 90 degrees", nil];
+                            @"700 ml of nearly boiling water", nil];
     
     BrewMethod *method = [[BrewMethod alloc] initWithName:@"Chemex"
                                            timerStepArray:cStepArray
@@ -171,11 +172,10 @@
 
 +(BrewMethod *)initV60Method
 {
-//    TimerStep *v60StepOne = [[[TimerStep alloc] initWithDescription:@" timeInSeconds:<#(int)#>
     TimerStep *v60StepOne = [[[TimerStep alloc] initWithDescription:@"Pour just enough water to saturate the grounds evenly"
                                                       timeInSeconds:30] autorelease];
     
-    TimerStep *v60StepTwo = [[[TimerStep alloc] initWithDescription:@"Pour the remaining water in concentric circles"
+    TimerStep *v60StepTwo = [[[TimerStep alloc] initWithDescription:@"Slowly pour the remaining water in concentric circles"
                                                       timeInSeconds:120] autorelease];
     
     NSArray *v60StepArray = [NSArray arrayWithObjects:v60StepOne, v60StepTwo, nil];
@@ -190,7 +190,7 @@
     NSArray *v60EquipArray = [NSArray arrayWithObjects:
                               @"Hario V60 Cone", 
                               @"24 g of coffee beans",
-                              @"390 g of boiling water", nil];
+                              @"390 g of nearly boiling water", nil];
     
     BrewMethod *method = [[BrewMethod alloc] initWithName:@"V60 Pourover" 
                                            timerStepArray:v60StepArray 
