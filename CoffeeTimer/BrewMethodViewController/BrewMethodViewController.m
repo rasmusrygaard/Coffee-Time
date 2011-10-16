@@ -374,17 +374,34 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *steps = ([tabDisplayed isEqualToString:@"Instructions"]) ? instructions : [currentMethod descriptionsForTab:tabDisplayed];
+    NSArray *steps;
+    
+    if([tabDisplayed isEqualToString:@"Instructions"]) {
+
+        steps = instructions;
+
+    } else {
+
+        steps = [currentMethod descriptionsForTab:tabDisplayed];
+    }
+    
     return [steps count];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+/* Function: -(CGFloat)tableView:(UITableView *)tableView 
+ heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ * Determine the height for a row in the info table. If the text can fit in MIN_CELL_HEIGHT
+ * use that as the height. Otherwise, have the text fit with CELL_INSET padding.
+ */
+
+-(CGFloat)tableView:(UITableView *)tableView 
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *descriptions = [self descriptionsForCurrentTab];
     NSString *text = [descriptions objectAtIndex:indexPath.row];
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
     
-    CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(240, MAXFLOAT)];
+    CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(INFO_CELL_WIDTH, MAXFLOAT)];
     
     CGFloat height;
     if (textSize.height + CELL_INSET < MIN_CELL_HEIGHT) {
@@ -424,11 +441,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    startTimerButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24];
-//    stopTimerButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24];
-    
-//    [startTimerButton 
     
     // Create a rectangle for the sliderTabBarView
     CGRect rect = CGRectMake(SLIDER_TAB_BAR_X, 

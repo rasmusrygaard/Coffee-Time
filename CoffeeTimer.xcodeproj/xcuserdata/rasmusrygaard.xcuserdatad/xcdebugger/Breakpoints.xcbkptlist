@@ -64,20 +64,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "CoffeeTimer/BrewMethod/BrewMethod.m"
-         timestampString = "339880314.889028"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "206"
-         endingLineNumber = "206"
-         landmarkName = "+initBrewMethods"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "CoffeeTimer/CoffeeTimerAppDelegate/CoffeeTimerAppDelegate.m"
          timestampString = "340418784.33961"
          startingColumnNumber = "9223372036854775807"

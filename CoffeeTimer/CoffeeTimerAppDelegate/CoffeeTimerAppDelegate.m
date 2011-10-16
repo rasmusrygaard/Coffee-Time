@@ -28,7 +28,7 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bmlViewController];
     
 	[[self window] setRootViewController:navController];
-//    [navController release];
+    [navController release];
     
     [self.window makeKeyAndVisible];
     return YES;

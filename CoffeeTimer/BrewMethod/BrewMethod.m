@@ -58,6 +58,8 @@
     return self;
 }
 
+#pragma mark Initialize methods
+
 +(BrewMethod *)initTestMethod
 {
     // Initialize instructions
@@ -203,7 +205,6 @@
 
 + (NSArray *)initBrewMethods
 {
-//    BrewMethod *test = [self initTestMethod];
     
     BrewMethod *aeropress = [self initAeropressMethod];
 
@@ -222,6 +223,12 @@
 {
     return [timerSteps objectAtIndex:0];
 }
+
+/* Function: - (TimerStep *)nextTimerStep
+ * Return the next timer for the given method. If no
+ * more steps exist, return nil. To reset the step counter,
+ * call resetTimerSteps
+ */
 
 - (TimerStep *)nextTimerStep
 {
@@ -276,6 +283,11 @@
     return [copyArr autorelease];
 }
 
+/* Function: - (NSArray *)timeIntervals
+ * Return an array containing the formatted time intervals for
+ * a given method.
+ */
+
 - (NSArray *)timeIntervals
 {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
@@ -285,6 +297,12 @@
     }
     return [array autorelease];
 }
+
+/* Function: - (NSString *)commaSeparatedTimerSteps
+ * Return a comma separated list of timer steps for the given method.
+ * This function uses the description method from the TimerStep class
+ * and concatenates these together.
+ */
 
 - (NSString *)commaSeparatedTimerSteps
 {

@@ -31,4 +31,8 @@ extern double const TEXTFIELD_HEIGHT;
 extern double const MIN_CELL_HEIGHT;
 extern double const CELL_INSET;
 
+extern double const LIST_CELL_HEIGHT;
+
+extern double const INFO_CELL_WIDTH;
+
 @end

@@ -12,7 +12,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell;
+@synthesize brewMethods, tvlCell, bmViewController;
 
 - (id)init 
 {
@@ -27,17 +27,19 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+
     return self;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    return [brewMethods count];
+    return [self.brewMethods count];
 }
+
+/* Function: - (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
+ * Do any custom styling of a cell in the information table
+ */
 
 - (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
 {
@@ -51,6 +53,7 @@
 
 /*
  * Function: - (void)styleInfoTableSubtitleLabelForCell:(UITableViewCell *)cell
+ * Style the subtitle of a cell in the information tableView
  */
 
 - (void)styleInfoTableSubtitleLabelForCell:(UITableViewCell *)cell
@@ -72,14 +75,20 @@
     UIImageView *img;
     
     if (indexPath.row == 0) { // Top cell
+        
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedTop.png"]];
-    } else if (indexPath.row == [brewMethods count] - 1) {
+
+    } else if (indexPath.row == [self.brewMethods count] - 1) {
+    
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedBottom.png"]];
+
     } else { // Remaining Cells
+        
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
+    
     }
     
-    return img;///
+    return [img autorelease];
 }
 
 /*
@@ -98,8 +107,8 @@
     label.text = [method name];
     label.numberOfLines = 0;
     
-    if (bmViewController != nil &&
-        [[method name] isEqualToString:[bmViewController methodBeingTimed]]) {
+    if (self.bmViewController != nil &&
+        [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
         UIColor *color = [UIColor colorWithRed:(240.0 / 255.0) 
                                          green:(213.0 / 255.0) 
                                           blue:(132.0 / 255.0) 
@@ -109,11 +118,17 @@
         label.textColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
     }
     
-    // Style time label
+    // Set up time label
     label = (UILabel *)[cell viewWithTag:2];
     NSString *text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
     label.text = text;
 }
+
+/* Function: - (UITableViewCell *)tableView:(UITableView *)tableView 
+ *                    cellForRowAtIndexPath:(NSIndexPath *)indexPath
+ * Get a new cell for the tableView. Load the custom nib, get the right image,
+ * grab a method for it and style the text appropriately.
+ */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,7 +137,7 @@
     
     [[NSBundle mainBundle] loadNibNamed:@"BrewMethodListCell" owner:self options:nil];
     cell = tvlCell;
-    [self setTvlCell:nil];
+    self.tvlCell = nil;
     
     // Set background
     UIImageView *image = [self getImageForCellAtIndexPath:indexPath];
@@ -136,40 +151,43 @@
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
     
-    // Set text
     [self styleLabelsForCell:cell 
                    forMethod:method];
 
     return cell;
 }
 
+/* Function: - (void) tableView:(UITableView *)tableView 
+ *      didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+ * Create a viewController for the new method if it does not already exist. Have
+ * it display the method selectio and push it.
+ */
+
 - (void) tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!bmViewController) {
-        bmViewController = [[BrewMethodViewController alloc] init];
+        self.bmViewController = [[BrewMethodViewController alloc] init];
     }
 
-    [bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
+    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
     
     NSString *methodToDisplay = [[bmViewController currentMethod] name];
     [[bmViewController navigationItem] setTitle:methodToDisplay];
     
-    [[self navigationController] pushViewController:bmViewController 
-                                           animated:YES];
+    [self.navigationController pushViewController:bmViewController 
+                                         animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 88;
+    return LIST_CELL_HEIGHT;
 }
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
+    // No extra views, no instance variables to release, no cached data
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -178,13 +196,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewDidLoad];
     
-    [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlackOpaque];
-    [[self tableView] setBounces:NO];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    self.tableView.bounces = NO;
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
 
-    [[self view] setBackgroundColor:[UIColor blackColor]];
-    [[self view] setBackgroundColor:background];
+    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = background;
     [background release]; 
 }
 
@@ -196,8 +214,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
+    self.bmViewController = nil;
+    [bmViewController release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

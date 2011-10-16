@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic, retain) NSArray *brewMethods;
+@property (nonatomic, retain) BrewMethodViewController *bmViewController;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;
 
 @end
