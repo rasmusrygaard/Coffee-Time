@@ -188,6 +188,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // No extra views, no instance variables to release, no cached data
     [super didReceiveMemoryWarning];
+
 }
 
 #pragma mark - View lifecycle

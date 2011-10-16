@@ -21,6 +21,58 @@
     return self;
 }
 
+// Return x coordinate for left edge of text rectangle at index
+
+-(double) xCoordForRectAtIndex:(int)index
+{
+    return index * TEXTFIELD_WIDTH;
+}
+
+- (void)styleLabel:(UILabel *)label
+{
+    // Font
+    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    [label setFont:font];
+    [label setTextColor:[UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1]];
+    
+    // Shadow
+    label.shadowColor = [UIColor darkTextColor];
+    label.shadowOffset = CGSizeMake(0, 1);
+    
+    [label setBackgroundColor:[UIColor clearColor]];
+    
+    [label setTextAlignment:UITextAlignmentCenter];
+    
+}
+
+/* Function: - (void)drawLabel:(UILabel *)label 
+ *                     atIndex:(int)index 
+ *                   fromPoint:(CGPoint)pt
+ * Draw a label inside the view. The index is expected to be zero-based
+ * and the function relies on the TEXTFIELD constants in determining
+ * the location. Everything is drawn relative to the y coordinate of pt,
+ * which is expected to be the upper left corner of the view
+ */
+
+- (void)drawLabel:(UILabel *)label 
+          atIndex:(int)index 
+        fromPoint:(CGPoint)pt
+{
+    CGRect rect = CGRectMake([self xCoordForRectAtIndex:index], 
+                             pt.y, 
+                             TEXTFIELD_WIDTH, 
+                             TEXTFIELD_HEIGHT);
+    
+    label = [[UILabel alloc] initWithFrame:rect];
+    
+    NSString *text = [tabs objectAtIndex:index];
+    [label setText:text];
+    [self styleLabel:label];
+    
+    [self addSubview:label];
+    [label release];
+}
+
 
 - (void)drawRect:(CGRect)rect
 {
@@ -55,65 +107,20 @@
     [self addSubview:slider];
     
     // Draw text
-    // PreparationLabel
     [self drawLabel:preparationLabel  
             atIndex:0
           fromPoint:upperLeft];
     
-    // instructionsLabel
     [self drawLabel:instructionsLabel 
             atIndex:1
           fromPoint:upperLeft];
     
-    // equipmentLabel
     [self drawLabel:equipmentLabel
             atIndex:2
           fromPoint:upperLeft];
 
 }
 
-- (void)drawLabel:(UILabel *)label 
-          atIndex:(int)index 
-        fromPoint:(CGPoint)pt
-{
-    CGRect rect = CGRectMake([self xCoordForRectAtIndex:index], 
-                             pt.y, 
-                             TEXTFIELD_WIDTH, 
-                             TEXTFIELD_HEIGHT);
-    
-    label = [[UILabel alloc] initWithFrame:rect];
-    
-    NSString *text = [tabs objectAtIndex:index];
-    [label setText:text];
-    [self styleLabel:label];
-    
-    [self addSubview:label];
-    [label release];
-}
-
-- (void)styleLabel:(UILabel *)label
-{
-    // Font
-    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    [label setFont:font];
-    [label setTextColor:[UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1]];
-    
-    // Shadow
-    label.shadowColor = [UIColor darkTextColor];
-    label.shadowOffset = CGSizeMake(0, 1);
-      
-    [label setBackgroundColor:[UIColor clearColor]];
-    
-    [label setTextAlignment:UITextAlignmentCenter];
-
-}
-
-// Return x coordinate for left edge of text rectangle at index
-
--(double) xCoordForRectAtIndex:(int)index
-{
-    return index * TEXTFIELD_WIDTH;
-}
 
 /* - (NSString *)tabTitleForTouch:(UITouch *)t
  * Return the title of the tab located under the UITouch
@@ -142,6 +149,11 @@
         oldIndex = index;
     }
 }
+
+/* Function: - (void)slideTabToIndex:(int)index
+ * Animate the tab sliding to the index given by index.
+ * Get coordinates for the new index, calculate the new frame and animate!
+ */
 
 - (void)slideTabToIndex:(int)index
 {
