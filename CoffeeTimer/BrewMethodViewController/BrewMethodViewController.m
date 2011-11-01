@@ -105,6 +105,7 @@
         localNotif.alertBody = [t descriptionWithoutTime];
         
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+        [localNotif release];
     }
 }
 
@@ -177,6 +178,7 @@
 {
     if (timer) { // If there is a running timer
         [self clearTimer:timer];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
         [self resetState];
     }
 }
