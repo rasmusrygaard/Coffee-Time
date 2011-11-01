@@ -36,7 +36,7 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    
+    NSLog(@"notif");
 }
 
 

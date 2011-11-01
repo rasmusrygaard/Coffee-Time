@@ -95,9 +95,13 @@
  */
 - (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
 {
+    int totalTime = 0;
     for (TimerStep *t in timerSteps) {
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-        localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:[t timeInSeconds]];
+        
+        totalTime += [t timeInSeconds];
+        localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:totalTime];
+        
         localNotif.alertBody = [t descriptionWithoutTime];
         
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
@@ -214,13 +218,19 @@
     [infoTableView reloadData];
 }
 
-- (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed 
+- (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed /// get rid of parameter
 {
+    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    UILocalNotification *currentNotif = [notifications objectAtIndex:0];
+    
     UILabel *label;
     UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
                                                                                        inSection:0]];
+    
+    NSTimeInterval timeLeft = [[currentNotif fireDate] timeIntervalSinceNow];
+    
     label = (UILabel *)[topCell viewWithTag:2];
-    [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeElapsed]];
+    [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeLeft]];
 }
 
 - (BOOL)timerIsDone
@@ -234,12 +244,9 @@
 
 - (void)updateRemainingTime
 {
-    
-    
     NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
-    int timeLeft = remainingTimeAfterCurrentStep + (int)timeElapsed;
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeLeft]];
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeElapsed]];
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [self updateTimeOnTopCell:timeElapsed];
@@ -281,6 +288,7 @@
             [alertView release];
             methodBeingTimed = nil;
             [self resetState];
+        [self clearTimer:theTimer];
 //            [self resetDisplay];
      /*   }*/
         

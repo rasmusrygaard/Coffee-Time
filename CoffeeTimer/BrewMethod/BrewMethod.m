@@ -205,6 +205,7 @@
 
 + (NSArray *)initBrewMethods
 {
+    BrewMethod *test = [self initTestMethod];
     
     BrewMethod *aeropress = [self initAeropressMethod];
 
@@ -214,7 +215,7 @@
     
     BrewMethod *v60 = [self initV60Method];
     
-    NSArray *brewMethods = [NSArray arrayWithObjects:aeropress, chemex, frenchPress, v60, nil];
+    NSArray *brewMethods = [NSArray arrayWithObjects:test, aeropress, chemex, frenchPress, v60, nil];
     
     return brewMethods;
 }
