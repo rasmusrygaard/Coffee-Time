@@ -80,19 +80,42 @@
 - (IBAction)startTimerClicked:(id)sender
 {
     if (!timer) {
-        TimerStep *step = [currentMethod firstTimerStep];
-        remainingTimeAfterCurrentStep -= [step timeInSeconds];
+//        TimerStep *step = [currentMethod firstTimerStep];
+//        remainingTimeAfterCurrentStep -= [step timeInSeconds];
 
-        [self setAndStartTimerForStep:step];
+        [self setAndStartTimerForMethod:currentMethod];
         
         methodBeingTimed = [currentMethod name];
+        }
+}
+
+/*
+ * Function: - (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
+ * Schedule local notifications for all timer steps for the current method.
+ */
+- (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
+{
+    for (TimerStep *t in timerSteps) {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:[t timeInSeconds]];
+        localNotif.alertBody = [t descriptionWithoutTime];
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     }
 }
 
-- (void)setAndStartTimerForStep:(TimerStep *)step
+/*
+ * Function: - (void)setAndStartTimerForMethod:(BrewMethod *)method
+ * Set the timer that will run for the entire duration of the method
+ */
+
+- (void)setAndStartTimerForMethod:(BrewMethod *)method
 {
-    finishTime = [NSDate dateWithTimeIntervalSinceNow:([step timeInSeconds])];
+    finishTime = [NSDate dateWithTimeIntervalSinceNow:([method totalTimeInSeconds])];
     [finishTime retain];
+    
+    
+    [self scheduleNotificationsForSteps:[method timerSteps]];
     
     // Start timer
     timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_UPDATE_INTERVAL 
@@ -211,6 +234,8 @@
 
 - (void)updateRemainingTime
 {
+    
+    
     NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     int timeLeft = remainingTimeAfterCurrentStep + (int)timeElapsed;
     
@@ -224,7 +249,7 @@
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     if ([self timerIsDone]) {
-        
+        /*
         [self clearTimer:theTimer];
         
         TimerStep *nextStep = [currentMethod nextTimerStep];
@@ -234,13 +259,20 @@
             [self setupLabelsForTimerStep:nextStep];
             [self setAndStartTimerForStep:nextStep];
             
+            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+            localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+            localNotif.alertBody = [nextStep descriptionWithoutTime];
+            
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+            
+            
             // Delete first cell
             [self removeTopInstructionsCellWithAnimation];
             
-        } else {
+        } else {*/
             AudioServicesPlayAlertSound(1000);
-            NSString *msg = [NSString stringWithFormat:@"Your %@ is done", [currentMethod name]];
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done!"
+            NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@ brew!", [currentMethod name]];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
                                                                 message:msg
                                                                delegate:self
                                                       cancelButtonTitle:@"OK"
@@ -250,7 +282,7 @@
             methodBeingTimed = nil;
             [self resetState];
 //            [self resetDisplay];
-        }
+     /*   }*/
         
     } else {
         [self updateRemainingTime];

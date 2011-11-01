@@ -44,7 +44,7 @@
 - (void)resetInstructions;
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
 
-- (void)setAndStartTimerForStep:(TimerStep *)step;
+- (void)setAndStartTimerForMethod:(BrewMethod *)method;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
 
 @property (nonatomic, retain) BrewMethod *currentMethod;
