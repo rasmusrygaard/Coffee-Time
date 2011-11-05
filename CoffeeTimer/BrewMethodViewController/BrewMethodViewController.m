@@ -204,8 +204,6 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     [infoTableView endUpdates];
-
-//    [infoTableView reloadData];
 }
 
 /* - (void)resetInstructions
@@ -407,7 +405,11 @@
     // Display time for cells under "Instructions"
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         label = (UILabel *)[cell viewWithTag:2];
-        NSString *text = [[currentMethod timeIntervals] objectAtIndex:indexPath.row];
+        
+        int numScheduledNotifs = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+        
+        /// FIX: Out of bounds for updating table
+        NSString *text = [[currentMethod timeIntervals] objectAtIndex:(indexPath.row + numScheduledNotifs)];
         label.text = text;
     }
     
@@ -416,18 +418,22 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *steps;
+    NSInteger numRows;
     
     if([tabDisplayed isEqualToString:@"Instructions"]) {
 
-        steps = instructions;
+        if (timer) { // If the timer is running only show remaining steps
+            numRows = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+        } else {
+            numRows = [instructions count];
+        }
 
     } else {
-
-        steps = [currentMethod descriptionsForTab:tabDisplayed];
+        NSArray *steps = [currentMethod descriptionsForTab:tabDisplayed];
+        numRows = [steps count];
     }
     
-    return [steps count];
+    return numRows;
 }
 
 /* Function: -(CGFloat)tableView:(UITableView *)tableView 
@@ -509,7 +515,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self resetTimerLabel];   
     } 
      [self setTabDisplayed:@"Instructions"];
-    
     [infoTableView reloadData];
 }
 
