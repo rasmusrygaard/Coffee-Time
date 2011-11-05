@@ -277,7 +277,8 @@
     } else if ([tabName isEqualToString:@"Instructions"]) {
         copyArr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
         for (TimerStep *t in timerSteps) {
-            [copyArr addObject:[t descriptionWithoutTime]];
+///            [copyArr addObject:[t descriptionWithoutTime]];
+            [copyArr addObject:t];
         }
     }
 

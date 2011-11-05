@@ -398,19 +398,23 @@
     [img release];
     
     UILabel *label;
-    label = (UILabel *)[cell viewWithTag:1];
-    label.text = [descriptions objectAtIndex:indexPath.row];
-    label.numberOfLines = 0;
     
     // Display time for cells under "Instructions"
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        TimerStep *t = [descriptions objectAtIndex:indexPath.row];
+        
+        label = (UILabel *)[cell viewWithTag:1];
+        label.text = [t descriptionWithoutTime];
+        label.numberOfLines = 0;
         label = (UILabel *)[cell viewWithTag:2];
         
-        int numScheduledNotifs = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
-        
-        /// FIX: Out of bounds for updating table
-        NSString *text = [[currentMethod timeIntervals] objectAtIndex:(indexPath.row + numScheduledNotifs)];
+        NSString *text = [NSString stringWithFormat:@"%@", [t formattedTimeInSeconds]];
         label.text = text;
+    } else {
+        UILabel *label;
+        label = (UILabel *)[cell viewWithTag:1];
+        label.text = [descriptions objectAtIndex:indexPath.row];
+        label.numberOfLines = 0;
     }
     
     return cell;
@@ -446,7 +450,14 @@
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *descriptions = [self descriptionsForCurrentTab];
-    NSString *text = [descriptions objectAtIndex:indexPath.row];
+    NSString *text;
+    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        TimerStep *t = [descriptions objectAtIndex:indexPath.row];
+        text = [t descriptionWithoutTime];
+    } else {
+        text = [descriptions objectAtIndex:indexPath.row];
+    }
+
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
     
     CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(INFO_CELL_WIDTH, MAXFLOAT)];
