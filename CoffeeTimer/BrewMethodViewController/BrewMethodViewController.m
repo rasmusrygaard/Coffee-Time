@@ -280,7 +280,7 @@
             
         } else {*/
             AudioServicesPlayAlertSound(1000);
-            NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@ brew!", [currentMethod name]];
+            NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
                                                                 message:msg
                                                                delegate:self
