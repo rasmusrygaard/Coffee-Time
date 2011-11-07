@@ -158,7 +158,7 @@
     
     // Clear the timer
     [theTimer invalidate]; 
-    timer = nil;
+    theTimer = nil;
 }
 
 - (void)resetTimerLabel
@@ -235,16 +235,20 @@
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed /// get rid of parameter
 {
     NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    UILocalNotification *currentNotif = [notifications objectAtIndex:0];
-    
-    UILabel *label;
-    UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
-                                                                                       inSection:0]];
-    
-    NSTimeInterval timeLeft = [[currentNotif fireDate] timeIntervalSinceNow];
-    
-    label = (UILabel *)[topCell viewWithTag:2];
-    [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeLeft]];
+
+    // Only update time if we have not exhausted all notifications
+    if ([notifications count] > 0) {
+        UILocalNotification *currentNotif = [notifications objectAtIndex:0];
+        
+        UILabel *label;
+        UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
+                                                                                           inSection:0]];
+        
+        NSTimeInterval timeLeft = [[currentNotif fireDate] timeIntervalSinceNow];
+        
+        label = (UILabel *)[topCell viewWithTag:2];
+        [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeLeft]];
+    }
 }
 
 /* Function: - (BOOL)timerIsDone
@@ -271,26 +275,31 @@
     }
 }
 
+- (void)brewMethodFinished
+{
+    AudioServicesPlayAlertSound(1000);
+    NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
+                                                        message:msg
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+    methodBeingTimed = nil;
+    [self resetState];
+    [self clearTimer:timer];
+}
+
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
-    if ([self timerIsDone] && 
-        [UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+//    if ([self timerIsDone] && 
         
-        AudioServicesPlayAlertSound(1000);
-        NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
-                                                            message:msg
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-        [alertView release];
-        methodBeingTimed = nil;
-        [self resetState];
-        [self clearTimer:theTimer];
-    } else {
+        
+        
+//    } else {
         [self updateRemainingTime];
-    }
+//    }
 }
 
 /* - (void)setupLabelsForTimerStep:(TimerStep *)step

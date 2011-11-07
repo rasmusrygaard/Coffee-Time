@@ -43,6 +43,7 @@
 - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated;
 - (void)resetInstructions;
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
+- (void)brewMethodFinished;
 
 - (void)setAndStartTimerForMethod:(BrewMethod *)method;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
