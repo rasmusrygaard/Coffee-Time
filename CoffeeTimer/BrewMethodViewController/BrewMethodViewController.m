@@ -56,7 +56,7 @@
             
             [self initializeInfoTableView];
         }
-
+        
     }
     
     return self;
@@ -80,29 +80,36 @@
 - (IBAction)startTimerClicked:(id)sender
 {
     if (!timer) {
-//        TimerStep *step = [currentMethod firstTimerStep];
-//        remainingTimeAfterCurrentStep -= [step timeInSeconds];
-
         [self setAndStartTimerForMethod:currentMethod];
         
         methodBeingTimed = [currentMethod name];
-        }
+    }
 }
 
 /*
  * Function: - (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
  * Schedule local notifications for all timer steps for the current method.
+ * Since we want to see the notification text for the next instruction and not
+ * for the one that we are just finishing, we schedule notifications with the
+ * next element in the array for all steps. For the last one, the alert body
+ * should be a message notifying the user that their brew is done.
  */
+
 - (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
 {
     int totalTime = 0;
-    for (TimerStep *t in timerSteps) {
+    
+    for (int i = 0, count = [timerSteps count]; i < count; ++i) {
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
         
-        totalTime += [t timeInSeconds];
+        totalTime += [[timerSteps objectAtIndex:i] timeInSeconds];
         localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:totalTime];
         
-        localNotif.alertBody = [t descriptionWithoutTime];
+        if (i == (count - 1)) { // If we are scheduling the last notification, notify the user that they are done
+            localNotif.alertBody = [NSString stringWithFormat:@"It's Coffee Time! Your %@ is done.", [currentMethod name]];
+        } else {
+            localNotif.alertBody = [[timerSteps objectAtIndex:(i + 1)] descriptionWithoutTime];
+        }
         
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
         [localNotif release];
@@ -157,7 +164,7 @@
 - (void)resetTimerLabel
 {
     remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
-
+    
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
 }
 
@@ -195,7 +202,7 @@
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
     [infoTableView beginUpdates];
-
+    
     [instructions removeObjectAtIndex:0];
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
@@ -309,14 +316,14 @@
                            forMethod:currentMethod];
         
         tabDisplayed = tab;
-
+        
         [NSTimer scheduledTimerWithTimeInterval:SLIDER_DURATION
                                          target:self
                                        selector:@selector(updateTable:) 
                                        userInfo:nil
                                         repeats:NO];
     }
-
+    
 }
 
 /*
@@ -403,13 +410,13 @@
     int numRows;
     
     if([tabDisplayed isEqualToString:@"Instructions"]) {
-
-   //     if (timer) { // If the timer is running only show remaining steps
-     //       numRows = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
-       // } else {
-            numRows = [instructions count];
+        
+        //     if (timer) { // If the timer is running only show remaining steps
+        //       numRows = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+        // } else {
+        numRows = [instructions count];
         //}
-
+        
     } else {
         NSArray *steps = [currentMethod descriptionsForTab:tabDisplayed];
         numRows = [steps count];
@@ -440,7 +447,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     } else {
         text = [descriptions objectAtIndex:indexPath.row];
     }
-
+    
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
     
     CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(INFO_CELL_WIDTH, MAXFLOAT)];
@@ -451,7 +458,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     } else {
         height = textSize.height + CELL_INSET;
     }
-
+    
     return height;
     
 }
@@ -477,7 +484,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     [stopTimerButton addTarget:self 
                         action:@selector(stopTimerClicked:) 
               forControlEvents:UIControlEventTouchUpInside];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -501,7 +508,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             // If we're on a new method, forget about the old timer
             [timer invalidate];
             timer = nil;
-        
+            
             methodBeingTimed = nil;
             
             [self initializeDescriptions];
@@ -518,7 +525,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self initializeDescriptions];
         [self resetTimerLabel];   
     } 
-
+    
     [infoTableView reloadData];
 }
 
@@ -555,7 +562,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     [stbView release];
     
     [currentMethod release];
-
+    
     [timerLabel release];
     
     [startTimerButton release];

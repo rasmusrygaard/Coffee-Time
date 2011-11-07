@@ -19,11 +19,13 @@
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    bmlViewController = [[BrewMethodListViewController alloc] init];
+    if (!bmlViewController) {
+        bmlViewController = [[BrewMethodListViewController alloc] init];
+    }
 
-    NSArray *methods = [BrewMethod initBrewMethods];
-
-    [bmlViewController setBrewMethods:methods];
+    if (!bmlViewController.brewMethods) {
+        [bmlViewController setBrewMethods:[BrewMethod initBrewMethods]];
+    }
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bmlViewController];
     
@@ -39,8 +41,6 @@
     NSLog(@"removing");
     if (bmlViewController && [bmlViewController bmViewController]) {
         BrewMethodViewController *runningMethod = [bmlViewController bmViewController];
-    
-        NSLog(@"body: %@", [notification alertBody]);
         
         NSArray *scheduledNotifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
         if ([scheduledNotifs count] > 0) { // Don't remove cell if we've executed all notifications
