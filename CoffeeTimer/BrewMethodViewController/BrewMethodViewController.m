@@ -196,24 +196,27 @@
  * the top cell regardless of which tab is displayed.
  */
 
-- (void)removeTopInstructionsCellWithAnimation
+- (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
 {
-    NSLog(@"Removing top cell");
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
-    [infoTableView beginUpdates];
-    
-    [instructions removeObjectAtIndex:0];
-    
-    if ([tabDisplayed isEqualToString:@"Instructions"]) {
-        [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
-                             withRowAnimation:UITableViewRowAnimationTop];
+    if (animated) {
+        [infoTableView beginUpdates];
+        
+        [instructions removeObjectAtIndex:0];
+        
+        if ([tabDisplayed isEqualToString:@"Instructions"]) {
+            [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
+                                 withRowAnimation:UITableViewRowAnimationTop];
+        }
+        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        
+        [infoTableView endUpdates];
+    } else {
+        [instructions removeObjectAtIndex:0];
+        [infoTableView reloadData];
     }
-    
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    
-    [infoTableView endUpdates];
-    NSLog(@"instructions has %d elements", [instructions count]);
     
 }
 
@@ -244,6 +247,10 @@
     [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeLeft]];
 }
 
+/* Function: - (BOOL)timerIsDone
+ * Returns true if finishTime is at or after the current system time
+ */
+
 - (BOOL)timerIsDone
 {
     NSDate *currentTime = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -266,7 +273,9 @@
 
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
-    if ([self timerIsDone]) {
+    if ([self timerIsDone] && 
+        [UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        
         AudioServicesPlayAlertSound(1000);
         NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"

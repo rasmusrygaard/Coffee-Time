@@ -65,12 +65,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CoffeeTimer/BrewMethodViewController/BrewMethodViewController.m"
-         timestampString = "342388005.590207"
+         timestampString = "342395243.740604"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "405"
-         endingLineNumber = "405"
+         startingLineNumber = "414"
+         endingLineNumber = "414"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "CoffeeTimer/CoffeeTimerAppDelegate/CoffeeTimerAppDelegate.m"
+         timestampString = "342394645.749073"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "-application:didReceiveLocalNotification:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
