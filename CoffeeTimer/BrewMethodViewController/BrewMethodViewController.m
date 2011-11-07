@@ -191,19 +191,23 @@
 
 - (void)removeTopInstructionsCellWithAnimation
 {
+    NSLog(@"Removing top cell");
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
     [infoTableView beginUpdates];
 
     [instructions removeObjectAtIndex:0];
-
+    
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
                              withRowAnimation:UITableViewRowAnimationTop];
     }
+    
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     [infoTableView endUpdates];
+    NSLog(@"instructions has %d elements", [instructions count]);
+    
 }
 
 /* - (void)resetInstructions
@@ -246,7 +250,7 @@
 {
     NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeElapsed]];
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeElapsed]]; /// TODO: Add KVO for this value
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [self updateTimeOnTopCell:timeElapsed];
@@ -256,42 +260,18 @@
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     if ([self timerIsDone]) {
-        /*
+        AudioServicesPlayAlertSound(1000);
+        NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
+                                                            message:msg
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+        methodBeingTimed = nil;
+        [self resetState];
         [self clearTimer:theTimer];
-        
-        TimerStep *nextStep = [currentMethod nextTimerStep];
-        
-        if (nextStep) { // If there is a next step
-            
-            [self setupLabelsForTimerStep:nextStep];
-            [self setAndStartTimerForStep:nextStep];
-            
-            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-            localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
-            localNotif.alertBody = [nextStep descriptionWithoutTime];
-            
-            [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-            
-            
-            // Delete first cell
-            [self removeTopInstructionsCellWithAnimation];
-            
-        } else {*/
-            AudioServicesPlayAlertSound(1000);
-            NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
-                                                                message:msg
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-            [alertView release];
-            methodBeingTimed = nil;
-            [self resetState];
-        [self clearTimer:theTimer];
-//            [self resetDisplay];
-     /*   }*/
-        
     } else {
         [self updateRemainingTime];
     }
@@ -369,12 +349,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Get the array of descriptions
     NSArray *descriptions = [self descriptionsForCurrentTab];
     
     UITableViewCell *cell;
     
-    if ([tabDisplayed isEqualToString:@"Instructions"]) {
+    if ([tabDisplayed isEqualToString:@"Instructions"]) { /// TODO: Consider moving this into separate function
         cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewCell"];
         
         if (!cell) {
@@ -399,7 +378,6 @@
     
     UILabel *label;
     
-    // Display time for cells under "Instructions"
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         TimerStep *t = [descriptions objectAtIndex:indexPath.row];
         
@@ -422,21 +400,22 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numRows;
+    int numRows;
     
     if([tabDisplayed isEqualToString:@"Instructions"]) {
 
-        if (timer) { // If the timer is running only show remaining steps
-            numRows = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
-        } else {
+   //     if (timer) { // If the timer is running only show remaining steps
+     //       numRows = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+       // } else {
             numRows = [instructions count];
-        }
+        //}
 
     } else {
         NSArray *steps = [currentMethod descriptionsForTab:tabDisplayed];
         numRows = [steps count];
+        NSLog(@"counting");
     }
-    
+    NSLog(@"numRows: %d", numRows);
     return numRows;
 }
 
@@ -451,7 +430,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *descriptions = [self descriptionsForCurrentTab];
     NSString *text;
+    
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
+        if (indexPath.row >= [descriptions count])
+            return MIN_CELL_HEIGHT; /// Kind of a hack
+        
         TimerStep *t = [descriptions objectAtIndex:indexPath.row];
         text = [t descriptionWithoutTime];
     } else {
@@ -501,14 +484,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewWillAppear:animated];
     
-    // Create a rectangle for the sliderTabBarView
-    CGRect rect = CGRectMake(SLIDER_TAB_BAR_X, 
-                             SLIDER_TAB_BAR_Y, 
-                             SLIDER_TAB_BAR_W, 
-                             SLIDER_TAB_BAR_H);
-    stbView = [[SliderTabBarView alloc] initWithFrame:rect];
-    [stbView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:stbView];
+    if (!stbView) {
+        CGRect rect = CGRectMake(SLIDER_TAB_BAR_X, 
+                                 SLIDER_TAB_BAR_Y, 
+                                 SLIDER_TAB_BAR_W, 
+                                 SLIDER_TAB_BAR_H);
+        stbView = [[SliderTabBarView alloc] initWithFrame:rect];
+        [stbView setBackgroundColor:[UIColor clearColor]];
+        [self.view addSubview:stbView];
+        
+        [self setTabDisplayed:@"Instructions"];
+    }
     
     if (timer) {
         if(![self.navigationItem.title isEqualToString:methodBeingTimed]) {
@@ -520,12 +506,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             
             [self initializeDescriptions];
             [self resetTimerLabel];
+            
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
+            
+            // Always display the Instructions tab for new methods
+            [self setTabDisplayed:@"Instructions"];
+            [stbView updateDisplayForTab:@"Instructions"
+                               forMethod:currentMethod];
         }
     } else {
         [self initializeDescriptions];
         [self resetTimerLabel];   
     } 
-     [self setTabDisplayed:@"Instructions"];
+
     [infoTableView reloadData];
 }
 

@@ -36,9 +36,12 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
+    NSLog(@"removing");
     if (bmlViewController && [bmlViewController bmViewController]) {
         BrewMethodViewController *runningMethod = [bmlViewController bmViewController];
     
+        NSLog(@"body: %@", [notification alertBody]);
+        
         NSArray *scheduledNotifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
         if ([scheduledNotifs count] > 0) { // Don't remove cell if we've executed all notifications
             [runningMethod removeTopInstructionsCellWithAnimation];

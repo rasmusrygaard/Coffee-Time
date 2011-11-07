@@ -139,7 +139,6 @@
     cell = tvlCell;
     self.tvlCell = nil;
     
-    // Set background
     UIImageView *image = [self getImageForCellAtIndexPath:indexPath];
     
     [cell setContentMode:UIViewContentModeScaleToFill];
