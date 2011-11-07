@@ -65,12 +65,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "CoffeeTimer/BrewMethodViewController/BrewMethodViewController.m"
-         timestampString = "342385788.416136"
+         timestampString = "342388005.590207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "404"
-         endingLineNumber = "404"
-         landmarkName = "-tableView:numberOfRowsInSection:"
+         startingLineNumber = "405"
+         endingLineNumber = "405"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

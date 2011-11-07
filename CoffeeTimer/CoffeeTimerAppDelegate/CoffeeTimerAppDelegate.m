@@ -19,13 +19,10 @@
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    if (!bmlViewController) {
-        bmlViewController = [[BrewMethodListViewController alloc] init];
-    }
-
-    if (!bmlViewController.brewMethods) {
-        [bmlViewController setBrewMethods:[BrewMethod initBrewMethods]];
-    }
+    bmlViewController = [[BrewMethodListViewController alloc] init];
+    
+    [bmlViewController setBrewMethods:[BrewMethod initBrewMethods]];
+    
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bmlViewController];
     
