@@ -1,1 +1,7 @@
-*.xcbkptlist\n
+<<<<<<< HEAD
+*.png
+*.xcodeproj
+=======
+*.xcbkptlist
+
+>>>>>>> localNotifications
