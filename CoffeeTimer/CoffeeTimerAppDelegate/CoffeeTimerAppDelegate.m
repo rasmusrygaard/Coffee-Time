@@ -37,23 +37,14 @@
 {
     BrewMethodViewController *runningMethod = [bmlViewController bmViewController];
     
-    if (application.applicationState == UIApplicationStateInactive ) {
-        //The application received the notification from an inactive state, i.e. the user tapped the "View" button for the alert.
-        //If the visible view controller in your view controller stack isn't the one you need then show the right one.
-        [runningMethod removeTopInstructionsCellWithAnimation:NO];
-    }
-    
-    if(application.applicationState == UIApplicationStateActive ) { 
-//        if (bmlViewController && [bmlViewController bmViewController]) {
+    BOOL animated = (application.applicationState == UIApplicationStateActive);
             
-            NSArray *scheduledNotifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
-
-            if ([scheduledNotifs count] > 0) { // Don't remove cell if we've executed all notifications
-                [runningMethod removeTopInstructionsCellWithAnimation:YES];
-            } else { // Final method
-                [runningMethod brewMethodFinished];
-            }
-//        }
+    NSArray *scheduledNotifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    
+    if ([scheduledNotifs count] > 0) { // Don't remove cell if we've executed all notifications
+        [runningMethod removeTopInstructionsCellWithAnimation:animated];
+    } else { // Final method
+        [runningMethod brewMethodFinished];
     }
 }
 

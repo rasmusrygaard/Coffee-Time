@@ -64,13 +64,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "CoffeeTimer/BrewMethodViewController/BrewMethodViewController.m"
-         timestampString = "342395243.740604"
+         filePath = "CoffeeTimer/CoffeeTimerAppDelegate/CoffeeTimerAppDelegate.m"
+         timestampString = "342403131.770377"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "414"
-         endingLineNumber = "414"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
+         landmarkName = "-application:didReceiveLocalNotification:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -78,13 +78,27 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "CoffeeTimer/CoffeeTimerAppDelegate/CoffeeTimerAppDelegate.m"
-         timestampString = "342394645.749073"
+         filePath = "CoffeeTimer/BrewMethodViewController/BrewMethodViewController.m"
+         timestampString = "342401935.368394"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "-application:didReceiveLocalNotification:"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-startTimerClicked:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "CoffeeTimer/BrewMethodViewController/BrewMethodViewController.m"
+         timestampString = "342403131.770377"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "185"
+         endingLineNumber = "185"
+         landmarkName = "-stopTimerClicked:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

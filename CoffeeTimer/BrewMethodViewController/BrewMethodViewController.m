@@ -104,6 +104,7 @@
         
         totalTime += [[timerSteps objectAtIndex:i] timeInSeconds];
         localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:totalTime];
+//        localNotif.
         
         if (i == (count - 1)) { // If we are scheduling the last notification, notify the user that they are done
             localNotif.alertBody = [NSString stringWithFormat:@"It's Coffee Time! Your %@ is done.", [currentMethod name]];
@@ -152,13 +153,14 @@
 }
 
 
-- (void)clearTimer:(NSTimer *)theTimer
+- (void)clearTimer
 {
     [finishTime release];
+    finishTime = nil;
     
     // Clear the timer
-    [theTimer invalidate]; 
-    theTimer = nil;
+    [timer invalidate]; 
+    timer = nil;
 }
 
 - (void)resetTimerLabel
@@ -184,7 +186,7 @@
 - (IBAction)stopTimerClicked:(id)sender
 {
     if (timer) { // If there is a running timer
-        [self clearTimer:timer];
+        [self clearTimer];
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         [self resetState];
     }
@@ -288,18 +290,12 @@
     [alertView release];
     methodBeingTimed = nil;
     [self resetState];
-    [self clearTimer:timer];
+    [self clearTimer];
 }
 
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
-//    if ([self timerIsDone] && 
-        
-        
-        
-//    } else {
-        [self updateRemainingTime];
-//    }
+    [self updateRemainingTime];
 }
 
 /* - (void)setupLabelsForTimerStep:(TimerStep *)step
