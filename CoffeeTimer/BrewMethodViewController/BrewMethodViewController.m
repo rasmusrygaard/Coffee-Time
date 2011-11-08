@@ -15,7 +15,7 @@
 
 @implementation BrewMethodViewController
 
-@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed;
+@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed, secondsLeft;
 
 /*
  * Function: - (void)initializeInfoTableView
@@ -108,7 +108,8 @@
         
         NSString *body;
         
-        if (i == (count - 1)) { // If we are scheduling the last notification, notify the user that they are done
+        // If we are scheduling the last notification, notify the user that they are done
+        if (i == (count - 1)) { 
             body = [NSString stringWithFormat:@"It's Coffee Time! Your %@ is done.", [currentMethod name]];
         } else {
             body = [NSString stringWithFormat:@"%@: %@",
@@ -250,10 +251,10 @@
         UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
                                                                                            inSection:0]];
         
-        NSTimeInterval timeLeft = [[currentNotif fireDate] timeIntervalSinceNow];
+        NSTimeInterval remainingTime = [[currentNotif fireDate] timeIntervalSinceNow];
         
         label = (UILabel *)[topCell viewWithTag:2];
-        [label setText:[TimerStep formattedTimeInSecondsForInterval:(int)timeLeft]];
+        [label setText:[TimerStep formattedTimeInSecondsForInterval:remainingTime]];
     }
 }
 
@@ -272,12 +273,13 @@
 
 - (void)updateRemainingTime
 {
-    NSTimeInterval timeElapsed = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    self.secondsLeft = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:timeElapsed]]; /// TODO: Add KVO for this value
+    
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]]; /// TODO: Add KVO for this value
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
-        [self updateTimeOnTopCell:timeElapsed];
+        [self updateTimeOnTopCell:secondsLeft];
     }
 }
 

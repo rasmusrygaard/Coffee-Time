@@ -30,6 +30,7 @@
     
     NSDate *finishTime;
     int remainingTimeAfterCurrentStep;
+    int secondsLeft;
     
     SliderTabBarView *stbView;
     NSString *tabDisplayed;
@@ -56,5 +57,7 @@
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
 
 @property (nonatomic, readonly) NSString *methodBeingTimed;
+
+@property (nonatomic, assign) int secondsLeft;
 
 @end

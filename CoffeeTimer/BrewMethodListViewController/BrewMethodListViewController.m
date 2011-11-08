@@ -12,7 +12,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell, bmViewController;
+@synthesize brewMethods, tvlCell, bmViewController, activeCell;
 
 - (id)init 
 {
@@ -176,6 +176,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     [self.navigationController pushViewController:bmViewController 
                                          animated:YES];
+    
+    self.activeCell = indexPath;
+    
+    [bmViewController addObserver:self 
+                       forKeyPath:@"secondsLeft" 
+                          options:NSKeyValueObservingOptionNew
+                          context:nil];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -209,6 +216,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)viewWillAppear:(BOOL)animated
 {
     [[self tableView] reloadData];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"secondsLeft"]) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:activeCell];
+        
+        UILabel *label = (UILabel *)[cell viewWithTag:2];
+        
+        NSNumber *ch = [change objectForKey:NSKeyValueChangeNewKey];
+        int ti = [ch integerValue];
+
+        NSString *text = [TimerStep formattedTimeInSecondsForInterval:ti];
+        label.text = text;
+    }
 }
 
 - (void)viewDidUnload

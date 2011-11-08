@@ -13,10 +13,13 @@
     NSArray *brewMethods;
     BrewMethodViewController *bmViewController;
     UITableViewCell *tvlCell;
+    
+    NSIndexPath *activeCell;
 }
 
 @property (nonatomic, retain) NSArray *brewMethods;
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;
+@property (nonatomic, retain) NSIndexPath *activeCell;
 
 @end
