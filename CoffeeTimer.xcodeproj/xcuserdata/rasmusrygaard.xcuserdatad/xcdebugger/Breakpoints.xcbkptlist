@@ -69,7 +69,13 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "47"
+<<<<<<< HEAD
          endingLineNumber = "47">
+=======
+         endingLineNumber = "47"
+         landmarkName = "-application:didReceiveLocalNotification:"
+         landmarkType = "5">
+>>>>>>> localNotifications
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -96,7 +102,11 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "190"
          endingLineNumber = "190"
+<<<<<<< HEAD
          landmarkName = "-resetInstructions"
+=======
+         landmarkName = "-stopTimerClicked:"
+>>>>>>> localNotifications
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

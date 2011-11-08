@@ -40,11 +40,12 @@
 
 - (NSArray *)descriptionsForCurrentTab;
 
-- (void)removeTopInstructionsCellWithAnimation;
+- (void)removeTopInstructionsCellWithAnimation:(BOOL)animated;
 - (void)resetInstructions;
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
+- (void)brewMethodFinished;
 
-- (void)setAndStartTimerForStep:(TimerStep *)step;
+- (void)setAndStartTimerForMethod:(BrewMethod *)method;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
 
 @property (nonatomic, retain) BrewMethod *currentMethod;

@@ -205,6 +205,7 @@
 
 + (NSArray *)initBrewMethods
 {
+    BrewMethod *test = [self initTestMethod];
     
     BrewMethod *aeropress = [self initAeropressMethod];
 
@@ -214,7 +215,7 @@
     
     BrewMethod *v60 = [self initV60Method];
     
-    NSArray *brewMethods = [NSArray arrayWithObjects:aeropress, chemex, frenchPress, v60, nil];
+    NSArray *brewMethods = [NSArray arrayWithObjects:test, aeropress, chemex, frenchPress, v60, nil];
     
     return brewMethods;
 }
@@ -276,7 +277,8 @@
     } else if ([tabName isEqualToString:@"Instructions"]) {
         copyArr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
         for (TimerStep *t in timerSteps) {
-            [copyArr addObject:[t descriptionWithoutTime]];
+///            [copyArr addObject:[t descriptionWithoutTime]];
+            [copyArr addObject:t];
         }
     }
 
