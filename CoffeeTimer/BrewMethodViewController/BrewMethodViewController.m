@@ -104,13 +104,19 @@
         
         totalTime += [[timerSteps objectAtIndex:i] timeInSeconds];
         localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:totalTime];
-//        localNotif.
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        
+        NSString *body;
         
         if (i == (count - 1)) { // If we are scheduling the last notification, notify the user that they are done
-            localNotif.alertBody = [NSString stringWithFormat:@"It's Coffee Time! Your %@ is done.", [currentMethod name]];
+            body = [NSString stringWithFormat:@"It's Coffee Time! Your %@ is done.", [currentMethod name]];
         } else {
-            localNotif.alertBody = [[timerSteps objectAtIndex:(i + 1)] descriptionWithoutTime];
+            body = [NSString stringWithFormat:@"%@: %@",
+                    [currentMethod name],
+                    [[timerSteps objectAtIndex:(i + 1)] descriptionWithoutTime]];
         }
+        
+        localNotif.alertBody = body;
         
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
         [localNotif release];
@@ -130,7 +136,6 @@
     
     [self scheduleNotificationsForSteps:[method timerSteps]];
     
-    // Start timer
     timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_UPDATE_INTERVAL 
                                              target:self
                                            selector:@selector(checkTimerStatus:) 
@@ -158,7 +163,6 @@
     [finishTime release];
     finishTime = nil;
     
-    // Clear the timer
     [timer invalidate]; 
     timer = nil;
 }
@@ -424,19 +428,16 @@
     int numRows;
     
     if([tabDisplayed isEqualToString:@"Instructions"]) {
-        
-        //     if (timer) { // If the timer is running only show remaining steps
-        //       numRows = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
-        // } else {
+
         numRows = [instructions count];
-        //}
         
     } else {
+        
         NSArray *steps = [currentMethod descriptionsForTab:tabDisplayed];
         numRows = [steps count];
-        NSLog(@"counting");
+
     }
-    NSLog(@"numRows: %d", numRows);
+
     return numRows;
 }
 
