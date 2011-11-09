@@ -15,7 +15,7 @@
 
 @implementation BrewMethodViewController
 
-@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed, secondsLeft;
+@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed, secondsLeft, infoTableView, autoStartMethod;
 
 /*
  * Function: - (void)initializeInfoTableView
@@ -27,13 +27,13 @@
 {
     
     // Set table style
-    infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    infoTableView.backgroundColor = [UIColor clearColor];
-    infoTableView.opaque = NO;
+    self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.infoTableView.backgroundColor = [UIColor clearColor];
+    self.infoTableView.opaque = NO;
     
     // Set no bounce
-    infoTableView.bounces = NO;
-    [self.view addSubview:infoTableView];
+    self.infoTableView.bounces = NO;
+    [self.view addSubview:self.infoTableView];
 }
 
 - (id)init
@@ -43,16 +43,16 @@
         
         [[[self navigationItem] backBarButtonItem] setTitle:@"Methods"];
         
-        if (!infoTableView) {
+        if (!self.infoTableView) {
             CGRect infoRect = CGRectMake(INFO_WINDOW_X, 
                                          INFO_WINDOW_Y,
                                          INFO_WINDOW_W, 
                                          INFO_WINDOW_H);
-            infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
+            self.infoTableView = [[UITableView alloc] initWithFrame:infoRect style:UITableViewStylePlain];
             
             // Set up delegate and datasource roles
-            infoTableView.delegate = self;
-            infoTableView.dataSource = self;
+            self.infoTableView.delegate = self;
+            self.infoTableView.dataSource = self;
             
             [self initializeInfoTableView];
         }
@@ -88,6 +88,7 @@
 
 - (void)startStarredMethod
 {
+    [self.infoTableView reloadData];
     [self startTimerClicked:nil];
 }
 
@@ -213,21 +214,21 @@
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     
     if (animated) {
-        [infoTableView beginUpdates];
+        [self.infoTableView beginUpdates];
         
         [instructions removeObjectAtIndex:0];
         
         if ([tabDisplayed isEqualToString:@"Instructions"]) {
-            [infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
+            [self.infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
                                  withRowAnimation:UITableViewRowAnimationTop];
         }
         
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
-        [infoTableView endUpdates];
+        [self.infoTableView endUpdates];
     } else {
         [instructions removeObjectAtIndex:0];
-        [infoTableView reloadData];
+        [self.infoTableView reloadData];
     }
     
 }
@@ -241,7 +242,7 @@
 {
     NSArray *instArr = [currentMethod descriptionsForTab:@"Instructions"];
     [self setInstructions:[NSMutableArray arrayWithArray:instArr]];
-    [infoTableView reloadData];
+    [self.infoTableView reloadData];
 }
 
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed /// get rid of parameter
@@ -253,7 +254,7 @@
         UILocalNotification *currentNotif = [notifications objectAtIndex:0];
         
         UILabel *label;
-        UITableViewCell *topCell = [infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
+        UITableViewCell *topCell = [self.infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
                                                                                            inSection:0]];
         
         NSTimeInterval remainingTime = [[currentNotif fireDate] timeIntervalSinceNow];
@@ -358,7 +359,7 @@
 
 - (void)updateTable:(NSTimer *)theTimer
 {
-    [infoTableView reloadData];
+    [self.infoTableView reloadData];
 }
 
 #pragma mark - TableView functionality
@@ -386,7 +387,7 @@
     UITableViewCell *cell;
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) { /// TODO: Consider moving this into separate function
-        cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewCell"];
+        cell = [self.infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewCell"];
         
         if (!cell) {
             [[NSBundle mainBundle] loadNibNamed:@"BrewMethodTableViewCell" owner:self options:nil];
@@ -394,7 +395,7 @@
             [self setTvCell:nil];
         }
     } else {
-        cell = [infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewSimpleCell"];
+        cell = [self.infoTableView dequeueReusableCellWithIdentifier:@"BrewMethodTableViewSimpleCell"];
         
         if (!cell) {
             [[NSBundle mainBundle] loadNibNamed:@"BrewMethodTableViewSimpleCell" owner:self options:nil];
@@ -525,7 +526,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self setTabDisplayed:@"Instructions"];
     }
     
-    if (timer) {
+    if (timer && !self.autoStartMethod) {
         if(![self.navigationItem.title isEqualToString:methodBeingTimed]) {
             // If we're on a new method, forget about the old timer
             [timer invalidate];
@@ -548,7 +549,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self resetTimerLabel];   
     } 
     
-    [infoTableView reloadData];
+    [self.infoTableView reloadData];
+
+    // Reset state
+    self.autoStartMethod = false;
 }
 
 -(void)viewWillDisappear:(BOOL)animated

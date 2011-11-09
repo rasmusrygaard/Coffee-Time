@@ -13,27 +13,35 @@
 @interface BrewMethodViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     BrewMethod *currentMethod;
+    
+    /* Model data references */
     NSMutableArray *instructions;
     NSArray *preparation;
     NSArray *equipment;
     
+    /* Labels */
     IBOutlet UILabel *timerLabel;
     
+    /* Buttons */
     IBOutlet UIButton *startTimerButton;
     IBOutlet UIButton *stopTimerButton;
     
+    /* TableView */
     IBOutlet UITableView *infoTableView;
     UITableViewCell *tvCell;
     
+    /* Timer Functionality */
     NSTimer *timer;
     NSString *methodBeingTimed;
-    
     NSDate *finishTime;
     int remainingTimeAfterCurrentStep;
     int secondsLeft;
     
+    /* Slider tab bar */
     SliderTabBarView *stbView;
     NSString *tabDisplayed;
+    
+    BOOL autoStartMethod;
 }
 
 - (IBAction)startTimerClicked:(id)sender;
@@ -56,10 +64,14 @@
 @property (nonatomic, retain) NSArray *preparation;
 @property (nonatomic, retain) NSArray *equipment;
 @property (nonatomic, assign) NSString *tabDisplayed;
+
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
+@property (nonatomic, retain) UITableView *infoTableView;
 
 @property (nonatomic, readonly) NSString *methodBeingTimed;
 
 @property (nonatomic, assign) int secondsLeft;
+
+@property (nonatomic, assign) BOOL autoStartMethod;
 
 @end

@@ -75,7 +75,7 @@
         [bmViewController addObserver:self 
                            forKeyPath:@"secondsLeft" 
                               options:NSKeyValueObservingOptionNew
-                              context:fbrnil];
+                              context:nil];
     }
     
     [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
@@ -87,7 +87,8 @@
                                          animated:YES];
     
     self.activeCell = [NSIndexPath indexPathForRow:starredMethodIndex inSection:0];
-    
+    self.bmViewController.autoStartMethod = true;
+
     [self.bmViewController startStarredMethod];
 }
 
