@@ -20,6 +20,14 @@
 
 -(IBAction)starredMethod:(id)sender;
 
+/* -(BOOL)hasStarredMethod;
+ * Returns true if the user has selected some method as a favorite
+ */
+
+-(BOOL)hasStarredMethod;
+
+- (void)launchWithStarredMethod;
+
 @property (nonatomic, retain) NSArray *brewMethods;
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;

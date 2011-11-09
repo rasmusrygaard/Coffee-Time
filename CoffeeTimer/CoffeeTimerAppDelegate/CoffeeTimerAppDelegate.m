@@ -29,6 +29,10 @@
 	[[self window] setRootViewController:navController];
     [navController release];
     
+    if ([bmlViewController hasStarredMethod]) {
+        [bmlViewController launchWithStarredMethod];
+    }
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

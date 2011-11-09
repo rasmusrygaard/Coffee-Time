@@ -20,7 +20,7 @@
         [super initWithStyle:UITableViewStyleGrouped];
         [[self navigationItem] setTitle:@"Brew Methods"];
         
-        starredMethodIndex = -1;
+        starredMethodIndex = 1;
     }
     
     return self;
@@ -33,15 +33,16 @@
     return self;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView 
- numberOfRowsInSection:(NSInteger)section
-{
-    return [self.brewMethods count];
-}
+/* Function: -(IBAction)starredMethod:(id)sender
+ * Called in response to a tap on the star button in the list. Get the indexPath
+ * for the cell that was tapped and set that method as starred. If that method
+ * was already starred, un-star it.
+ */
 
 -(IBAction)starredMethod:(id)sender
 {
     NSIndexPath *path = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    
     if (path.row == starredMethodIndex) {
         starredMethodIndex = -1;
     } else {
@@ -50,6 +51,47 @@
 
     [self.tableView reloadData];
 }
+
+-(BOOL)hasStarredMethod;
+{
+    return (starredMethodIndex != -1);
+}
+
+/* Function: - (void)launchWithStarredMethod
+ * Used for launching a method on startup. Push a BrewMethodViewController with the
+ * starred method and have that method start timing immediately.
+ */
+
+- (void)launchWithStarredMethod
+{
+    NSLog(@"Hey");
+    if (!bmViewController) {
+        bmViewController = [[BrewMethodViewController alloc] init];
+    }
+    
+    if (!bmViewController) {
+        self.bmViewController = [[BrewMethodViewController alloc] init];
+        
+        [bmViewController addObserver:self 
+                           forKeyPath:@"secondsLeft" 
+                              options:NSKeyValueObservingOptionNew
+                              context:fbrnil];
+    }
+    
+    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
+    
+    NSString *methodToDisplay = [[bmViewController currentMethod] name];
+    [[bmViewController navigationItem] setTitle:methodToDisplay];
+    
+    [self.navigationController pushViewController:bmViewController 
+                                         animated:YES];
+    
+    self.activeCell = [NSIndexPath indexPathForRow:starredMethodIndex inSection:0];
+    
+    [self.bmViewController startStarredMethod];
+}
+
+#pragma mark TableView
 
 /* Function: - (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
  * Do any custom styling of a cell in the information table
@@ -169,7 +211,6 @@
     [self styleLabelsForCell:cell 
                    forMethod:method];
     
-    NSLog(@"indexPath: %@", indexPath);
     if (indexPath.row == starredMethodIndex) {
         UILabel *label = (UILabel *)[cell viewWithTag:1];
         label.text = [NSString stringWithFormat:@"Starred: %@", [method name]];
@@ -211,6 +252,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return LIST_CELL_HEIGHT;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section
+{
+    return [self.brewMethods count];
 }
 
 - (void)didReceiveMemoryWarning

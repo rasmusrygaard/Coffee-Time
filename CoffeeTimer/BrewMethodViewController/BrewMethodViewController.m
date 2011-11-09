@@ -86,6 +86,11 @@
     }
 }
 
+- (void)startStarredMethod
+{
+    [self startTimerClicked:nil];
+}
+
 /*
  * Function: - (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
  * Schedule local notifications for all timer steps for the current method.

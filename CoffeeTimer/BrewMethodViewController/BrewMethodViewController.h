@@ -49,6 +49,8 @@
 - (void)setAndStartTimerForMethod:(BrewMethod *)method;
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
 
+- (void)startStarredMethod;
+
 @property (nonatomic, retain) BrewMethod *currentMethod;
 @property (nonatomic, retain) NSMutableArray *instructions;
 @property (nonatomic, retain) NSArray *preparation;
