@@ -15,7 +15,10 @@
     UITableViewCell *tvlCell;
     
     NSIndexPath *activeCell;
+    int starredMethodIndex;
 }
+
+-(IBAction)starredMethod:(id)sender;
 
 @property (nonatomic, retain) NSArray *brewMethods;
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;

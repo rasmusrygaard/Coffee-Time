@@ -18,7 +18,9 @@
 {
     if (self = [super init]) {
         [super initWithStyle:UITableViewStyleGrouped];
-        [[self navigationItem] setTitle:@"Brew Methods"];   
+        [[self navigationItem] setTitle:@"Brew Methods"];
+        
+        starredMethodIndex = -1;
     }
     
     return self;
@@ -35,6 +37,18 @@
  numberOfRowsInSection:(NSInteger)section
 {
     return [self.brewMethods count];
+}
+
+-(IBAction)starredMethod:(id)sender
+{
+    NSIndexPath *path = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    if (path.row == starredMethodIndex) {
+        starredMethodIndex = -1;
+    } else {
+        starredMethodIndex = path.row;
+    }
+
+    [self.tableView reloadData];
 }
 
 /* Function: - (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
@@ -146,12 +160,21 @@
     
     [cell setBackgroundColor:[UIColor clearColor]];
     
+    
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
     
     [self styleLabelsForCell:cell 
                    forMethod:method];
+    
+    NSLog(@"indexPath: %@", indexPath);
+    if (indexPath.row == starredMethodIndex) {
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        label.text = [NSString stringWithFormat:@"Starred: %@", [method name]];
+        label.numberOfLines = 0;
+    }
 
     return cell;
 }
@@ -167,6 +190,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!bmViewController) {
         self.bmViewController = [[BrewMethodViewController alloc] init];
+        
+        [bmViewController addObserver:self 
+                           forKeyPath:@"secondsLeft" 
+                              options:NSKeyValueObservingOptionNew
+                              context:nil];
     }
 
     [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
@@ -178,11 +206,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                          animated:YES];
     
     self.activeCell = indexPath;
-    
-    [bmViewController addObserver:self 
-                       forKeyPath:@"secondsLeft" 
-                          options:NSKeyValueObservingOptionNew
-                          context:nil];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -210,6 +233,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
     self.view.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = background;
+    
     [background release]; 
 }
 
