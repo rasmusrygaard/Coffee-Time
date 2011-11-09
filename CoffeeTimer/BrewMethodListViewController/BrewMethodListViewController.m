@@ -63,12 +63,7 @@
  */
 
 - (void)launchWithStarredMethod
-{
-    NSLog(@"Hey");
-    if (!bmViewController) {
-        bmViewController = [[BrewMethodViewController alloc] init];
-    }
-    
+{    
     if (!bmViewController) {
         self.bmViewController = [[BrewMethodViewController alloc] init];
         

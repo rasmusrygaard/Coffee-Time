@@ -88,6 +88,7 @@
 
 - (void)startStarredMethod
 {
+    [[UIApplication sharedApplication] cancelAllLocalNotifications]; /// Kind of a hack
     [self.infoTableView reloadData];
     [self startTimerClicked:nil];
 }
@@ -499,6 +500,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     
     [startTimerButton addTarget:self 
                          action:@selector(startTimerClicked:)
@@ -526,6 +528,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self setTabDisplayed:@"Instructions"];
     }
     
+    // If there is a timer running and we are not launching to auto start a method
     if (timer && !self.autoStartMethod) {
         if(![self.navigationItem.title isEqualToString:methodBeingTimed]) {
             // If we're on a new method, forget about the old timer
