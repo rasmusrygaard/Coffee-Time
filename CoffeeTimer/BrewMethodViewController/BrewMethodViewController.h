@@ -58,6 +58,7 @@
 - (void)setupLabelsForTimerStep:(TimerStep *)step;
 
 - (void)startStarredMethod;
+- (BOOL)timerIsRunning;
 
 @property (nonatomic, retain) BrewMethod *currentMethod;
 @property (nonatomic, retain) NSMutableArray *instructions;

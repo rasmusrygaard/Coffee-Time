@@ -25,8 +25,11 @@
  */
 
 -(BOOL)hasStarredMethod;
+-(BOOL)timerIsRunning;
 
+- (void)runStarredMethod;
 - (void)launchWithStarredMethod;
+
 
 @property (nonatomic, retain) NSArray *brewMethods;
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;

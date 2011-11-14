@@ -57,6 +57,12 @@
     return (starredMethodIndex != -1);
 }
 
+-(BOOL)timerIsRunning
+{
+    return (self.bmViewController != nil) &&
+            [self.bmViewController timerIsRunning];
+}
+
 /* Function: - (void)launchWithStarredMethod
  * Used for launching a method on startup. Push a BrewMethodViewController with the
  * starred method and have that method start timing immediately.
@@ -79,11 +85,16 @@
     [[bmViewController navigationItem] setTitle:methodToDisplay];
     
     [self.navigationController pushViewController:bmViewController 
-                                         animated:YES];
-    
+                                         animated:YES];    
+}
+
+- (void)runStarredMethod
+{
+    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
+
     self.activeCell = [NSIndexPath indexPathForRow:starredMethodIndex inSection:0];
     self.bmViewController.autoStartMethod = true;
-
+    
     [self.bmViewController startStarredMethod];
 }
 

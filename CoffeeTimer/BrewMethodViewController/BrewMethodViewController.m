@@ -93,6 +93,12 @@
     [self startTimerClicked:nil];
 }
 
+- (BOOL)timerIsRunning
+{
+    NSLog(@"timer %@", timer);
+    return (timer != nil);
+}
+
 /*
  * Function: - (void)scheduleNotificationsForSteps:(NSArray *)timerSteps
  * Schedule local notifications for all timer steps for the current method.
@@ -217,18 +223,19 @@
     if (animated) {
         [self.infoTableView beginUpdates];
         
-        [instructions removeObjectAtIndex:0];
+        [self.instructions removeObjectAtIndex:0];
         
         if ([tabDisplayed isEqualToString:@"Instructions"]) {
             [self.infoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path]
-                                 withRowAnimation:UITableViewRowAnimationTop];
+                                      withRowAnimation:UITableViewRowAnimationTop];
         }
         
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self.infoTableView endUpdates];
+        NSLog(@"%@", instructions);
     } else {
-        [instructions removeObjectAtIndex:0];
+        [self.instructions removeObjectAtIndex:0];
         [self.infoTableView reloadData];
     }
     
@@ -249,14 +256,14 @@
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed /// get rid of parameter
 {
     NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-
+    
     // Only update time if we have not exhausted all notifications
     if ([notifications count] > 0) {
         UILocalNotification *currentNotif = [notifications objectAtIndex:0];
         
         UILabel *label;
         UITableViewCell *topCell = [self.infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
-                                                                                           inSection:0]];
+                                                                                                inSection:0]];
         
         NSTimeInterval remainingTime = [[currentNotif fireDate] timeIntervalSinceNow];
         
@@ -283,7 +290,7 @@
     self.secondsLeft = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]]; /// TODO: Add KVO for this value
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [self updateTimeOnTopCell:secondsLeft];
@@ -293,7 +300,7 @@
 - (void)brewMethodFinished
 {
     AudioServicesPlayAlertSound(1000);
-    NSString *msg = [NSString stringWithFormat:@"Time for a delicious cup of %@!", [currentMethod name]];
+    NSString *msg = [NSString stringWithFormat:@"Enjoy a delicious cup of %@ brew!", [currentMethod name]];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
                                                         message:msg
                                                        delegate:self
@@ -437,14 +444,14 @@
     int numRows;
     
     if([tabDisplayed isEqualToString:@"Instructions"]) {
-
+        
         numRows = [instructions count];
         
     } else {
         
         NSArray *steps = [currentMethod descriptionsForTab:tabDisplayed];
         numRows = [steps count];
-
+        
     }
 
     return numRows;
@@ -553,7 +560,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     } 
     
     [self.infoTableView reloadData];
-
+    
     // Reset state
     self.autoStartMethod = false;
 }
