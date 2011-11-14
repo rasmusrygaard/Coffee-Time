@@ -92,7 +92,6 @@
     
     NSString *methodToDisplay = [[bmViewController currentMethod] name];
     [[bmViewController navigationItem] setTitle:methodToDisplay];
-    NSLog(@"method: %@", methodToDisplay);
     
     [self.navigationController pushViewController:bmViewController 
                                          animated:NO];
