@@ -79,19 +79,24 @@
                               context:nil];
     }
     
-    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
-    
-    NSString *methodToDisplay = [[bmViewController currentMethod] name];
-    [[bmViewController navigationItem] setTitle:methodToDisplay];
-    
-    [self.navigationController pushViewController:bmViewController 
-                                         animated:YES];    
+    [self runStarredMethod];
 }
 
 - (void)runStarredMethod
 {
+    if (self.bmViewController.view.window) {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
+    
     [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
-
+    
+    NSString *methodToDisplay = [[bmViewController currentMethod] name];
+    [[bmViewController navigationItem] setTitle:methodToDisplay];
+    NSLog(@"method: %@", methodToDisplay);
+    
+    [self.navigationController pushViewController:bmViewController 
+                                         animated:NO];
+    
     self.activeCell = [NSIndexPath indexPathForRow:starredMethodIndex inSection:0];
     self.bmViewController.autoStartMethod = true;
     

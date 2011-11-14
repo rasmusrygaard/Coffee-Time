@@ -67,6 +67,49 @@
     return self;
 }
 
+/*
+ * Function: - (void)resetDisplay
+ * Reset the current state of the display to reflect the first
+ * TimerStep for the current method
+ */
+
+- (void)resetDisplay
+{
+    [self resetInstructions];
+    
+    [currentMethod resetTimerSteps];
+}
+
+
+- (void)clearTimer
+{
+    [finishTime release];
+    finishTime = nil;
+    
+    [timer invalidate]; 
+    timer = nil;
+}
+
+- (void)resetTimerLabel
+{
+    remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
+    
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
+}
+
+- (void)resetState
+{
+    [self resetDisplay];
+    
+    // Update the info on the screen to reflect the first step
+    [self resetInstructions];
+    [currentMethod resetTimerSteps];
+    
+    methodBeingTimed = nil;
+    
+    [self resetTimerLabel];
+}
+
 #pragma mark - Timer functionality
 
 /*
@@ -88,6 +131,7 @@
 
 - (void)startStarredMethod
 {
+    [self resetState];
     [[UIApplication sharedApplication] cancelAllLocalNotifications]; /// Kind of a hack
     [self.infoTableView reloadData];
     [self startTimerClicked:nil];
@@ -156,49 +200,6 @@
                                            userInfo:nil
                                             repeats:YES];
     
-}
-
-/*
- * Function: - (void)resetDisplay
- * Reset the current state of the display to reflect the first
- * TimerStep for the current method
- */
-
-- (void)resetDisplay
-{
-    [self resetInstructions];
-    
-    [currentMethod resetTimerSteps];
-}
-
-
-- (void)clearTimer
-{
-    [finishTime release];
-    finishTime = nil;
-    
-    [timer invalidate]; 
-    timer = nil;
-}
-
-- (void)resetTimerLabel
-{
-    remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
-    
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
-}
-
-- (void)resetState
-{
-    [self resetDisplay];
-    
-    // Update the info on the screen to reflect the first step
-    [self resetInstructions];
-    [currentMethod resetTimerSteps];
-    
-    methodBeingTimed = nil;
-    
-    [self resetTimerLabel];
 }
 
 - (IBAction)stopTimerClicked:(id)sender

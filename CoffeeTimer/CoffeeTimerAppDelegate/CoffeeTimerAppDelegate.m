@@ -54,7 +54,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    NSLog(@"hey");
     if (bmlViewController &&
         ![self->bmlViewController timerIsRunning] &&
         [self->bmlViewController hasStarredMethod]) {
