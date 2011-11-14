@@ -24,14 +24,12 @@
  */
 
 - (void)initializeInfoTableView
-{
-    
+{    
     // Set table style
     self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.infoTableView.backgroundColor = [UIColor clearColor];
     self.infoTableView.opaque = NO;
     
-    // Set no bounce
     self.infoTableView.bounces = NO;
     [self.view addSubview:self.infoTableView];
 }
