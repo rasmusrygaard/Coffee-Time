@@ -176,6 +176,14 @@
     return [img autorelease];
 }
 
+- (UIColor *)goldenOrange
+{
+    return [UIColor colorWithRed:(240.0 / 255.0) 
+                           green:(213.0 / 255.0) 
+                            blue:(132.0 / 255.0) 
+                           alpha:1];   
+}
+
 /*
  * Function: - (void)styleLabelsForCell:(UITableViewCell *)cell 
  *                            forMethod:(BrewMethod *)method
@@ -194,10 +202,7 @@
     
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
-        UIColor *color = [UIColor colorWithRed:(240.0 / 255.0) 
-                                         green:(213.0 / 255.0) 
-                                          blue:(132.0 / 255.0) 
-                                         alpha:1];
+        UIColor *color = [self goldenOrange];
         label.textColor = color;
     } else {
         label.textColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
@@ -241,9 +246,11 @@
                    forMethod:method];
     
     if (indexPath.row == starredMethodIndex) {
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-        label.text = [NSString stringWithFormat:@"Starred: %@", [method name]];
-        label.numberOfLines = 0;
+        UIButton *label = (UIButton *)[cell viewWithTag:3];
+        NSLog(@"label %@", label);
+        label.titleLabel.textColor = [self goldenOrange];
+//        text = [NSString stringWithFormat:@"Starred: %@", [method name]];
+  //      label.numberOfLines = 0;
     }
 
     return cell;
