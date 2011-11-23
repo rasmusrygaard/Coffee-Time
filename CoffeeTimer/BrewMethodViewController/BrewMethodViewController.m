@@ -15,7 +15,7 @@
 
 @implementation BrewMethodViewController
 
-@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed, secondsLeft, infoTableView, autoStartMethod;
+@synthesize currentMethod, preparation, instructions, equipment, tabDisplayed, tvCell, methodBeingTimed, secondsLeft, infoTableView, autoStartMethod, superList;
 
 /*
  * Function: - (void)initializeInfoTableView
@@ -33,6 +33,19 @@
     self.infoTableView.bounces = NO;
     [self.view addSubview:self.infoTableView];
 }
+
+/*
+ * Function: - (void)initializeDescriptions
+ * Get the data for the current method from the BrewMethod class
+ */
+
+- (void)initializeDescriptions
+{
+    [self setInstructions:[NSMutableArray arrayWithArray:[currentMethod descriptionsForTab:@"Instructions"]]];
+    [self setPreparation:[currentMethod descriptionsForTab:@"Preparation"]];
+    [self setEquipment:[currentMethod descriptionsForTab:@"Equipment"]];
+}
+
 
 - (id)init
 {
@@ -90,9 +103,9 @@
 
 - (void)resetTimerLabel
 {
-    remainingTimeAfterCurrentStep = [currentMethod totalTimeInSeconds];
+    secondsLeft = [currentMethod totalTimeInSeconds];
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
+    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
 }
 
 - (void)resetState
@@ -131,13 +144,13 @@
 {
     [self resetState];
     [[UIApplication sharedApplication] cancelAllLocalNotifications]; /// Kind of a hack
+    [self initializeDescriptions];
     [self.infoTableView reloadData];
     [self startTimerClicked:nil];
 }
 
 - (BOOL)timerIsRunning
 {
-    NSLog(@"timer %@", timer);
     return (timer != nil);
 }
 
@@ -298,6 +311,7 @@
 
 - (void)brewMethodFinished
 {
+    [self.superList resetAfterFinishedMethod];
     AudioServicesPlayAlertSound(1000);
     NSString *msg = [NSString stringWithFormat:@"Enjoy a delicious cup of %@ brew!", [currentMethod name]];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"It's Coffee Time!"
@@ -307,6 +321,7 @@
                                               otherButtonTitles:nil];
     [alertView show];
     [alertView release];
+    
     methodBeingTimed = nil;
     [self resetState];
     [self clearTimer];
@@ -315,17 +330,6 @@
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
     [self updateRemainingTime];
-}
-
-/* - (void)setupLabelsForTimerStep:(TimerStep *)step
- * -------------------------------------------------
- * Update the labels on the screen to reflect the info of the TimerStep
- */
-
-- (void)setupLabelsForTimerStep:(TimerStep *)step
-{
-    remainingTimeAfterCurrentStep -= [step timeInSeconds];
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:remainingTimeAfterCurrentStep]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -491,14 +495,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     return height;
     
-}
-
-- (void)initializeDescriptions
-{
-    NSMutableArray *instr = [NSMutableArray arrayWithArray:[currentMethod descriptionsForTab:@"Instructions"]];
-    [self setInstructions:instr];
-    [self setPreparation:[currentMethod descriptionsForTab:@"Preparation"]];
-    [self setEquipment:[currentMethod descriptionsForTab:@"Equipment"]];
 }
 
 #pragma mark - View lifecycle

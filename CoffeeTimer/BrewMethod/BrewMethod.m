@@ -58,6 +58,13 @@
     return self;
 }
 
+#pragma mark NSCoding
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    
+}
+
 #pragma mark Initialize methods
 
 +(BrewMethod *)initTestMethod

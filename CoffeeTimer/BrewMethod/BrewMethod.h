@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TimerStep.h"
 
-@interface BrewMethod : NSObject
+@interface BrewMethod : NSObject <NSCoding>
 {
     NSString *name; // Name of brew method
 

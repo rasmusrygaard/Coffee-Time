@@ -10,6 +10,12 @@
 #import "BrewMethod.h"
 #import "SliderTabBarView.h"
 
+@protocol BrewMethodList <NSObject>
+
+-(void)resetAfterFinishedMethod;
+
+@end
+
 @interface BrewMethodViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     BrewMethod *currentMethod;
@@ -34,7 +40,8 @@
     NSTimer *timer;
     NSString *methodBeingTimed;
     NSDate *finishTime;
-    int remainingTimeAfterCurrentStep;
+    
+    /* KVO for list */
     int secondsLeft;
     
     /* Slider tab bar */
@@ -42,6 +49,9 @@
     NSString *tabDisplayed;
     
     BOOL autoStartMethod;
+    
+    /* The parent view should be able to reset */
+    id<BrewMethodList> superList;
 }
 
 - (IBAction)startTimerClicked:(id)sender;
@@ -55,7 +65,6 @@
 - (void)brewMethodFinished;
 
 - (void)setAndStartTimerForMethod:(BrewMethod *)method;
-- (void)setupLabelsForTimerStep:(TimerStep *)step;
 
 - (void)startStarredMethod;
 - (BOOL)timerIsRunning;
@@ -74,5 +83,7 @@
 @property (nonatomic, assign) int secondsLeft;
 
 @property (nonatomic, assign) BOOL autoStartMethod;
+
+@property (nonatomic, assign) id<BrewMethodList> superList;
 
 @end

@@ -33,6 +33,16 @@
     return self;
 }
 
+- (void)initBMViewController
+{
+    self.bmViewController = [[BrewMethodViewController alloc] init];
+    self.bmViewController.superList = self;
+    [bmViewController addObserver:self 
+                       forKeyPath:@"secondsLeft" 
+                          options:NSKeyValueObservingOptionNew
+                          context:nil];
+}
+
 /* Function: -(IBAction)starredMethod:(id)sender
  * Called in response to a tap on the star button in the list. Get the indexPath
  * for the cell that was tapped and set that method as starred. If that method
@@ -71,16 +81,18 @@
 - (void)launchWithStarredMethod
 {    
     if (!bmViewController) {
-        self.bmViewController = [[BrewMethodViewController alloc] init];
-        
-        [bmViewController addObserver:self 
-                           forKeyPath:@"secondsLeft" 
-                              options:NSKeyValueObservingOptionNew
-                              context:nil];
+        [self initBMViewController];
     }
     
     [self runStarredMethod];
 }
+
+/* Function: - (void)runStarredMethod
+ * This method is called after launching the app when a starred method is currently
+ * set up. If there is already a viewcontroller from an old brew method, pop it.
+ * Then, set up a new controller for the new method, set the active method and
+ * run it. 
+ */
 
 - (void)runStarredMethod
 {
@@ -100,6 +112,12 @@
     self.bmViewController.autoStartMethod = true;
     
     [self.bmViewController startStarredMethod];
+}
+
+-(void)resetAfterFinishedMethod
+{
+    self.activeCell = nil;
+    [self.tableView reloadData]; 
 }
 
 #pragma mark TableView
@@ -241,13 +259,8 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!bmViewController) {
-        self.bmViewController = [[BrewMethodViewController alloc] init];
-        
-        [bmViewController addObserver:self 
-                           forKeyPath:@"secondsLeft" 
-                              options:NSKeyValueObservingOptionNew
-                              context:nil];
-    }
+        [self initBMViewController];
+     }
 
     [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
     
