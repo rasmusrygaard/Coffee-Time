@@ -15,9 +15,11 @@
 @interface CoffeeTimerAppDelegate : NSObject <UIApplicationDelegate>
 {
     BrewMethodListViewController *bmlViewController;
+    BOOL enteredBackgroundWithTimerRunning;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, assign) BOOL enteredBackgroundWithTimerRunning;
 
 
 @end

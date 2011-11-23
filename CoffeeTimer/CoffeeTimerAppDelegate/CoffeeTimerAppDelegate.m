@@ -13,7 +13,7 @@
 
 @implementation CoffeeTimerAppDelegate
 
-@synthesize window = _window;
+@synthesize window = _window, enteredBackgroundWithTimerRunning;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -28,6 +28,10 @@
     
 	[[self window] setRootViewController:navController];
     [navController release];
+    
+    if ([bmlViewController hasStarredMethod]) {
+        [bmlViewController launchWithStarredMethod];
+    }
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -47,6 +51,27 @@
         NSLog(@"hey");
         [runningMethod brewMethodFinished];
     }
+}
+
+/*
+ * Function: - (void)applicationDidBecomeActive:(UIApplication *)application
+ * Run the starred brew method if such a method is configured and the user is not
+ * already running a timer. 
+ */
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{   
+    if (bmlViewController &&
+        ![self->bmlViewController timerIsRunning] &&
+        [self->bmlViewController hasStarredMethod] &&
+        !self.enteredBackgroundWithTimerRunning) {
+        [bmlViewController runStarredMethod];
+    }
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    self.enteredBackgroundWithTimerRunning = [self->bmlViewController timerIsRunning];
 }
 
 

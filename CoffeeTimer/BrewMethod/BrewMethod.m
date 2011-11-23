@@ -58,6 +58,13 @@
     return self;
 }
 
+#pragma mark NSCoding
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    
+}
+
 #pragma mark Initialize methods
 
 +(BrewMethod *)initTestMethod
@@ -81,7 +88,7 @@
 {
     // Initialize instructions
     TimerStep *apStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
-                                                    timeInSeconds:45] autorelease];
+                                                    timeInSeconds:10] autorelease]; ///
     TimerStep *apStepTwo = [[[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
                                                     timeInSeconds:20] autorelease];
     

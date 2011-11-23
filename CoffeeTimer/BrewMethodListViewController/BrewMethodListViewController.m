@@ -18,7 +18,9 @@
 {
     if (self = [super init]) {
         [super initWithStyle:UITableViewStyleGrouped];
-        [[self navigationItem] setTitle:@"Brew Methods"];   
+        [[self navigationItem] setTitle:@"Brew Methods"];
+        
+        starredMethodIndex = 1;
     }
     
     return self;
@@ -31,11 +33,94 @@
     return self;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView 
- numberOfRowsInSection:(NSInteger)section
+- (void)initBMViewController
 {
-    return [self.brewMethods count];
+    self.bmViewController = [[BrewMethodViewController alloc] init];
+    self.bmViewController.superList = self;
+    [bmViewController addObserver:self 
+                       forKeyPath:@"secondsLeft" 
+                          options:NSKeyValueObservingOptionNew
+                          context:nil];
 }
+
+/* Function: -(IBAction)starredMethod:(id)sender
+ * Called in response to a tap on the star button in the list. Get the indexPath
+ * for the cell that was tapped and set that method as starred. If that method
+ * was already starred, un-star it.
+ */
+
+-(IBAction)starredMethod:(id)sender
+{
+    NSIndexPath *path = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    
+    if (path.row == starredMethodIndex) {
+        starredMethodIndex = -1;
+    } else {
+        starredMethodIndex = path.row;
+    }
+
+    [self.tableView reloadData];
+}
+
+-(BOOL)hasStarredMethod;
+{
+    return (starredMethodIndex != -1);
+}
+
+-(BOOL)timerIsRunning
+{
+    return (self.bmViewController != nil) &&
+            [self.bmViewController timerIsRunning];
+}
+
+/* Function: - (void)launchWithStarredMethod
+ * Used for launching a method on startup. Push a BrewMethodViewController with the
+ * starred method and have that method start timing immediately.
+ */
+
+- (void)launchWithStarredMethod
+{    
+    if (!bmViewController) {
+        [self initBMViewController];
+    }
+    
+    [self runStarredMethod];
+}
+
+/* Function: - (void)runStarredMethod
+ * This method is called after launching the app when a starred method is currently
+ * set up. If there is already a viewcontroller from an old brew method, pop it.
+ * Then, set up a new controller for the new method, set the active method and
+ * run it. 
+ */
+
+- (void)runStarredMethod
+{
+    if (self.bmViewController.view.window) {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
+    
+    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
+    
+    NSString *methodToDisplay = [[bmViewController currentMethod] name];
+    [[bmViewController navigationItem] setTitle:methodToDisplay];
+    
+    [self.navigationController pushViewController:bmViewController 
+                                         animated:NO];
+    
+    self.activeCell = [NSIndexPath indexPathForRow:starredMethodIndex inSection:0];
+    self.bmViewController.autoStartMethod = true;
+    
+    [self.bmViewController startStarredMethod];
+}
+
+-(void)resetAfterFinishedMethod
+{
+    self.activeCell = nil;
+    [self.tableView reloadData]; 
+}
+
+#pragma mark TableView
 
 /* Function: - (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
  * Do any custom styling of a cell in the information table
@@ -91,6 +176,14 @@
     return [img autorelease];
 }
 
+- (UIColor *)goldenOrange
+{
+    return [UIColor colorWithRed:(240.0 / 255.0) 
+                           green:(213.0 / 255.0) 
+                            blue:(132.0 / 255.0) 
+                           alpha:1];   
+}
+
 /*
  * Function: - (void)styleLabelsForCell:(UITableViewCell *)cell 
  *                            forMethod:(BrewMethod *)method
@@ -109,10 +202,7 @@
     
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
-        UIColor *color = [UIColor colorWithRed:(240.0 / 255.0) 
-                                         green:(213.0 / 255.0) 
-                                          blue:(132.0 / 255.0) 
-                                         alpha:1];
+        UIColor *color = [self goldenOrange];
         label.textColor = color;
     } else {
         label.textColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
@@ -146,12 +236,22 @@
     
     [cell setBackgroundColor:[UIColor clearColor]];
     
+    
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     BrewMethod *method = [brewMethods objectAtIndex:[indexPath row]];
     
     [self styleLabelsForCell:cell 
                    forMethod:method];
+    
+    if (indexPath.row == starredMethodIndex) {
+        UIButton *label = (UIButton *)[cell viewWithTag:3];
+        NSLog(@"label %@", label);
+        label.titleLabel.textColor = [self goldenOrange];
+//        text = [NSString stringWithFormat:@"Starred: %@", [method name]];
+  //      label.numberOfLines = 0;
+    }
 
     return cell;
 }
@@ -166,8 +266,8 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!bmViewController) {
-        self.bmViewController = [[BrewMethodViewController alloc] init];
-    }
+        [self initBMViewController];
+     }
 
     [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
     
@@ -178,16 +278,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                          animated:YES];
     
     self.activeCell = indexPath;
-    
-    [bmViewController addObserver:self 
-                       forKeyPath:@"secondsLeft" 
-                          options:NSKeyValueObservingOptionNew
-                          context:nil];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return LIST_CELL_HEIGHT;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section
+{
+    return [self.brewMethods count];
 }
 
 - (void)didReceiveMemoryWarning
@@ -210,6 +311,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
     self.view.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = background;
+    
     [background release]; 
 }
 
