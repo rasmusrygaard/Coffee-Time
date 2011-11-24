@@ -43,7 +43,7 @@
 							<object class="IBUILabel" id="830888372">
 								<reference key="NSNextResponder" ref="837083974"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, -3}, {300, 67}}</string>
+								<string key="NSFrameSize">{300, 67}</string>
 								<reference key="NSSuperview" ref="837083974"/>
 								<reference key="NSNextKeyView" ref="778029529"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
@@ -80,7 +80,7 @@
 							<object class="IBUILabel" id="778029529">
 								<reference key="NSNextResponder" ref="837083974"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 52}, {300, 21}}</string>
+								<string key="NSFrame">{{0, 55}, {300, 21}}</string>
 								<reference key="NSSuperview" ref="837083974"/>
 								<reference key="NSNextKeyView" ref="987020362"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
@@ -113,9 +113,8 @@
 							<object class="IBUIButton" id="987020362">
 								<reference key="NSNextResponder" ref="837083974"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{253, 28}, {29, 31}}</string>
+								<string key="NSFrame">{{253, 31}, {29, 31}}</string>
 								<reference key="NSSuperview" ref="837083974"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -148,7 +147,7 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrameSize">{300, 87}</string>
+						<string key="NSFrameSize">{300, 90}</string>
 						<reference key="NSSuperview" ref="589496834"/>
 						<reference key="NSNextKeyView" ref="830888372"/>
 						<string key="NSReuseIdentifierKey">_NS:395</string>
@@ -163,7 +162,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{300, 88}</string>
+				<string key="NSFrameSize">{300, 91}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="837083974"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
@@ -172,6 +171,7 @@
 				<float key="IBUIIndentationWidth">0.0</float>
 				<reference key="IBUIContentView" ref="837083974"/>
 				<string key="IBUIReuseIdentifier">BrewMethodListCell</string>
+				<real value="91" key="IBUIRowHeight"/>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">

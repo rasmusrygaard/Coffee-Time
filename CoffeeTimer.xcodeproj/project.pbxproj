@@ -62,8 +62,9 @@
 		006F06D5144F455700D0766B /* BrewMethodTableViewSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
 		00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
-		00985239147EEBD2002B540C /* AddMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00985237147EEBD2002B540C /* AddMethodViewController.xib */; };
+		00985239147EEBD2002B540C /* AddMethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00985237147EEBD2002B540C /* AddMethodView.xib */; };
 		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
+		00985240147EF9AA002B540C /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
 		00B096A6147DC46700004B9A /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
 		00D359461437E9FA00BFA6E0 /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
@@ -157,8 +158,10 @@
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
 		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
-		00985237147EEBD2002B540C /* AddMethodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodViewController.xib; path = AddMethodViewController/AddMethodViewController.xib; sourceTree = "<group>"; };
+		00985237147EEBD2002B540C /* AddMethodView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodView.xib; path = AddMethodViewController/AddMethodView.xib; sourceTree = "<group>"; };
 		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
+		0098523E147EF9AA002B540C /* AddMethodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodView.h; path = CoffeeTimer/AddMethodViewController/AddMethodView.h; sourceTree = "<group>"; };
+		0098523F147EF9AA002B540C /* AddMethodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodView.m; path = CoffeeTimer/AddMethodViewController/AddMethodView.m; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		00B096A5147DC46700004B9A /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = CoffeeTimer/Helpers/FileHelpers.m; sourceTree = SOURCE_ROOT; };
 		00B096A9147DC4D100004B9A /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Helpers/FileHelpers.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 		0057FF7E13E670AB001556C4 = {
 			isa = PBXGroup;
 			children = (
+				0098523E147EF9AA002B540C /* AddMethodView.h */,
+				0098523F147EF9AA002B540C /* AddMethodView.m */,
 				001103C11437B9DB00C6467B /* AudioToolbox.framework */,
 				00A226C2141CE2D9006EEE4F /* QuartzCore.framework */,
 				0057FF9313E670B0001556C4 /* CoffeeTimer */,
@@ -412,7 +417,7 @@
 			children = (
 				00985235147EEBD2002B540C /* AddMethodViewController.h */,
 				00985236147EEBD2002B540C /* AddMethodViewController.m */,
-				00985237147EEBD2002B540C /* AddMethodViewController.xib */,
+				00985237147EEBD2002B540C /* AddMethodView.xib */,
 				0098523A147EF072002B540C /* AddMethodTableViewCell.xib */,
 			);
 			name = AddMethodViewController;
@@ -541,7 +546,7 @@
 				006C93FA1468B96300C9F3C1 /* CoffeeTime112.png in Resources */,
 				006C93FE1468B98600C9F3C1 /* Default.png in Resources */,
 				006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */,
-				00985239147EEBD2002B540C /* AddMethodViewController.xib in Resources */,
+				00985239147EEBD2002B540C /* AddMethodView.xib in Resources */,
 				0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,6 +595,7 @@
 				007EDE4114337CA700F5555E /* main.m in Sources */,
 				00B096A6147DC46700004B9A /* FileHelpers.m in Sources */,
 				00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */,
+				00985240147EF9AA002B540C /* AddMethodView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -393,4 +393,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc
+{
+    [brewMethods release];
+    [bmViewController release];
+    
+    [activeCell release];
+}
+
 @end
