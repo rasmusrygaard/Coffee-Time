@@ -12,7 +12,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell, bmViewController, activeCell, starredMethodIndex;
+@synthesize brewMethods, tvlCell, bmViewController, activeCell;
 
 - (id)init 
 {
@@ -47,30 +47,14 @@
 {
     NSString *path = [self brewMethodsPath];
     
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSKeyedUnarchiver *archive = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSArray *methods;
-    int index;
+    NSArray *methods = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
-    if (!archive) {
+    if (!methods) {
         NSLog(@"Creating methods");
         methods = [BrewMethod initBrewMethods];
-        index = -1;
-        
-    } else {
-        methods = [archive decodeObjectForKey:@"brewMethods"];
-        if (!methods)
-            methods = [archive decodeObjectForKey:@"brewMethods"];
-        
-        index = [archive decodeIntForKey:@"starredMethodIndex"];
-        if (index == 0) {
-            index = -1;
-        }
     }
     
     self.brewMethods = methods;
-    self.starredMethodIndex = index;
-    
 }
 
 /* Function: - (void)encodeBrewMethods
@@ -79,27 +63,14 @@
 
 - (void)archiveBrewMethods
 {
-    NSMutableData *data = [NSMutableData data];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    
-    [archiver encodeObject:brewMethods forKey:@"brewMethods"];
-    [archiver encodeInt:starredMethodIndex forKey:@"starredMethodIndex"];
-    [archiver finishEncoding];
-
     NSString *path = [self brewMethodsPath];
-    [data writeToFile:path atomically:YES];
-    
-    [archiver release];
+    [NSKeyedArchiver archiveRootObject:brewMethods
+                                toFile:path];
 }
 
 - (NSString *)brewMethodsPath
 {
-    return pathInDocumentDirectory(@"BrewMethods2.data");
-}
-
-- (NSString *)starredMethodPath
-{
-    return pathInDocumentDirectory(@"StarredMethod.data");
+    return pathInDocumentDirectory(@"BrewMethods.data");
 }
 
 /* Function: -(IBAction)starredMethod:(id)sender

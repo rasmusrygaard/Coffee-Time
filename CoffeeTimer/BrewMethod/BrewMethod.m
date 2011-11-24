@@ -60,10 +60,6 @@
 
 #pragma mark NSCoding
 
-/* NSCoding
- * Encode all instance variables to comply with NSCoding protocol
- */
-
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     [super init];
@@ -78,9 +74,10 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:name       forKey:@"name"];
+    // Encode each instance variable
+    [aCoder encodeObject:name forKey:@"name"];
     [aCoder encodeObject:timerSteps forKey:@"timerSteps"];
-    [aCoder encodeObject:prepArray  forKey:@"prepArray"];
+    [aCoder encodeObject:prepArray forKey:@"prepArray"];
     [aCoder encodeObject:equipArray forKey:@"equipArray"];
 }
 
@@ -231,7 +228,7 @@
 
 + (NSArray *)initBrewMethods
 {
-    BrewMethod *test = [self initTestMethod];
+//    BrewMethod *test = [self initTestMethod];
     
     BrewMethod *aeropress = [self initAeropressMethod];
 
@@ -241,7 +238,7 @@
     
     BrewMethod *v60 = [self initV60Method];
     
-    NSArray *brewMethods = [NSArray arrayWithObjects:test, aeropress, chemex, frenchPress, v60, nil];
+    NSArray *brewMethods = [NSArray arrayWithObjects:aeropress, chemex, frenchPress, v60, nil];
     
     return brewMethods;
 }

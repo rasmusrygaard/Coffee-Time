@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BrewMethodViewController.h"
 
-@interface BrewMethodListViewController : UITableViewController <BrewMethodList, NSCoding> {
+@interface BrewMethodListViewController : UITableViewController <BrewMethodList> {
     NSArray *brewMethods;
     BrewMethodViewController *bmViewController;
     UITableViewCell *tvlCell;
@@ -32,7 +32,6 @@
 
 - (void)archiveBrewMethods;
 - (NSString *)brewMethodsPath;
-- (NSString *)starredMethodPath;
 
 - (void)initBrewMethods;
 
@@ -41,6 +40,5 @@
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;
 @property (nonatomic, retain) NSIndexPath *activeCell;
-@property (nonatomic, assign) int starredMethodIndex;
 
 @end
