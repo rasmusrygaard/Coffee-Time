@@ -20,7 +20,7 @@
         [super initWithStyle:UITableViewStyleGrouped];
         [[self navigationItem] setTitle:@"Brew Methods"];
         
-        starredMethodIndex = 1;
+        starredMethodIndex = -1;
     }
     
     return self;
@@ -41,6 +41,36 @@
                        forKeyPath:@"secondsLeft" 
                           options:NSKeyValueObservingOptionNew
                           context:nil];
+}
+
+- (void)initBrewMethods
+{
+    NSString *path = [self brewMethodsPath];
+    
+    NSArray *methods = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
+    if (!methods) {
+        NSLog(@"Creating methods");
+        methods = [BrewMethod initBrewMethods];
+    }
+    
+    self.brewMethods = methods;
+}
+
+/* Function: - (void)encodeBrewMethods
+ * Get the path to the data file and archive the brewMethods array
+ */
+
+- (void)archiveBrewMethods
+{
+    NSString *path = [self brewMethodsPath];
+    [NSKeyedArchiver archiveRootObject:brewMethods
+                                toFile:path];
+}
+
+- (NSString *)brewMethodsPath
+{
+    return pathInDocumentDirectory(@"BrewMethods.data");
 }
 
 /* Function: -(IBAction)starredMethod:(id)sender

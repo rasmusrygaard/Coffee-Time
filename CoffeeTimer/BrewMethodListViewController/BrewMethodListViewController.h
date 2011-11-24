@@ -30,6 +30,11 @@
 - (void)runStarredMethod;
 - (void)launchWithStarredMethod;
 
+- (void)archiveBrewMethods;
+- (NSString *)brewMethodsPath;
+
+- (void)initBrewMethods;
+
 
 @property (nonatomic, retain) NSArray *brewMethods;
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;

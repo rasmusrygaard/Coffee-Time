@@ -21,7 +21,7 @@
     
     bmlViewController = [[BrewMethodListViewController alloc] init];
     
-    [bmlViewController setBrewMethods:[BrewMethod initBrewMethods]];
+    [bmlViewController initBrewMethods];
     
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:bmlViewController];
@@ -72,6 +72,16 @@
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     self.enteredBackgroundWithTimerRunning = [self->bmlViewController timerIsRunning];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [self->bmlViewController archiveBrewMethods];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [self->bmlViewController archiveBrewMethods];
 }
 
 
