@@ -60,9 +60,25 @@
 
 #pragma mark NSCoding
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    [super init];
+    
+    self.name       = [aDecoder decodeObjectForKey:@"name"];
+    self.timerSteps = [aDecoder decodeObjectForKey:@"timerSteps"];
+    self.prepArray  = [aDecoder decodeObjectForKey:@"prepArray"];
+    self.equipArray = [aDecoder decodeObjectForKey:@"equipArray"];
+    
+    return self;
+}
+
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    
+    // Encode each instance variable
+    [aCoder encodeObject:name forKey:@"name"];
+    [aCoder encodeObject:timerSteps forKey:@"timerSteps"];
+    [aCoder encodeObject:prepArray forKey:@"prepArray"];
+    [aCoder encodeObject:equipArray forKey:@"equipArray"];
 }
 
 #pragma mark Initialize methods

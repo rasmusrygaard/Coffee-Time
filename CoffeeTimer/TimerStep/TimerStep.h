@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TimerStep : NSObject
+@interface TimerStep : NSObject <NSCoding>
 {
     int timeInSeconds;
     NSString *stepDescription;

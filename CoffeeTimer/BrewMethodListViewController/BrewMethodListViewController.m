@@ -249,8 +249,6 @@
         UIButton *label = (UIButton *)[cell viewWithTag:3];
         NSLog(@"label %@", label);
         label.titleLabel.textColor = [self goldenOrange];
-//        text = [NSString stringWithFormat:@"Starred: %@", [method name]];
-  //      label.numberOfLines = 0;
     }
 
     return cell;
