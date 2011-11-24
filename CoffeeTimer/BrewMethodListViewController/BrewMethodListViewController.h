@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BrewMethodViewController.h"
 
-@interface BrewMethodListViewController : UITableViewController <BrewMethodList> {
+@interface BrewMethodListViewController : UITableViewController <BrewMethodList, NSCoding> {
     NSArray *brewMethods;
     BrewMethodViewController *bmViewController;
     UITableViewCell *tvlCell;

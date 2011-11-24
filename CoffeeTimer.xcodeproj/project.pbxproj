@@ -61,6 +61,9 @@
 		006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FD1468B98600C9F3C1 /* Default@2x.png */; };
 		006F06D5144F455700D0766B /* BrewMethodTableViewSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
+		00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
+		00985239147EEBD2002B540C /* AddMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00985237147EEBD2002B540C /* AddMethodViewController.xib */; };
+		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
 		00B096A6147DC46700004B9A /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
 		00D359461437E9FA00BFA6E0 /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
@@ -152,6 +155,10 @@
 		006C93FD1468B98600C9F3C1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrewMethodTableViewSimpleCell.xib; path = "../../../../../../Desktop/Macintosh HD/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer/BrewMethodViewController/BrewMethodTableViewSimpleCell.xib"; sourceTree = "<group>"; };
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
+		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
+		00985237147EEBD2002B540C /* AddMethodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodViewController.xib; path = AddMethodViewController/AddMethodViewController.xib; sourceTree = "<group>"; };
+		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		00B096A5147DC46700004B9A /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = CoffeeTimer/Helpers/FileHelpers.m; sourceTree = SOURCE_ROOT; };
 		00B096A9147DC4D100004B9A /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Helpers/FileHelpers.h; sourceTree = "<group>"; };
@@ -334,6 +341,7 @@
 			children = (
 				000F1D2A14337984006CD04F /* CoffeeTimerAppDelegate.h */,
 				000F1D2B14337984006CD04F /* CoffeeTimerAppDelegate.m */,
+				00985233147EEB9A002B540C /* AddMethodViewController */,
 				000F1D1E14337984006CD04F /* BrewMethod */,
 				000F1D2114337984006CD04F /* BrewMethodListViewController */,
 				000F1D2514337984006CD04F /* BrewMethodViewController */,
@@ -397,6 +405,17 @@
 				0057FFBD13E670B1001556C4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		00985233147EEB9A002B540C /* AddMethodViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00985235147EEBD2002B540C /* AddMethodViewController.h */,
+				00985236147EEBD2002B540C /* AddMethodViewController.m */,
+				00985237147EEBD2002B540C /* AddMethodViewController.xib */,
+				0098523A147EF072002B540C /* AddMethodTableViewCell.xib */,
+			);
+			name = AddMethodViewController;
 			sourceTree = "<group>";
 		};
 		00B096A8147DC47100004B9A /* Helpers */ = {
@@ -522,6 +541,8 @@
 				006C93FA1468B96300C9F3C1 /* CoffeeTime112.png in Resources */,
 				006C93FE1468B98600C9F3C1 /* Default.png in Resources */,
 				006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */,
+				00985239147EEBD2002B540C /* AddMethodViewController.xib in Resources */,
+				0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +589,7 @@
 				000F1D6A14337984006CD04F /* TimerStep.m in Sources */,
 				007EDE4114337CA700F5555E /* main.m in Sources */,
 				00B096A6147DC46700004B9A /* FileHelpers.m in Sources */,
+				00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +701,7 @@
 		0057FFC713E670B2001556C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
@@ -699,7 +721,7 @@
 		0057FFC813E670B2001556C4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphonesos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";

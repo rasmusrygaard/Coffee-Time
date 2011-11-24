@@ -43,6 +43,22 @@
                           context:nil];
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeInt:starredMethodIndex forKey:@"starredMethodIndex"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ([aDecoder containsValueForKey:@"starredMethodIndex"]) {
+        starredMethodIndex = [aDecoder decodeIntForKey:@"starredMethodIndex"];
+    } else {
+        starredMethodIndex = -1;
+    }
+    
+    return self;
+}
+
 - (void)initBrewMethods
 {
     NSString *path = [self brewMethodsPath];
