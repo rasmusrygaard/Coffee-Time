@@ -20,10 +20,16 @@
         [super initWithStyle:UITableViewStyleGrouped];
         [[self navigationItem] setTitle:@"Brew Methods"];
         
-  //      UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavBar.png"]];
-        
-//        [[[self navigationController] navigationBar] addSubview:imgView];
-    //    [imgView release];
+        if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
+            [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
+            [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"] forBarMetrics:UIBarMetricsDefault];
+            [[UINavigationBar appearance] setContentMode:UIViewContentModeScaleToFill];
+            [[UINavigationBar appearance] setTitleTextAttributes:
+             [NSDictionary dictionaryWithObjectsAndKeys:[UIColor darkGrayColor],UITextAttributeTextColor,
+                                                        [UIColor whiteColor],   UITextAttributeTextShadowColor,
+                                                        [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],       UITextAttributeTextShadowOffset, nil]];
+        }
+
         starredMethodIndex = -1;
     }
     

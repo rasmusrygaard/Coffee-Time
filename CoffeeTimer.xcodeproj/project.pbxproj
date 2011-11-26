@@ -54,8 +54,8 @@
 		0048B6221481712500CCF57E /* BigCellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B61C1481712500CCF57E /* BigCellRoundedTopBottom@2x.png */; };
 		0048B6291481733200CCF57E /* BigCellRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B6271481733200CCF57E /* BigCellRoundedTop.png */; };
 		0048B62A1481733200CCF57E /* BigCellRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B6281481733200CCF57E /* BigCellRoundedTop@2x.png */; };
-		0048B62D1481791400CCF57E /* NavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B62B1481791400CCF57E /* NavBar.png */; };
-		0048B62E1481791400CCF57E /* NavBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B62C1481791400CCF57E /* NavBar@2x.png */; };
+		0048B63114818C0400CCF57E /* NavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B62F14818C0400CCF57E /* NavBar.png */; };
+		0048B63214818C0400CCF57E /* NavBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B63014818C0400CCF57E /* NavBar@2x.png */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -160,8 +160,8 @@
 		0048B61C1481712500CCF57E /* BigCellRoundedTopBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellRoundedTopBottom@2x.png"; sourceTree = "<group>"; };
 		0048B6271481733200CCF57E /* BigCellRoundedTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellRoundedTop.png; sourceTree = "<group>"; };
 		0048B6281481733200CCF57E /* BigCellRoundedTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellRoundedTop@2x.png"; sourceTree = "<group>"; };
-		0048B62B1481791400CCF57E /* NavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBar.png; sourceTree = "<group>"; };
-		0048B62C1481791400CCF57E /* NavBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBar@2x.png"; sourceTree = "<group>"; };
+		0048B62F14818C0400CCF57E /* NavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBar.png; sourceTree = "<group>"; };
+		0048B63014818C0400CCF57E /* NavBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBar@2x.png"; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -278,8 +278,8 @@
 		000F1D2F14337984006CD04F /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				0048B62B1481791400CCF57E /* NavBar.png */,
-				0048B62C1481791400CCF57E /* NavBar@2x.png */,
+				0048B62F14818C0400CCF57E /* NavBar.png */,
+				0048B63014818C0400CCF57E /* NavBar@2x.png */,
 				0048B6271481733200CCF57E /* BigCellRoundedTop.png */,
 				0048B6281481733200CCF57E /* BigCellRoundedTop@2x.png */,
 				0048B6171481712500CCF57E /* BigCellRoundedBottom.png */,
@@ -606,8 +606,8 @@
 				0048B6221481712500CCF57E /* BigCellRoundedTopBottom@2x.png in Resources */,
 				0048B6291481733200CCF57E /* BigCellRoundedTop.png in Resources */,
 				0048B62A1481733200CCF57E /* BigCellRoundedTop@2x.png in Resources */,
-				0048B62D1481791400CCF57E /* NavBar.png in Resources */,
-				0048B62E1481791400CCF57E /* NavBar@2x.png in Resources */,
+				0048B63114818C0400CCF57E /* NavBar.png in Resources */,
+				0048B63214818C0400CCF57E /* NavBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
