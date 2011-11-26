@@ -7,10 +7,11 @@
 //
 
 #import "AddMethodViewController.h"
+#import "Constants.h"
 
 @implementation AddMethodViewController
 
-@synthesize addMethodView;
+@synthesize addMethodView, amCell;
 
 -(id)init
 {
@@ -35,24 +36,54 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIImageView *img;
+    
+    if (indexPath.row == 0) { // Top cell
+        
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTop.png"]];
+        
+//    } else if (indexPath.row == [self.brewMethods count] - 1) {
+//        
+//        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
+//        
+    } else { // Remaining Cells
+        
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+        
+    }
+    
+    return [img autorelease];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
+    [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" owner:self options:nil];
+    cell = amCell;
+    self.amCell = nil;
+    
+    UIImageView *img = [self imageForCellAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundView:img];
+    return cell;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return ADD_METHOD_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return 2;
+    if (section == ADD_METHOD_SECTIONS - 1) {
+        return ADD_METHOD_LOWER_ROWS;
     } else {
-        return 4;
+        return ADD_METHOD_UPPER_ROWS;
     }
 }
 
@@ -63,7 +94,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = background;
+    [background release]; 
 }
 
 - (void)viewDidUnload

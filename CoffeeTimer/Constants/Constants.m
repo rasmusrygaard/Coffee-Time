@@ -42,6 +42,11 @@ double const LIST_CELL_HEIGHT = 88;
 // Width of text in infoTableView cell
 double const INFO_CELL_WIDTH = 240;
 
+// AddMethodViewController constants
+double const ADD_METHOD_SECTIONS = 2;
+double const ADD_METHOD_UPPER_ROWS = 4;
+double const ADD_METHOD_LOWER_ROWS = 2;
+
 
 - (id)init
 {

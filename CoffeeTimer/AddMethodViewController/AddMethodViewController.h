@@ -12,6 +12,7 @@
 @interface AddMethodViewController : UITableViewController 
 {
     IBOutlet UIView *addMethodView;
+    IBOutlet UITableViewCell *amCell;
 }
 
 -(IBAction)editedEquipment:(id)sender;
@@ -20,6 +21,10 @@
 
 -(IBAction)saveButtonTapped:(id)sender;
 
+- (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath;
+
+
 @property (nonatomic, retain) IBOutlet UIView *addMethodView;
+@property (nonatomic, retain) IBOutlet UITableViewCell *amCell;
 
 @end

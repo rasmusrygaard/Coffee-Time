@@ -35,4 +35,8 @@ extern double const LIST_CELL_HEIGHT;
 
 extern double const INFO_CELL_WIDTH;
 
+extern double const ADD_METHOD_SECTIONS;
+extern double const ADD_METHOD_UPPER_ROWS;
+extern double const ADD_METHOD_LOWER_ROWS;
+
 @end
