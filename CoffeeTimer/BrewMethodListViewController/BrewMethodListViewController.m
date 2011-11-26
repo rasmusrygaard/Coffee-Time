@@ -20,6 +20,10 @@
         [super initWithStyle:UITableViewStyleGrouped];
         [[self navigationItem] setTitle:@"Brew Methods"];
         
+  //      UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavBar.png"]];
+        
+//        [[[self navigationController] navigationBar] addSubview:imgView];
+    //    [imgView release];
         starredMethodIndex = -1;
     }
     
