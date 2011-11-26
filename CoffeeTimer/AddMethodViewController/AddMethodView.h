@@ -11,7 +11,7 @@
 @interface AddMethodView : UIView
 {
     IBOutlet UILabel *equipmentField;
-    IBOutlet UITableView *instructionsHints;
+    IBOutlet UITableView *tableView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *equipmentField;

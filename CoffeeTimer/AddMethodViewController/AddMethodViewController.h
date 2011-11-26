@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddMethodView.h"
 
-@interface AddMethodViewController : UIViewController 
+@interface AddMethodViewController : UITableViewController 
 {
     IBOutlet UIView *addMethodView;
 }

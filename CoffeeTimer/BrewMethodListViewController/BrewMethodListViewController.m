@@ -6,13 +6,22 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "AddMethodViewController.h"
 #import "BrewMethodListViewController.h"
 #import "BrewMethodViewController.h"
 #import "BrewMethod.h"
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell, bmViewController, activeCell;
+@synthesize brewMethods, tvlCell, bmViewController, activeCell, addButton;
+
+- (UIColor *)goldenOrange
+{
+    return [UIColor colorWithRed:(150 / 255.0) 
+                           green:(109 / 255.0) 
+                            blue:( 31 / 255.0) 
+                           alpha:0.95];   
+}
 
 - (id)init 
 {
@@ -22,12 +31,12 @@
         
         if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
             [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
-            [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"] forBarMetrics:UIBarMetricsDefault];
+            [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar2.png"] forBarMetrics:UIBarMetricsDefault];
             [[UINavigationBar appearance] setContentMode:UIViewContentModeScaleToFill];
             [[UINavigationBar appearance] setTitleTextAttributes:
-             [NSDictionary dictionaryWithObjectsAndKeys:[UIColor darkGrayColor],UITextAttributeTextColor,
-                                                        [UIColor whiteColor],   UITextAttributeTextShadowColor,
-                                                        [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],       UITextAttributeTextShadowOffset, nil]];
+             [NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor ],UITextAttributeTextColor,
+                                                        [UIColor darkTextColor],   UITextAttributeTextShadowColor,
+                                                        [NSValue valueWithUIOffset:UIOffsetMake(0, -.5)],       UITextAttributeTextShadowOffset, nil]];
         }
 
         starredMethodIndex = -1;
@@ -97,6 +106,16 @@
 - (NSString *)brewMethodsPath
 {
     return pathInDocumentDirectory(@"BrewMethods.data");
+}
+
+-(IBAction)addMethod:(id)sender
+{
+    NSLog(@"adding method");
+    AddMethodViewController *addMethodVC = [[AddMethodViewController alloc] init];
+    
+    [self.navigationController pushViewController:addMethodVC 
+                                         animated:NO];
+    
 }
 
 /* Function: -(IBAction)starredMethod:(id)sender
@@ -232,14 +251,6 @@
     return [img autorelease];
 }
 
-- (UIColor *)goldenOrange
-{
-    return [UIColor colorWithRed:(191.0 / 255.0) 
-                           green:(137.0 / 255.0) 
-                            blue:(38.0 / 255.0) 
-                           alpha:1];   
-}
-
 /*
  * Function: - (void)styleLabelsForCell:(UITableViewCell *)cell 
  *                            forMethod:(BrewMethod *)method
@@ -307,7 +318,7 @@
     if (indexPath.row == starredMethodIndex) {
         img = [UIImage imageNamed:@"StarOn"];
     } else {
-        img = [UIImage imageNamed:@"StarOff"];
+        img = [UIImage imageNamed:@"StarOff2"];
     }
     
     UIButton *button = (UIButton *)[cell viewWithTag:3]; // Get star button
@@ -371,8 +382,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
     self.view.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = background;
-    
     [background release]; 
+    
+    // Add "Add" button
+    self.addButton = [[[UIBarButtonItem alloc] initWithTitle:@"Add"
+                                                   style:UIBarButtonItemStylePlain
+                                                      target:self 
+                                                      action:@selector(addMethod:)] autorelease];
+    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated

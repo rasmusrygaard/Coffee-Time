@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BrewMethodViewController.h"
+#import "AddMethodViewController.h"
 
 @interface BrewMethodListViewController : UITableViewController <BrewMethodList, NSCoding> {
     NSArray *brewMethods;
@@ -16,9 +17,12 @@
     
     NSIndexPath *activeCell;
     int starredMethodIndex;
+    
+    IBOutlet UIBarButtonItem *addButton;
 }
 
 -(IBAction)starredMethod:(id)sender;
+-(IBAction)addMethod:(id)sender;
 
 /* -(BOOL)hasStarredMethod;
  * Returns true if the user has selected some method as a favorite
@@ -40,5 +44,6 @@
 @property (nonatomic, retain) BrewMethodViewController *bmViewController;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;
 @property (nonatomic, retain) NSIndexPath *activeCell;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *addButton;
 
 @end

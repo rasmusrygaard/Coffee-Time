@@ -44,23 +44,23 @@
 							<object class="IBUIImageView" id="662657121">
 								<reference key="NSNextResponder" ref="740850959"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{320, 43}</string>
+								<string key="NSFrameSize">{320, 44}</string>
 								<reference key="NSSuperview" ref="740850959"/>
-								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="599116401"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Buttons</string>
+									<string key="NSResourceName">CellTest.png</string>
 								</object>
 							</object>
 							<object class="IBUITextField" id="239376173">
 								<reference key="NSNextResponder" ref="740850959"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{164, -1}, {181, 44}}</string>
+								<string key="NSFrame">{{139, 0}, {181, 44}}</string>
 								<reference key="NSSuperview" ref="740850959"/>
-								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:304</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -91,9 +91,8 @@
 							<object class="IBUILabel" id="599116401">
 								<reference key="NSNextResponder" ref="740850959"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{25, -1}, {131, 44}}</string>
+								<string key="NSFrame">{{0, -1}, {131, 44}}</string>
 								<reference key="NSSuperview" ref="740850959"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="239376173"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -117,8 +116,7 @@
 						</array>
 						<string key="NSFrameSize">{320, 43}</string>
 						<reference key="NSSuperview" ref="691144572"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="599116401"/>
+						<reference key="NSNextKeyView" ref="662657121"/>
 						<string key="NSReuseIdentifierKey">_NS:395</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -133,7 +131,6 @@
 				</array>
 				<string key="NSFrameSize">{320, 44}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="740850959"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -165,9 +162,9 @@
 						<int key="objectID">5</int>
 						<reference key="object" ref="691144572"/>
 						<array class="NSMutableArray" key="children">
+							<reference ref="599116401"/>
 							<reference ref="662657121"/>
 							<reference ref="239376173"/>
-							<reference ref="599116401"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -178,15 +175,15 @@
 						<string key="objectName">Method Property Field</string>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">6</int>
+						<reference key="object" ref="662657121"/>
+						<reference key="parent" ref="691144572"/>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
 						<reference key="object" ref="599116401"/>
 						<reference key="parent" ref="691144572"/>
 						<string key="objectName">Method Property Label</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="662657121"/>
-						<reference key="parent" ref="691144572"/>
 					</object>
 				</array>
 			</object>
@@ -211,8 +208,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">Buttons</string>
-			<string key="NS.object.0">{239, 44}</string>
+			<string key="NS.key.0">CellTest.png</string>
+			<string key="NS.object.0">{300, 44}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
