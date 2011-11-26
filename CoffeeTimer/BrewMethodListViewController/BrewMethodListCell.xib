@@ -56,13 +56,14 @@
 								<string key="IBUIText">Aeropress</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAxIDEAA</bytes>
+									<bytes key="NSRGB">MC43NDk4ODA0MjA5IDAuNTM2NDA4MzY5OSAwLjE0OTY4MzIzMzYAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor" id="268810876">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
+								<object class="NSColor" key="IBUIShadowColor" id="87756105">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
 								</object>
+								<string key="IBUIShadowOffset">{0, 1}</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
@@ -93,10 +94,11 @@
 								<string key="IBUIText">00:00</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<reference key="IBUIShadowColor" ref="268810876"/>
+								<reference key="IBUIShadowColor" ref="87756105"/>
+								<string key="IBUIShadowOffset">{0, 1}</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
@@ -113,8 +115,9 @@
 							<object class="IBUIButton" id="987020362">
 								<reference key="NSNextResponder" ref="837083974"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{253, 31}, {29, 31}}</string>
+								<string key="NSFrame">{{251, 29}, {31, 31}}</string>
 								<reference key="NSSuperview" ref="837083974"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -124,13 +127,13 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<reference key="IBUITintColor" ref="268810876"/>
-								<string key="IBUITitleShadowOffset">{0, -1}</string>
-								<string key="IBUINormalTitle">X</string>
-								<object class="NSColor" key="IBUIHighlightedTitleColor" id="87756105">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
+								<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
+								<object class="NSColor" key="IBUITintColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
+								<string key="IBUITitleShadowOffset">{0, -1}</string>
+								<reference key="IBUIHighlightedTitleColor" ref="87756105"/>
 								<reference key="IBUINormalTitleColor" ref="87756105"/>
 								<object class="NSColor" key="IBUINormalTitleShadowColor">
 									<int key="NSColorSpace">3</int>

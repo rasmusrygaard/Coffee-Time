@@ -176,7 +176,7 @@
 {
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
-    cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.0 blue:0.7 alpha:1];
     cell.textLabel.shadowColor = [UIColor blackColor];
     cell.textLabel.shadowOffset = CGSizeMake(0, -1);
     cell.textLabel.textAlignment = UITextAlignmentCenter;
@@ -207,15 +207,15 @@
     
     if (indexPath.row == 0) { // Top cell
         
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedTop.png"]];
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellRoundedTop.png"]];
 
     } else if (indexPath.row == [self.brewMethods count] - 1) {
     
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedBottom.png"]];
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellRoundedBottom.png"]];
 
     } else { // Remaining Cells
         
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellTest.png"]];
     
     }
     
@@ -224,9 +224,9 @@
 
 - (UIColor *)goldenOrange
 {
-    return [UIColor colorWithRed:(240.0 / 255.0) 
-                           green:(213.0 / 255.0) 
-                            blue:(132.0 / 255.0) 
+    return [UIColor colorWithRed:(191.0 / 255.0) 
+                           green:(137.0 / 255.0) 
+                            blue:(38.0 / 255.0) 
                            alpha:1];   
 }
 
@@ -245,14 +245,16 @@
     label = (UILabel *)[cell viewWithTag:1];
     label.text = [method name];
     label.numberOfLines = 0;
-    
+
+    UIColor *color;    
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
-        UIColor *color = [self goldenOrange];
-        label.textColor = color;
+        color = [self goldenOrange];
     } else {
-        label.textColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
+        color = [UIColor darkGrayColor];
     }
+    
+    label.textColor = color;
     
     // Set up time label
     label = (UILabel *)[cell viewWithTag:2];
@@ -290,13 +292,17 @@
     
     [self styleLabelsForCell:cell 
                    forMethod:method];
+    UIImage *img;
     
     if (indexPath.row == starredMethodIndex) {
-        UIButton *label = (UIButton *)[cell viewWithTag:3];
-        NSLog(@"label %@", label);
-        label.titleLabel.textColor = [self goldenOrange];
+        img = [UIImage imageNamed:@"StarOn"];
+    } else {
+        img = [UIImage imageNamed:@"StarOff"];
     }
-
+    
+    UIButton *button = (UIButton *)[cell viewWithTag:3]; // Get star button
+    [button setBackgroundImage:img forState:UIControlStateNormal];
+    
     return cell;
 }
 

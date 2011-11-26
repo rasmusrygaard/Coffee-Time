@@ -40,6 +40,20 @@
 		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
+		0048B5F414815B9E00CCF57E /* BigCellTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F214815B9E00CCF57E /* BigCellTest.png */; };
+		0048B5F514815B9E00CCF57E /* BigCellTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */; };
+		0048B5F914815FB700CCF57E /* StarOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F714815FB700CCF57E /* StarOff.png */; };
+		0048B5FA14815FB700CCF57E /* StarOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F814815FB700CCF57E /* StarOff@2x.png */; };
+		0048B60D148165D000CCF57E /* StarOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B60B148165D000CCF57E /* StarOn.png */; };
+		0048B60E148165D000CCF57E /* StarOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B60C148165D000CCF57E /* StarOn@2x.png */; };
+		0048B615148169F300CCF57E /* CellTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B613148169F300CCF57E /* CellTest.png */; };
+		0048B616148169F300CCF57E /* CellTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B614148169F300CCF57E /* CellTest@2x.png */; };
+		0048B61D1481712500CCF57E /* BigCellRoundedBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B6171481712500CCF57E /* BigCellRoundedBottom.png */; };
+		0048B61E1481712500CCF57E /* BigCellRoundedBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B6181481712500CCF57E /* BigCellRoundedBottom@2x.png */; };
+		0048B6211481712500CCF57E /* BigCellRoundedTopBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B61B1481712500CCF57E /* BigCellRoundedTopBottom.png */; };
+		0048B6221481712500CCF57E /* BigCellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B61C1481712500CCF57E /* BigCellRoundedTopBottom@2x.png */; };
+		0048B625148171C200CCF57E /* BigCellRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B623148171C200CCF57E /* BigCellRoundedTop.png */; };
+		0048B626148171C200CCF57E /* BigCellRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B624148171C200CCF57E /* BigCellRoundedTop@2x.png */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -74,7 +88,6 @@
 		00D3594A1437E9FA00BFA6E0 /* CellRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */; };
 		00D3594B1437E9FA00BFA6E0 /* CellRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */; };
 		00D3594C1437E9FA00BFA6E0 /* CellRoundedTopBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */; };
-		00D3594D1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */; };
 		00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */; };
 		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
@@ -131,6 +144,20 @@
 		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
+		0048B5F214815B9E00CCF57E /* BigCellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellTest.png; sourceTree = "<group>"; };
+		0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellTest@2x.png"; sourceTree = "<group>"; };
+		0048B5F714815FB700CCF57E /* StarOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarOff.png; sourceTree = "<group>"; };
+		0048B5F814815FB700CCF57E /* StarOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarOff@2x.png"; sourceTree = "<group>"; };
+		0048B60B148165D000CCF57E /* StarOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarOn.png; sourceTree = "<group>"; };
+		0048B60C148165D000CCF57E /* StarOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarOn@2x.png"; sourceTree = "<group>"; };
+		0048B613148169F300CCF57E /* CellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellTest.png; sourceTree = "<group>"; };
+		0048B614148169F300CCF57E /* CellTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellTest@2x.png"; sourceTree = "<group>"; };
+		0048B6171481712500CCF57E /* BigCellRoundedBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellRoundedBottom.png; sourceTree = "<group>"; };
+		0048B6181481712500CCF57E /* BigCellRoundedBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellRoundedBottom@2x.png"; sourceTree = "<group>"; };
+		0048B61B1481712500CCF57E /* BigCellRoundedTopBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellRoundedTopBottom.png; sourceTree = "<group>"; };
+		0048B61C1481712500CCF57E /* BigCellRoundedTopBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellRoundedTopBottom@2x.png"; sourceTree = "<group>"; };
+		0048B623148171C200CCF57E /* BigCellRoundedTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellRoundedTop.png; sourceTree = "<group>"; };
+		0048B624148171C200CCF57E /* BigCellRoundedTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellRoundedTop@2x.png"; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -172,7 +199,6 @@
 		00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedTop.png; sourceTree = "<group>"; };
 		00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedTop@2x.png"; sourceTree = "<group>"; };
 		00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRoundedTopBottom.png; sourceTree = "<group>"; };
-		00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = CellRoundedTopBottom.psd; sourceTree = "<group>"; };
 		00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedTopBottom@2x.png"; sourceTree = "<group>"; };
 		00D359441437E9FA00BFA6E0 /* MethodBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MethodBackground.png; sourceTree = "<group>"; };
 		00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MethodBackground@2x.png"; sourceTree = "<group>"; };
@@ -248,6 +274,20 @@
 		000F1D2F14337984006CD04F /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				0048B623148171C200CCF57E /* BigCellRoundedTop.png */,
+				0048B624148171C200CCF57E /* BigCellRoundedTop@2x.png */,
+				0048B6171481712500CCF57E /* BigCellRoundedBottom.png */,
+				0048B6181481712500CCF57E /* BigCellRoundedBottom@2x.png */,
+				0048B61B1481712500CCF57E /* BigCellRoundedTopBottom.png */,
+				0048B61C1481712500CCF57E /* BigCellRoundedTopBottom@2x.png */,
+				0048B613148169F300CCF57E /* CellTest.png */,
+				0048B614148169F300CCF57E /* CellTest@2x.png */,
+				0048B60B148165D000CCF57E /* StarOn.png */,
+				0048B60C148165D000CCF57E /* StarOn@2x.png */,
+				0048B5F714815FB700CCF57E /* StarOff.png */,
+				0048B5F814815FB700CCF57E /* StarOff@2x.png */,
+				0048B5F214815B9E00CCF57E /* BigCellTest.png */,
+				0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */,
 				0005C5411442429E00D8D825 /* MatteBackground.png */,
 				0005C5421442429E00D8D825 /* MatteBackground@2x.png */,
 				0005C5431442429E00D8D825 /* SimpleMatteBackground.png */,
@@ -265,7 +305,6 @@
 				00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */,
 				00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */,
 				00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */,
-				00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */,
 				00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */,
 				006C93F71468B96300C9F3C1 /* CoffeeTime57.png */,
 				006C93F81468B96300C9F3C1 /* CoffeeTime112.png */,
@@ -525,7 +564,6 @@
 				00D3594A1437E9FA00BFA6E0 /* CellRoundedTop.png in Resources */,
 				00D3594B1437E9FA00BFA6E0 /* CellRoundedTop@2x.png in Resources */,
 				00D3594C1437E9FA00BFA6E0 /* CellRoundedTopBottom.png in Resources */,
-				00D3594D1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd in Resources */,
 				00D3594E1437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png in Resources */,
 				00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */,
 				00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */,
@@ -548,6 +586,20 @@
 				006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */,
 				00985239147EEBD2002B540C /* AddMethodView.xib in Resources */,
 				0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */,
+				0048B5F414815B9E00CCF57E /* BigCellTest.png in Resources */,
+				0048B5F514815B9E00CCF57E /* BigCellTest@2x.png in Resources */,
+				0048B5F914815FB700CCF57E /* StarOff.png in Resources */,
+				0048B5FA14815FB700CCF57E /* StarOff@2x.png in Resources */,
+				0048B60D148165D000CCF57E /* StarOn.png in Resources */,
+				0048B60E148165D000CCF57E /* StarOn@2x.png in Resources */,
+				0048B615148169F300CCF57E /* CellTest.png in Resources */,
+				0048B616148169F300CCF57E /* CellTest@2x.png in Resources */,
+				0048B61D1481712500CCF57E /* BigCellRoundedBottom.png in Resources */,
+				0048B61E1481712500CCF57E /* BigCellRoundedBottom@2x.png in Resources */,
+				0048B6211481712500CCF57E /* BigCellRoundedTopBottom.png in Resources */,
+				0048B6221481712500CCF57E /* BigCellRoundedTopBottom@2x.png in Resources */,
+				0048B625148171C200CCF57E /* BigCellRoundedTop.png in Resources */,
+				0048B626148171C200CCF57E /* BigCellRoundedTop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

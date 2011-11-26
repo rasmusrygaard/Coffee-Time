@@ -416,7 +416,7 @@
     }
     
     [[cell backgroundView] setContentMode:UIViewContentModeScaleToFill];
-    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellTest.png"]];
     [cell setBackgroundView:img];
     [img release];
     
