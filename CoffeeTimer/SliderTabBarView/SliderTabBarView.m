@@ -79,8 +79,7 @@
     CGRect bounds = [self bounds];
     
     // Get image, draw in context at upper left corner
-    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TabBackground.png"]];
-    [background setContentMode:UIViewContentModeScaleAspectFill];
+    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavBar.png"]];
     
     [background setFrame:CGRectMake(bounds.origin.x, bounds.origin.y, SLIDER_TAB_BAR_W, SLIDER_TAB_BAR_H)];
 

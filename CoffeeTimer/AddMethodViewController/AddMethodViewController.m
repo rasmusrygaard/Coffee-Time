@@ -44,10 +44,11 @@
         
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTop.png"]];
         
-//    } else if (indexPath.row == [self.brewMethods count] - 1) {
-//        
-//        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
-//        
+    } else if ((indexPath.section == 0 && indexPath.row == ADD_METHOD_UPPER_ROWS - 1) ||
+               (indexPath.section == 1 && indexPath.row == ADD_METHOD_LOWER_ROWS - 1)) {
+        
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
+        
     } else { // Remaining Cells
         
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
@@ -57,14 +58,73 @@
     return [img autorelease];
 }
 
+- (void)setTextForCell:(UITableViewCell *)cell
+           atIndexPath:(NSIndexPath *)indexPath
+{
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    UITextField *tf = (UITextField *)[cell viewWithTag:2];
+    
+    NSString *text, *textField;
+
+    if (indexPath.row == 0) return;
+        
+    switch (indexPath.row) {
+        case 1:
+            text = @"Equipment:", textField = @"Aeropress";
+            break;
+        case 2:
+            text = @"Coffee:", textField = @"26 g";
+            break;
+        case 3:
+            text = @"Water:", textField = @"200 g";
+            break;
+        default:
+            break;
+    }
+    
+    label.text = text;
+    tf.placeholder = textField;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UITableViewCell *cell;
     
-    [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" owner:self options:nil];
-    cell = amCell;
-    self.amCell = nil;
+    if (indexPath.section == 0) {
+        cell = [[UITableViewCell alloc] init];
+        
+        if (indexPath.row == 0) {
+            [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewTopCell"
+                                          owner:self
+                                        options:nil];
+        } else {
+            [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
+                                          owner:self 
+                                        options:nil];
+        }
+        cell = amCell;
+        self.amCell = nil;
+        
+        [self setTextForCell:cell 
+                 atIndexPath:indexPath];
+    } else { // Initialize lower cells
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"DefaultCell"];
+        
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Instructions";
+        } else {
+            cell.textLabel.text = @"Preparation";
+        }
+        
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.shadowColor = [UIColor lightTextColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UIImageView *img = [self imageForCellAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -99,6 +159,11 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = background;
+    
+    self.tableView.bounces = FALSE;
+    
+    self.navigationItem.title = @"Add Method";
+    
     [background release]; 
 }
 

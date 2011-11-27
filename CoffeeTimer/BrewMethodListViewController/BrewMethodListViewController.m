@@ -110,11 +110,10 @@
 
 -(IBAction)addMethod:(id)sender
 {
-    NSLog(@"adding method");
     AddMethodViewController *addMethodVC = [[AddMethodViewController alloc] init];
     
     [self.navigationController pushViewController:addMethodVC 
-                                         animated:NO];
+                                         animated:YES];
     
 }
 
