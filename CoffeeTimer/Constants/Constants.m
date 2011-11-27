@@ -16,7 +16,7 @@ int const TIMER_UPDATE_INTERVAL = 0.1;
 double const SLIDER_TAB_BAR_X = 11.0;
 double const SLIDER_TAB_BAR_Y = 160.0;
 double const SLIDER_TAB_BAR_W = 298.0;
-double const SLIDER_TAB_BAR_H = 49.0;
+double const SLIDER_TAB_BAR_H = 48.0;
 
 // Duration of the slider animation in seconds
 double const SLIDER_DURATION = 0.3;
@@ -46,6 +46,8 @@ double const INFO_CELL_WIDTH = 240;
 double const ADD_METHOD_SECTIONS = 2;
 double const ADD_METHOD_UPPER_ROWS = 4;
 double const ADD_METHOD_LOWER_ROWS = 2;
+
+double const MAX_TEXTFIELD_TAG = 15;
 
 
 - (id)init

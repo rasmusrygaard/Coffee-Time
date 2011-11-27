@@ -174,6 +174,10 @@
         [self.navigationController popViewControllerAnimated:NO];
     }
     
+    if (!self.bmViewController) {
+        [self initBMViewController];
+    }
+    
     [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
     
     NSString *methodToDisplay = [[bmViewController currentMethod] name];

@@ -39,4 +39,6 @@ extern double const ADD_METHOD_SECTIONS;
 extern double const ADD_METHOD_UPPER_ROWS;
 extern double const ADD_METHOD_LOWER_ROWS;
 
+extern double const MAX_TEXTFIELD_TAG;
+
 @end

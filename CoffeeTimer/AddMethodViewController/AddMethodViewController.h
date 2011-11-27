@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddMethodView.h"
 
-@interface AddMethodViewController : UITableViewController 
+@interface AddMethodViewController : UITableViewController <UITextFieldDelegate>
 {
     IBOutlet UIView *addMethodView;
     IBOutlet UITableViewCell *amCell;
