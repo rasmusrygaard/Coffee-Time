@@ -36,7 +36,6 @@
 		000F1D6914337984006CD04F /* SliderTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4814337984006CD04F /* SliderTabBarView.m */; };
 		000F1D6A14337984006CD04F /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4B14337984006CD04F /* TimerStep.m */; };
 		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
-		001261EA1481ADB900C3B101 /* AddMethodTableViewTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001261E91481ADB900C3B101 /* AddMethodTableViewTopCell.xib */; };
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
 		0048B5F414815B9E00CCF57E /* BigCellTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F214815B9E00CCF57E /* BigCellTest.png */; };
@@ -87,7 +86,6 @@
 		006F06D5144F455700D0766B /* BrewMethodTableViewSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
 		00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
-		00985239147EEBD2002B540C /* AddMethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00985237147EEBD2002B540C /* AddMethodView.xib */; };
 		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
 		00985240147EF9AA002B540C /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
@@ -143,7 +141,6 @@
 		000F1D4A14337984006CD04F /* TimerStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerStep.h; sourceTree = "<group>"; };
 		000F1D4B14337984006CD04F /* TimerStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerStep.m; sourceTree = "<group>"; };
 		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		001261E91481ADB900C3B101 /* AddMethodTableViewTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMethodTableViewTopCell.xib; sourceTree = "<group>"; };
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
 		0048B5F214815B9E00CCF57E /* BigCellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellTest.png; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
 		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
-		00985237147EEBD2002B540C /* AddMethodView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodView.xib; path = AddMethodViewController/AddMethodView.xib; sourceTree = "<group>"; };
 		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
 		0098523E147EF9AA002B540C /* AddMethodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodView.h; path = AddMethodViewController/AddMethodView.h; sourceTree = "<group>"; };
 		0098523F147EF9AA002B540C /* AddMethodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodView.m; path = AddMethodViewController/AddMethodView.m; sourceTree = "<group>"; };
@@ -464,9 +460,7 @@
 				0098523F147EF9AA002B540C /* AddMethodView.m */,
 				00985235147EEBD2002B540C /* AddMethodViewController.h */,
 				00985236147EEBD2002B540C /* AddMethodViewController.m */,
-				00985237147EEBD2002B540C /* AddMethodView.xib */,
 				0098523A147EF072002B540C /* AddMethodTableViewCell.xib */,
-				001261E91481ADB900C3B101 /* AddMethodTableViewTopCell.xib */,
 			);
 			name = AddMethodViewController;
 			sourceTree = "<group>";
@@ -583,7 +577,6 @@
 				006C93FA1468B96300C9F3C1 /* CoffeeTime112.png in Resources */,
 				006C93FE1468B98600C9F3C1 /* Default.png in Resources */,
 				006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */,
-				00985239147EEBD2002B540C /* AddMethodView.xib in Resources */,
 				0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */,
 				0048B5F414815B9E00CCF57E /* BigCellTest.png in Resources */,
 				0048B5F514815B9E00CCF57E /* BigCellTest@2x.png in Resources */,
@@ -611,7 +604,6 @@
 				0048B64E14819EEF00CCF57E /* CellRoundedTopBottom@2x.png in Resources */,
 				0048B65114819F7F00CCF57E /* Cell.png in Resources */,
 				0048B65214819F7F00CCF57E /* Cell@2x.png in Resources */,
-				001261EA1481ADB900C3B101 /* AddMethodTableViewTopCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

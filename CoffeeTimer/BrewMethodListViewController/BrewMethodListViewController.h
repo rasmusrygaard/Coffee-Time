@@ -29,6 +29,7 @@
  */
 
 -(BOOL)hasStarredMethod;
+-(void)setStarredMethodIndex:(int)index;
 -(BOOL)timerIsRunning;
 
 - (void)runStarredMethod;
@@ -45,5 +46,6 @@
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvlCell;
 @property (nonatomic, retain) NSIndexPath *activeCell;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *addButton;
+@property (nonatomic, assign) int starredMethodIndex;
 
 @end

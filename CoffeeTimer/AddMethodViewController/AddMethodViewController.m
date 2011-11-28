@@ -75,14 +75,15 @@
     UITextField *tf = (UITextField *)[cell viewWithTag:2];
     
     NSString *text, *textField;
-
-    if (indexPath.row == 0) {
-        tf.tag = MAX_TEXTFIELD_TAG - 3;
-        label.tag = tf.tag % 10;
-        return;
-    }
         
     switch (indexPath.row) {
+        case 0:
+            text = @"Name", textField = @"My Aeropress";
+            tf.tag = MAX_TEXTFIELD_TAG - 3;
+            
+            label.font = [UIFont systemFontOfSize:22];
+            tf.font = [UIFont systemFontOfSize:22];
+            break;
         case 1:
             text = @"Equipment", textField = @"Aeropress";
             tf.tag = MAX_TEXTFIELD_TAG - 2;
@@ -101,6 +102,8 @@
     
     label.tag = tf.tag % 10;
     label.text = text;
+    
+    tf.adjustsFontSizeToFitWidth = YES;
     tf.placeholder = textField;
 }
 
@@ -112,15 +115,9 @@
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc] init];
         
-        if (indexPath.row == 0) {
-            [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewTopCell"
-                                          owner:self
-                                        options:nil];
-        } else {
-            [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
-                                          owner:self 
-                                        options:nil];
-        }
+        [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
+                                      owner:self 
+                                    options:nil];
         cell = amCell;
         self.amCell = nil;
         
@@ -171,6 +168,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField;   
 {
     int tag = textField.tag;
+    NSLog(@"tag: %d", tag);
     UILabel *label = (UILabel *)[self.view viewWithTag:(tag % 10)];
     NSLog(@"Label: %@", label.text);    
 }

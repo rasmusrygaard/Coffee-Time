@@ -13,7 +13,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell, bmViewController, activeCell, addButton;
+@synthesize brewMethods, tvlCell, bmViewController, activeCell, addButton, starredMethodIndex;
 
 - (UIColor *)goldenOrange
 {
@@ -34,12 +34,18 @@
             [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar2.png"] forBarMetrics:UIBarMetricsDefault];
             [[UINavigationBar appearance] setContentMode:UIViewContentModeScaleToFill];
             [[UINavigationBar appearance] setTitleTextAttributes:
-             [NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor ],UITextAttributeTextColor,
+             [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,
                                                         [UIColor darkTextColor],   UITextAttributeTextShadowColor,
                                                         [NSValue valueWithUIOffset:UIOffsetMake(0, -.5)],       UITextAttributeTextShadowOffset, nil]];
         }
 
-        starredMethodIndex = -1;
+        NSNumber *objIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"starredMethodIndex"];
+        if (objIndex == nil) {
+            self.starredMethodIndex = -1;
+        } else {
+            self.starredMethodIndex = [objIndex intValue];
+        }
+
     }
     
     return self;
@@ -60,22 +66,6 @@
                        forKeyPath:@"secondsLeft" 
                           options:NSKeyValueObservingOptionNew
                           context:nil];
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeInt:starredMethodIndex forKey:@"starredMethodIndex"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ([aDecoder containsValueForKey:@"starredMethodIndex"]) {
-        starredMethodIndex = [aDecoder decodeIntForKey:@"starredMethodIndex"];
-    } else {
-        starredMethodIndex = -1;
-    }
-    
-    return self;
 }
 
 - (void)initBrewMethods
@@ -127,10 +117,10 @@
 {
     NSIndexPath *path = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
     
-    if (path.row == starredMethodIndex) {
-        starredMethodIndex = -1;
+    if (path.row == self.starredMethodIndex) {
+        self.starredMethodIndex = -1;
     } else {
-        starredMethodIndex = path.row;
+        self.starredMethodIndex = path.row;
     }
 
     [self.tableView reloadData];
@@ -138,7 +128,21 @@
 
 -(BOOL)hasStarredMethod;
 {
-    return (starredMethodIndex != -1);
+    return (self.starredMethodIndex != -1);
+}
+
+/* Function: - (void)setStarredMethodIndex:(int)index
+ * Custom setter for starredMethodIndex. The custom implementation is necessary
+ * to write the current value of starredMethodIndex to NSUserDefaults.
+ */
+
+- (void)setStarredMethodIndex:(int)index
+{
+    starredMethodIndex = index;
+
+    NSNumber *objInt = [NSNumber numberWithInt:starredMethodIndex];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:objInt forKey:@"starredMethodIndex"];
 }
 
 -(BOOL)timerIsRunning
@@ -178,7 +182,7 @@
         [self initBMViewController];
     }
     
-    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:starredMethodIndex]];
+    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:self.starredMethodIndex]];
     
     NSString *methodToDisplay = [[bmViewController currentMethod] name];
     [[bmViewController navigationItem] setTitle:methodToDisplay];
@@ -186,11 +190,17 @@
     [self.navigationController pushViewController:bmViewController 
                                          animated:NO];
     
-    self.activeCell = [NSIndexPath indexPathForRow:starredMethodIndex inSection:0];
+    self.activeCell = [NSIndexPath indexPathForRow:self.starredMethodIndex inSection:0];
     self.bmViewController.autoStartMethod = true;
     
     [self.bmViewController startStarredMethod];
 }
+
+/* Function: -(void)resetAfterFinishedMethod
+ * Reset the state of the tableview after a method has finished running. Setting
+ * activeCell to nil removes the highlighting and reloading the data will
+ * reset the countdown. 
+ */
 
 -(void)resetAfterFinishedMethod
 {
@@ -245,7 +255,7 @@
     
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellRoundedBottom.png"]];
 
-    } else { // Remaining Cells
+    } else {
         
         img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellTest.png"]];
     
@@ -318,7 +328,7 @@
                    forMethod:method];
     UIImage *img;
     
-    if (indexPath.row == starredMethodIndex) {
+    if (indexPath.row == self.starredMethodIndex) {
         img = [UIImage imageNamed:@"StarOn"];
     } else {
         img = [UIImage imageNamed:@"StarOff2"];
