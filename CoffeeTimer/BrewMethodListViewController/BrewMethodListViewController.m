@@ -12,7 +12,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell, bmViewController, activeCell;
+@synthesize brewMethods, tvlCell, bmViewController, activeCell, wantsToSwitchMethod, toSwitchTo;
 
 - (id)init 
 {
@@ -21,6 +21,7 @@
         [[self navigationItem] setTitle:@"Brew Methods"];
         
         starredMethodIndex = 1;
+        wantsToSwitchMethod = true;
     }
     
     return self;
@@ -112,6 +113,7 @@
     self.bmViewController.autoStartMethod = true;
     
     [self.bmViewController startStarredMethod];
+    wantsToSwitchMethod = false;
 }
 
 -(void)resetAfterFinishedMethod
@@ -256,6 +258,21 @@
     return cell;
 }
 
+-(void)setupViewControllerForMethod
+{
+    
+}
+
+/* Function: - (BOOL)isRunningSameMethod:(NSString *)method
+ * Returns true if there currently is a timer running for the method passed in /// Move to single method view
+ */
+
+- (BOOL)isRunningSameMethod:(NSString *)method
+{
+    return [self.bmViewController timerIsRunning] && 
+            ![[[self.bmViewController currentMethod] name] isEqualToString:method]; 
+}
+
 /* Function: - (void) tableView:(UITableView *)tableView 
  *      didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  * Create a viewController for the new method if it does not already exist. Have
@@ -268,16 +285,38 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if (!bmViewController) {
         [self initBMViewController];
      }
+    
+    NSString *method = [[brewMethods objectAtIndex:indexPath.row] name];
+    
+    if (self.wantsToSwitchMethod || ![self isRunningSameMethod:method]) {
+        [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
+        
+        NSString *methodToDisplay = [[bmViewController currentMethod] name];
+        [[bmViewController navigationItem] setTitle:methodToDisplay];
+        
+        [self.navigationController pushViewController:bmViewController 
+                                             animated:YES];
+        
+        self.activeCell = indexPath;
+        wantsToSwitchMethod = false;
+    } else {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Cancel running timer?" 
+                                                     message:@"Are you sure you want to cancel your current timer?" 
+                                                    delegate:self
+                                           cancelButtonTitle:@"Cancel"
+                                           otherButtonTitles:@"Yes", nil];
+        [av show];
+        [av release];
+        self.toSwitchTo = indexPath;
+    }
+}
 
-    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
-    
-    NSString *methodToDisplay = [[bmViewController currentMethod] name];
-    [[bmViewController navigationItem] setTitle:methodToDisplay];
-    
-    [self.navigationController pushViewController:bmViewController 
-                                         animated:YES];
-    
-    self.activeCell = indexPath;
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if((wantsToSwitchMethod = (buttonIndex == 1))) {
+        NSLog(@"%@", toSwitchTo);
+        [self tableView:(self.tableView) didSelectRowAtIndexPath:toSwitchTo];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
