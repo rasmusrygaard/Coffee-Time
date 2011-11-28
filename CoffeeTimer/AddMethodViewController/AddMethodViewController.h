@@ -11,20 +11,13 @@
 
 @interface AddMethodViewController : UITableViewController <UITextFieldDelegate>
 {
-    IBOutlet UIView *addMethodView;
     IBOutlet UITableViewCell *amCell;
+    NSMutableDictionary *basicInfo;
 }
-
--(IBAction)editedEquipment:(id)sender;
--(IBAction)addInstructionsTapped:(id)sender;
--(IBAction)addPreparationTapped:(id)sender;
-
--(IBAction)saveButtonTapped:(id)sender;
 
 - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath;
 
 
-@property (nonatomic, retain) IBOutlet UIView *addMethodView;
 @property (nonatomic, retain) IBOutlet UITableViewCell *amCell;
 
 @end

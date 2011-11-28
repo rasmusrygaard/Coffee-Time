@@ -30,6 +30,7 @@
         [[self navigationItem] setTitle:@"Brew Methods"];
         
         if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
+            // Style NavigationBar for iOS 5
             [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
             [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar2.png"] forBarMetrics:UIBarMetricsDefault];
             [[UINavigationBar appearance] setContentMode:UIViewContentModeScaleToFill];

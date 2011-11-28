@@ -48,6 +48,7 @@ double const ADD_METHOD_UPPER_ROWS = 4;
 double const ADD_METHOD_LOWER_ROWS = 2;
 
 double const MAX_TEXTFIELD_TAG = 15;
+double const TEXTFIELD_MAX_WIDTH = 190;
 
 
 - (id)init

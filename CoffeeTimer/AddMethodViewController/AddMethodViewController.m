@@ -11,11 +11,14 @@
 
 @implementation AddMethodViewController
 
-@synthesize addMethodView, amCell;
+@synthesize amCell;
 
 -(id)init
 {
     [super initWithStyle:UITableViewStyleGrouped];
+    
+    basicInfo = [[NSMutableDictionary alloc] init];
+    
     return self;
 }
 
@@ -168,9 +171,9 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField;   
 {
     int tag = textField.tag;
-    NSLog(@"tag: %d", tag);
     UILabel *label = (UILabel *)[self.view viewWithTag:(tag % 10)];
-    NSLog(@"Label: %@", label.text);    
+    NSLog(@"Setting value: %@ for key: %@", textField.text, label.text);
+    [basicInfo setValue:textField.text forKey:label.text];    
 }
 
 /* - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -205,6 +208,19 @@
     return YES;
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+                                                      replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByAppendingString:string];
+    CGSize textSize = [newString sizeWithFont:[UIFont systemFontOfSize:14]];
+    NSLog(@"%f", textSize.width);
+    return textSize.width <= TEXTFIELD_MAX_WIDTH;
+}
+/*
+ UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
+ 
+ CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(INFO_CELL_WIDTH, MAXFLOAT)];
+ */
 
 #pragma mark - View lifecycle
 
@@ -239,7 +255,7 @@
 
 - (void)dealloc
 {
-    [addMethodView release];
+
 }
 
 @end

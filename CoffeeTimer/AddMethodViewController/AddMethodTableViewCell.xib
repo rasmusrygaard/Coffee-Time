@@ -43,9 +43,10 @@
 							<object class="IBUITextField" id="239376173">
 								<reference key="NSNextResponder" ref="740850959"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{108, 0}, {212, 44}}</string>
+								<string key="NSFrame">{{108, 0}, {202, 44}}</string>
 								<reference key="NSSuperview" ref="740850959"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:304</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -60,7 +61,7 @@
 									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
-								<float key="IBUIMinimumFontSize">17</float>
+								<float key="IBUIMinimumFontSize">14</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIReturnKeyType">4</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -212,44 +213,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">AddMethodViewController</string>
 					<string key="superclassName">UITableViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="addInstructionsTapped:">id</string>
-						<string key="addPreparationTapped:">id</string>
-						<string key="editedEquipment:">id</string>
-						<string key="saveButtonTapped:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="addInstructionsTapped:">
-							<string key="name">addInstructionsTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="addPreparationTapped:">
-							<string key="name">addPreparationTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="editedEquipment:">
-							<string key="name">editedEquipment:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveButtonTapped:">
-							<string key="name">saveButtonTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="addMethodView">UIView</string>
-						<string key="amCell">UITableViewCell</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="addMethodView">
-							<string key="name">addMethodView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="amCell">
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">amCell</string>
+						<string key="NS.object.0">UITableViewCell</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">amCell</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">amCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/AddMethodViewController.h</string>
