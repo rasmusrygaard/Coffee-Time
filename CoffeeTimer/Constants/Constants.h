@@ -41,5 +41,6 @@ extern double const ADD_METHOD_LOWER_ROWS;
 
 extern double const MAX_TEXTFIELD_TAG;
 extern double const TEXTFIELD_MAX_WIDTH;
+extern double const TEXTFIELD_MIN_FONT_SIZE;
 
 @end

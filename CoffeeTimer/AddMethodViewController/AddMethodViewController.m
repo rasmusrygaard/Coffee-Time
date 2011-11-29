@@ -68,7 +68,9 @@
 
 /* Function: - (void)setTextForCell:(UITableViewCell *)cell
  *                      atIndexPath:(NSIndexPath *)indexPath
- * Get the header and sample text for the cells in the upper rows.
+ * Get the header and sample text for the cells in the upper rows. If
+ * the user has already entered text in the field, fetch it from the
+ * dictionary. Otherwise, set the placeholder text.
  */
 
 - (void)setTextForCell:(UITableViewCell *)cell
@@ -81,33 +83,46 @@
         
     switch (indexPath.row) {
         case 0:
-            text = @"Name", textField = @"My Aeropress";
-            tf.tag = MAX_TEXTFIELD_TAG - 3;
-            
+            text = @"Name";
             label.font = [UIFont systemFontOfSize:22];
             tf.font = [UIFont systemFontOfSize:22];
             break;
         case 1:
-            text = @"Equipment", textField = @"Aeropress";
-            tf.tag = MAX_TEXTFIELD_TAG - 2;
-            break;
+            text = @"Equipment"; break;
         case 2:
-            text = @"Coffee", textField = @"26 g";
-            tf.tag = MAX_TEXTFIELD_TAG - 1;
-            break;
+            text = @"Coffee"; break;
         case 3:
-            text = @"Water", textField = @"200 g";
-            tf.tag = MAX_TEXTFIELD_TAG;
-            break;
+            text = @"Water"; break;
         default:
             break;
     }
     
-    label.tag = tf.tag % 10;
+    // Give tags in ascending order
+    tf.tag = MAX_TEXTFIELD_TAG - ADD_METHOD_UPPER_ROWS + indexPath.row;
+    
+    textField = [basicInfo objectForKey:text]; // Get existing text
+    if (textField == nil) {                    // Otherwise initialize it
+        switch (indexPath.row) {
+            case 0:
+                textField = @"My Aeropress"; break;
+            case 1:
+                textField = @"Aeropress"; break;
+            case 2:
+                textField = @"26 g"; break;
+            case 3:
+                textField = @"300 g"; break;
+            default:
+                break;
+        }
+        tf.placeholder = textField;
+    } else {
+        tf.text = textField;
+    }
+    
+    label.tag = tf.tag + 10;
     label.text = text;
     
     tf.adjustsFontSizeToFitWidth = YES;
-    tf.placeholder = textField;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView 
@@ -171,9 +186,11 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField;   
 {
     int tag = textField.tag;
-    UILabel *label = (UILabel *)[self.view viewWithTag:(tag % 10)];
-    NSLog(@"Setting value: %@ for key: %@", textField.text, label.text);
-    [basicInfo setValue:textField.text forKey:label.text];    
+    UILabel *label = (UILabel *)[self.view viewWithTag:(tag + 10)];
+    
+    if (![label.text isEqualToString:@""]) {
+        [basicInfo setValue:textField.text forKey:label.text];
+    }
 }
 
 /* - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -182,7 +199,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField.tag == MAX_TEXTFIELD_TAG) {
+    if (textField.tag == MAX_TEXTFIELD_TAG - 1) {
         textField.returnKeyType = UIReturnKeyDone;
     } else {
         textField.returnKeyType = UIReturnKeyNext;
@@ -192,7 +209,9 @@
 
 /* Function: - (BOOL)textFieldShouldReturn:(UITextField *)textField
  * Have the return key move to the next text field unless we are
- * at the very last one.
+ * at the very last one. Tags for the cells are in ascending order,
+ * so the next cell has a tag that is one greater than the currenty
+ * cell.
  */
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -200,7 +219,7 @@
     int nextTag = textField.tag + 1;
     [textField resignFirstResponder];
     
-    if (nextTag <= MAX_TEXTFIELD_TAG) {
+    if (nextTag < MAX_TEXTFIELD_TAG) {
         UITextField *tf = (UITextField *)[self.view viewWithTag:nextTag];
         [tf becomeFirstResponder];
     }
@@ -212,15 +231,10 @@
                                                       replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByAppendingString:string];
-    CGSize textSize = [newString sizeWithFont:[UIFont systemFontOfSize:14]];
-    NSLog(@"%f", textSize.width);
-    return textSize.width <= TEXTFIELD_MAX_WIDTH;
+    CGSize textSize = [newString sizeWithFont:[UIFont systemFontOfSize:TEXTFIELD_MIN_FONT_SIZE]];
+
+    return textSize.width < TEXTFIELD_MAX_WIDTH;
 }
-/*
- UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
- 
- CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(INFO_CELL_WIDTH, MAXFLOAT)];
- */
 
 #pragma mark - View lifecycle
 
