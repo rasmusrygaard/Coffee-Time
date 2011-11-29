@@ -227,12 +227,16 @@
     return YES;
 }
 
+/* Function: -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+ *                                                                 replacementString:(NSString *)string
+ * Make sure we never exceed the bounds of the text field.
+ */
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
                                                       replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByAppendingString:string];
     CGSize textSize = [newString sizeWithFont:[textField font]];
-    NSLog(@"new string: %@ of width %f", newString, textSize.width);
     
     return textSize.width < TEXTFIELD_MAX_WIDTH;
 }
@@ -251,6 +255,7 @@
     self.tableView.bounces = FALSE;
     
     self.navigationItem.title = @"Add Method";
+    self.navigationItem.backBarButtonItem.title = @"Methods";
     
     [background release]; 
 }
@@ -270,7 +275,10 @@
 
 - (void)dealloc
 {
-
+    [basicInfo release];
+    basicInfo = nil;
+    
+    [super dealloc];
 }
 
 @end

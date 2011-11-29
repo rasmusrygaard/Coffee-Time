@@ -102,7 +102,7 @@
 -(IBAction)addMethod:(id)sender
 {
     AddMethodViewController *addMethodVC = [[AddMethodViewController alloc] init];
-    
+    addMethodVC.navigationItem.backBarButtonItem.title = @"Methods";
     [self.navigationController pushViewController:addMethodVC 
                                          animated:YES];
     
@@ -166,6 +166,25 @@
     [self runStarredMethod];
 }
 
+-(void)pushbmViewControllerForIndexPath:(NSIndexPath *)indexPath
+{
+    if (!self.bmViewController) {
+        [self initBMViewController];
+    }
+    
+    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
+//    UIBarButtonItem *bb = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+//    self.bmViewController.navigationItem.backBarButtonItem = bb;
+//    [bb release];
+    
+    NSString *methodToDisplay = [[bmViewController currentMethod] name];
+    [[bmViewController navigationItem] setTitle:methodToDisplay];
+    
+    [self.navigationController pushViewController:bmViewController 
+                                         animated:YES];
+    self.activeCell = indexPath;
+}
+
 /* Function: - (void)runStarredMethod
  * This method is called after launching the app when a starred method is currently
  * set up. If there is already a viewcontroller from an old brew method, pop it.
@@ -183,15 +202,9 @@
         [self initBMViewController];
     }
     
-    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:self.starredMethodIndex]];
-    
-    NSString *methodToDisplay = [[bmViewController currentMethod] name];
-    [[bmViewController navigationItem] setTitle:methodToDisplay];
-    
-    [self.navigationController pushViewController:bmViewController 
-                                         animated:NO];
-    
-    self.activeCell = [NSIndexPath indexPathForRow:self.starredMethodIndex inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.starredMethodIndex inSection:0];
+    [self pushbmViewControllerForIndexPath:indexPath];
+
     self.bmViewController.autoStartMethod = true;
     
     [self.bmViewController startStarredMethod];
@@ -350,19 +363,7 @@
 - (void) tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!bmViewController) {
-        [self initBMViewController];
-     }
-
-    [self.bmViewController setCurrentMethod:[brewMethods objectAtIndex:[indexPath row]]];
-    
-    NSString *methodToDisplay = [[bmViewController currentMethod] name];
-    [[bmViewController navigationItem] setTitle:methodToDisplay];
-    
-    [self.navigationController pushViewController:bmViewController 
-                                         animated:YES];
-    
-    self.activeCell = indexPath;
+    [self pushbmViewControllerForIndexPath:indexPath];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

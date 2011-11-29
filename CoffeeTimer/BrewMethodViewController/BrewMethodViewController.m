@@ -482,7 +482,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         text = [descriptions objectAtIndex:indexPath.row];
     }
     
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0 ];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0];
     
     CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(INFO_CELL_WIDTH, MAXFLOAT)];
     
