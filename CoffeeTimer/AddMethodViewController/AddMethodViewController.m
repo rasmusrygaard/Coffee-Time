@@ -231,8 +231,9 @@
                                                       replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByAppendingString:string];
-    CGSize textSize = [newString sizeWithFont:[UIFont systemFontOfSize:TEXTFIELD_MIN_FONT_SIZE]];
-
+    CGSize textSize = [newString sizeWithFont:[textField font]];
+    NSLog(@"new string: %@ of width %f", newString, textSize.width);
+    
     return textSize.width < TEXTFIELD_MAX_WIDTH;
 }
 
