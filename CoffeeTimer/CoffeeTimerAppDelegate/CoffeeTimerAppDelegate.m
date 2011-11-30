@@ -46,9 +46,8 @@
     NSArray *scheduledNotifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
     
     if ([scheduledNotifs count] > 0) { // Don't remove cell if we've executed all notifications
-        [runningMethod removeTopInstructionsCellWithAnimation:animated];
+        [runningMethod removeTopInstructionsCellWithAnimation:animated remainingSteps:[scheduledNotifs count]];
     } else { // Final method
-        NSLog(@"hey");
         [runningMethod brewMethodFinished];
     }
 }
@@ -66,6 +65,13 @@
         [self->bmlViewController hasStarredMethod] &&
         !self.enteredBackgroundWithTimerRunning) {
         [bmlViewController runStarredMethod];
+    } else if (bmlViewController && [self->bmlViewController timerIsRunning]) {
+        // Bring the UI up to date
+        BrewMethodViewController *runningMethod = [bmlViewController bmViewController];
+        NSArray *scheduledNotifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
+        
+        [runningMethod removeTopInstructionsCellWithAnimation:NO 
+                                               remainingSteps:[scheduledNotifs count]];
     }
 }
 

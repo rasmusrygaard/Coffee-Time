@@ -222,6 +222,28 @@
     }
 }
 
+/* Function: - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
+                                             remainingSteps:(int)remaining
+ * This function is almost indentical to removeTopInstructionsCell.. without
+ * the second parameter. The difference is that we here get rid of any additional
+ * instructions before removing with or without animation, making sure that the UI
+ * is up to date. This would be relevant if multiple notifications have fired
+ * between updates to the UI, meaning that there are redundant cells present.
+ */
+
+- (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
+                                remainingSteps:(int)remaining
+{
+    if ([instructions count] == remaining) { // Make sure we actually want to update
+        
+        while ([instructions count] > remaining + 1) { // Get rid of additional instructions. 
+            [instructions removeObjectAtIndex:0];
+        }
+        
+        [self removeTopInstructionsCellWithAnimation:animated];
+    }
+}
+
 /* - (void)removeTopInstructionsCellWithAnimation
  * Removes the top cell from the infoTableView. Should only be called
  * when the Instructions tab is active, since this method will remove
@@ -231,6 +253,7 @@
 - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
 {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    
     
     if (animated) {
         [self.infoTableView beginUpdates];

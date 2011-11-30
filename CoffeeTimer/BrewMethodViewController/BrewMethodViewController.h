@@ -59,6 +59,20 @@
 
 - (NSArray *)descriptionsForCurrentTab;
 
+/* Function: - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
+ *                                           remainingSteps:(int)remaining
+ * This function is almost indentical to removeTopInstructionsCell.. without
+ * the second parameter. The difference is that we here get rid of any additional
+ * instructions before removing with or without animation, making sure that the UI
+ * is up to date. This would be relevant if multiple notifications have fired
+ * between updates to the UI, meaning that there are redundant cells present.
+ * The second parameter should specify the number of cells in the tableView _after_
+ * removing the top cell. So, if we want to have only 1 cell left, remaining should be 1
+ */
+
+- (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
+                                remainingSteps:(int)remaining;
+
 - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated;
 - (void)resetInstructions;
 - (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
