@@ -234,7 +234,8 @@
 - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
                                 remainingSteps:(int)remaining
 {
-    if ([instructions count] == remaining) { // Make sure we actually want to update
+    NSLog(@"inst: %d rem: %d", [instructions count], remaining);
+    if ([instructions count] != remaining) { // Make sure we actually want to update
         
         while ([instructions count] > remaining + 1) { // Get rid of additional instructions. 
             [instructions removeObjectAtIndex:0];
