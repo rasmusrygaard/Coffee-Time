@@ -234,7 +234,6 @@
 - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated
                                 remainingSteps:(int)remaining
 {
-    NSLog(@"inst: %d rem: %d", [instructions count], remaining);
     if ([instructions count] != remaining) { // Make sure we actually want to update
         
         while ([instructions count] > remaining + 1) { // Get rid of additional instructions. 
@@ -289,7 +288,7 @@
     [self.infoTableView reloadData];
 }
 
-- (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed /// get rid of parameter
+- (void)updateTimeOnTopCell
 {
     NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     
@@ -329,7 +328,7 @@
     [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
-        [self updateTimeOnTopCell:secondsLeft];
+        [self updateTimeOnTopCell];
     }
 }
 
@@ -353,7 +352,11 @@
 
 - (void)checkTimerStatus:(NSTimer *)theTimer
 {
-    [self updateRemainingTime];
+    if ([self timerIsDone]) {
+        [self brewMethodFinished];
+    } else {
+        [self updateRemainingTime];
+    }
 }
 
 - (void)didReceiveMemoryWarning

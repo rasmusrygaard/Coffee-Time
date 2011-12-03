@@ -75,7 +75,7 @@
 
 - (void)removeTopInstructionsCellWithAnimation:(BOOL)animated;
 - (void)resetInstructions;
-- (void)updateTimeOnTopCell:(NSTimeInterval)timeElapsed;
+- (void)updateTimeOnTopCell;
 - (void)brewMethodFinished;
 
 - (void)setAndStartTimerForMethod:(BrewMethod *)method;
