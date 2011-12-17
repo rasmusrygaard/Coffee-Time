@@ -38,6 +38,7 @@ extern double const INFO_CELL_WIDTH;
 extern double const ADD_METHOD_SECTIONS;
 extern double const ADD_METHOD_UPPER_ROWS;
 extern double const ADD_METHOD_LOWER_ROWS;
+extern double const ADD_METHOD_BOTTOM_ROWS;
 
 extern double const MAX_TEXTFIELD_TAG;
 extern double const TEXTFIELD_MAX_WIDTH;

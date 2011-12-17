@@ -41,28 +41,27 @@
 
 /* Function: - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
  * Get the cell images based on the cell's placement in the table. Make sure that
- * top and bottom cells have rounded corners. 
+ * top and bottom cells have rounded corners and that  
  */
 
 - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
 {
     UIImageView *img;
     
-    if (indexPath.row == 0) { // Top cell
-        
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTop.png"]];
-        
-    } else if ((indexPath.section == 0 && indexPath.row == ADD_METHOD_UPPER_ROWS - 1) ||
-               (indexPath.section == 1 && indexPath.row == ADD_METHOD_LOWER_ROWS - 1)) {
-        
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
-        
-    } else { // Remaining Cells
-        
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
-        
-    }
+    int rowsInSection = [self.tableView numberOfRowsInSection:indexPath.section];
     
+    if (rowsInSection == 1) { // Top/bottom cell
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTopBottom.png"]]; 
+    } else {
+        if (indexPath.row == 0) {
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTop.png"]];
+        } else if (indexPath.row == rowsInSection - 1) {
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
+        } else {
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+        }
+    }
+
     return [img autorelease];
 }
 
@@ -141,9 +140,12 @@
         
         [self setTextForCell:cell 
                  atIndexPath:indexPath];
-    } else { // Initialize lower cells
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:@"DefaultCell"];
+    } else if (indexPath.section == 1) { // Initialize lower cells
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"DefaultCell"];
+        }
         
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Instructions";
@@ -155,6 +157,18 @@
         cell.textLabel.shadowColor = [UIColor lightTextColor];
         cell.textLabel.shadowOffset = CGSizeMake(0, 1);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"DefaultCell"];
+        }
+        
+        cell.textLabel.text = @"Save";
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.shadowColor = [UIColor lightTextColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -174,8 +188,10 @@
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    if (section == ADD_METHOD_SECTIONS - 1) {
+    if (section == ADD_METHOD_SECTIONS - 2) {
         return ADD_METHOD_LOWER_ROWS;
+    } else if (section == ADD_METHOD_SECTIONS - 1){
+        return ADD_METHOD_BOTTOM_ROWS;
     } else {
         return ADD_METHOD_UPPER_ROWS;
     }
@@ -183,7 +199,13 @@
 
 #pragma mark - UITextField protocol
 
-- (void)textFieldDidEndEditing:(UITextField *)textField;   
+/* - (void)textFieldDidEndEditing:(UITextField *)textField;
+ * Make sure that changes in the UITextFields persist by storing them
+ * in the basicInfo dictionary. Note the textfield have tags t + 10,
+ * where t is the tag of the textField.
+ */
+
+- (void)textFieldDidEndEditing:(UITextField *)textField;
 {
     int tag = textField.tag;
     UILabel *label = (UILabel *)[self.view viewWithTag:(tag + 10)];
