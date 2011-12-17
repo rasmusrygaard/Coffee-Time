@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddDetailViewController : UIViewController
+@interface AddDetailViewController : UITableViewController
+{
+    NSString *detailType;
+    NSMutableArray *data;
+}
+
+@property (nonatomic, assign) NSString *detailType;
+@property (nonatomic, retain) NSMutableArray *data;
 
 @end

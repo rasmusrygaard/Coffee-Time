@@ -51,7 +51,7 @@
 	<key>NSMainNibFile</key>
 	<string>MainWindow_iPhone</string>
 	<key>UIPrerenderedIcon</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UISupportedInterfaceOrientations</key>
