@@ -8,6 +8,7 @@
 
 #import "AddMethodViewController.h"
 #import "Constants.h"
+#import "AddDetailViewController.h"
 
 @implementation AddMethodViewController
 
@@ -195,6 +196,23 @@
     } else {
         return ADD_METHOD_UPPER_ROWS;
     }
+}
+
+- (void) tableView:(UITableView *)tableView 
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *label = cell.textLabel.text;
+    if ([label isEqualToString:@"Instructions"] ||
+        [label isEqualToString:@"Preparation"]) {
+        AddDetailViewController *adVC = [[AddDetailViewController alloc] init];
+        [adVC.navigationItem setTitle:label];
+        
+        [self.navigationController pushViewController:adVC animated:YES];
+        [adVC release];
+    }
+    
+    
 }
 
 #pragma mark - UITextField protocol

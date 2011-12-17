@@ -92,6 +92,8 @@
 		00B096A6147DC46700004B9A /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
 		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
+		00E5F649149D313100A97E64 /* AddDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F647149D313100A97E64 /* AddDetailViewController.m */; };
+		00E5F64A149D313100A97E64 /* AddDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F648149D313100A97E64 /* AddDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +206,9 @@
 		00B096A9147DC4D100004B9A /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Helpers/FileHelpers.h; sourceTree = "<group>"; };
 		00D359441437E9FA00BFA6E0 /* MethodBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MethodBackground.png; sourceTree = "<group>"; };
 		00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MethodBackground@2x.png"; sourceTree = "<group>"; };
+		00E5F646149D313100A97E64 /* AddDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddDetailViewController.h; path = AddDetailViewController/AddDetailViewController.h; sourceTree = "<group>"; };
+		00E5F647149D313100A97E64 /* AddDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDetailViewController.m; path = AddDetailViewController/AddDetailViewController.m; sourceTree = "<group>"; };
+		00E5F648149D313100A97E64 /* AddDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddDetailViewController.xib; path = AddDetailViewController/AddDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +473,9 @@
 				0098523F147EF9AA002B540C /* AddMethodView.m */,
 				00985235147EEBD2002B540C /* AddMethodViewController.h */,
 				00985236147EEBD2002B540C /* AddMethodViewController.m */,
+				00E5F646149D313100A97E64 /* AddDetailViewController.h */,
+				00E5F647149D313100A97E64 /* AddDetailViewController.m */,
+				00E5F648149D313100A97E64 /* AddDetailViewController.xib */,
 				0098523A147EF072002B540C /* AddMethodTableViewCell.xib */,
 			);
 			name = AddMethodViewController;
@@ -612,6 +620,7 @@
 				0048B64E14819EEF00CCF57E /* CellRoundedTopBottom@2x.png in Resources */,
 				0048B65114819F7F00CCF57E /* Cell.png in Resources */,
 				0048B65214819F7F00CCF57E /* Cell@2x.png in Resources */,
+				00E5F64A149D313100A97E64 /* AddDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +669,7 @@
 				00B096A6147DC46700004B9A /* FileHelpers.m in Sources */,
 				00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */,
 				00985240147EF9AA002B540C /* AddMethodView.m in Sources */,
+				00E5F649149D313100A97E64 /* AddDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
