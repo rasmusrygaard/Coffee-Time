@@ -128,6 +128,9 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                               withRowAnimation:UITableViewRowAnimationLeft];
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [[cell viewWithTag:1] becomeFirstResponder];
 
     } else if (editingStyle == UITableViewCellEditingStyleDelete) {
 
@@ -140,7 +143,15 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 #pragma mark UITextFieldDelegate
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+/* Function: - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+             replacementString:(NSString *)string
+ * This method makes sure that the user can only enter valid text in the time interval UITextField.
+ * Valid text is anything that matches the "mm:ss" format string. To allow input through a number
+ * pad, this method automatically adds and removes the ':' separating minutes and seconds.
+ * Furthermore, the length of the input is restricted to 5 characters (ie. the length of "mm:ss"
+ */
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
 replacementString:(NSString *)string
 {
     BOOL shouldAllow = YES;
@@ -163,9 +174,11 @@ replacementString:(NSString *)string
 
         // Auto-advance to description field if the user has entered a valid time interval
         if (len == 5) {
+            NSLog(@"resigning");
             [textField resignFirstResponder];
 
-            UITextField *tf = (UITextField *)[self.view viewWithTag:2];
+            UITableViewCell *cell = (UITableViewCell *)[textField superview];
+            UITextField *tf = (UITextField *)[cell viewWithTag:2];
             [tf becomeFirstResponder];
         }
     }
@@ -173,7 +186,7 @@ replacementString:(NSString *)string
     return shouldAllow;
 }
 
-/* - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+/* Function: - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
  * Only allow the time field to return if we have a full format string, ie. mm:ss
  */
 
@@ -181,6 +194,35 @@ replacementString:(NSString *)string
 {
     return (textField.tag == DESCRIPTION_TAG ||
             textField.text.length == 5);
+}
+
+/* Function: - (BOOL)textFieldShouldReturn:(UITextField *)textField
+ * Save the information in the UITextFields if the user hits the return key.
+ * Grab the text from the two fields and store them appropriately in the data array.
+ */
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"ShouldEnd");
+    // Save information
+    if (textField.tag == DESCRIPTION_TAG) {
+
+        UITableViewCell *cell = (UITableViewCell *)[textField superview];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        UITextField *timeField = (UITextField *)[cell viewWithTag:1];
+        
+        TimerStep *t = [data objectAtIndex:indexPath.row];
+        t.stepDescription = textField.text;
+        t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:timeField.text];
+        
+        [textField resignFirstResponder];
+    } else if (textField.tag == TIME_TAG) {
+        if (textField.text.length != 5) {
+            textField.text = @"";
+        }
+    }
+    
+    return YES;
 }
 
 @end
