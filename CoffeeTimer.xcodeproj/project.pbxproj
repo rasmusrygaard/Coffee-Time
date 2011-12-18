@@ -38,6 +38,7 @@
 		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
+		00397E25149D3F0100FDF07B /* AddInstructionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */; };
 		0048B5F414815B9E00CCF57E /* BigCellTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F214815B9E00CCF57E /* BigCellTest.png */; };
 		0048B5F514815B9E00CCF57E /* BigCellTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */; };
 		0048B60D148165D000CCF57E /* StarOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B60B148165D000CCF57E /* StarOn.png */; };
@@ -145,6 +146,7 @@
 		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
+		00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddInstructionsCell.xib; path = AddDetailViewController/AddInstructionsCell.xib; sourceTree = "<group>"; };
 		0048B5F214815B9E00CCF57E /* BigCellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellTest.png; sourceTree = "<group>"; };
 		0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellTest@2x.png"; sourceTree = "<group>"; };
 		0048B60B148165D000CCF57E /* StarOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarOn.png; sourceTree = "<group>"; };
@@ -261,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				000F1D2614337984006CD04F /* BrewMethodViewController.h */,
-				00777CBA1489A181009D94CE /* New Group */,
 				006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */,
 				000F1D2714337984006CD04F /* BrewMethodViewController.m */,
 				000F1D2814337984006CD04F /* BrewMethodViewController.xib */,
@@ -459,13 +460,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		00777CBA1489A181009D94CE /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		00985233147EEB9A002B540C /* AddMethodViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +471,7 @@
 				00E5F647149D313100A97E64 /* AddDetailViewController.m */,
 				00E5F648149D313100A97E64 /* AddDetailViewController.xib */,
 				0098523A147EF072002B540C /* AddMethodTableViewCell.xib */,
+				00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */,
 			);
 			name = AddMethodViewController;
 			sourceTree = "<group>";
@@ -621,6 +616,7 @@
 				0048B65114819F7F00CCF57E /* Cell.png in Resources */,
 				0048B65214819F7F00CCF57E /* Cell@2x.png in Resources */,
 				00E5F64A149D313100A97E64 /* AddDetailViewController.xib in Resources */,
+				00397E25149D3F0100FDF07B /* AddInstructionsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

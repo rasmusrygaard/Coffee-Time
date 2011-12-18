@@ -12,7 +12,7 @@
 
 @implementation AddDetailViewController
 
-@synthesize detailType, data;
+@synthesize detailType, data, detailCell;
 
 - (id)init
 {
@@ -67,17 +67,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-		
-		// Create a basic cell
-		UITableViewCell *basicCell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-		
-		if (!basicCell)
-			basicCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-												reuseIdentifier:@"UITableViewCell"] autorelease];
-		// Set its label to say "Add New Item..."
-		[[basicCell textLabel] setText:[NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]]];
-		
-		return basicCell;	
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                      reuseIdentifier:@"UITableViewCell"];
+    }
+    
+    if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.row] - 1) {
+        cell.textLabel.text = [NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]];
+    } else {
+        cell = [[UITableViewCell alloc] init];
+        
+        [[NSBundle mainBundle] loadNibNamed:@"AddInstructionsCell" 
+                                      owner:self 
+                                    options:nil];
+        cell = detailCell;
+        self.detailCell = nil;    
+    
+        /*
+        TimerStep *t = [data objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", t.description, [TimerStep formattedTimeInSecondsForInterval:t.timeInSeconds]];*/
+    }
+    
+    return cell;	
 }
 
 - (NSInteger)tableView:(UITableView *)tableView 
@@ -92,9 +104,13 @@
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section] - 1) {
+
         return UITableViewCellEditingStyleInsert;
+
     } else {
+    
         return UITableViewCellEditingStyleDelete;
+
     }
 }
 
@@ -103,12 +119,43 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleInsert) {
+
         TimerStep *t = [[TimerStep alloc] initWithDescription:@"A timer step" timeInSeconds:30];
         [data addObject:t];
-        [self.tableView reloadData];
-//        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-  //                            withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+                              withRowAnimation:UITableViewRowAnimationLeft];
+
+    } else if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        [data removeObjectAtIndex:indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                              withRowAnimation:YES];
+
     }
+}
+
+#pragma mark UITextFieldDelegate
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+replacementString:(NSString *)string
+{
+    if (textField.text.length == 2) {
+
+        textField.text = [NSString stringWithFormat:@"%@:", textField.text];
+
+    } else if (textField.text.length == 3) {
+    
+        textField.text = [textField.text substringToIndex:2]; // Truncate ':'
+
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return (textField.text.length == 5);
 }
 
 @end

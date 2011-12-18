@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddDetailViewController : UITableViewController
+@interface AddDetailViewController : UITableViewController <UITextFieldDelegate>
 {
     NSString *detailType;
     NSMutableArray *data;
+    IBOutlet UITableViewCell *detailCell;
 }
 
 @property (nonatomic, assign) NSString *detailType;
 @property (nonatomic, retain) NSMutableArray *data;
+@property (nonatomic, assign) IBOutlet UITableViewCell *detailCell;
 
 @end
