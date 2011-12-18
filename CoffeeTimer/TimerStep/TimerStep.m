@@ -75,8 +75,6 @@
         
         seconds = [min intValue] * 60 + [sec intValue];
     }
-    
-    NSLog(@"Interval: %@ Returning: %d", time, seconds);
 
     return seconds;
 }

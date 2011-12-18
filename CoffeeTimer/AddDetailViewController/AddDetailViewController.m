@@ -156,8 +156,18 @@ replacementString:(NSString *)string
             
         }
         
+        int len = textField.text.length + string.length;
+        
         // Only allow strings of format "mm:ss"
-        shouldAllow = (textField.text.length + string.length <= 5);
+        shouldAllow = (len <= 5);
+
+        // Auto-advance to description field if the user has entered a valid time interval
+        if (len == 5) {
+            [textField resignFirstResponder];
+
+            UITextField *tf = (UITextField *)[self.view viewWithTag:2];
+            [tf becomeFirstResponder];
+        }
     }
     
     return shouldAllow;
@@ -169,7 +179,6 @@ replacementString:(NSString *)string
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    if (textField.tag == TIME_TAG) NSLog(@"Time in seconds: %d", [TimerStep timeInSecondsForFormattedInterval:textField.text]);
     return (textField.tag == DESCRIPTION_TAG ||
             textField.text.length == 5);
 }
