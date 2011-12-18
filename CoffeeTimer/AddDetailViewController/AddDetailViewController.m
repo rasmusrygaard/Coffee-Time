@@ -143,6 +143,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
 replacementString:(NSString *)string
 {
+    BOOL shouldAllow = YES;
     if (textField.tag == TIME_TAG) {
 
         if (textField.text.length == 2) {
@@ -154,17 +155,21 @@ replacementString:(NSString *)string
             textField.text = [textField.text substringToIndex:2]; // Truncate ':'
             
         }
+        
+        // Only allow strings of format "mm:ss"
+        shouldAllow = (textField.text.length + string.length <= 5);
     }
     
-    return YES;
+    return shouldAllow;
 }
 
 /* - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
- * Only allow the time field to return
+ * Only allow the time field to return if we have a full format string, ie. mm:ss
  */
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    if (textField.tag == TIME_TAG) NSLog(@"Time in seconds: %d", [TimerStep timeInSecondsForFormattedInterval:textField.text]);
     return (textField.tag == DESCRIPTION_TAG ||
             textField.text.length == 5);
 }

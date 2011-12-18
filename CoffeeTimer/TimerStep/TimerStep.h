@@ -17,7 +17,20 @@
 @property (nonatomic, copy) NSString *stepDescription;
 @property (nonatomic, assign) int timeInSeconds;
 
+/* Function: + (NSString *)formattedTimeInSecondsForInterval:(int)time;
+ * Returns an NSString* of format mm:ss given a time interval in seconds.
+ * Returns nil iff time < 0.
+ */
+
 + (NSString *)formattedTimeInSecondsForInterval:(int)time;
+
+/* Function: + (int)timeInSecondsForFormattedInterval:(NSString *)time
+ * Return an integer representing the value of the min/sec interval in seconds.
+ * Expects parameter to have format mm:ss.
+ * Returns -1 if input string does not have correct format.
+ */
+
++ (int)timeInSecondsForFormattedInterval:(NSString *)time;
 
 - (id)initWithDescription:(NSString *)desc timeInSeconds:(int)time;
 

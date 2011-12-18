@@ -54,20 +54,31 @@
 
 + (NSString *)formattedTimeInSecondsForInterval:(int)time
 {
-    return [NSString stringWithFormat:@"%02d:%02d", time / 60, time % 60];
+    NSString *result = nil;
+
+    if (time >= 0) {
+        result = [NSString stringWithFormat:@"%02d:%02d", time / 60, time % 60];
+    }
+    
+    return result;
     
 }
 
 + (int)timeInSecondsForFormattedInterval:(NSString *)time
 {
     // Dead simple error checking. Need to make this slightly more intelligent, ie. detect ':'
-    if (time.length != 5) return -1;
+    int seconds = -1;
     
-    NSString *min = [time substringToIndex:2];
-    NSString *sec = [time substringFromIndex:3];
+    if (time.length == 5) {
+        NSString *min = [time substringToIndex:2];
+        NSString *sec = [time substringFromIndex:3];
+        
+        seconds = [min intValue] * 60 + [sec intValue];
+    }
     
-    NSLog(@"Interval: %@ Returning: %d", time, [min intValue] * 60 + [sec intValue]);
-    return [min intValue] * 60 + [sec intValue];
+    NSLog(@"Interval: %@ Returning: %d", time, seconds);
+
+    return seconds;
 }
 
 - (NSString *)description
