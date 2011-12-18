@@ -58,6 +58,18 @@
     
 }
 
++ (int)timeInSecondsForFormattedInterval:(NSString *)time
+{
+    // Dead simple error checking. Need to make this slightly more intelligent, ie. detect ':'
+    if (time.length != 5) return -1;
+    
+    NSString *min = [time substringToIndex:2];
+    NSString *sec = [time substringFromIndex:3];
+    
+    NSLog(@"Interval: %@ Returning: %d", time, [min intValue] * 60 + [sec intValue]);
+    return [min intValue] * 60 + [sec intValue];
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%d sec)", stepDescription, timeInSeconds];

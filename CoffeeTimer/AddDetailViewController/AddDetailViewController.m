@@ -14,6 +14,9 @@
 
 @synthesize detailType, data, detailCell;
 
+#define TIME_TAG 1
+#define DESCRIPTION_TAG 2
+
 - (id)init
 {
     [super initWithStyle:UITableViewStyleGrouped];
@@ -130,7 +133,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
         [data removeObjectAtIndex:indexPath.row];
 //        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                              withRowAnimation:YES];
+//                              withRowAnimation:YES];
 
     }
 }
@@ -140,22 +143,30 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
 replacementString:(NSString *)string
 {
-    if (textField.text.length == 2) {
+    if (textField.tag == TIME_TAG) {
 
-        textField.text = [NSString stringWithFormat:@"%@:", textField.text];
-
-    } else if (textField.text.length == 3) {
-    
-        textField.text = [textField.text substringToIndex:2]; // Truncate ':'
-
+        if (textField.text.length == 2) {
+            
+            textField.text = [NSString stringWithFormat:@"%@:", textField.text];
+            
+        } else if (textField.text.length == 3) {
+            
+            textField.text = [textField.text substringToIndex:2]; // Truncate ':'
+            
+        }
     }
     
     return YES;
 }
 
+/* - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+ * Only allow the time field to return
+ */
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    return (textField.text.length == 5);
+    return (textField.tag == DESCRIPTION_TAG ||
+            textField.text.length == 5);
 }
 
 @end
