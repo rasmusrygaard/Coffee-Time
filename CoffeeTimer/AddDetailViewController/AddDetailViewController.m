@@ -157,13 +157,14 @@ replacementString:(NSString *)string
     BOOL shouldAllow = YES;
     if (textField.tag == TIME_TAG) {
 
-        if (textField.text.length == 2) {
+        if (textField.text.length == 2) { // Append ':'
             
             textField.text = [NSString stringWithFormat:@"%@:", textField.text];
             
-        } else if (textField.text.length == 3) {
+        } else if (textField.text.length == 3 &&
+                   [string isEqualToString:@""]) { // Truncate ':' iff user is deleting
             
-            textField.text = [textField.text substringToIndex:2]; // Truncate ':'
+            textField.text = [textField.text substringToIndex:2];
             
         }
         
@@ -173,8 +174,9 @@ replacementString:(NSString *)string
         shouldAllow = (len <= 5);
 
         // Auto-advance to description field if the user has entered a valid time interval
-        if (len == 5) {
-            NSLog(@"resigning");
+        // and is not deleting
+        if (len == 5 && 
+            ![string isEqualToString:@""]) {
             [textField resignFirstResponder];
 
             UITableViewCell *cell = (UITableViewCell *)[textField superview];
@@ -192,6 +194,7 @@ replacementString:(NSString *)string
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    NSLog(@"ShoulEnd");
     return (textField.tag == DESCRIPTION_TAG ||
             textField.text.length == 5);
 }
@@ -203,20 +206,21 @@ replacementString:(NSString *)string
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"ShouldEnd");
-    // Save information
-    if (textField.tag == DESCRIPTION_TAG) {
-
-        UITableViewCell *cell = (UITableViewCell *)[textField superview];
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        UITextField *timeField = (UITextField *)[cell viewWithTag:1];
+    UITableViewCell *cell = (UITableViewCell *)[textField superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UITextField *timeField = (UITextField *)[cell viewWithTag:1];
+    
+    if (textField.tag == DESCRIPTION_TAG && 
+        ![timeField.text isEqualToString:@""]) {
         
         TimerStep *t = [data objectAtIndex:indexPath.row];
         t.stepDescription = textField.text;
         t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:timeField.text];
         
         [textField resignFirstResponder];
+        
     } else if (textField.tag == TIME_TAG) {
+        
         if (textField.text.length != 5) {
             textField.text = @"";
         }
