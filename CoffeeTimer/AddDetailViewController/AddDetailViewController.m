@@ -21,7 +21,9 @@
 {
     [super initWithStyle:UITableViewStyleGrouped];
     
-    [self.tableView setEditing:YES];
+    self.tableView.editing = YES;
+    self.tableView.allowsSelectionDuringEditing = YES;
+    
     data = [[NSMutableArray alloc] init];
     
     return self;
@@ -70,7 +72,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Cells");
     UITableViewCell *cell;
     if (indexPath.section == 0) {
        
@@ -92,9 +93,16 @@
             cell = detailCell;
             self.detailCell = nil;    
             
-            /*
-             TimerStep *t = [data objectAtIndex:indexPath.row];
-             cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", t.description, [TimerStep formattedTimeInSecondsForInterval:t.timeInSeconds]];*/
+            
+            TimerStep *t = [data objectAtIndex:indexPath.row];
+
+            if (t.timeInSeconds != 0) {
+                UITextField *tf = (UITextField *)[cell viewWithTag:2]; // Time
+                tf.text = [t descriptionWithoutTime];
+                
+                tf = (UITextField *)[cell viewWithTag:2];
+                tf.text = [TimerStep formattedTimeInSecondsForInterval:[t timeInSeconds]];
+            }
         }
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
@@ -139,6 +147,17 @@
     return ADD_DETAIL_SECTIONS;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        for (TimerStep *t in data) {
+            NSLog(@"Step: %@", t);
+        }
+    }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma Mark Editing
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView 
@@ -154,6 +173,10 @@
 
     }
 }
+
+/* 
+ * Handle editing of the tableView. Add a new TimerStep when inserting, remove when deleting
+ */
 
 -  (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
@@ -180,7 +203,6 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
                               withRowAnimation:UITableViewRowAnimationRight];
 
     }
-    [self.tableView reloadData];
 }
 
 /* Function: - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -250,6 +272,19 @@ replacementString:(NSString *)string
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    UITableViewCell *cell = (UITableViewCell *)[[textField superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    // Only update data source if we aren't removing an empty cell
+    if (![textField.text isEqualToString:@""]) {
+        TimerStep *t = [data objectAtIndex:indexPath.row];
+        if (textField.tag == DESCRIPTION_TAG) {
+            t.stepDescription = textField.text;
+        } else {
+            t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:textField.text];
+        }
+    }
+    
     return (textField.tag == DESCRIPTION_TAG ||
             textField.text.length == 5);
 }
@@ -262,15 +297,10 @@ replacementString:(NSString *)string
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     UITableViewCell *cell = (UITableViewCell *)[textField superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     UITextField *timeField = (UITextField *)[cell viewWithTag:1];
-    NSLog(@"Should return");
+
     if (textField.tag == DESCRIPTION_TAG && 
         ![timeField.text isEqualToString:@""]) {
-        
-        TimerStep *t = [data objectAtIndex:indexPath.row];
-        t.stepDescription = textField.text;
-        t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:timeField.text];
 
         [textField resignFirstResponder];
         
@@ -282,6 +312,13 @@ replacementString:(NSString *)string
     }
     
     return YES;
+}
+
+- (void)dealloc {
+    [data release];
+    data = nil;
+    
+    [super dealloc];
 }
 
 @end

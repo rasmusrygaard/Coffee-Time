@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddDetailViewController : UITableViewController <UITextFieldDelegate>
+@interface AddDetailViewController : UITableViewController <UITextFieldDelegate, UITableViewDelegate>
 {
     NSString *detailType;
     NSMutableArray *data;
