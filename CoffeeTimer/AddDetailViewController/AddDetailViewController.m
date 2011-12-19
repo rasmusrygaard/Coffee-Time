@@ -264,7 +264,7 @@ replacementString:(NSString *)string
     UITableViewCell *cell = (UITableViewCell *)[textField superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     UITextField *timeField = (UITextField *)[cell viewWithTag:1];
-    
+    NSLog(@"Should return");
     if (textField.tag == DESCRIPTION_TAG && 
         ![timeField.text isEqualToString:@""]) {
         
