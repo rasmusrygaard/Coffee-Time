@@ -13,6 +13,8 @@
 {
     IBOutlet UITableViewCell *amCell;
     NSMutableDictionary *basicInfo;
+    NSMutableArray *instructions;
+    NSMutableArray *preparation;
 }
 
 - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath;

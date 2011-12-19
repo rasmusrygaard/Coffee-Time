@@ -24,8 +24,6 @@
     self.tableView.editing = YES;
     self.tableView.allowsSelectionDuringEditing = YES;
     
-    data = [[NSMutableArray alloc] init];
-    
     return self;
 }
 
@@ -133,13 +131,7 @@
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    int rows = 1;
-
-    if (section == 0) {
-        rows += [data count];
-    }
-    NSLog(@"rows: %d", rows);
-    return rows;
+    return (section == 0) ? [data count] + 1 : 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

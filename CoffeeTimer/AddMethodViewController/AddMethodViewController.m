@@ -19,6 +19,8 @@
     [super initWithStyle:UITableViewStyleGrouped];
     
     basicInfo = [[NSMutableDictionary alloc] init];
+    instructions = [[NSMutableArray alloc] init];
+    preparation = [[NSMutableArray alloc] init];
     
     return self;
 }
@@ -206,6 +208,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if ([label isEqualToString:@"Instructions"] ||
         [label isEqualToString:@"Preparation"]) {
         AddDetailViewController *adVC = [[AddDetailViewController alloc] init];
+        
+        if ([label isEqualToString:@"Instructions"]) {
+            adVC.data = instructions;
+        } else {
+            adVC.data = preparation;
+        }
         [adVC.navigationItem setTitle:label];
         
         [self.navigationController pushViewController:adVC animated:YES];
@@ -317,6 +325,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [basicInfo release];
     basicInfo = nil;
+    
+    [instructions release];
+    instructions = nil;
+    
+    [preparation release];
+    preparation = nil;
     
     [super dealloc];
 }
