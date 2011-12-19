@@ -70,35 +70,73 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                      reuseIdentifier:@"UITableViewCell"];
-    }
-    
-    if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.row] - 1) {
-        cell.textLabel.text = [NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]];
-    } else {
-        cell = [[UITableViewCell alloc] init];
+    NSLog(@"Cells");
+    UITableViewCell *cell;
+    if (indexPath.section == 0) {
+       
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
         
-        [[NSBundle mainBundle] loadNibNamed:@"AddInstructionsCell" 
-                                      owner:self 
-                                    options:nil];
-        cell = detailCell;
-        self.detailCell = nil;    
-    
-        /*
-        TimerStep *t = [data objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", t.description, [TimerStep formattedTimeInSecondsForInterval:t.timeInSeconds]];*/
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                          reuseIdentifier:@"UITableViewCell"];
+        }
+        
+        if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section] - 1) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]];
+        } else {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[NSBundle mainBundle] loadNibNamed:@"AddInstructionsCell" 
+                                          owner:self 
+                                        options:nil];
+            cell = detailCell;
+            self.detailCell = nil;    
+            
+            /*
+             TimerStep *t = [data objectAtIndex:indexPath.row];
+             cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", t.description, [TimerStep formattedTimeInSecondsForInterval:t.timeInSeconds]];*/
+        }
+    } else {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"DefaultCell"];
+        }
+        
+        cell.textLabel.text = @"Save";
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.shadowColor = [UIColor lightTextColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+
     }
+    
     
     return cell;	
 }
 
+/* Function: - (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section
+ * The number of rows is either 1 (in the case of the "Save" button section) or 
+ * however many steps are currently shown/stored in the data array + an additional
+ * row to allow for editing.
+ */
+
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    return [data count] + 1;
+    int rows = 1;
+
+    if (section == 0) {
+        rows += [data count];
+    }
+    NSLog(@"rows: %d", rows);
+    return rows;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return ADD_DETAIL_SECTIONS;
 }
 
 #pragma Mark Editing
@@ -123,22 +161,35 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     if (editingStyle == UITableViewCellEditingStyleInsert) {
 
-        TimerStep *t = [[TimerStep alloc] initWithDescription:@"A timer step" timeInSeconds:30];
+        TimerStep *t = [[TimerStep alloc] init];
         [data addObject:t];
         
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-                              withRowAnimation:UITableViewRowAnimationLeft];
+                              withRowAnimation:UITableViewRowAnimationRight];
         
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [[cell viewWithTag:1] becomeFirstResponder];
 
     } else if (editingStyle == UITableViewCellEditingStyleDelete) {
 
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [[cell viewWithTag:1] resignFirstResponder];
         [data removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-//                              withRowAnimation:YES];
+        
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                              withRowAnimation:UITableViewRowAnimationRight];
 
     }
+    [self.tableView reloadData];
+}
+
+/* Function: - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ * Disallow editing of the "Save" button.
+ */
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (indexPath.section == 0);
 }
 
 #pragma mark UITextFieldDelegate
@@ -174,14 +225,19 @@ replacementString:(NSString *)string
         shouldAllow = (len <= 5);
 
         // Auto-advance to description field if the user has entered a valid time interval
-        // and is not deleting
+        // and is not deleting. A bit of a hack since the text is appended yet returns NO.
         if (len == 5 && 
             ![string isEqualToString:@""]) {
-            [textField resignFirstResponder];
 
+            [textField resignFirstResponder];
+            textField.text = [textField.text stringByAppendingString:string];
+            
             UITableViewCell *cell = (UITableViewCell *)[textField superview];
             UITextField *tf = (UITextField *)[cell viewWithTag:2];
             [tf becomeFirstResponder];
+            
+            // Make sure we don't append twice
+            shouldAllow = NO;
         }
     }
     
@@ -194,7 +250,6 @@ replacementString:(NSString *)string
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    NSLog(@"ShoulEnd");
     return (textField.tag == DESCRIPTION_TAG ||
             textField.text.length == 5);
 }
@@ -216,7 +271,7 @@ replacementString:(NSString *)string
         TimerStep *t = [data objectAtIndex:indexPath.row];
         t.stepDescription = textField.text;
         t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:timeField.text];
-        
+
         [textField resignFirstResponder];
         
     } else if (textField.tag == TIME_TAG) {

@@ -35,10 +35,16 @@ extern double const LIST_CELL_HEIGHT;
 
 extern double const INFO_CELL_WIDTH;
 
+// Number of sections in AddMethodView
 extern double const ADD_METHOD_SECTIONS;
+
+// Number of rows in upper, lower, and bottom sections
 extern double const ADD_METHOD_UPPER_ROWS;
 extern double const ADD_METHOD_LOWER_ROWS;
 extern double const ADD_METHOD_BOTTOM_ROWS;
+
+// Number of sections in the AddInstructions view
+extern double const ADD_DETAIL_SECTIONS;
 
 extern double const MAX_TEXTFIELD_TAG;
 extern double const TEXTFIELD_MAX_WIDTH;

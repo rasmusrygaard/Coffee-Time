@@ -48,6 +48,8 @@ double const ADD_METHOD_UPPER_ROWS = 4;
 double const ADD_METHOD_LOWER_ROWS = 2;
 double const ADD_METHOD_BOTTOM_ROWS = 1;
 
+double const ADD_DETAIL_SECTIONS = 2;
+
 double const MAX_TEXTFIELD_TAG = 15;
 double const TEXTFIELD_MAX_WIDTH = 185;
 double const TEXTFIELD_MIN_FONT_SIZE = 12;
