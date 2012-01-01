@@ -7,6 +7,7 @@
 //
 
 #import "AddDetailViewController.h"
+#import "AddMethodViewController.h"
 #import "BrewMethodViewController.h"
 #import "TimerStep.h"
 
@@ -49,7 +50,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = background;
+    
+    [background release];
 }
 
 - (void)viewDidUnload
@@ -66,6 +73,32 @@
 }
 
 #pragma Mark UITableView
+
+/* Function: - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
+ * Get the cell images based on the cell's placement in the table. Make sure that
+ * top and bottom cells have rounded corners and that  
+ */
+
+- (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIImageView *img;
+    
+    int rowsInSection = [self.tableView numberOfRowsInSection:indexPath.section];
+    
+    if (rowsInSection == 1) { // Top/bottom cell
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTopBottom.png"]]; 
+    } else {
+        if (indexPath.row == 0) {
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedTop.png"]];
+        } else if (indexPath.row == rowsInSection - 1) {
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRoundedBottom.png"]];
+        } else {
+            img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
+        }
+    }
+    
+    return [img autorelease];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +149,10 @@
         cell.textLabel.textAlignment = UITextAlignmentCenter;
 
     }
-    
+
+    UIImageView *img = [self imageForCellAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundView:img];
     
     return cell;	
 }
