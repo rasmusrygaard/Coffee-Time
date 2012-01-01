@@ -46,6 +46,13 @@
     [aCoder encodeObject:stepDescription forKey:@"stepDescription"];
 }
 
+- (void)setTimeInSeconds:(int)val
+{
+    if (val > 0) {
+        timeInSeconds = val;
+    }
+}
+
 /*
  * Function: + (NSString *)formattedTimeInSecondsForInterval:(int)time
  * -------------------------------------------------------------------
