@@ -90,6 +90,8 @@
 		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
 		00985240147EF9AA002B540C /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
+		00AA123714B0CD800071F5CB /* TimerStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AA123514B0C8800071F5CB /* TimerStepTests.m */; };
+		00AA123914B0CE780071F5CB /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4B14337984006CD04F /* TimerStep.m */; };
 		00B096A6147DC46700004B9A /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
 		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
@@ -204,6 +206,8 @@
 		0098523E147EF9AA002B540C /* AddMethodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodView.h; path = AddMethodViewController/AddMethodView.h; sourceTree = "<group>"; };
 		0098523F147EF9AA002B540C /* AddMethodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodView.m; path = AddMethodViewController/AddMethodView.m; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		00AA123414B0C8800071F5CB /* TimerStepTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerStepTests.h; path = TimerStepTests/TimerStepTests.h; sourceTree = "<group>"; };
+		00AA123514B0C8800071F5CB /* TimerStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerStepTests.m; path = TimerStepTests/TimerStepTests.m; sourceTree = "<group>"; };
 		00B096A5147DC46700004B9A /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = CoffeeTimer/Helpers/FileHelpers.m; sourceTree = SOURCE_ROOT; };
 		00B096A9147DC4D100004B9A /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Helpers/FileHelpers.h; sourceTree = "<group>"; };
 		00D359441437E9FA00BFA6E0 /* MethodBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MethodBackground.png; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 			children = (
 				0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */,
 				0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */,
+				00AA123414B0C8800071F5CB /* TimerStepTests.h */,
+				00AA123514B0C8800071F5CB /* TimerStepTests.m */,
 				0057FFBB13E670B1001556C4 /* Supporting Files */,
 			);
 			path = CoffeeTimerTests;
@@ -673,7 +679,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00AA123914B0CE780071F5CB /* TimerStep.m in Sources */,
 				0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */,
+				00AA123714B0CD800071F5CB /* TimerStepTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,15 +826,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CoffeeTimerTests/CoffeeTimerTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -835,15 +842,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CoffeeTimerTests/CoffeeTimerTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
