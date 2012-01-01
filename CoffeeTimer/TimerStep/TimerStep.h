@@ -17,6 +17,12 @@
 @property (nonatomic, copy) NSString *stepDescription;
 @property (nonatomic, assign) int timeInSeconds;
 
+/* Function: - (BOOL)stringMatchesTimeFormat:(NSString *)string
+ * Returns true if the string has the format dd:dd where d is a digit
+ */
+
+- (BOOL)stringMatchesTimeFormat:(NSString *)string;
+
 /* Function: + (NSString *)formattedTimeInSecondsForInterval:(int)time;
  * Returns an NSString* of format mm:ss given a time interval in seconds.
  * Returns nil iff time < 0.

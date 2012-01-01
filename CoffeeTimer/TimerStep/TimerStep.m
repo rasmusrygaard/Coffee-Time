@@ -71,12 +71,49 @@
     
 }
 
+/* Function: + (BOOL)stringMatchesTimeFormat:(NSString *)string
+ * Checks that string matches the format dd:dd.
+ * Check that string is non-nil, that its length is 5, and that all characters
+ * except for the ':' are digits
+ */
+
++ (BOOL)stringMatchesTimeFormat:(NSString *)str
+{
+    BOOL matches = NO;
+    int len;
+    
+    if (str != nil && 
+        ((len = str.length) == 5)) {
+        
+        NSRange match = [str rangeOfString:@":"];
+
+        if (match.location == 2) {
+                 
+            BOOL hasFormat = YES;
+
+            for (int i = 0; i < len; ++i) {
+                
+                if ((i != 2 && !isdigit([str characterAtIndex:i])) ||
+                    (i == 2 && [str characterAtIndex:2] != ':')) {
+                    hasFormat = NO;
+                }
+            }
+            
+            matches = hasFormat;
+            
+        }
+    }
+    
+    return matches;
+}
+
 + (int)timeInSecondsForFormattedInterval:(NSString *)time
 {
     // Dead simple error checking. Need to make this slightly more intelligent, ie. detect ':'
+    
     int seconds = -1;
     
-    if (time.length == 5) {
+    if ([self stringMatchesTimeFormat:time]) {
         NSString *min = [time substringToIndex:2];
         NSString *sec = [time substringFromIndex:3];
         

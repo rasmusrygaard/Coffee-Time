@@ -61,8 +61,64 @@
     step.timeInSeconds = -1;
     STAssertEquals(step.timeInSeconds, 0, @"Incorrect time for step");
     STAssertEqualObjects(step.formattedTimeInSeconds, @"00:00", @"Incorrect formatted time");
+}
+
+- (void)testConvenienceMethods
+{
+    // + (int)timeInSecondsForFormattedInterval:(NSString *)time 
+    // Simple
     
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"00:10"], 10, @"Incorrect time in seconds for formatted interval string");
     
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"00:00"], 0, @"Incorrect time in seconds for formatted interval string");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"01:15"], 75, @"Incorrect time in seconds for formatted interval string");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"13:37"], 817, @"Incorrect time in seconds for formatted interval string");
+    
+    // Edge cases
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"abc"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"ab:ab"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"00:xx"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"xx:00"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"-11:00"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"-1:00"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"11"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"11111"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"11::11"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"1::11"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:nil], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@""], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    STAssertEquals([TimerStep timeInSecondsForFormattedInterval:@"11:111"], -1, @"Incorrect time in seconds for formatted interval string, edge cases");
+    
+    // + (NSString *)formattedTimeInSecondsForInterval:(int)time;
+    // Simple cases
+    STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:10], @"00:10", @"Wrong interval for formatted time, simple tests");
+    
+    STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:35], @"00:35", @"Wrong interval for formatted time, simple tests");
+    
+    STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:200], @"03:20", @"Wrong interval for formatted time, simple tests");
+    
+    STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:99], @"01:39", @"Wrong interval for formatted time, simple tests");
+    
+    // Edge cases
+        STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:0], @"00:00", @"Wrong interval for formatted time, edge cases");
+    
+    STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:-1], nil, @"Wrong interval for formatted time, edge cases");
+    
+    STAssertEqualObjects([TimerStep formattedTimeInSecondsForInterval:-100], nil, @"Wrong interval for formatted time, edge cases");
 }
                    
 
