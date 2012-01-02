@@ -125,7 +125,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ (%d sec)", stepDescription, timeInSeconds];
+    return [NSString stringWithFormat:@"%@ (%@)", stepDescription, [TimerStep formattedTimeInSecondsForInterval:timeInSeconds]];
 }
 
 - (NSString *)descriptionWithoutTime

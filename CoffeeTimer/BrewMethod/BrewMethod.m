@@ -104,7 +104,7 @@
 {
     // Initialize instructions
     TimerStep *apStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
-                                                    timeInSeconds:10] autorelease]; ///
+                                                    timeInSeconds:45] autorelease]; ///
     TimerStep *apStepTwo = [[[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
                                                     timeInSeconds:20] autorelease];
     
@@ -256,6 +256,7 @@
 
 - (TimerStep *)nextTimerStep
 {
+    NSLog(@"...");
     TimerStep *next = nil;
     
     if (stepCounter < [timerSteps count]) {
@@ -300,7 +301,6 @@
     } else if ([tabName isEqualToString:@"Instructions"]) {
         copyArr = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
         for (TimerStep *t in timerSteps) {
-///            [copyArr addObject:[t descriptionWithoutTime]];
             [copyArr addObject:t];
         }
     }
@@ -315,9 +315,13 @@
 
 - (NSArray *)timeIntervals
 {
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
+    NSMutableArray *array = nil;
 
     for (TimerStep *t in timerSteps) {
+        if (!array) {
+            [[NSMutableArray alloc] initWithCapacity:[timerSteps count]];
+        }
+        
         [array addObject:[t formattedTimeInSeconds]];
     }
     return [array autorelease];
@@ -331,11 +335,16 @@
 
 - (NSString *)commaSeparatedTimerSteps
 {
-    NSString *result = [NSString stringWithFormat:@"%@", [[self firstTimerStep] description]];
+    NSString *result = nil; 
+ 
     int count = [timerSteps count];
 
-    for (int i = 1; i < count; ++i) {
-        result = [result stringByAppendingFormat:@", %@", [[timerSteps objectAtIndex:i] description]];
+    for (int i = 0; i < count; ++i) {
+        if (i == 0) {
+            result = [NSString stringWithFormat:@"%@", [[self firstTimerStep] description]];
+        } else {
+            result = [result stringByAppendingFormat:@", %@", [[timerSteps objectAtIndex:i] description]];
+        }
     }
     return result;
 }

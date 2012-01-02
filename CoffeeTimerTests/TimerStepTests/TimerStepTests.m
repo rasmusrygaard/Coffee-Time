@@ -16,10 +16,6 @@
     [super setUp];
     
     step = [[[TimerStep alloc] init] retain];
-    STAssertEquals(step.timeInSeconds, 0, @"Default time is not 0");
-    STAssertEqualObjects(step.formattedTimeInSeconds, @"00:00", @"Default formatted time is not \"00:00\"");
-    
-    STAssertEquals(step.stepDescription, @"", @"Step description is not the empty string");
 }
 
 - (void)tearDown
@@ -124,8 +120,12 @@
 
 - (void)testStep
 {
-    
     STAssertNotNil(step, @"Could not allocate TimerStep");
+    
+    STAssertEquals(step.timeInSeconds, 0, @"Default time is not 0");
+    STAssertEqualObjects(step.formattedTimeInSeconds, @"00:00", @"Default formatted time is not \"00:00\"");
+    
+    STAssertEquals(step.stepDescription, @"", @"Step description is not the empty string");
 }
 
 @end

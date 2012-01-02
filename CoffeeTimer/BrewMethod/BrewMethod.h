@@ -66,7 +66,7 @@
  * Function: - (int)totalTimeInSeconds;
  * int time = [currentMethod totalTimeInSeconds];
  * Returns the total time for a given BrewMethod in seconds. Use
- * [TimerStep formattedTimeInSecondsForInterval:time] to get a minute/second
+ * [TimerStep formattedTimeInSecondsForInterval:time] to get a mm:ss
  * formatted string.
  */
 
@@ -76,6 +76,8 @@
  * Function: - (NSArray *)timeIntervals;
  * Returns an array of NSString* with the formatted time for each
  * step in the BrewMethod.
+ * Ex: [@"01:00", @"00:45", @"00:10"]
+ * Returns nil if the BrewMethod does not have any TimerSteps.
  */
 
 - (NSArray *)timeIntervals;
@@ -88,6 +90,13 @@
  */
 
 - (NSArray *)descriptionsForTab:(NSString *)tabName;
+
+/*
+ * Function: - (NSString *)commaSeparatedTimerSteps;
+ * Returns an NSString* of descriptions of timer steps separated by commas.
+ * Returns nil if the BrewMethod does not contain any steps.
+ * Ex: @"First step (10 sec), Second step (70 sec), third step"
+ */
 
 - (NSString *)commaSeparatedTimerSteps;
 
