@@ -257,7 +257,7 @@
     NSIndexPath *ip = [NSIndexPath indexPathForRow:0 inSection:0];
 
     UITableViewCell *cell   = [self.infoTableView cellForRowAtIndexPath:ip];
-    cell.accessibilityLabel = @"Current step"; /// Include time left after merge
+    cell.accessibilityLabel = @"Current step: "; /// Include time left after merge
 
     UILabel *label  = (UILabel *)[cell viewWithTag:1];
     cell.accessibilityHint  = [label text];
@@ -441,19 +441,28 @@
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         TimerStep *t = [descriptions objectAtIndex:indexPath.row];
         
-        label = (UILabel *)[cell viewWithTag:1];
-        label.text = [t descriptionWithoutTime];
+        label       = (UILabel *)[cell viewWithTag:1];
+        label.text  = [t descriptionWithoutTime];
         label.numberOfLines = 0;
-        label = (UILabel *)[cell viewWithTag:2];
         
-        NSString *text = [NSString stringWithFormat:@"%@", [t formattedTimeInSeconds]];
-        label.text = text;
+        label       = (UILabel *)[cell viewWithTag:2];
+        label.text  = [t formattedTimeInSeconds];
+        
+        /* Accessibility */
+        if (indexPath.row == 0) {
+            label.accessibilityLabel = @"Current step";
+        } else {
+            label.accessibilityLabel = [NSString stringWithFormat:@"Step %d", indexPath.row];
+        }
     } else {
         UILabel *label;
         label = (UILabel *)[cell viewWithTag:1];
         label.text = [descriptions objectAtIndex:indexPath.row];
         label.numberOfLines = 0;
     }
+    
+    /* Accessibility */
+    cell.isAccessibilityElement = NO;
     
     return cell;
 }
