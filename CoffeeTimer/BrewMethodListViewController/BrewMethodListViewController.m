@@ -132,10 +132,10 @@
 {
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
-    cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
-    cell.textLabel.shadowColor = [UIColor blackColor];
-    cell.textLabel.shadowOffset = CGSizeMake(0, -1);
-    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    cell.textLabel.textColor        = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    cell.textLabel.shadowColor      = [UIColor blackColor];
+    cell.textLabel.shadowOffset     = CGSizeMake(0, -1);
+    cell.textLabel.textAlignment    = UITextAlignmentCenter;
 }
 
 /*
@@ -145,10 +145,10 @@
 
 - (void)styleInfoTableSubtitleLabelForCell:(UITableViewCell *)cell
 {
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.textColor = [UIColor lightTextColor];
-    cell.detailTextLabel.shadowColor = [UIColor blackColor];
-    cell.detailTextLabel.shadowOffset = CGSizeMake(0, -1);
+    cell.detailTextLabel.backgroundColor    = [UIColor clearColor];
+    cell.detailTextLabel.textColor          = [UIColor lightTextColor];
+    cell.detailTextLabel.shadowColor        = [UIColor blackColor];
+    cell.detailTextLabel.shadowOffset       = CGSizeMake(0, -1);
 }
 
 /*
@@ -202,6 +202,10 @@
     label.text = [method name];
     label.numberOfLines = 0;
     
+    /* Accessibility */
+    label.isAccessibilityElement = YES;
+    label.accessibilityLabel = [method name];
+    
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
         UIColor *color = [self goldenOrange];
@@ -214,6 +218,11 @@
     label = (UILabel *)[cell viewWithTag:2];
     NSString *text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
     label.text = text;
+    
+    /* Accessibility */
+    label.isAccessibilityElement = YES;
+    int time = [method totalTimeInSeconds];
+    label.accessibilityLabel = [NSString stringWithFormat:@"%d minutes, %d seconds", time / 60, time % 60];
 }
 
 /* Function: - (UITableViewCell *)tableView:(UITableView *)tableView 
@@ -246,6 +255,11 @@
     
     [self styleLabelsForCell:cell 
                    forMethod:method];
+
+    /* Accessibility */
+    cell.isAccessibilityElement = NO;
+    int time = [method totalTimeInSeconds];
+    cell.accessibilityLabel     = [NSString stringWithFormat:@"%@, %d minutes, %d seconds", [method name], time / 60, time % 60];
     
     if (indexPath.row == starredMethodIndex) {
         UIButton *label = (UIButton *)[cell viewWithTag:3];
@@ -253,8 +267,10 @@
         label.titleLabel.textColor = [self goldenOrange];
 //        text = [NSString stringWithFormat:@"Starred: %@", [method name]];
   //      label.numberOfLines = 0;
+        
+        cell.accessibilityLabel = [cell.accessibilityLabel stringByAppendingString:@", current starred method"];
     }
-
+    
     return cell;
 }
 
