@@ -69,6 +69,12 @@
     [label setText:text];
     [self styleLabel:label];
     
+    /* Accessibility */
+    label.isAccessibilityElement    = YES;
+    label.accessibilityLabel        = text;
+    label.accessibilityHint         = [NSString stringWithFormat:@"Displays %@", text];
+    label.accessibilityTraits       = UIAccessibilityTraitButton;
+    
     [self addSubview:label];
     [label release];
 }

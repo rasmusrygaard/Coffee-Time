@@ -105,7 +105,9 @@
 {
     secondsLeft = [currentMethod totalTimeInSeconds];
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
+    NSString *secondsLeftStr = [TimerStep formattedTimeInSecondsForInterval:secondsLeft];
+    timerLabel.text = secondsLeftStr;
+    timerLabel.accessibilityLabel = secondsLeftStr;
 }
 
 - (void)resetState
@@ -245,11 +247,23 @@
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self.infoTableView endUpdates];
-        NSLog(@"%@", instructions);
     } else {
         [self.instructions removeObjectAtIndex:0];
         [self.infoTableView reloadData];
     }
+    
+    // Update the accessibilityLabel of the top cell to reflect that 
+    // it is now the current step
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:0 inSection:0];
+
+    UITableViewCell *cell   = [self.infoTableView cellForRowAtIndexPath:ip];
+    cell.accessibilityLabel = @"Current step"; /// Include time left after merge
+
+    UILabel *label  = (UILabel *)[cell viewWithTag:1];
+    cell.accessibilityHint  = [label text];
+
+    /* Make sure that the accessible interface is updatet too */    
+    UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, nil);
     
 }
 
@@ -273,14 +287,15 @@
     if ([notifications count] > 0) {
         UILocalNotification *currentNotif = [notifications objectAtIndex:0];
         
-        UILabel *label;
         UITableViewCell *topCell = [self.infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
                                                                                                 inSection:0]];
         
         NSTimeInterval remainingTime = [[currentNotif fireDate] timeIntervalSinceNow];
+        NSString *remaininTimeStr = [TimerStep formattedTimeInSecondsForInterval:remainingTime];
         
+        UILabel *label;
         label = (UILabel *)[topCell viewWithTag:2];
-        [label setText:[TimerStep formattedTimeInSecondsForInterval:remainingTime]];
+        label.text = remaininTimeStr;
     }
 }
 
