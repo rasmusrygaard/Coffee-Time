@@ -261,9 +261,18 @@
                    forMethod:method];
 
     /* Accessibility */
-    cell.isAccessibilityElement = NO;
+    NSString *methodName = [method name];
+    
     int time = [method totalTimeInSeconds];
-    cell.accessibilityLabel     = [NSString stringWithFormat:@"%@, %d minutes, %d seconds", [method name], time / 60, time % 60];
+    cell.accessibilityLabel     = [NSString stringWithFormat:@"%@, %d minutes, %d seconds", methodName, time / 60, time % 60];
+    cell.accessibilityHint      = [NSString stringWithFormat:@"Opens %@ method", methodName];
+    cell.isAccessibilityElement = NO;
+
+    // Favorite button accessibility
+    UIButton *label = (UIButton *)[cell viewWithTag:3];
+    label.accessibilityLabel    = [NSString stringWithFormat:@"%@ star", methodName];
+    label.accessibilityHint     = [NSString stringWithFormat:@"Sets %@ as favorite method", methodName];
+    label.accessibilityTraits   = UIAccessibilityTraitButton;
     
     if (indexPath.row == starredMethodIndex) {
         UIButton *label = (UIButton *)[cell viewWithTag:3];

@@ -301,8 +301,9 @@
 {
     self.secondsLeft = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     
-    
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
+    NSString *secondsLeftStr = [TimerStep formattedTimeInSecondsForInterval:secondsLeft];
+    self->timerLabel.text = secondsLeftStr;
+    self->timerLabel.accessibilityLabel = secondsLeftStr;
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [self updateTimeOnTopCell:secondsLeft];
@@ -511,6 +512,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     [stopTimerButton addTarget:self 
                         action:@selector(stopTimerClicked:) 
               forControlEvents:UIControlEventTouchUpInside];
+    
+    /* Accessibility */
+    timerLabel.isAccessibilityElement   = YES;
+    timerLabel.accessibilityHint        = @"Displays remaining time";
+    
+    startTimerButton.isAccessibilityElement = YES;
+    startTimerButton.accessibilityHint      = @"Starts the timer";
+    startTimerButton.accessibilityLabel     = @"Start";
+    
+    stopTimerButton.isAccessibilityElement  = YES;
+    stopTimerButton.accessibilityHint       = @"Stops the timer";
+    stopTimerButton.accessibilityLabel      = @"Stop";
     
 }
 
