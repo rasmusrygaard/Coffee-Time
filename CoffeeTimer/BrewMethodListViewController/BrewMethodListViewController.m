@@ -203,8 +203,10 @@
     label.numberOfLines = 0;
     
     /* Accessibility */
+/*  
     label.isAccessibilityElement = YES;
     label.accessibilityLabel = [method name];
+*/
     
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
@@ -220,9 +222,11 @@
     label.text = text;
     
     /* Accessibility */
+/*  Might not need this as accessible when the whole cell is accessible
     label.isAccessibilityElement = YES;
     int time = [method totalTimeInSeconds];
     label.accessibilityLabel = [NSString stringWithFormat:@"%d minutes, %d seconds", time / 60, time % 60];
+*/
 }
 
 /* Function: - (UITableViewCell *)tableView:(UITableView *)tableView 
