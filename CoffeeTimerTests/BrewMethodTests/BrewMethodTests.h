@@ -16,4 +16,6 @@
     
 }
 
+@property (nonatomic, retain) BrewMethod *bm;
+
 @end
