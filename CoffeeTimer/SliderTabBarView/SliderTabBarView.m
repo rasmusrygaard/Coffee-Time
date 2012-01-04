@@ -11,6 +11,8 @@
 
 @implementation SliderTabBarView
 
+//@synthesize _accessibleElements;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -68,14 +70,9 @@
     NSString *text = [tabs objectAtIndex:index];
     [label setText:text];
     [self styleLabel:label];
-    
-    /* Accessibility */
-    label.isAccessibilityElement    = YES;
-    label.accessibilityLabel        = text;
-    label.accessibilityHint         = [NSString stringWithFormat:@"Displays %@", text];
-    label.accessibilityTraits       = UIAccessibilityTraitButton;
-    
+
     [self addSubview:label];
+    
     [label release];
 }
 
@@ -189,6 +186,63 @@
     [slider setFrame:newFrame];
 }
 
+- (NSArray *)_accessibleElements
+{
+    NSLog(@"Setting up accessibility");
+    if (accessibleElements != nil) {
+        return accessibleElements;
+    }
+    
+    accessibleElements = [[NSMutableArray alloc] init];
+    
+    UIAccessibilityElement *instructionsElement = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
+
+    instructionsElement.isAccessibilityElement  = YES;
+    instructionsElement.accessibilityLabel      = @"Instructions";
+    instructionsElement.accessibilityHint       = @"Displays instructions";
+    instructionsElement.accessibilityFrame      = instructionsLabel.frame;
+    instructionsElement.accessibilityTraits        = UIAccessibilityTraitButton;
+    
+    [accessibleElements addObject:instructionsElement];
+    
+    UIAccessibilityElement *preparationElement  = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
+    
+    preparationElement.isAccessibilityElement   = YES;
+    preparationElement.accessibilityLabel       = @"Preparation";
+    preparationElement.accessibilityHint        = @"Displays preparation steps";
+    preparationElement.accessibilityFrame       = preparationLabel.frame;
+    preparationElement.accessibilityTraits        = UIAccessibilityTraitButton;
+    
+    [accessibleElements addObject:preparationElement];
+    
+    UIAccessibilityElement *equipmentElement    = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
+    
+    equipmentElement.isAccessibilityElement     = YES;
+    equipmentElement.accessibilityLabel         = @"Equipment";
+    equipmentElement.accessibilityHint          = @"Displays equipment";
+    equipmentElement.accessibilityFrame         = equipmentLabel.frame;
+    equipmentElement.accessibilityTraits        = UIAccessibilityTraitButton;
+    
+    [accessibleElements addObject:equipmentElement];
+    
+    return accessibleElements;
+}
+
+- (NSInteger)accessibilityElementCount
+{
+    return [[self _accessibleElements] count];
+}
+
+- (id)accessibilityElementAtIndex:(NSInteger)index
+{
+    return [[self _accessibleElements] objectAtIndex:index];
+}
+
+- (NSInteger)indexOfAccessibilityElement:(id)element
+{
+    return [[self _accessibleElements] indexOfObject:element];
+}
+
 
 - (void)dealloc
 {
@@ -200,6 +254,8 @@
     [slider release];
     
     [tabs release];
+    
+    [accessibleElements release];
     
     [super dealloc];
 }

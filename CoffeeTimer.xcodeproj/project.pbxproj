@@ -300,8 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				000F1D2614337984006CD04F /* BrewMethodViewController.h */,
-				006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */,
 				000F1D2714337984006CD04F /* BrewMethodViewController.m */,
+				006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */,
 				000F1D2814337984006CD04F /* BrewMethodViewController.xib */,
 				003486711439728600960768 /* BrewMethodTableViewCell.xib */,
 			);

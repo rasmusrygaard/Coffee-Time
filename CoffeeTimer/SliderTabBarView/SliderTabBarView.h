@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import "BrewMethod.h"
 #import "Constants.h"
@@ -22,6 +23,8 @@
     NSArray *tabs;
     
     int oldIndex;
+    
+    NSMutableArray *accessibleElements;
 }
 
 - (NSString *)tabTitleForTouch:(UITouch *)t;
@@ -33,5 +36,7 @@
  */
  
 - (void)slideTabToIndex:(int)index;
+
+//@property (nonatomic, retain) NSMutableArray *_accessibleElements;
 
 @end

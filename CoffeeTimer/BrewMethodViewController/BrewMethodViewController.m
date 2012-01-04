@@ -564,6 +564,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [stbView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:stbView];
         
+        /* Accessibility */
+        stbView.isAccessibilityElement = NO;
+        
         [self setTabDisplayed:@"Instructions"];
     }
     
