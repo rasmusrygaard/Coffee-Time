@@ -7,10 +7,13 @@
 //
 
 #import "CoffeeTimerAppDelegate.h"
-#import "CoffeeTimerTestController.h"
 #import "BrewMethodViewController.h"
 #import "BrewMethodListViewController.h"
 #import "BrewMethod.h"
+
+#if RUN_KIF_TESTS
+#import "CoffeeTimerTestController.h"
+#endif
 
 @implementation CoffeeTimerAppDelegate
 
