@@ -41,6 +41,8 @@
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
 		004AB17F14B44D74004B7292 /* CoffeeTimerTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */; };
+		004AB18214B450C7004B7292 /* KIFTestScenario+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */; };
+		004AB18514B45188004B7292 /* KIFTestStep+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -189,6 +191,10 @@
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
 		004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoffeeTimerTestController.h; path = "KIF Integration Tests/CoffeeTimerTestController.h"; sourceTree = "<group>"; };
 		004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerTestController.m; path = "KIF Integration Tests/CoffeeTimerTestController.m"; sourceTree = "<group>"; };
+		004AB18014B450C7004B7292 /* KIFTestScenario+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+CTAdditions.h"; path = "KIF Integration Tests/KIFTestScenario+CTAdditions.h"; sourceTree = "<group>"; };
+		004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestScenario+CTAdditions.m"; path = "KIF Integration Tests/KIFTestScenario+CTAdditions.m"; sourceTree = "<group>"; };
+		004AB18314B45166004B7292 /* KIFTestStep+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+CTAdditions.h"; path = "KIF Integration Tests/KIFTestStep+CTAdditions.h"; sourceTree = "<group>"; };
+		004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+CTAdditions.m"; path = "KIF Integration Tests/KIFTestStep+CTAdditions.m"; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTime!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoffeeTime!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -378,6 +384,10 @@
 			children = (
 				004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */,
 				004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */,
+				004AB18014B450C7004B7292 /* KIFTestScenario+CTAdditions.h */,
+				004AB18314B45166004B7292 /* KIFTestStep+CTAdditions.h */,
+				004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */,
+				004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */,
 			);
 			name = "KIF Integration Tests";
 			sourceTree = "<group>";
@@ -741,6 +751,8 @@
 				008EF7A714B3B98700E0E60B /* TimerStep.m in Sources */,
 				008EF7A814B3B98700E0E60B /* main.m in Sources */,
 				004AB17F14B44D74004B7292 /* CoffeeTimerTestController.m in Sources */,
+				004AB18214B450C7004B7292 /* KIFTestScenario+CTAdditions.m in Sources */,
+				004AB18514B45188004B7292 /* KIFTestStep+CTAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

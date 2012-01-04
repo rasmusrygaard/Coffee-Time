@@ -8,13 +8,13 @@
 
 #import "CoffeeTimerTestController.h"
 #import "EXTestController.h"
+#import "KIFTestScenario+CTAdditions.h"
 
 @implementation CoffeeTimerTestController
 
 - (void)initializeScenarios;
 {
-    [self addScenario:[KIFTestScenario scenarioToLogIn]];
-    // Add additional scenarios you want to test here
+    [self addScenario:[KIFTestScenario scenarioToRunMethod]];
 }
 
 @end
