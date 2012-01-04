@@ -381,6 +381,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     self.view.backgroundColor = background;
     
     [background release]; 
+    
+    /* Accessibility */
+    self.tableView.isAccessibilityElement   = YES;
+    self.tableView.accessibilityLabel       = @"Brew method list";
 }
 
 - (void)viewWillAppear:(BOOL)animated

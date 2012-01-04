@@ -13,4 +13,6 @@
 
 + (id)scenarioToRunMethod;
 
++ (id)scenarioToSwitchMethod;
+
 @end

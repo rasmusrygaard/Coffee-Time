@@ -15,6 +15,7 @@
 - (void)initializeScenarios;
 {
     [self addScenario:[KIFTestScenario scenarioToRunMethod]];
+    [self addScenario:[KIFTestScenario scenarioToSwitchMethod]];
 }
 
 @end
