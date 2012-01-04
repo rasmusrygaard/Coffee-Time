@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0057FF8813E670B0001556C4"
-               BuildableName = "CoffeeTimer.app"
-               BlueprintName = "CoffeeTimer"
+               BuildableName = "CoffeeTime!.app"
+               BlueprintName = "CoffeeTime!"
                ReferencedContainer = "container:CoffeeTimer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,8 +42,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0057FF8813E670B0001556C4"
-            BuildableName = "CoffeeTimer.app"
-            BlueprintName = "CoffeeTimer"
+            BuildableName = "CoffeeTime!.app"
+            BlueprintName = "CoffeeTime!"
             ReferencedContainer = "container:CoffeeTimer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,8 +60,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0057FF8813E670B0001556C4"
-            BuildableName = "CoffeeTimer.app"
-            BlueprintName = "CoffeeTimer"
+            BuildableName = "CoffeeTime!.app"
+            BlueprintName = "CoffeeTime!"
             ReferencedContainer = "container:CoffeeTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -78,8 +78,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0057FF8813E670B0001556C4"
-            BuildableName = "CoffeeTimer.app"
-            BlueprintName = "CoffeeTimer"
+            BuildableName = "CoffeeTime!.app"
+            BlueprintName = "CoffeeTime!"
             ReferencedContainer = "container:CoffeeTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

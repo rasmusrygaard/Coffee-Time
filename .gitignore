@@ -1,6 +1,3 @@
-<<<<<<< HEAD
 *.xcodeproj
-=======
 *.xcbkptlist
-
->>>>>>> localNotifications
+CoffeeTimer/Frameworks/KIF/*

@@ -40,6 +40,7 @@
 		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
+		004AB17F14B44D74004B7292 /* CoffeeTimerTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */; };
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -61,6 +62,66 @@
 		006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FD1468B98600C9F3C1 /* Default@2x.png */; };
 		006F06D5144F455700D0766B /* BrewMethodTableViewSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
+		008EF79F14B3B98700E0E60B /* CoffeeTimerAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFA113E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m */; };
+		008EF7A014B3B98700E0E60B /* CoffeeTimerAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFA813E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m */; };
+		008EF7A114B3B98700E0E60B /* BrewMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2014337984006CD04F /* BrewMethod.m */; };
+		008EF7A214B3B98700E0E60B /* BrewMethodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2314337984006CD04F /* BrewMethodListViewController.m */; };
+		008EF7A314B3B98700E0E60B /* BrewMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2714337984006CD04F /* BrewMethodViewController.m */; };
+		008EF7A414B3B98700E0E60B /* CoffeeTimerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2B14337984006CD04F /* CoffeeTimerAppDelegate.m */; };
+		008EF7A514B3B98700E0E60B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2E14337984006CD04F /* Constants.m */; };
+		008EF7A614B3B98700E0E60B /* SliderTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4814337984006CD04F /* SliderTabBarView.m */; };
+		008EF7A714B3B98700E0E60B /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4B14337984006CD04F /* TimerStep.m */; };
+		008EF7A814B3B98700E0E60B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
+		008EF7AA14B3B98700E0E60B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
+		008EF7AB14B3B98700E0E60B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
+		008EF7AC14B3B98700E0E60B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
+		008EF7AD14B3B98700E0E60B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
+		008EF7AE14B3B98700E0E60B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
+		008EF7B014B3B98700E0E60B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0057FF9613E670B0001556C4 /* InfoPlist.strings */; };
+		008EF7B114B3B98700E0E60B /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFA313E670B0001556C4 /* MainWindow_iPhone.xib */; };
+		008EF7B214B3B98700E0E60B /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0057FFAA13E670B1001556C4 /* MainWindow_iPad.xib */; };
+		008EF7B314B3B98700E0E60B /* BrewMethodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D2814337984006CD04F /* BrewMethodViewController.xib */; };
+		008EF7B414B3B98700E0E60B /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3014337984006CD04F /* Background.png */; };
+		008EF7B514B3B98700E0E60B /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3114337984006CD04F /* Background@2x.png */; };
+		008EF7B614B3B98700E0E60B /* Buttons in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3214337984006CD04F /* Buttons */; };
+		008EF7B714B3B98700E0E60B /* Buttons@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3314337984006CD04F /* Buttons@2x */; };
+		008EF7B814B3B98700E0E60B /* Cell in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3414337984006CD04F /* Cell */; };
+		008EF7B914B3B98700E0E60B /* Cell@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3514337984006CD04F /* Cell@2x */; };
+		008EF7BA14B3B98700E0E60B /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3C14337984006CD04F /* Slider */; };
+		008EF7BB14B3B98700E0E60B /* Slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3D14337984006CD04F /* Slider@2x.png */; };
+		008EF7BC14B3B98700E0E60B /* TabBackground in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3E14337984006CD04F /* TabBackground */; };
+		008EF7BD14B3B98700E0E60B /* TabBackground@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3F14337984006CD04F /* TabBackground@2x */; };
+		008EF7BE14B3B98700E0E60B /* Timer in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4414337984006CD04F /* Timer */; };
+		008EF7BF14B3B98700E0E60B /* Timer@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4514337984006CD04F /* Timer@2x */; };
+		008EF7C014B3B98700E0E60B /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
+		008EF7C114B3B98700E0E60B /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359391437E9FA00BFA6E0 /* Cell@2x.png */; };
+		008EF7C214B3B98700E0E60B /* CellRoundedBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */; };
+		008EF7C314B3B98700E0E60B /* CellRoundedBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593B1437E9FA00BFA6E0 /* CellRoundedBottom@2x.png */; };
+		008EF7C414B3B98700E0E60B /* CellRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */; };
+		008EF7C514B3B98700E0E60B /* CellRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */; };
+		008EF7C614B3B98700E0E60B /* CellRoundedTopBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */; };
+		008EF7C714B3B98700E0E60B /* CellRoundedTopBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */; };
+		008EF7C814B3B98700E0E60B /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */; };
+		008EF7C914B3B98700E0E60B /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
+		008EF7CA14B3B98700E0E60B /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
+		008EF7CB14B3B98700E0E60B /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
+		008EF7CC14B3B98700E0E60B /* BigCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C534144241A900D8D825 /* BigCell.png */; };
+		008EF7CD14B3B98700E0E60B /* BigCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C535144241A900D8D825 /* BigCell@2x.png */; };
+		008EF7CE14B3B98700E0E60B /* BigCellWRoundedBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C536144241A900D8D825 /* BigCellWRoundedBottom.png */; };
+		008EF7CF14B3B98700E0E60B /* BigCellWRoundedBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C537144241A900D8D825 /* BigCellWRoundedBottom@2x.png */; };
+		008EF7D014B3B98700E0E60B /* BigCellWRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C538144241A900D8D825 /* BigCellWRoundedTop.png */; };
+		008EF7D114B3B98700E0E60B /* BigCellWRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C539144241A900D8D825 /* BigCellWRoundedTop@2x.png */; };
+		008EF7D214B3B98700E0E60B /* MatteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C5411442429E00D8D825 /* MatteBackground.png */; };
+		008EF7D314B3B98700E0E60B /* MatteBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C5421442429E00D8D825 /* MatteBackground@2x.png */; };
+		008EF7D414B3B98700E0E60B /* SimpleMatteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C5431442429E00D8D825 /* SimpleMatteBackground.png */; };
+		008EF7D514B3B98700E0E60B /* SimpleMatteBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0005C5441442429E00D8D825 /* SimpleMatteBackground@2x.png */; };
+		008EF7D614B3B98700E0E60B /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
+		008EF7D714B3B98700E0E60B /* BrewMethodTableViewSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */; };
+		008EF7D814B3B98700E0E60B /* CoffeeTime57.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93F71468B96300C9F3C1 /* CoffeeTime57.png */; };
+		008EF7D914B3B98700E0E60B /* CoffeeTime112.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93F81468B96300C9F3C1 /* CoffeeTime112.png */; };
+		008EF7DA14B3B98700E0E60B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FC1468B98600C9F3C1 /* Default.png */; };
+		008EF7DB14B3B98700E0E60B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FD1468B98600C9F3C1 /* Default@2x.png */; };
+		008EF7E414B3B9FF00E0E60B /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008EF7E314B3B9FF00E0E60B /* libKIF.a */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
 		00D359461437E9FA00BFA6E0 /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
 		00D359471437E9FA00BFA6E0 /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359391437E9FA00BFA6E0 /* Cell@2x.png */; };
@@ -126,7 +187,9 @@
 		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
-		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoffeeTimerTestController.h; path = "KIF Integration Tests/CoffeeTimerTestController.h"; sourceTree = "<group>"; };
+		004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerTestController.m; path = "KIF Integration Tests/CoffeeTimerTestController.m"; sourceTree = "<group>"; };
+		0057FF8913E670B0001556C4 /* CoffeeTime!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoffeeTime!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0057FF9113E670B0001556C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +214,9 @@
 		006C93FD1468B98600C9F3C1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrewMethodTableViewSimpleCell.xib; path = "../../../../../../Desktop/Macintosh HD/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer/BrewMethodViewController/BrewMethodTableViewSimpleCell.xib"; sourceTree = "<group>"; };
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Time! (Integration Tests).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		008EF7E214B3B98700E0E60B /* CoffeeTimer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CoffeeTimer copy-Info.plist"; path = "/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer copy-Info.plist"; sourceTree = "<absolute>"; };
+		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		00D359381437E9FA00BFA6E0 /* Cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell.png; sourceTree = "<group>"; };
 		00D359391437E9FA00BFA6E0 /* Cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cell@2x.png"; sourceTree = "<group>"; };
@@ -186,6 +252,19 @@
 				0057FFB513E670B1001556C4 /* UIKit.framework in Frameworks */,
 				0057FFB613E670B1001556C4 /* Foundation.framework in Frameworks */,
 				0057FFB713E670B1001556C4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		008EF7A914B3B98700E0E60B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				008EF7E414B3B9FF00E0E60B /* libKIF.a in Frameworks */,
+				008EF7AA14B3B98700E0E60B /* AudioToolbox.framework in Frameworks */,
+				008EF7AB14B3B98700E0E60B /* QuartzCore.framework in Frameworks */,
+				008EF7AC14B3B98700E0E60B /* UIKit.framework in Frameworks */,
+				008EF7AD14B3B98700E0E60B /* Foundation.framework in Frameworks */,
+				008EF7AE14B3B98700E0E60B /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,23 +373,35 @@
 			path = TimerStep;
 			sourceTree = "<group>";
 		};
+		004AB17C14B44D3C004B7292 /* KIF Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */,
+				004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */,
+			);
+			name = "KIF Integration Tests";
+			sourceTree = "<group>";
+		};
 		0057FF7E13E670AB001556C4 = {
 			isa = PBXGroup;
 			children = (
+				008EF7E314B3B9FF00E0E60B /* libKIF.a */,
 				001103C11437B9DB00C6467B /* AudioToolbox.framework */,
 				00A226C2141CE2D9006EEE4F /* QuartzCore.framework */,
 				0057FF9313E670B0001556C4 /* CoffeeTimer */,
 				0057FFBA13E670B1001556C4 /* CoffeeTimerTests */,
 				0057FF8C13E670B0001556C4 /* Frameworks */,
 				0057FF8A13E670B0001556C4 /* Products */,
+				008EF7E214B3B98700E0E60B /* CoffeeTimer copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		0057FF8A13E670B0001556C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0057FF8913E670B0001556C4 /* CoffeeTimer.app */,
+				0057FF8913E670B0001556C4 /* CoffeeTime!.app */,
 				0057FFB213E670B1001556C4 /* CoffeeTimerTests.octest */,
+				008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,6 +470,7 @@
 		0057FFBA13E670B1001556C4 /* CoffeeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				004AB17C14B44D3C004B7292 /* KIF Integration Tests */,
 				0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */,
 				0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */,
 				0057FFBB13E670B1001556C4 /* Supporting Files */,
@@ -398,9 +490,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0057FF8813E670B0001556C4 /* CoffeeTimer */ = {
+		0057FF8813E670B0001556C4 /* CoffeeTime! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0057FFC613E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimer" */;
+			buildConfigurationList = 0057FFC613E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTime!" */;
 			buildPhases = (
 				0057FF8513E670B0001556C4 /* Sources */,
 				0057FF8613E670B0001556C4 /* Frameworks */,
@@ -410,9 +502,9 @@
 			);
 			dependencies = (
 			);
-			name = CoffeeTimer;
+			name = "CoffeeTime!";
 			productName = CoffeeTimer;
-			productReference = 0057FF8913E670B0001556C4 /* CoffeeTimer.app */;
+			productReference = 0057FF8913E670B0001556C4 /* CoffeeTime!.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0057FFB113E670B1001556C4 /* CoffeeTimerTests */ = {
@@ -434,6 +526,23 @@
 			productReference = 0057FFB213E670B1001556C4 /* CoffeeTimerTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		008EF79D14B3B98700E0E60B /* Integration Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 008EF7DC14B3B98700E0E60B /* Build configuration list for PBXNativeTarget "Integration Tests" */;
+			buildPhases = (
+				008EF79E14B3B98700E0E60B /* Sources */,
+				008EF7A914B3B98700E0E60B /* Frameworks */,
+				008EF7AF14B3B98700E0E60B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Integration Tests";
+			productName = CoffeeTimer;
+			productReference = 008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -454,8 +563,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0057FF8813E670B0001556C4 /* CoffeeTimer */,
+				0057FF8813E670B0001556C4 /* CoffeeTime! */,
 				0057FFB113E670B1001556C4 /* CoffeeTimerTests */,
+				008EF79D14B3B98700E0E60B /* Integration Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -521,6 +631,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		008EF7AF14B3B98700E0E60B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				008EF7B014B3B98700E0E60B /* InfoPlist.strings in Resources */,
+				008EF7B114B3B98700E0E60B /* MainWindow_iPhone.xib in Resources */,
+				008EF7B214B3B98700E0E60B /* MainWindow_iPad.xib in Resources */,
+				008EF7B314B3B98700E0E60B /* BrewMethodViewController.xib in Resources */,
+				008EF7B414B3B98700E0E60B /* Background.png in Resources */,
+				008EF7B514B3B98700E0E60B /* Background@2x.png in Resources */,
+				008EF7B614B3B98700E0E60B /* Buttons in Resources */,
+				008EF7B714B3B98700E0E60B /* Buttons@2x in Resources */,
+				008EF7B814B3B98700E0E60B /* Cell in Resources */,
+				008EF7B914B3B98700E0E60B /* Cell@2x in Resources */,
+				008EF7BA14B3B98700E0E60B /* Slider in Resources */,
+				008EF7BB14B3B98700E0E60B /* Slider@2x.png in Resources */,
+				008EF7BC14B3B98700E0E60B /* TabBackground in Resources */,
+				008EF7BD14B3B98700E0E60B /* TabBackground@2x in Resources */,
+				008EF7BE14B3B98700E0E60B /* Timer in Resources */,
+				008EF7BF14B3B98700E0E60B /* Timer@2x in Resources */,
+				008EF7C014B3B98700E0E60B /* Cell.png in Resources */,
+				008EF7C114B3B98700E0E60B /* Cell@2x.png in Resources */,
+				008EF7C214B3B98700E0E60B /* CellRoundedBottom.png in Resources */,
+				008EF7C314B3B98700E0E60B /* CellRoundedBottom@2x.png in Resources */,
+				008EF7C414B3B98700E0E60B /* CellRoundedTop.png in Resources */,
+				008EF7C514B3B98700E0E60B /* CellRoundedTop@2x.png in Resources */,
+				008EF7C614B3B98700E0E60B /* CellRoundedTopBottom.png in Resources */,
+				008EF7C714B3B98700E0E60B /* CellRoundedTopBottom.psd in Resources */,
+				008EF7C814B3B98700E0E60B /* CellRoundedTopBottom@2x.png in Resources */,
+				008EF7C914B3B98700E0E60B /* MethodBackground.png in Resources */,
+				008EF7CA14B3B98700E0E60B /* MethodBackground@2x.png in Resources */,
+				008EF7CB14B3B98700E0E60B /* BrewMethodTableViewCell.xib in Resources */,
+				008EF7CC14B3B98700E0E60B /* BigCell.png in Resources */,
+				008EF7CD14B3B98700E0E60B /* BigCell@2x.png in Resources */,
+				008EF7CE14B3B98700E0E60B /* BigCellWRoundedBottom.png in Resources */,
+				008EF7CF14B3B98700E0E60B /* BigCellWRoundedBottom@2x.png in Resources */,
+				008EF7D014B3B98700E0E60B /* BigCellWRoundedTop.png in Resources */,
+				008EF7D114B3B98700E0E60B /* BigCellWRoundedTop@2x.png in Resources */,
+				008EF7D214B3B98700E0E60B /* MatteBackground.png in Resources */,
+				008EF7D314B3B98700E0E60B /* MatteBackground@2x.png in Resources */,
+				008EF7D414B3B98700E0E60B /* SimpleMatteBackground.png in Resources */,
+				008EF7D514B3B98700E0E60B /* SimpleMatteBackground@2x.png in Resources */,
+				008EF7D614B3B98700E0E60B /* BrewMethodListCell.xib in Resources */,
+				008EF7D714B3B98700E0E60B /* BrewMethodTableViewSimpleCell.xib in Resources */,
+				008EF7D814B3B98700E0E60B /* CoffeeTime57.png in Resources */,
+				008EF7D914B3B98700E0E60B /* CoffeeTime112.png in Resources */,
+				008EF7DA14B3B98700E0E60B /* Default.png in Resources */,
+				008EF7DB14B3B98700E0E60B /* Default@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -565,12 +726,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		008EF79E14B3B98700E0E60B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				008EF79F14B3B98700E0E60B /* CoffeeTimerAppDelegate_iPhone.m in Sources */,
+				008EF7A014B3B98700E0E60B /* CoffeeTimerAppDelegate_iPad.m in Sources */,
+				008EF7A114B3B98700E0E60B /* BrewMethod.m in Sources */,
+				008EF7A214B3B98700E0E60B /* BrewMethodListViewController.m in Sources */,
+				008EF7A314B3B98700E0E60B /* BrewMethodViewController.m in Sources */,
+				008EF7A414B3B98700E0E60B /* CoffeeTimerAppDelegate.m in Sources */,
+				008EF7A514B3B98700E0E60B /* Constants.m in Sources */,
+				008EF7A614B3B98700E0E60B /* SliderTabBarView.m in Sources */,
+				008EF7A714B3B98700E0E60B /* TimerStep.m in Sources */,
+				008EF7A814B3B98700E0E60B /* main.m in Sources */,
+				004AB17F14B44D74004B7292 /* CoffeeTimerTestController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		0057FFB913E670B1001556C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0057FF8813E670B0001556C4 /* CoffeeTimer */;
+			target = 0057FF8813E670B0001556C4 /* CoffeeTime! */;
 			targetProxy = 0057FFB813E670B1001556C4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -738,6 +917,74 @@
 			};
 			name = Release;
 		};
+		008EF7DD14B3B98700E0E60B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"RUN_KIF_TESTS=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**",
+				);
+				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
+				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Coffee Time! (Integration Tests)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		008EF7DE14B3B98700E0E60B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphonesos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeTimer/CoffeeTimer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"RUN_KIF_TESTS=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**",
+				);
+				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
+				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Coffee Time! (Integration Tests)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphonesos*]" = "";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -750,7 +997,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0057FFC613E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTimer" */ = {
+		0057FFC613E670B2001556C4 /* Build configuration list for PBXNativeTarget "CoffeeTime!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0057FFC713E670B2001556C4 /* Debug */,
@@ -764,6 +1011,15 @@
 			buildConfigurations = (
 				0057FFCA13E670B2001556C4 /* Debug */,
 				0057FFCB13E670B2001556C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		008EF7DC14B3B98700E0E60B /* Build configuration list for PBXNativeTarget "Integration Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				008EF7DD14B3B98700E0E60B /* Debug */,
+				008EF7DE14B3B98700E0E60B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

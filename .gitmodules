@@ -1,0 +1,3 @@
+[submodule "CoffeeTimer/Frameworks/KIF"]
+	path = CoffeeTimer/Frameworks/KIF
+	url = https://github.com/square/KIF.git
