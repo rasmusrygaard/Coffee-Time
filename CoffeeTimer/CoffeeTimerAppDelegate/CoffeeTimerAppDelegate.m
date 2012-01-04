@@ -7,6 +7,7 @@
 //
 
 #import "CoffeeTimerAppDelegate.h"
+#import "CoffeeTimerTestController.h"
 #import "BrewMethodViewController.h"
 #import "BrewMethodListViewController.h"
 #import "BrewMethod.h"
@@ -34,6 +35,14 @@
     }
     
     [self.window makeKeyAndVisible];
+    
+    #if RUN_KIF_TESTS
+        [[CoffeeTimerTestController sharedInstance] startTestingWithCompletionBlock:^{
+            // Exit after the tests complete so that CI knows we're done
+            exit([[CoffeeTimerTestController sharedInstance] failureCount]);
+        }];
+    #endif
+    
     return YES;
 }
 

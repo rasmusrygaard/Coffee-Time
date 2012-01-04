@@ -14,7 +14,11 @@
 
 + (id)scenarioToRunMethod
 {
-    
+    KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test that the user can select and run a method"];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Aeropress, 0 minutes, 30 seconds"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Start"]];
+        
+    return sc;
 }
 
 @end

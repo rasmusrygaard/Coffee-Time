@@ -385,9 +385,9 @@
 				004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */,
 				004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */,
 				004AB18014B450C7004B7292 /* KIFTestScenario+CTAdditions.h */,
+				004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */,
 				004AB18314B45166004B7292 /* KIFTestStep+CTAdditions.h */,
 				004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */,
-				004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */,
 			);
 			name = "KIF Integration Tests";
 			sourceTree = "<group>";

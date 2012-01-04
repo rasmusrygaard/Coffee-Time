@@ -20,7 +20,7 @@
         [super initWithStyle:UITableViewStyleGrouped];
         [[self navigationItem] setTitle:@"Brew Methods"];
         
-        starredMethodIndex = 1;
+        starredMethodIndex = -1;
         wantsToSwitchMethod = true;
     }
     
