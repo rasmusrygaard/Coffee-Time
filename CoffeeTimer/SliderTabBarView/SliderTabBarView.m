@@ -188,7 +188,6 @@
 
 - (NSArray *)_accessibleElements
 {
-    NSLog(@"Setting up accessibility");
     if (accessibleElements != nil) {
         return accessibleElements;
     }

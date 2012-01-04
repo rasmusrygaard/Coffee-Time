@@ -90,7 +90,7 @@
     TimerStep *apStepOne = [[[TimerStep alloc] initWithDescription:@"Pour water over the grounds"
                                                     timeInSeconds:10] autorelease]; ///
     TimerStep *apStepTwo = [[[TimerStep alloc] initWithDescription:@"Turn the Aeropress upside down, plunge slowly"
-                                                    timeInSeconds:20] autorelease];
+                                                    timeInSeconds:5] autorelease];
     
     NSArray *apStepArray = [NSArray arrayWithObjects:apStepOne, apStepTwo, nil];
     
