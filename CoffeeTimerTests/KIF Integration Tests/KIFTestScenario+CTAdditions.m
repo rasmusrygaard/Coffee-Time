@@ -106,6 +106,11 @@
                                                                atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Start"]];
     
+    // Reset state
+    [sc addStep:[KIFTestStep stepToWaitForTimeInterval:5 description:@"Wait before resetting state"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Stop"]];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     return sc;
 }
 
