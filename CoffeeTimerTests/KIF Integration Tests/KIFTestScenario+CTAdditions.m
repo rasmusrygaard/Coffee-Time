@@ -7,10 +7,21 @@
 //
 
 #import "KIFTestScenario+CTAdditions.h"
+#import "KIFTestStep+CTAdditions.h"
+
 #import "KIFTestScenario.h"
 #import "KIFTestStep.h"
 
 @implementation KIFTestScenario (CTAdditions)
+
++ (id)scenarioToOpenAllMethods
+{
+    KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Verifies that the user can open all methods"];
+    
+    // Open first metho
+    
+    return sc;
+}
 
 + (id)scenarioToRunMethod
 {
@@ -24,11 +35,14 @@
     // Return to the method
     [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     
-    /* Taps not fully functional
+    // Taps not fully functional
+    [sc addStep:[KIFTestStep stepToTapSliderTabWithLabel:@"Preparation"]];
+    [sc addStep:[KIFTestStep stepToTapSliderTabWithLabel:@"Instructions"]];
+    
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Preparation"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Equipment"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
-    */
+    
     
     KIFTestStep *t = [KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"00:00"];
     t.timeout = 20;
@@ -40,7 +54,7 @@
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
-    
+
     return sc;
 }
 
@@ -110,6 +124,13 @@
     [sc addStep:[KIFTestStep stepToWaitForTimeInterval:5 description:@"Wait before resetting state"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Stop"]];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    return sc;
+}
+
++ (id)scenarioToRunManyMethods
+{
+    KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test running a number of methods after each other"];
     
     return sc;
 }

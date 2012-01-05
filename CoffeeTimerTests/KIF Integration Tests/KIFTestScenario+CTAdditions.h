@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "KIFTestScenario.h"
+#import "KIFTestStep.h"
 
 @interface KIFTestScenario (CTAdditions)
+
++ (id)scenarioToOpenAllMethods;
 
 + (id)scenarioToRunMethod;
 
 + (id)scenarioToSwitchMethod;
+
++ (id)scenarioToRunManyMethods;
 
 @end

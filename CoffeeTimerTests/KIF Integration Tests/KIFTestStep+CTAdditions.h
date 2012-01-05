@@ -11,4 +11,6 @@
 
 @interface KIFTestStep (KFITestStep)
 
++ (id)stepToTapSliderTabWithLabel:(NSString *)label;
+
 @end

@@ -45,6 +45,9 @@
     
     [label setTextAlignment:UITextAlignmentCenter];
     
+    label.isAccessibilityElement    = YES;
+    label.accessibilityLabel        = label.text;
+    
 }
 
 /* Function: - (void)drawLabel:(UILabel *)label 
@@ -132,6 +135,7 @@
 - (NSString *)tabTitleForTouch:(UITouch *)t
 {
     int index = [t locationInView:self].x / TEXTFIELD_WIDTH;
+    NSLog(@"Tab: %@, x: %f y: %f", [tabs objectAtIndex:index], [t locationInView:self].x, [t locationInView:self].y);
     return [tabs objectAtIndex:index];
 }
 
@@ -185,7 +189,7 @@
     // Move the slider to the new position after the animation
     [slider setFrame:newFrame];
 }
-
+/*
 - (NSArray *)_accessibleElements
 {
     if (accessibleElements != nil) {
@@ -242,7 +246,7 @@
     return [[self _accessibleElements] indexOfObject:element];
 }
 
-
+*/
 - (void)dealloc
 {
     [preparationLabel release];
@@ -254,7 +258,7 @@
     
     [tabs release];
     
-    [accessibleElements release];
+//    [accessibleElements release];
     
     [super dealloc];
 }

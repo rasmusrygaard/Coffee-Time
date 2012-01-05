@@ -462,7 +462,7 @@
     }
     
     /* Accessibility */
-    cell.isAccessibilityElement = NO;
+    cell.isAccessibilityElement = YES;
     
     return cell;
 }

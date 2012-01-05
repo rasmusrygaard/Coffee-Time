@@ -24,7 +24,7 @@
     
     int oldIndex;
     
-    NSMutableArray *accessibleElements;
+//    NSMutableArray *accessibleElements;
 }
 
 - (NSString *)tabTitleForTouch:(UITouch *)t;
