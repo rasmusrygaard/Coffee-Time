@@ -104,18 +104,33 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
+    
     if (indexPath.section == 0) {
-       
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                          reuseIdentifier:@"UITableViewCell"];
-        }
         
         if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section] - 1) {
+            
+            /*
+             * "Add New Instructions..." cell
+             */
+            
+            cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+            
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                              reuseIdentifier:@"UITableViewCell"];
+            }
+            
             cell.textLabel.text = [NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]];
+            
+            cell.textLabel.textColor    = [UIColor darkGrayColor];
+            cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+            
         } else {
+            
+            /* 
+             * Instructions cells
+             */
+            
             cell = [[UITableViewCell alloc] init];
             
             [[NSBundle mainBundle] loadNibNamed:@"AddInstructionsCell" 
@@ -136,7 +151,13 @@
             }
         }
     } else {
+        
+        /*
+         * "Save" button
+         */
+        
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+        
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier:@"DefaultCell"];
