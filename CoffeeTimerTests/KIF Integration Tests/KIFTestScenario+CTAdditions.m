@@ -18,7 +18,10 @@
 {
     KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Verifies that the user can open all methods"];
     
-    // Open first metho
+    for (int i = 0; i < 4; ++i) {
+        [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" atIndexPath:[NSIndexPath indexPathForRow:i inSection:0]]];
+        [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
+    }
     
     return sc;
 }
@@ -36,13 +39,14 @@
     [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     
     // Taps not fully functional
+    /*
     [sc addStep:[KIFTestStep stepToTapSliderTabWithLabel:@"Preparation"]];
     [sc addStep:[KIFTestStep stepToTapSliderTabWithLabel:@"Instructions"]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Preparation"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Equipment"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
-    
+    */
     
     KIFTestStep *t = [KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"00:00"];
     t.timeout = 20;
@@ -50,7 +54,7 @@
     
     [sc addStep:[KIFTestStep stepToWaitForTimeInterval:2 description:@"Wait after method has completed"]];
     
-    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+//    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
@@ -124,6 +128,9 @@
     [sc addStep:[KIFTestStep stepToWaitForTimeInterval:5 description:@"Wait before resetting state"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Stop"]];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
+
     
     return sc;
 }
