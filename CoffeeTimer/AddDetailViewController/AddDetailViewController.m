@@ -28,15 +28,6 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -100,6 +91,56 @@
     return [img autorelease];
 }
 
+- (UITableViewCell *)loadCellLayout
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
+    NSString *nibToLoad;
+    
+    if ([self.detailType isEqualToString:@"Instructions"]) {
+        
+        nibToLoad = @"AddInstructionsCell";
+        
+    } else if ([self.detailType isEqualToString:@"Preparation"]) {
+        
+        nibToLoad = @"AddPreparationCell";
+        
+    } else { // Default to open preparation cell but log the error.
+        
+        nibToLoad = @"AddPreparationCell";
+        NSLog(@"Invalid detail type for AddDetailViewController class");
+    }
+    
+    [[NSBundle mainBundle] loadNibNamed:nibToLoad
+                                  owner:self 
+                                options:nil];
+    
+    cell = detailCell;
+    self.detailCell = nil;
+    
+    NSLog(@"Cell: %@ rtCount: %d", cell, cell.retainCount);
+    return cell;
+}
+
+- (void)loadCellData:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.detailType isEqualToString:@"Instructions"]) {
+        TimerStep *t = [data objectAtIndex:indexPath.row];
+        
+        if (t.timeInSeconds != 0) {
+            UITextField *tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG]; // Time
+            tf.text = [t descriptionWithoutTime];
+            
+            tf = (UITextField *)[cell viewWithTag:2];
+            tf.text = [TimerStep formattedTimeInSecondsForInterval:[t timeInSeconds]];
+        }
+    } else {
+        UITextField *tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
+        tf.text         =  [data objectAtIndex:indexPath.row];
+    }
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -131,24 +172,9 @@
              * Instructions cells
              */
             
-            cell = [[UITableViewCell alloc] init];
-            
-            [[NSBundle mainBundle] loadNibNamed:@"AddInstructionsCell" 
-                                          owner:self 
-                                        options:nil];
-            cell = detailCell;
-            self.detailCell = nil;    
-            
-            
-            TimerStep *t = [data objectAtIndex:indexPath.row];
-
-            if (t.timeInSeconds != 0) {
-                UITextField *tf = (UITextField *)[cell viewWithTag:2]; // Time
-                tf.text = [t descriptionWithoutTime];
-                
-                tf = (UITextField *)[cell viewWithTag:2];
-                tf.text = [TimerStep formattedTimeInSecondsForInterval:[t timeInSeconds]];
-            }
+            cell = [self loadCellLayout];
+            [self loadCellData:cell 
+                   atIndexPath:indexPath];
         }
     } else {
         
@@ -171,6 +197,7 @@
 
     }
 
+    NSLog(@"IndexPath: %@, Cell: %@", indexPath, cell);
     UIImageView *img = [self imageForCellAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundView:img];
@@ -199,8 +226,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        for (TimerStep *t in data) {
-            NSLog(@"Step: %@", t);
+        if ([self.detailType isEqualToString:@"Instructions"]) {
+            for (TimerStep *t in data) {
+                NSLog(@"Step: %@", t);        
+            }
+        } else {
+            for (NSString *prep in data) {
+                NSLog(@"Preparation: %@");
+            }
         }
     }
     
@@ -233,8 +266,13 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     if (editingStyle == UITableViewCellEditingStyleInsert) {
 
-        TimerStep *t = [[TimerStep alloc] init];
-        [data addObject:t];
+        if ([self.detailType isEqualToString:@"Instructions"]) {
+            TimerStep *t = [[TimerStep alloc] init];
+            [data addObject:t];
+        } else {
+            [data addObject:@""];
+        }
+
         
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                               withRowAnimation:UITableViewRowAnimationRight];

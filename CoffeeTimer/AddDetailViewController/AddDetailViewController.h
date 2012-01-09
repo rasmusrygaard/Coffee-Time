@@ -11,7 +11,9 @@
 @interface AddDetailViewController : UITableViewController <UITextFieldDelegate, UITableViewDelegate>
 {
     NSString *detailType;
+    
     NSMutableArray *data;
+    
     IBOutlet UITableViewCell *detailCell;
 }
 

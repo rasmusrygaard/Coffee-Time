@@ -207,6 +207,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     NSString *label = cell.textLabel.text;
     if ([label isEqualToString:@"Instructions"] ||
         [label isEqualToString:@"Preparation"]) {
+
         AddDetailViewController *adVC = [[AddDetailViewController alloc] init];
         
         if ([label isEqualToString:@"Instructions"]) {
@@ -214,8 +215,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         } else {
             adVC.data = preparation;
         }
-        [adVC.navigationItem setTitle:label];
         
+        adVC.detailType = label;
+        
+        [adVC.navigationItem setTitle:label];
+        NSLog(@"adVC: %@", adVC);
         [self.navigationController pushViewController:adVC animated:YES];
         [adVC release];
     }

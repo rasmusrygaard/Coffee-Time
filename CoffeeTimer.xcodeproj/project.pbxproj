@@ -89,6 +89,7 @@
 		00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
 		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
 		00985240147EF9AA002B540C /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
+		00A207E114BA9A90006F327C /* AddPreparationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A207E014BA9A90006F327C /* AddPreparationCell.xib */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
 		00AA123714B0CD800071F5CB /* TimerStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AA123514B0C8800071F5CB /* TimerStepTests.m */; };
 		00AA123914B0CE780071F5CB /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4B14337984006CD04F /* TimerStep.m */; };
@@ -207,6 +208,7 @@
 		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
 		0098523E147EF9AA002B540C /* AddMethodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodView.h; path = AddMethodViewController/AddMethodView.h; sourceTree = "<group>"; };
 		0098523F147EF9AA002B540C /* AddMethodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodView.m; path = AddMethodViewController/AddMethodView.m; sourceTree = "<group>"; };
+		00A207E014BA9A90006F327C /* AddPreparationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPreparationCell.xib; path = AddDetailViewController/AddPreparationCell.xib; sourceTree = "<group>"; };
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		00AA123414B0C8800071F5CB /* TimerStepTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerStepTests.h; path = TimerStepTests/TimerStepTests.h; sourceTree = "<group>"; };
 		00AA123514B0C8800071F5CB /* TimerStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerStepTests.m; path = TimerStepTests/TimerStepTests.m; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				00E5F648149D313100A97E64 /* AddDetailViewController.xib */,
 				0098523A147EF072002B540C /* AddMethodTableViewCell.xib */,
 				00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */,
+				00A207E014BA9A90006F327C /* AddPreparationCell.xib */,
 			);
 			name = AddMethodViewController;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				0048B65214819F7F00CCF57E /* Cell@2x.png in Resources */,
 				00E5F64A149D313100A97E64 /* AddDetailViewController.xib in Resources */,
 				00397E25149D3F0100FDF07B /* AddInstructionsCell.xib in Resources */,
+				00A207E114BA9A90006F327C /* AddPreparationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
