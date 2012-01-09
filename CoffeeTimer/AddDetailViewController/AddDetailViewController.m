@@ -131,7 +131,7 @@
             UITextField *tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG]; // Time
             tf.text = [t descriptionWithoutTime];
             
-            tf = (UITextField *)[cell viewWithTag:2];
+            tf = (UITextField *)[cell viewWithTag:TIME_TAG];
             tf.text = [TimerStep formattedTimeInSecondsForInterval:[t timeInSeconds]];
         }
     } else {
@@ -362,18 +362,23 @@ replacementString:(NSString *)string
     UITableViewCell *cell = (UITableViewCell *)[[textField superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
-    // Only update data source if we aren't removing an empty cell
-    if (![textField.text isEqualToString:@""]) {
-        TimerStep *t = [data objectAtIndex:indexPath.row];
-        if (textField.tag == DESCRIPTION_TAG) {
-            t.stepDescription = textField.text;
-        } else {
-            t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:textField.text];
+    if ([self.detailType isEqualToString:@"Instructions"]) {
+        // Only update data source if we aren't removing an empty cell
+        if (![textField.text isEqualToString:@""]) {
+            TimerStep *t = [data objectAtIndex:indexPath.row];
+            if (textField.tag == DESCRIPTION_TAG) {
+                t.stepDescription = textField.text;
+            } else {
+                t.timeInSeconds = [TimerStep timeInSecondsForFormattedInterval:textField.text];
+            }
         }
+        
+        return (textField.tag == DESCRIPTION_TAG ||
+                textField.text.length == 5);
+    } else {
+        [data replaceObjectAtIndex:indexPath.row withObject:textField.text];
+        return YES;
     }
-    
-    return (textField.tag == DESCRIPTION_TAG ||
-            textField.text.length == 5);
 }
 
 /* Function: - (BOOL)textFieldShouldReturn:(UITextField *)textField
