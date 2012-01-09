@@ -283,17 +283,17 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     if (editingStyle == UITableViewCellEditingStyleInsert) {
 
-        int tag;
+        int newFirstResponderTag;
         
         if ([self.detailType isEqualToString:@"Instructions"]) {
             TimerStep *t = [[TimerStep alloc] init];
             [data addObject:t];
             
-            tag = TIME_TAG;
+            newFirstResponderTag = TIME_TAG;
         } else {
             [data addObject:@""];
             
-            tag = DESCRIPTION_TAG;
+            newFirstResponderTag = DESCRIPTION_TAG;
         }
 
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
@@ -301,7 +301,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         
-        [[cell viewWithTag:tag] becomeFirstResponder];
+        [[cell viewWithTag:newFirstResponderTag] becomeFirstResponder];
 
     } else if (editingStyle == UITableViewCellEditingStyleDelete) {
 

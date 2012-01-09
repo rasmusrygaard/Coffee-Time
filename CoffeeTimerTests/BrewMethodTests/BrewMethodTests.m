@@ -9,7 +9,7 @@
 #import "BrewMethodTests.h"
 #import "BrewMethod.h"
 
-#define NUM_STEPS 300
+#define NUM_STEPS 10
 #define MAX_TIME 200
 
 @implementation BrewMethodTests 
@@ -91,7 +91,7 @@
     NSMutableArray *times        = [[NSMutableArray alloc] init];
     NSMutableArray *steps        = [[NSMutableArray alloc] init];
     
-    int time, totalTime;
+    int time, totalTime = 0;
     NSString *str;
     // Create a number of timer steps
     for (int i = 0; i < NUM_STEPS; ++i) {
