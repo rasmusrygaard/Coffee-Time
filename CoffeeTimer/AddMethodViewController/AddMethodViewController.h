@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "AddMethodView.h"
 
+#import "AddDetailViewController.h"
+
 @interface AddMethodViewController : UITableViewController <UITextFieldDelegate>
 {
+    AddDetailViewController *adVC;
+    
     IBOutlet UITableViewCell *amCell;
+    
     NSMutableDictionary *basicInfo;
     NSMutableArray *instructions;
     NSMutableArray *preparation;
@@ -21,5 +26,6 @@
 
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *amCell;
+@property (nonatomic, retain) AddDetailViewController *adVC;
 
 @end

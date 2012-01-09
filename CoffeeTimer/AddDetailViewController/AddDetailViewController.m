@@ -91,6 +91,14 @@
     return [img autorelease];
 }
 
+/* Function: - (UITableViewCell *)loadCellLayout
+ * Load the cell layout from the corresponding nib file. For now, this method assumes
+ * that the only instructions and preparation steps will be stored in this class' data
+ * array. This will tell us which nib to load, but there is no sensible default nib
+ * to load if the type of data doesn't match. The error handling could and should be
+ * more graceful for this.
+ */
+
 - (UITableViewCell *)loadCellLayout
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
@@ -117,26 +125,36 @@
     
     cell = detailCell;
     self.detailCell = nil;
-    
-    NSLog(@"Cell: %@ rtCount: %d", cell, cell.retainCount);
+
     return cell;
 }
 
-- (void)loadCellData:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+/* Function: - (void)loadCellData:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+ * Populate the cell at indexPath with the corresponding data from this class'
+ * instance variable array. Note that this method assumes that data will either
+ * be TimerStep objects (for instructions) or NSString* (for preparation).
+ */
+
+- (void)loadCellData:(UITableViewCell *)cell 
+         atIndexPath:(NSIndexPath *)indexPath
 {
+    UITextField *tf;
+    
     if ([self.detailType isEqualToString:@"Instructions"]) {
+        
         TimerStep *t = [data objectAtIndex:indexPath.row];
         
         if (t.timeInSeconds != 0) {
-            UITextField *tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG]; // Time
+            tf      = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG]; // Time
             tf.text = [t descriptionWithoutTime];
             
-            tf = (UITextField *)[cell viewWithTag:TIME_TAG];
+            tf      = (UITextField *)[cell viewWithTag:TIME_TAG];
             tf.text = [TimerStep formattedTimeInSecondsForInterval:[t timeInSeconds]];
         }
+        
     } else {
-        UITextField *tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
-        tf.text         =  [data objectAtIndex:indexPath.row];
+        tf      = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
+        tf.text =  [data objectAtIndex:indexPath.row];
     }
     
 }
@@ -197,7 +215,6 @@
 
     }
 
-    NSLog(@"IndexPath: %@, Cell: %@", indexPath, cell);
     UIImageView *img = [self imageForCellAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundView:img];
@@ -232,7 +249,7 @@
             }
         } else {
             for (NSString *prep in data) {
-                NSLog(@"Preparation: %@");
+                NSLog(@"Preparation: %@", prep);
             }
         }
     }
@@ -266,19 +283,25 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     if (editingStyle == UITableViewCellEditingStyleInsert) {
 
+        int tag;
+        
         if ([self.detailType isEqualToString:@"Instructions"]) {
             TimerStep *t = [[TimerStep alloc] init];
             [data addObject:t];
+            
+            tag = TIME_TAG;
         } else {
             [data addObject:@""];
+            
+            tag = DESCRIPTION_TAG;
         }
 
-        
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                               withRowAnimation:UITableViewRowAnimationRight];
         
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        [[cell viewWithTag:1] becomeFirstResponder];
+        
+        [[cell viewWithTag:tag] becomeFirstResponder];
 
     } else if (editingStyle == UITableViewCellEditingStyleDelete) {
 

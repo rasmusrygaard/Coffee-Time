@@ -12,7 +12,7 @@
 
 @implementation AddMethodViewController
 
-@synthesize amCell;
+@synthesize amCell, adVC;
 
 -(id)init
 {
@@ -203,25 +203,27 @@
 - (void) tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"indexPath: %@", indexPath);
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString *label = cell.textLabel.text;
     if ([label isEqualToString:@"Instructions"] ||
         [label isEqualToString:@"Preparation"]) {
 
-        AddDetailViewController *adVC = [[AddDetailViewController alloc] init];
-        
+        if (!self.adVC) {
+            self.adVC = [[AddDetailViewController alloc] init];
+        }
+        NSLog(@"adVC: %@, rt: %d", adVC, adVC.retainCount);
         if ([label isEqualToString:@"Instructions"]) {
-            adVC.data = instructions;
+            self.adVC.data = instructions;
         } else {
-            adVC.data = preparation;
+            self.adVC.data = preparation;
         }
         
-        adVC.detailType = label;
+        self.adVC.detailType = label;
         
-        [adVC.navigationItem setTitle:label];
-        NSLog(@"adVC: %@", adVC);
-        [self.navigationController pushViewController:adVC animated:YES];
-        [adVC release];
+        [self.adVC.navigationItem setTitle:label];
+        NSLog(@"adVC: %@, rtCt %d", adVC, adVC.retainCount);
+        [self.navigationController pushViewController:self.adVC animated:YES];
     }
     
     
@@ -335,6 +337,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     [preparation release];
     preparation = nil;
+    
+    [adVC release];
+    adVC = nil;
     
     [super dealloc];
 }
