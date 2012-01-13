@@ -456,9 +456,8 @@
 			children = (
 				0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */,
 				0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */,
-				00AA124214B0F3F80071F5CB /* New Group */,
-				00AA123414B0C8800071F5CB /* TimerStepTests.h */,
-				00AA123514B0C8800071F5CB /* TimerStepTests.m */,
+				00AA124214B0F3F80071F5CB /* BrewMethodTests */,
+				005BD31E14C0C3CE00A75FE3 /* TimerStepTests */,
 				0057FFBB13E670B1001556C4 /* Supporting Files */,
 			);
 			path = CoffeeTimerTests;
@@ -471,6 +470,15 @@
 				0057FFBD13E670B1001556C4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		005BD31E14C0C3CE00A75FE3 /* TimerStepTests */ = {
+			isa = PBXGroup;
+			children = (
+				00AA123414B0C8800071F5CB /* TimerStepTests.h */,
+				00AA123514B0C8800071F5CB /* TimerStepTests.m */,
+			);
+			name = TimerStepTests;
 			sourceTree = "<group>";
 		};
 		00985233147EEB9A002B540C /* AddMethodViewController */ = {
@@ -490,13 +498,13 @@
 			name = AddMethodViewController;
 			sourceTree = "<group>";
 		};
-		00AA124214B0F3F80071F5CB /* New Group */ = {
+		00AA124214B0F3F80071F5CB /* BrewMethodTests */ = {
 			isa = PBXGroup;
 			children = (
 				00AA123D14B0F2580071F5CB /* BrewMethodTests.h */,
 				00AA123E14B0F2580071F5CB /* BrewMethodTests.m */,
 			);
-			name = "New Group";
+			name = BrewMethodTests;
 			sourceTree = "<group>";
 		};
 		00B096A8147DC47100004B9A /* Helpers */ = {

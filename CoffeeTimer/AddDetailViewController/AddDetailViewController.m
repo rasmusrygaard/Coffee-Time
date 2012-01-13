@@ -326,20 +326,12 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 #pragma mark UITextFieldDelegate
 
-/* Function: - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
-             replacementString:(NSString *)string
- * This method makes sure that the user can only enter valid text in the time interval UITextField.
- * Valid text is anything that matches the "mm:ss" format string. To allow input through a number
- * pad, this method automatically adds and removes the ':' separating minutes and seconds.
- * Furthermore, the length of the input is restricted to 5 characters (ie. the length of "mm:ss"
- */
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
-replacementString:(NSString *)string
+- (BOOL)shouldAllowText:(NSString *)string 
+            inTextField:(UITextField *)textField
 {
     BOOL shouldAllow = YES;
     if (textField.tag == TIME_TAG) {
-
+        
         if (textField.text.length == 2) { // Append ':'
             
             textField.text = [NSString stringWithFormat:@"%@:", textField.text];
@@ -355,12 +347,12 @@ replacementString:(NSString *)string
         
         // Only allow strings of format "mm:ss"
         shouldAllow = (len <= 5);
-
+        
         // Auto-advance to description field if the user has entered a valid time interval
         // and is not deleting. A bit of a hack since the text is appended yet returns NO.
         if (len == 5 && 
             ![string isEqualToString:@""]) {
-
+            
             [textField resignFirstResponder];
             textField.text = [textField.text stringByAppendingString:string];
             
@@ -372,8 +364,23 @@ replacementString:(NSString *)string
             shouldAllow = NO;
         }
     }
-    
     return shouldAllow;
+}
+
+/* Function: - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+             replacementString:(NSString *)string
+ * This method makes sure that the user can only enter valid text in the time interval UITextField.
+ * Valid text is anything that matches the "mm:ss" format string. To allow input through a number
+ * pad, this method automatically adds and removes the ':' separating minutes and seconds.
+ * Furthermore, the length of the input is restricted to 5 characters (ie. the length of "mm:ss"
+ */
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+replacementString:(NSString *)string
+{
+    
+    return [self shouldAllowText:string 
+                     inTextField:textField];
 }
 
 /* Function: - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
