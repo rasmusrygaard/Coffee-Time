@@ -10,6 +10,7 @@
 #import "BrewMethodListViewController.h"
 #import "BrewMethodViewController.h"
 #import "BrewMethod.h"
+#import "FileHelpers.h"
 
 @implementation BrewMethodListViewController
 
@@ -85,6 +86,11 @@
     self.brewMethods = methods;
 }
 
+- (NSString *)brewMethodsPath
+{
+    return pathInDocumentDirectory(@"BrewMethods.data");
+}
+
 /* Function: - (void)encodeBrewMethods
  * Get the path to the data file and archive the brewMethods array
  */
@@ -94,11 +100,6 @@
     NSString *path = [self brewMethodsPath];
     [NSKeyedArchiver archiveRootObject:brewMethods
                                 toFile:path];
-}
-
-- (NSString *)brewMethodsPath
-{
-    return pathInDocumentDirectory(@"BrewMethods.data");
 }
 
 -(IBAction)addMethod:(id)sender

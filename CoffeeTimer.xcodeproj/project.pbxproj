@@ -38,8 +38,11 @@
 		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
-<<<<<<< HEAD
 		00397E25149D3F0100FDF07B /* AddInstructionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */; };
+		0040855914C0FAC10057F085 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
+		0040855A14C0FAD80057F085 /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
+		0040855B14C0FAD80057F085 /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
+		0040855C14C0FAD80057F085 /* AddDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F647149D313100A97E64 /* AddDetailViewController.m */; };
 		0048B5F414815B9E00CCF57E /* BigCellTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F214815B9E00CCF57E /* BigCellTest.png */; };
 		0048B5F514815B9E00CCF57E /* BigCellTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */; };
 		0048B60D148165D000CCF57E /* StarOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B60B148165D000CCF57E /* StarOn.png */; };
@@ -66,11 +69,9 @@
 		0048B64E14819EEF00CCF57E /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B64814819EEF00CCF57E /* CellRoundedTopBottom@2x.png */; };
 		0048B65114819F7F00CCF57E /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B64F14819F7F00CCF57E /* Cell.png */; };
 		0048B65214819F7F00CCF57E /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B65014819F7F00CCF57E /* Cell@2x.png */; };
-=======
 		004AB17F14B44D74004B7292 /* CoffeeTimerTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */; };
 		004AB18214B450C7004B7292 /* KIFTestScenario+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */; };
 		004AB18514B45188004B7292 /* KIFTestStep+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */; };
->>>>>>> 18009566440b2e0ece1d580f5ad4cd90c32e40a8
 		0057FF8E13E670B0001556C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8D13E670B0001556C4 /* UIKit.framework */; };
 		0057FF9013E670B0001556C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF8F13E670B0001556C4 /* Foundation.framework */; };
 		0057FF9213E670B0001556C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0057FF9113E670B0001556C4 /* CoreGraphics.framework */; };
@@ -92,12 +93,6 @@
 		006C93FF1468B98600C9F3C1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FD1468B98600C9F3C1 /* Default@2x.png */; };
 		006F06D5144F455700D0766B /* BrewMethodTableViewSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */; };
 		007EDE4114337CA700F5555E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007EDE4014337CA700F5555E /* main.m */; };
-<<<<<<< HEAD
-		00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
-		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
-		00985240147EF9AA002B540C /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
-		00A207E114BA9A90006F327C /* AddPreparationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A207E014BA9A90006F327C /* AddPreparationCell.xib */; };
-=======
 		008EF79F14B3B98700E0E60B /* CoffeeTimerAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFA113E670B0001556C4 /* CoffeeTimerAppDelegate_iPhone.m */; };
 		008EF7A014B3B98700E0E60B /* CoffeeTimerAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 0057FFA813E670B1001556C4 /* CoffeeTimerAppDelegate_iPad.m */; };
 		008EF7A114B3B98700E0E60B /* BrewMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D2014337984006CD04F /* BrewMethod.m */; };
@@ -121,23 +116,23 @@
 		008EF7B514B3B98700E0E60B /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3114337984006CD04F /* Background@2x.png */; };
 		008EF7B614B3B98700E0E60B /* Buttons in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3214337984006CD04F /* Buttons */; };
 		008EF7B714B3B98700E0E60B /* Buttons@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3314337984006CD04F /* Buttons@2x */; };
-		008EF7B814B3B98700E0E60B /* Cell in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3414337984006CD04F /* Cell */; };
-		008EF7B914B3B98700E0E60B /* Cell@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3514337984006CD04F /* Cell@2x */; };
+		008EF7B814B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7B914B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		008EF7BA14B3B98700E0E60B /* Slider in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3C14337984006CD04F /* Slider */; };
 		008EF7BB14B3B98700E0E60B /* Slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3D14337984006CD04F /* Slider@2x.png */; };
 		008EF7BC14B3B98700E0E60B /* TabBackground in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3E14337984006CD04F /* TabBackground */; };
 		008EF7BD14B3B98700E0E60B /* TabBackground@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D3F14337984006CD04F /* TabBackground@2x */; };
 		008EF7BE14B3B98700E0E60B /* Timer in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4414337984006CD04F /* Timer */; };
 		008EF7BF14B3B98700E0E60B /* Timer@2x in Resources */ = {isa = PBXBuildFile; fileRef = 000F1D4514337984006CD04F /* Timer@2x */; };
-		008EF7C014B3B98700E0E60B /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
-		008EF7C114B3B98700E0E60B /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359391437E9FA00BFA6E0 /* Cell@2x.png */; };
-		008EF7C214B3B98700E0E60B /* CellRoundedBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593A1437E9FA00BFA6E0 /* CellRoundedBottom.png */; };
-		008EF7C314B3B98700E0E60B /* CellRoundedBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593B1437E9FA00BFA6E0 /* CellRoundedBottom@2x.png */; };
-		008EF7C414B3B98700E0E60B /* CellRoundedTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593C1437E9FA00BFA6E0 /* CellRoundedTop.png */; };
-		008EF7C514B3B98700E0E60B /* CellRoundedTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593D1437E9FA00BFA6E0 /* CellRoundedTop@2x.png */; };
-		008EF7C614B3B98700E0E60B /* CellRoundedTopBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593E1437E9FA00BFA6E0 /* CellRoundedTopBottom.png */; };
-		008EF7C714B3B98700E0E60B /* CellRoundedTopBottom.psd in Resources */ = {isa = PBXBuildFile; fileRef = 00D3593F1437E9FA00BFA6E0 /* CellRoundedTopBottom.psd */; };
-		008EF7C814B3B98700E0E60B /* CellRoundedTopBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359401437E9FA00BFA6E0 /* CellRoundedTopBottom@2x.png */; };
+		008EF7C014B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C114B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C214B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C314B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C414B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C514B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C614B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C714B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		008EF7C814B3B98700E0E60B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		008EF7C914B3B98700E0E60B /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		008EF7CA14B3B98700E0E60B /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
 		008EF7CB14B3B98700E0E60B /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
@@ -158,7 +153,10 @@
 		008EF7DA14B3B98700E0E60B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FC1468B98600C9F3C1 /* Default.png */; };
 		008EF7DB14B3B98700E0E60B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FD1468B98600C9F3C1 /* Default@2x.png */; };
 		008EF7E414B3B9FF00E0E60B /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008EF7E314B3B9FF00E0E60B /* libKIF.a */; };
->>>>>>> 18009566440b2e0ece1d580f5ad4cd90c32e40a8
+		00985238147EEBD2002B540C /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
+		0098523B147EF072002B540C /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
+		00985240147EF9AA002B540C /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
+		00A207E114BA9A90006F327C /* AddPreparationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A207E014BA9A90006F327C /* AddPreparationCell.xib */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
 		00AA123714B0CD800071F5CB /* TimerStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AA123514B0C8800071F5CB /* TimerStepTests.m */; };
 		00AA123914B0CE780071F5CB /* TimerStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 000F1D4B14337984006CD04F /* TimerStep.m */; };
@@ -220,7 +218,6 @@
 		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddInstructionsCell.xib; path = AddDetailViewController/AddInstructionsCell.xib; sourceTree = "<group>"; };
 		0048B5F214815B9E00CCF57E /* BigCellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellTest.png; sourceTree = "<group>"; };
 		0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellTest@2x.png"; sourceTree = "<group>"; };
@@ -248,8 +245,6 @@
 		0048B64814819EEF00CCF57E /* CellRoundedTopBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRoundedTopBottom@2x.png"; sourceTree = "<group>"; };
 		0048B64F14819F7F00CCF57E /* Cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell.png; sourceTree = "<group>"; };
 		0048B65014819F7F00CCF57E /* Cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cell@2x.png"; sourceTree = "<group>"; };
-		0057FF8913E670B0001556C4 /* CoffeeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-=======
 		004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoffeeTimerTestController.h; path = "KIF Integration Tests/CoffeeTimerTestController.h"; sourceTree = "<group>"; };
 		004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerTestController.m; path = "KIF Integration Tests/CoffeeTimerTestController.m"; sourceTree = "<group>"; };
 		004AB18014B450C7004B7292 /* KIFTestScenario+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+CTAdditions.h"; path = "KIF Integration Tests/KIFTestScenario+CTAdditions.h"; sourceTree = "<group>"; };
@@ -257,7 +252,6 @@
 		004AB18314B45166004B7292 /* KIFTestStep+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+CTAdditions.h"; path = "KIF Integration Tests/KIFTestStep+CTAdditions.h"; sourceTree = "<group>"; };
 		004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+CTAdditions.m"; path = "KIF Integration Tests/KIFTestStep+CTAdditions.m"; sourceTree = "<group>"; };
 		0057FF8913E670B0001556C4 /* CoffeeTime!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoffeeTime!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>> 18009566440b2e0ece1d580f5ad4cd90c32e40a8
 		0057FF8D13E670B0001556C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0057FF8F13E670B0001556C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0057FF9113E670B0001556C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -282,18 +276,15 @@
 		006C93FD1468B98600C9F3C1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		006F06D4144F455700D0766B /* BrewMethodTableViewSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrewMethodTableViewSimpleCell.xib; path = "../../../../../../Desktop/Macintosh HD/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer/BrewMethodViewController/BrewMethodTableViewSimpleCell.xib"; sourceTree = "<group>"; };
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
+		008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Time! (Integration Tests).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		008EF7E214B3B98700E0E60B /* CoffeeTimer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CoffeeTimer copy-Info.plist"; path = "/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer copy-Info.plist"; sourceTree = "<absolute>"; };
+		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
 		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
 		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
 		0098523E147EF9AA002B540C /* AddMethodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodView.h; path = AddMethodViewController/AddMethodView.h; sourceTree = "<group>"; };
 		0098523F147EF9AA002B540C /* AddMethodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodView.m; path = AddMethodViewController/AddMethodView.m; sourceTree = "<group>"; };
 		00A207E014BA9A90006F327C /* AddPreparationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPreparationCell.xib; path = AddDetailViewController/AddPreparationCell.xib; sourceTree = "<group>"; };
-=======
-		008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Time! (Integration Tests).app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		008EF7E214B3B98700E0E60B /* CoffeeTimer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CoffeeTimer copy-Info.plist"; path = "/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer copy-Info.plist"; sourceTree = "<absolute>"; };
-		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
->>>>>>> 18009566440b2e0ece1d580f5ad4cd90c32e40a8
 		00A226C2141CE2D9006EEE4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		00AA123414B0C8800071F5CB /* TimerStepTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerStepTests.h; path = TimerStepTests/TimerStepTests.h; sourceTree = "<group>"; };
 		00AA123514B0C8800071F5CB /* TimerStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerStepTests.m; path = TimerStepTests/TimerStepTests.m; sourceTree = "<group>"; };
@@ -806,23 +797,23 @@
 				008EF7B514B3B98700E0E60B /* Background@2x.png in Resources */,
 				008EF7B614B3B98700E0E60B /* Buttons in Resources */,
 				008EF7B714B3B98700E0E60B /* Buttons@2x in Resources */,
-				008EF7B814B3B98700E0E60B /* Cell in Resources */,
-				008EF7B914B3B98700E0E60B /* Cell@2x in Resources */,
+				008EF7B814B3B98700E0E60B /* (null) in Resources */,
+				008EF7B914B3B98700E0E60B /* (null) in Resources */,
 				008EF7BA14B3B98700E0E60B /* Slider in Resources */,
 				008EF7BB14B3B98700E0E60B /* Slider@2x.png in Resources */,
 				008EF7BC14B3B98700E0E60B /* TabBackground in Resources */,
 				008EF7BD14B3B98700E0E60B /* TabBackground@2x in Resources */,
 				008EF7BE14B3B98700E0E60B /* Timer in Resources */,
 				008EF7BF14B3B98700E0E60B /* Timer@2x in Resources */,
-				008EF7C014B3B98700E0E60B /* Cell.png in Resources */,
-				008EF7C114B3B98700E0E60B /* Cell@2x.png in Resources */,
-				008EF7C214B3B98700E0E60B /* CellRoundedBottom.png in Resources */,
-				008EF7C314B3B98700E0E60B /* CellRoundedBottom@2x.png in Resources */,
-				008EF7C414B3B98700E0E60B /* CellRoundedTop.png in Resources */,
-				008EF7C514B3B98700E0E60B /* CellRoundedTop@2x.png in Resources */,
-				008EF7C614B3B98700E0E60B /* CellRoundedTopBottom.png in Resources */,
-				008EF7C714B3B98700E0E60B /* CellRoundedTopBottom.psd in Resources */,
-				008EF7C814B3B98700E0E60B /* CellRoundedTopBottom@2x.png in Resources */,
+				008EF7C014B3B98700E0E60B /* (null) in Resources */,
+				008EF7C114B3B98700E0E60B /* (null) in Resources */,
+				008EF7C214B3B98700E0E60B /* (null) in Resources */,
+				008EF7C314B3B98700E0E60B /* (null) in Resources */,
+				008EF7C414B3B98700E0E60B /* (null) in Resources */,
+				008EF7C514B3B98700E0E60B /* (null) in Resources */,
+				008EF7C614B3B98700E0E60B /* (null) in Resources */,
+				008EF7C714B3B98700E0E60B /* (null) in Resources */,
+				008EF7C814B3B98700E0E60B /* (null) in Resources */,
 				008EF7C914B3B98700E0E60B /* MethodBackground.png in Resources */,
 				008EF7CA14B3B98700E0E60B /* MethodBackground@2x.png in Resources */,
 				008EF7CB14B3B98700E0E60B /* BrewMethodTableViewCell.xib in Resources */,
@@ -901,6 +892,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0040855A14C0FAD80057F085 /* AddMethodView.m in Sources */,
+				0040855B14C0FAD80057F085 /* AddMethodViewController.m in Sources */,
+				0040855C14C0FAD80057F085 /* AddDetailViewController.m in Sources */,
+				0040855914C0FAC10057F085 /* FileHelpers.m in Sources */,
 				008EF79F14B3B98700E0E60B /* CoffeeTimerAppDelegate_iPhone.m in Sources */,
 				008EF7A014B3B98700E0E60B /* CoffeeTimerAppDelegate_iPad.m in Sources */,
 				008EF7A114B3B98700E0E60B /* BrewMethod.m in Sources */,
@@ -1103,6 +1098,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**",
+					"\"$(SRCROOT)/CoffeeTimer/\"/**",
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
 				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
@@ -1134,6 +1130,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**",
+					"\"$(SRCROOT)/CoffeeTimer/\"/**",
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
 				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";

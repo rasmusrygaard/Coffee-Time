@@ -49,7 +49,7 @@
     */
     
     KIFTestStep *t = [KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"00:00"];
-    t.timeout = 20;
+    t.timeout = 40;
     [sc addStep:t];
     
     [sc addStep:[KIFTestStep stepToWaitForTimeInterval:2 description:@"Wait after method has completed"]];
