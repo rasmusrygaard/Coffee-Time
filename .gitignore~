@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-*.png
 *.xcodeproj
-=======
 *.xcbkptlist
-
->>>>>>> localNotifications
+CoffeeTimer/Frameworks/KIF/*
+.DS_STORE

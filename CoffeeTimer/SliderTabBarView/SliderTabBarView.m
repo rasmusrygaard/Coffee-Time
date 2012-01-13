@@ -11,6 +11,8 @@
 
 @implementation SliderTabBarView
 
+//@synthesize _accessibleElements;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -43,6 +45,9 @@
     
     [label setTextAlignment:UITextAlignmentCenter];
     
+    label.isAccessibilityElement    = YES;
+    label.accessibilityLabel        = label.text;
+    
 }
 
 /* Function: - (void)drawLabel:(UILabel *)label 
@@ -68,8 +73,9 @@
     NSString *text = [tabs objectAtIndex:index];
     [label setText:text];
     [self styleLabel:label];
-    
+
     [self addSubview:label];
+    
     [label release];
 }
 
@@ -128,6 +134,7 @@
 - (NSString *)tabTitleForTouch:(UITouch *)t
 {
     int index = [t locationInView:self].x / TEXTFIELD_WIDTH;
+    NSLog(@"Tab: %@, x: %f y: %f", [tabs objectAtIndex:index], [t locationInView:self].x, [t locationInView:self].y);
     return [tabs objectAtIndex:index];
 }
 
@@ -181,8 +188,64 @@
     // Move the slider to the new position after the animation
     [slider setFrame:newFrame];
 }
+/*
+- (NSArray *)_accessibleElements
+{
+    if (accessibleElements != nil) {
+        return accessibleElements;
+    }
+    
+    accessibleElements = [[NSMutableArray alloc] init];
+    
+    UIAccessibilityElement *instructionsElement = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
 
+    instructionsElement.isAccessibilityElement  = YES;
+    instructionsElement.accessibilityLabel      = @"Instructions";
+    instructionsElement.accessibilityHint       = @"Displays instructions";
+    instructionsElement.accessibilityFrame      = instructionsLabel.frame;
+    instructionsElement.accessibilityTraits        = UIAccessibilityTraitButton;
+    
+    [accessibleElements addObject:instructionsElement];
+    
+    UIAccessibilityElement *preparationElement  = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
+    
+    preparationElement.isAccessibilityElement   = YES;
+    preparationElement.accessibilityLabel       = @"Preparation";
+    preparationElement.accessibilityHint        = @"Displays preparation steps";
+    preparationElement.accessibilityFrame       = preparationLabel.frame;
+    preparationElement.accessibilityTraits        = UIAccessibilityTraitButton;
+    
+    [accessibleElements addObject:preparationElement];
+    
+    UIAccessibilityElement *equipmentElement    = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
+    
+    equipmentElement.isAccessibilityElement     = YES;
+    equipmentElement.accessibilityLabel         = @"Equipment";
+    equipmentElement.accessibilityHint          = @"Displays equipment";
+    equipmentElement.accessibilityFrame         = equipmentLabel.frame;
+    equipmentElement.accessibilityTraits        = UIAccessibilityTraitButton;
+    
+    [accessibleElements addObject:equipmentElement];
+    
+    return accessibleElements;
+}
 
+- (NSInteger)accessibilityElementCount
+{
+    return [[self _accessibleElements] count];
+}
+
+- (id)accessibilityElementAtIndex:(NSInteger)index
+{
+    return [[self _accessibleElements] objectAtIndex:index];
+}
+
+- (NSInteger)indexOfAccessibilityElement:(id)element
+{
+    return [[self _accessibleElements] indexOfObject:element];
+}
+
+*/
 - (void)dealloc
 {
     [preparationLabel release];
@@ -193,6 +256,8 @@
     [slider release];
     
     [tabs release];
+    
+//    [accessibleElements release];
     
     [super dealloc];
 }

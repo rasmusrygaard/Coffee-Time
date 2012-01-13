@@ -105,7 +105,9 @@
 {
     secondsLeft = [currentMethod totalTimeInSeconds];
     
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
+    NSString *secondsLeftStr = [TimerStep formattedTimeInSecondsForInterval:secondsLeft];
+    timerLabel.text = secondsLeftStr;
+    timerLabel.accessibilityLabel = secondsLeftStr;
 }
 
 - (void)resetState
@@ -268,11 +270,23 @@
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         [self.infoTableView endUpdates];
-        NSLog(@"%@", instructions);
     } else {
         [self.instructions removeObjectAtIndex:0];
         [self.infoTableView reloadData];
     }
+    
+    // Update the accessibilityLabel of the top cell to reflect that 
+    // it is now the current step
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:0 inSection:0];
+
+    UITableViewCell *cell   = [self.infoTableView cellForRowAtIndexPath:ip];
+    cell.accessibilityLabel = @"Current step: "; /// Include time left after merge
+
+    UILabel *label  = (UILabel *)[cell viewWithTag:1];
+    cell.accessibilityHint  = [label text];
+
+    /* Make sure that the accessible interface is updatet too */    
+    UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, nil);
     
 }
 
@@ -296,14 +310,15 @@
     if ([notifications count] > 0) {
         UILocalNotification *currentNotif = [notifications objectAtIndex:0];
         
-        UILabel *label;
         UITableViewCell *topCell = [self.infoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 
                                                                                                 inSection:0]];
         
         NSTimeInterval remainingTime = [[currentNotif fireDate] timeIntervalSinceNow];
+        NSString *remaininTimeStr = [TimerStep formattedTimeInSecondsForInterval:remainingTime];
         
+        UILabel *label;
         label = (UILabel *)[topCell viewWithTag:2];
-        [label setText:[TimerStep formattedTimeInSecondsForInterval:remainingTime]];
+        label.text = remaininTimeStr;
     }
 }
 
@@ -324,8 +339,9 @@
 {
     self.secondsLeft = [finishTime timeIntervalSinceDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     
-    
-    [timerLabel setText:[TimerStep formattedTimeInSecondsForInterval:secondsLeft]];
+    NSString *secondsLeftStr = [TimerStep formattedTimeInSecondsForInterval:secondsLeft];
+    self->timerLabel.text = secondsLeftStr;
+    self->timerLabel.accessibilityLabel = secondsLeftStr;
     
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         [self updateTimeOnTopCell];
@@ -452,19 +468,28 @@
     if ([tabDisplayed isEqualToString:@"Instructions"]) {
         TimerStep *t = [descriptions objectAtIndex:indexPath.row];
         
-        label = (UILabel *)[cell viewWithTag:1];
-        label.text = [t descriptionWithoutTime];
+        label       = (UILabel *)[cell viewWithTag:1];
+        label.text  = [t descriptionWithoutTime];
         label.numberOfLines = 0;
-        label = (UILabel *)[cell viewWithTag:2];
         
-        NSString *text = [NSString stringWithFormat:@"%@", [t formattedTimeInSeconds]];
-        label.text = text;
+        label       = (UILabel *)[cell viewWithTag:2];
+        label.text  = [t formattedTimeInSeconds];
+        
+        /* Accessibility */
+        if (indexPath.row == 0) {
+            label.accessibilityLabel = @"Current step";
+        } else {
+            label.accessibilityLabel = [NSString stringWithFormat:@"Step %d", indexPath.row];
+        }
     } else {
         UILabel *label;
         label = (UILabel *)[cell viewWithTag:1];
         label.text = [descriptions objectAtIndex:indexPath.row];
         label.numberOfLines = 0;
     }
+    
+    /* Accessibility */
+    cell.isAccessibilityElement = YES;
     
     return cell;
 }
@@ -539,6 +564,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                         action:@selector(stopTimerClicked:) 
               forControlEvents:UIControlEventTouchUpInside];
     
+    /* Accessibility */
+    timerLabel.isAccessibilityElement   = YES;
+    timerLabel.accessibilityHint        = @"Displays remaining time";
+    
+    startTimerButton.isAccessibilityElement = YES;
+    startTimerButton.accessibilityHint      = @"Starts the timer";
+    startTimerButton.accessibilityLabel     = @"Start";
+    
+    stopTimerButton.isAccessibilityElement  = YES;
+    stopTimerButton.accessibilityHint       = @"Stops the timer";
+    stopTimerButton.accessibilityLabel      = @"Stop";
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -553,6 +590,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         stbView = [[SliderTabBarView alloc] initWithFrame:rect];
         [stbView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:stbView];
+        
+        /* Accessibility */
+        stbView.isAccessibilityElement = NO;
         
         [self setTabDisplayed:@"Instructions"];
     }

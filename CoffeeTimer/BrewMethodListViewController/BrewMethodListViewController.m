@@ -13,7 +13,7 @@
 
 @implementation BrewMethodListViewController
 
-@synthesize brewMethods, tvlCell, bmViewController, activeCell, addButton, starredMethodIndex;
+@synthesize brewMethods, tvlCell, bmViewController, activeCell, addButton, starredMethodIndex, wantsToSwitchMethod, toSwitchTo;
 
 - (UIColor *)goldenOrange
 {
@@ -47,6 +47,8 @@
             self.starredMethodIndex = [objIndex intValue];
         }
 
+        //starredMethodIndex = -1;
+        wantsToSwitchMethod = true;
     }
     
     return self;
@@ -208,6 +210,7 @@
     self.bmViewController.autoStartMethod = true;
     
     [self.bmViewController startStarredMethod];
+    wantsToSwitchMethod = false;
 }
 
 /* Function: -(void)resetAfterFinishedMethod
@@ -230,12 +233,11 @@
 
 - (void)styleInfoTableTextLabelForCell:(UITableViewCell *)cell
 {
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    
-    cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.0 blue:0.7 alpha:1];
-    cell.textLabel.shadowColor = [UIColor blackColor];
-    cell.textLabel.shadowOffset = CGSizeMake(0, -1);
-    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    cell.textLabel.backgroundColor  = [UIColor clearColor];
+    cell.textLabel.textColor        = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    cell.textLabel.shadowColor      = [UIColor blackColor];
+    cell.textLabel.shadowOffset     = CGSizeMake(0, -1);
+    cell.textLabel.textAlignment    = UITextAlignmentCenter;
 }
 
 /*
@@ -245,10 +247,10 @@
 
 - (void)styleInfoTableSubtitleLabelForCell:(UITableViewCell *)cell
 {
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.textColor = [UIColor lightTextColor];
-    cell.detailTextLabel.shadowColor = [UIColor blackColor];
-    cell.detailTextLabel.shadowOffset = CGSizeMake(0, -1);
+    cell.detailTextLabel.backgroundColor    = [UIColor clearColor];
+    cell.detailTextLabel.textColor          = [UIColor lightTextColor];
+    cell.detailTextLabel.shadowColor        = [UIColor blackColor];
+    cell.detailTextLabel.shadowOffset       = CGSizeMake(0, -1);
 }
 
 /*
@@ -295,6 +297,13 @@
     label.numberOfLines = 0;
 
     UIColor *color;    
+    
+    /* Accessibility */
+/*  
+    label.isAccessibilityElement = YES;
+    label.accessibilityLabel = [method name];
+*/
+    
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
         color = [self goldenOrange];
@@ -308,6 +317,13 @@
     label = (UILabel *)[cell viewWithTag:2];
     NSString *text = [TimerStep formattedTimeInSecondsForInterval:[method totalTimeInSeconds]];
     label.text = text;
+    
+    /* Accessibility */
+/*  Might not need this as accessible when the whole cell is accessible
+    label.isAccessibilityElement = YES;
+    int time = [method totalTimeInSeconds];
+    label.accessibilityLabel = [NSString stringWithFormat:@"%d minutes, %d seconds", time / 60, time % 60];
+*/
 }
 
 /* Function: - (UITableViewCell *)tableView:(UITableView *)tableView 
@@ -340,6 +356,8 @@
     
     [self styleLabelsForCell:cell 
                    forMethod:method];
+
+    /// Move to method
     UIImage *img;
     
     if (indexPath.row == self.starredMethodIndex) {
@@ -351,7 +369,47 @@
     UIButton *button = (UIButton *)[cell viewWithTag:3]; // Get star button
     [button setBackgroundImage:img forState:UIControlStateNormal];
     
+
+    /* Accessibility */ /// Move to method
+    NSString *methodName = [method name];
+    
+    int time = [method totalTimeInSeconds];
+    cell.accessibilityLabel     = [NSString stringWithFormat:@"%@, %d minutes, %d seconds", methodName, time / 60, time % 60];
+    cell.accessibilityHint      = [NSString stringWithFormat:@"Opens %@ method", methodName];
+    cell.isAccessibilityElement = NO;
+
+    // Favorite button accessibility
+    UIButton *label = (UIButton *)[cell viewWithTag:3];
+    label.accessibilityLabel    = [NSString stringWithFormat:@"%@ star", methodName];
+    label.accessibilityHint     = [NSString stringWithFormat:@"Sets %@ as favorite method", methodName];
+    label.accessibilityTraits   = UIAccessibilityTraitButton;
+    
+    if (indexPath.row == starredMethodIndex) {
+        UIButton *label = (UIButton *)[cell viewWithTag:3];
+        NSLog(@"label %@", label);
+        label.titleLabel.textColor = [self goldenOrange];
+//        text = [NSString stringWithFormat:@"Starred: %@", [method name]];
+  //      label.numberOfLines = 0;
+        
+        cell.accessibilityLabel = [cell.accessibilityLabel stringByAppendingString:@", current starred method"];
+    }
+    
     return cell;
+}
+
+-(void)setupViewControllerForMethod
+{
+    
+}
+
+/* Function: - (BOOL)isRunningSameMethod:(NSString *)method
+ * Returns true if there currently is a timer running for the method passed in /// Move to single method view
+ */
+
+- (BOOL)isRunningSameMethod:(NSString *)method
+{
+    return [self.bmViewController timerIsRunning] && 
+            ![[[self.bmViewController currentMethod] name] isEqualToString:method]; 
 }
 
 /* Function: - (void) tableView:(UITableView *)tableView 
@@ -363,7 +421,34 @@
 - (void) tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self pushbmViewControllerForIndexPath:indexPath];
+    if (!bmViewController) {
+        [self initBMViewController];
+     }
+    
+    NSString *method = [[brewMethods objectAtIndex:indexPath.row] name];
+    
+    if (self.wantsToSwitchMethod || ![self isRunningSameMethod:method]) {
+        [self pushbmViewControllerForIndexPath:indexPath];
+        wantsToSwitchMethod = false;
+    } else {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Cancel running timer?" 
+                                                     message:@"Are you sure you want to cancel your current timer?" 
+                                                    delegate:self
+                                           cancelButtonTitle:@"Cancel"
+                                           otherButtonTitles:@"Yes", nil];
+        [av show];
+        [av release];
+        self.toSwitchTo = indexPath;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if((wantsToSwitchMethod = (buttonIndex == 1))) {
+        NSLog(@"%@", toSwitchTo);
+        [self tableView:(self.tableView) didSelectRowAtIndexPath:toSwitchTo];
+    }
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -405,6 +490,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                                       target:self 
                                                       action:@selector(addMethod:)] autorelease];
     self.navigationItem.rightBarButtonItem = addButton;
+
+    /* Accessibility */
+    self.tableView.isAccessibilityElement   = YES;
+    self.tableView.accessibilityLabel       = @"Brew method list";
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

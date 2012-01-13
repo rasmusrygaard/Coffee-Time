@@ -10,7 +10,8 @@
 #import "BrewMethodViewController.h"
 #import "AddMethodViewController.h"
 
-@interface BrewMethodListViewController : UITableViewController <BrewMethodList, NSCoding> {
+@interface BrewMethodListViewController : UITableViewController <BrewMethodList, NSCoding, UIAlertViewDelegate> {
+
     NSArray *brewMethods;
     BrewMethodViewController *bmViewController;
     UITableViewCell *tvlCell;
@@ -19,6 +20,9 @@
     int starredMethodIndex;
     
     IBOutlet UIBarButtonItem *addButton;
+    
+    BOOL wantsToSwitchMethod;
+    NSIndexPath *toSwitchTo;
 }
 
 -(IBAction)starredMethod:(id)sender;
@@ -31,6 +35,8 @@
 -(BOOL)hasStarredMethod;
 -(void)setStarredMethodIndex:(int)index;
 -(BOOL)timerIsRunning;
+
+- (BOOL)isRunningSameMethod:(NSString *)method;
 
 - (void)runStarredMethod;
 - (void)launchWithStarredMethod;
@@ -47,5 +53,7 @@
 @property (nonatomic, retain) NSIndexPath *activeCell;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *addButton;
 @property (nonatomic, assign) int starredMethodIndex;
+@property (nonatomic, assign) BOOL wantsToSwitchMethod;
+@property (nonatomic, retain) NSIndexPath *toSwitchTo;
 
 @end
