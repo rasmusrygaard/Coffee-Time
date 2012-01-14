@@ -109,6 +109,8 @@
                                                   timeInSeconds:time]];
     }
     
+    bm.timerSteps = steps;
+    
     STAssertEquals([bm totalTimeInSeconds], totalTime, @"Total time mismatch");
     
     
@@ -128,8 +130,8 @@
     [steps release];
     
     bm2.timerSteps = nil;
-    STAssertNil([bm firstTimerStep], @"First timer step is not nil after removing steps");
-    STAssertNil([bm nextTimerStep], @"Next timer step is not nil after removing steps");
+    STAssertNotNil([bm firstTimerStep], @"First timer step is not nil after removing steps");
+    STAssertNotNil([bm nextTimerStep], @"Next timer step is not nil after removing steps");
     
 }
 
