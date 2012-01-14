@@ -39,6 +39,7 @@
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
 		00397E25149D3F0100FDF07B /* AddInstructionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */; };
+		003DF0D814C10C6F007AE57B /* AddDetailViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003DF0D714C10C6F007AE57B /* AddDetailViewControllerTests.m */; };
 		0040855914C0FAC10057F085 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
 		0040855A14C0FAD80057F085 /* AddMethodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0098523F147EF9AA002B540C /* AddMethodView.m */; };
 		0040855B14C0FAD80057F085 /* AddMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00985236147EEBD2002B540C /* AddMethodViewController.m */; };
@@ -219,6 +220,8 @@
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
 		00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddInstructionsCell.xib; path = AddDetailViewController/AddInstructionsCell.xib; sourceTree = "<group>"; };
+		003DF0D614C10C6F007AE57B /* AddDetailViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AddDetailViewControllerTests.h; path = AddMethodViewControllerTests/AddDetailViewControllerTests.h; sourceTree = "<group>"; };
+		003DF0D714C10C6F007AE57B /* AddDetailViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDetailViewControllerTests.m; path = AddMethodViewControllerTests/AddDetailViewControllerTests.m; sourceTree = "<group>"; };
 		0048B5F214815B9E00CCF57E /* BigCellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellTest.png; sourceTree = "<group>"; };
 		0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellTest@2x.png"; sourceTree = "<group>"; };
 		0048B60B148165D000CCF57E /* StarOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarOn.png; sourceTree = "<group>"; };
@@ -278,7 +281,7 @@
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Time! (Integration Tests).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		008EF7E214B3B98700E0E60B /* CoffeeTimer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CoffeeTimer copy-Info.plist"; path = "/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer copy-Info.plist"; sourceTree = "<absolute>"; };
-		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
+		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
 		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
 		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
@@ -456,6 +459,15 @@
 			path = TimerStep;
 			sourceTree = "<group>";
 		};
+		003DF0DA14C10C77007AE57B /* AddDetailViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				003DF0D614C10C6F007AE57B /* AddDetailViewControllerTests.h */,
+				003DF0D714C10C6F007AE57B /* AddDetailViewControllerTests.m */,
+			);
+			name = AddDetailViewControllerTests;
+			sourceTree = "<group>";
+		};
 		004AB17C14B44D3C004B7292 /* KIF Integration Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,6 +574,7 @@
 				004AB17C14B44D3C004B7292 /* KIF Integration Tests */,
 				0057FFC013E670B1001556C4 /* CoffeeTimerTests.h */,
 				0057FFC213E670B2001556C4 /* CoffeeTimerTests.m */,
+				003DF0DA14C10C77007AE57B /* AddDetailViewControllerTests */,
 				00AA124214B0F3F80071F5CB /* BrewMethodTests */,
 				005BD31E14C0C3CE00A75FE3 /* TimerStepTests */,
 				0057FFBB13E670B1001556C4 /* Supporting Files */,
@@ -885,6 +898,7 @@
 				0057FFC313E670B2001556C4 /* CoffeeTimerTests.m in Sources */,
 				00AA123714B0CD800071F5CB /* TimerStepTests.m in Sources */,
 				00AA123F14B0F2580071F5CB /* BrewMethodTests.m in Sources */,
+				003DF0D814C10C6F007AE57B /* AddDetailViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

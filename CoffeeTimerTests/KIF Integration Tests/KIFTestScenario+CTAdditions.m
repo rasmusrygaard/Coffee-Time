@@ -138,7 +138,8 @@
 + (id)scenarioToRunManyMethods
 {
     KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test running a number of methods after each other"];
-    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Name" value:@"My Aeropress" traits:UIAccessibilityTraitStaticText]];
     return sc;
 }
 

@@ -21,6 +21,8 @@
     instructions = [[NSMutableArray alloc] init];
     preparation = [[NSMutableArray alloc] init];
     
+    self.tableView.isAccessibilityElement = NO;
+    
     return self;
 }
 
@@ -100,6 +102,8 @@
     
     // Give tags in ascending order
     tf.tag = MAX_TEXTFIELD_TAG - ADD_METHOD_UPPER_ROWS + indexPath.row;
+    tf.isAccessibilityElement   = YES;
+    tf.accessibilityLabel       = text;
     
     textField = [basicInfo objectForKey:text]; // Get existing text
     if (textField == nil) {                    // Otherwise initialize it
@@ -179,6 +183,9 @@
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundView:img];
 
+    /* Accessibility */
+    cell.isAccessibilityElement = NO;
+    
     return cell;
 }
 
@@ -202,7 +209,6 @@
 - (void) tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"indexPath: %@", indexPath);
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString *label = cell.textLabel.text;
     if ([label isEqualToString:@"Instructions"] ||
@@ -211,7 +217,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         if (!self.adVC) {
             self.adVC = [[AddDetailViewController alloc] init];
         }
-        NSLog(@"adVC: %@, rt: %d", adVC, adVC.retainCount);
+
         if ([label isEqualToString:@"Instructions"]) {
             self.adVC.data = instructions;
         } else {
@@ -221,7 +227,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         self.adVC.detailType = label;
         
         [self.adVC.navigationItem setTitle:label];
-        NSLog(@"adVC: %@, rtCt %d", adVC, adVC.retainCount);
+
         [self.navigationController pushViewController:self.adVC animated:YES];
     }
     

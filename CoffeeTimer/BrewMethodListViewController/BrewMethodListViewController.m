@@ -490,6 +490,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                                    style:UIBarButtonItemStylePlain
                                                       target:self 
                                                       action:@selector(addMethod:)] autorelease];
+    self.addButton.isAccessibilityElement   = YES;
+    self.addButton.accessibilityLabel       = @"Add";
+    
     self.navigationItem.rightBarButtonItem = addButton;
 
     /* Accessibility */
