@@ -40,6 +40,7 @@
 		001103C21437B9DB00C6467B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001103C11437B9DB00C6467B /* AudioToolbox.framework */; };
 		0012F3911442B89600D12B55 /* BrewMethodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0012F3901442B89600D12B55 /* BrewMethodListCell.xib */; };
 		003486721439728600960768 /* BrewMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003486711439728600960768 /* BrewMethodTableViewCell.xib */; };
+		003DF0AB14C10817007AE57B /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 003DF0AA14C10817007AE57B /* libKIF.a */; };
 		004AB17F14B44D74004B7292 /* CoffeeTimerTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */; };
 		004AB18214B450C7004B7292 /* KIFTestScenario+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB18114B450C7004B7292 /* KIFTestScenario+CTAdditions.m */; };
 		004AB18514B45188004B7292 /* KIFTestStep+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 004AB18414B45188004B7292 /* KIFTestStep+CTAdditions.m */; };
@@ -123,7 +124,6 @@
 		008EF7D914B3B98700E0E60B /* CoffeeTime112.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93F81468B96300C9F3C1 /* CoffeeTime112.png */; };
 		008EF7DA14B3B98700E0E60B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FC1468B98600C9F3C1 /* Default.png */; };
 		008EF7DB14B3B98700E0E60B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 006C93FD1468B98600C9F3C1 /* Default@2x.png */; };
-		008EF7E414B3B9FF00E0E60B /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008EF7E314B3B9FF00E0E60B /* libKIF.a */; };
 		00A226C3141CE2D9006EEE4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A226C2141CE2D9006EEE4F /* QuartzCore.framework */; };
 		00D359461437E9FA00BFA6E0 /* Cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359381437E9FA00BFA6E0 /* Cell.png */; };
 		00D359471437E9FA00BFA6E0 /* Cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359391437E9FA00BFA6E0 /* Cell@2x.png */; };
@@ -189,6 +189,7 @@
 		001103C11437B9DB00C6467B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
+		003DF0AA14C10817007AE57B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "../../../../Library/Developer/Xcode/DerivedData/KIF_merged-fuwgebrfsuazrdcgijujztnrpcur/Build/Products/Debug-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		004AB17D14B44D74004B7292 /* CoffeeTimerTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoffeeTimerTestController.h; path = "KIF Integration Tests/CoffeeTimerTestController.h"; sourceTree = "<group>"; };
 		004AB17E14B44D74004B7292 /* CoffeeTimerTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoffeeTimerTestController.m; path = "KIF Integration Tests/CoffeeTimerTestController.m"; sourceTree = "<group>"; };
 		004AB18014B450C7004B7292 /* KIFTestScenario+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+CTAdditions.h"; path = "KIF Integration Tests/KIFTestScenario+CTAdditions.h"; sourceTree = "<group>"; };
@@ -265,7 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				008EF7E414B3B9FF00E0E60B /* libKIF.a in Frameworks */,
+				003DF0AB14C10817007AE57B /* libKIF.a in Frameworks */,
 				008EF7AA14B3B98700E0E60B /* AudioToolbox.framework in Frameworks */,
 				008EF7AB14B3B98700E0E60B /* QuartzCore.framework in Frameworks */,
 				008EF7AC14B3B98700E0E60B /* UIKit.framework in Frameworks */,
@@ -395,6 +396,7 @@
 		0057FF7E13E670AB001556C4 = {
 			isa = PBXGroup;
 			children = (
+				003DF0AA14C10817007AE57B /* libKIF.a */,
 				008EF7E314B3B9FF00E0E60B /* libKIF.a */,
 				001103C11437B9DB00C6467B /* AudioToolbox.framework */,
 				00A226C2141CE2D9006EEE4F /* QuartzCore.framework */,
@@ -950,6 +952,10 @@
 				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
 				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/KIF_merged-fuwgebrfsuazrdcgijujztnrpcur/Build/Products/Debug-iphoneos\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -981,6 +987,10 @@
 				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
 				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/KIF_merged-fuwgebrfsuazrdcgijujztnrpcur/Build/Products/Debug-iphoneos\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
