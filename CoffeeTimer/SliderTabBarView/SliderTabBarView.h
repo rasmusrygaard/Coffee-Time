@@ -24,7 +24,7 @@
     
     int oldIndex;
     
-//    NSMutableArray *accessibleElements;
+    NSMutableArray *_accessibleElements;
 }
 
 - (NSString *)tabTitleForTouch:(UITouch *)t;
@@ -37,6 +37,6 @@
  
 - (void)slideTabToIndex:(int)index;
 
-//@property (nonatomic, retain) NSMutableArray *_accessibleElements;
+@property (nonatomic, retain) NSMutableArray *_accessibleElements;
 
 @end

@@ -38,15 +38,9 @@
     // Return to the method
     [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     
-    // Taps not fully functional
-    /*
-    [sc addStep:[KIFTestStep stepToTapSliderTabWithLabel:@"Preparation"]];
-    [sc addStep:[KIFTestStep stepToTapSliderTabWithLabel:@"Instructions"]];
-    
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Preparation"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Equipment"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
-    */
     
     KIFTestStep *t = [KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"00:00"];
     t.timeout = 60;

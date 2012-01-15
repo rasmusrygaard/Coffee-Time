@@ -135,6 +135,7 @@
 
 - (IBAction)startTimerClicked:(id)sender
 {
+        NSLog(@"Test: %@",stbView._accessibleElements);
     if (!timer) {
         [self setAndStartTimerForMethod:currentMethod];
         

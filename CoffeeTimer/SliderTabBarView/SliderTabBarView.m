@@ -1,4 +1,4 @@
-//
+	//
 //  SliderTabBarView.m
 //  CoffeeTimer
 //
@@ -11,15 +11,17 @@
 
 @implementation SliderTabBarView
 
-//@synthesize _accessibleElements;
+@synthesize _accessibleElements;
 
 - (id)initWithFrame:(CGRect)frame
 {
+    NSLog(@"Init");
     self = [super initWithFrame:frame];
     if (self) {
         tabs = [[NSArray alloc] initWithObjects:@"Preparation", @"Instructions", @"Equipment", nil];
         oldIndex = -1;
     }
+    self.isAccessibilityElement = NO;
     return self;
 }
 
@@ -44,10 +46,6 @@
     [label setBackgroundColor:[UIColor clearColor]];
     
     [label setTextAlignment:UITextAlignmentCenter];
-    
-    label.isAccessibilityElement    = YES;
-    label.accessibilityLabel        = label.text;
-    
 }
 
 /* Function: - (void)drawLabel:(UILabel *)label 
@@ -59,9 +57,9 @@
  * which is expected to be the upper left corner of the view
  */
 
-- (void)drawLabel:(UILabel *)label 
-          atIndex:(int)index 
-        fromPoint:(CGPoint)pt
+- (UILabel *)drawLabel:(UILabel *)label 
+               atIndex:(int)index 
+             fromPoint:(CGPoint)pt
 {
     CGRect rect = CGRectMake([self xCoordForRectAtIndex:index], 
                              pt.y, 
@@ -69,26 +67,25 @@
                              TEXTFIELD_HEIGHT);
     
     label = [[UILabel alloc] initWithFrame:rect];
-    
+    NSLog(@"Label fr: %@", NSStringFromCGRect(label.frame));
     NSString *text = [tabs objectAtIndex:index];
-    [label setText:text];
+    label.text = text;
     [self styleLabel:label];
-
-    [self addSubview:label];
     
-    [label release];
+    return label;
 }
 
 
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"drawRect");
     CGRect bounds = [self bounds];
     
     // Get image, draw in context at upper left corner
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavBar2.png"]];
     
     [background setFrame:CGRectMake(bounds.origin.x, bounds.origin.y, SLIDER_TAB_BAR_W, SLIDER_TAB_BAR_H)];
-
+    
     [self addSubview:background];
     [self setBackgroundColor:[UIColor clearColor]];
     
@@ -112,18 +109,21 @@
     [self addSubview:slider];
     
     // Draw text
-    [self drawLabel:preparationLabel  
-            atIndex:0
-          fromPoint:upperLeft];
+    preparationLabel = [self drawLabel:preparationLabel  
+                               atIndex:0
+                             fromPoint:upperLeft];
+    [self addSubview:preparationLabel];
     
-    [self drawLabel:instructionsLabel 
-            atIndex:1
-          fromPoint:upperLeft];
+    instructionsLabel = [self drawLabel:instructionsLabel 
+                                atIndex:1
+                              fromPoint:upperLeft];
+    [self addSubview:instructionsLabel];
     
-    [self drawLabel:equipmentLabel
-            atIndex:2
-          fromPoint:upperLeft];
-
+    equipmentLabel = [self drawLabel:equipmentLabel
+                             atIndex:2
+                           fromPoint:upperLeft];
+    [self addSubview:equipmentLabel];
+    
 }
 
 
@@ -147,7 +147,7 @@
 - (void)updateDisplayForTab:(NSString *)tab forMethod:(BrewMethod *)method
 {
     int index = [tabs indexOfObject:tab];
-
+    
     if (index != oldIndex) {
         [self slideTabToIndex:index];
         
@@ -188,46 +188,49 @@
     // Move the slider to the new position after the animation
     [slider setFrame:newFrame];
 }
-/*
+
 - (NSArray *)_accessibleElements
 {
-    if (accessibleElements != nil) {
-        return accessibleElements;
+    if (_accessibleElements != nil) {
+        return _accessibleElements;
     }
     
-    accessibleElements = [[NSMutableArray alloc] init];
+    _accessibleElements = [[NSMutableArray alloc] init];
     
     UIAccessibilityElement *instructionsElement = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
-
+    
     instructionsElement.isAccessibilityElement  = YES;
     instructionsElement.accessibilityLabel      = @"Instructions";
     instructionsElement.accessibilityHint       = @"Displays instructions";
-    instructionsElement.accessibilityFrame      = instructionsLabel.frame;
+    instructionsElement.accessibilityFrame      = [self.window convertRect:instructionsLabel.frame 
+                                                                  fromView:self];
     instructionsElement.accessibilityTraits        = UIAccessibilityTraitButton;
     
-    [accessibleElements addObject:instructionsElement];
+    [_accessibleElements addObject:instructionsElement];
     
     UIAccessibilityElement *preparationElement  = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
     
     preparationElement.isAccessibilityElement   = YES;
     preparationElement.accessibilityLabel       = @"Preparation";
     preparationElement.accessibilityHint        = @"Displays preparation steps";
-    preparationElement.accessibilityFrame       = preparationLabel.frame;
+    preparationElement.accessibilityFrame       = [self.window convertRect:preparationLabel.frame
+                                                                  fromView:self];
     preparationElement.accessibilityTraits        = UIAccessibilityTraitButton;
     
-    [accessibleElements addObject:preparationElement];
+    [_accessibleElements addObject:preparationElement];
     
     UIAccessibilityElement *equipmentElement    = [[[UIAccessibilityElement alloc] initWithAccessibilityContainer:self] autorelease];
     
     equipmentElement.isAccessibilityElement     = YES;
     equipmentElement.accessibilityLabel         = @"Equipment";
     equipmentElement.accessibilityHint          = @"Displays equipment";
-    equipmentElement.accessibilityFrame         = equipmentLabel.frame;
+    equipmentElement.accessibilityFrame         = [self.window convertRect:equipmentLabel.frame
+                                                                  fromView:self];
     equipmentElement.accessibilityTraits        = UIAccessibilityTraitButton;
     
-    [accessibleElements addObject:equipmentElement];
+    [_accessibleElements addObject:equipmentElement];
     
-    return accessibleElements;
+    return _accessibleElements;
 }
 
 - (NSInteger)accessibilityElementCount
@@ -245,7 +248,12 @@
     return [[self _accessibleElements] indexOfObject:element];
 }
 
-*/
+- (BOOL)isAccessibilityElement
+{
+    return NO;
+}
+
+
 - (void)dealloc
 {
     [preparationLabel release];
@@ -257,7 +265,7 @@
     
     [tabs release];
     
-//    [accessibleElements release];
+    [_accessibleElements release];
     
     [super dealloc];
 }
