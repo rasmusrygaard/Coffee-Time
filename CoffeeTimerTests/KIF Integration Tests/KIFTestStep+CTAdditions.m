@@ -23,8 +23,6 @@
     } else {
         return nil;
     }
-    
-//    KIFTestCondition(successfulReset, error, [NSString stringWithFormat:@"Unknown tab \"%@\" passed to stepToTapSliderTabWithLabel:.", label]);
   
     return [KIFTestStep stepToTapScreenAtPoint:p];
 }

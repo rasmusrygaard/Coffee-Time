@@ -19,7 +19,12 @@
     KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Verifies that the user can open all methods"];
     
     for (int i = 0; i < 4; ++i) {
-        [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" atIndexPath:[NSIndexPath indexPathForRow:i inSection:0]]];
+        [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" 
+                                                                   atIndexPath:[NSIndexPath indexPathForRow:i inSection:0]]];
+        [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Preparation"]];
+        [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Equipment"]];
+        [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
+        
         [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
     }
     

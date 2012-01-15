@@ -15,7 +15,6 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    NSLog(@"Init");
     self = [super initWithFrame:frame];
     if (self) {
         tabs = [[NSArray alloc] initWithObjects:@"Preparation", @"Instructions", @"Equipment", nil];
@@ -67,7 +66,7 @@
                              TEXTFIELD_HEIGHT);
     
     label = [[UILabel alloc] initWithFrame:rect];
-    NSLog(@"Label fr: %@", NSStringFromCGRect(label.frame));
+    
     NSString *text = [tabs objectAtIndex:index];
     label.text = text;
     [self styleLabel:label];
@@ -78,7 +77,6 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"drawRect");
     CGRect bounds = [self bounds];
     
     // Get image, draw in context at upper left corner
@@ -134,7 +132,7 @@
 - (NSString *)tabTitleForTouch:(UITouch *)t
 {
     int index = [t locationInView:self].x / TEXTFIELD_WIDTH;
-    NSLog(@"Tab: %@, x: %f y: %f", [tabs objectAtIndex:index], [t locationInView:self].x, [t locationInView:self].y);
+    
     return [tabs objectAtIndex:index];
 }
 
