@@ -220,7 +220,7 @@
 		0012F3901442B89600D12B55 /* BrewMethodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodListCell.xib; sourceTree = "<group>"; };
 		003486711439728600960768 /* BrewMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrewMethodTableViewCell.xib; sourceTree = "<group>"; };
 		00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddInstructionsCell.xib; path = AddDetailViewController/AddInstructionsCell.xib; sourceTree = "<group>"; };
-		003DF0D614C10C6F007AE57B /* AddDetailViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AddDetailViewControllerTests.h; path = AddMethodViewControllerTests/AddDetailViewControllerTests.h; sourceTree = "<group>"; };
+		003DF0D614C10C6F007AE57B /* AddDetailViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddDetailViewControllerTests.h; path = AddMethodViewControllerTests/AddDetailViewControllerTests.h; sourceTree = "<group>"; };
 		003DF0D714C10C6F007AE57B /* AddDetailViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDetailViewControllerTests.m; path = AddMethodViewControllerTests/AddDetailViewControllerTests.m; sourceTree = "<group>"; };
 		0048B5F214815B9E00CCF57E /* BigCellTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCellTest.png; sourceTree = "<group>"; };
 		0048B5F314815B9E00CCF57E /* BigCellTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCellTest@2x.png"; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 		007EDE4014337CA700F5555E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		008EF7DF14B3B98700E0E60B /* Coffee Time! (Integration Tests).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Time! (Integration Tests).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		008EF7E214B3B98700E0E60B /* CoffeeTimer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CoffeeTimer copy-Info.plist"; path = "/Users/rasmusrygaard/Documents/Developer/iPhone Apps/CoffeeTimer/CoffeeTimer copy-Info.plist"; sourceTree = "<absolute>"; };
-		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
+		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
 		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
 		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
@@ -1112,7 +1112,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**",
-					"\"$(SRCROOT)/CoffeeTimer/\"/**",
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
 				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
@@ -1144,7 +1143,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**",
-					"\"$(SRCROOT)/CoffeeTimer/\"/**",
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/CoffeeTimer/Frameworks/KIF\"/**";
 				INFOPLIST_FILE = "CoffeeTimer copy-Info.plist";
