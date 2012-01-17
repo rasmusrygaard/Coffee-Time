@@ -219,9 +219,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }
 
         if ([label isEqualToString:@"Instructions"]) {
-            self.adVC.data = instructions;
+            self.adVC.data          = instructions;
+            self.adVC.detailType    = @"Instructions";
         } else {
-            self.adVC.data = preparation;
+            self.adVC.data          = preparation;
+            self.adVC.detailType    = @"Preparation";
         }
         
         self.adVC.detailType = label;

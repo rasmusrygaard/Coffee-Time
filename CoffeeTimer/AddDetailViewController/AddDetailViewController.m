@@ -38,6 +38,13 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -234,7 +241,7 @@
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    return (section == 0) ? [data count] + 1 : 1;
+    return [data count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -325,19 +332,16 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [[cell viewWithTag:1] resignFirstResponder];
-        
-        NSLog(@"Data %@", data);
 
-        [self.tableView beginUpdates];
         [data removeObjectAtIndex:indexPath.row];
         
+        [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                               withRowAnimation:UITableViewRowAnimationRight];
         [self.tableView endUpdates];
         
         [self updateTopBottomCellBackground];
     }
-    NSLog(@"Data %@", data);
 }
 
 /* Function: - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
