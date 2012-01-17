@@ -146,7 +146,7 @@
         TimerStep *t = [dataArray objectAtIndex:indexPath.row];
         
         if (t.timeInSeconds != 0) {
-            tf      = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG]; // Time
+            tf      = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
             tf.text = [t descriptionWithoutTime];
             
             tf      = (UITextField *)[cell viewWithTag:TIME_TAG];
@@ -275,6 +275,20 @@
     }
 }
 
+/* Function: - (void)updateTopBottomCellBackground
+ * Update the images on the top and bottom cells in the tableview to make sure that
+ * the rounded corners show up correctly on the top and bottom cells. 
+ */
+
+- (void)updateTopBottomCellBackground
+{
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:([self.tableView numberOfRowsInSection:0] - 1) 
+                                         inSection:0];
+    [[self.tableView cellForRowAtIndexPath:ip] setBackgroundView:[self imageForCellAtIndexPath:ip]];
+    ip = [NSIndexPath indexPathForRow:0 inSection:0];
+    [[self.tableView cellForRowAtIndexPath:ip] setBackgroundView:[self imageForCellAtIndexPath:ip]];
+}
+
 /* 
  * Handle editing of the tableView. Add a new TimerStep when inserting, remove when deleting
  */
@@ -304,17 +318,26 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         
         [[cell viewWithTag:newFirstResponderTag] becomeFirstResponder];
+        
+        [self updateTopBottomCellBackground];
 
     } else if (editingStyle == UITableViewCellEditingStyleDelete) {
 
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [[cell viewWithTag:1] resignFirstResponder];
+        
+        NSLog(@"Data %@", data);
+
+        [self.tableView beginUpdates];
         [data removeObjectAtIndex:indexPath.row];
         
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                               withRowAnimation:UITableViewRowAnimationRight];
-
+        [self.tableView endUpdates];
+        
+        [self updateTopBottomCellBackground];
     }
+    NSLog(@"Data %@", data);
 }
 
 /* Function: - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -397,6 +420,12 @@ replacementString:(NSString *)string
 {
     UITableViewCell *cell = (UITableViewCell *)[[textField superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    if (indexPath.section == 0 &&
+        indexPath.row >= [self.tableView numberOfRowsInSection:0] - 1) {
+        // Catch the case where the user deletes 
+        return YES;
+    }
     
     if ([self.detailType isEqualToString:@"Instructions"]) {
         // Only update data source if we aren't removing an empty cell

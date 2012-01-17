@@ -381,9 +381,9 @@
 
     // Favorite button accessibility
     UIButton *label = (UIButton *)[cell viewWithTag:3];
-    label.accessibilityLabel    = [NSString stringWithFormat:@"%@ star", methodName];
-    label.accessibilityHint     = [NSString stringWithFormat:@"Sets %@ as favorite method", methodName];
-    label.accessibilityTraits   = UIAccessibilityTraitButton;
+    label.accessibilityLabel  = [NSString stringWithFormat:@"%@ star", methodName];
+    label.accessibilityHint   = [NSString stringWithFormat:@"Sets %@ as favorite method", methodName];
+    label.accessibilityTraits = UIAccessibilityTraitButton;
     
     if (indexPath.row == starredMethodIndex) {
         UIButton *label = (UIButton *)[cell viewWithTag:3];

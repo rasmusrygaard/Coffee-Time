@@ -52,8 +52,7 @@
     [sc addStep:t];
     
     [sc addStep:[KIFTestStep stepToWaitForTimeInterval:2 description:@"Wait after method has completed"]];
-    
-//    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
