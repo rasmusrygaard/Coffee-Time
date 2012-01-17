@@ -45,6 +45,25 @@
     [self.tableView reloadData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    BOOL isDummyElem = NO;
+    
+    for (int i = [data count] - 1; i >= 0; --i) {
+        if ([self.detailType isEqualToString:@"Instructions"]) {
+            TimerStep *t = [data objectAtIndex:i];
+            
+            isDummyElem = [t.descriptionWithoutTime isEqualToString:@""] && t.timeInSeconds == 0;
+        } else {
+            isDummyElem = [[data objectAtIndex:i] isEqualToString:@""];
+        }
+        
+        if (isDummyElem) {
+            [data removeObjectAtIndex:i];
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -233,15 +252,13 @@
 
 /* Function: - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
- * The number of rows is either 1 (in the case of the "Save" button section) or 
- * however many steps are currently shown/stored in the data array + an additional
- * row to allow for editing.
+ * Display everything in the data array plus a row to add new data.
  */
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    return [data count];
+    return [data count] + 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -307,20 +324,23 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     if (editingStyle == UITableViewCellEditingStyleInsert) {
 
         int newFirstResponderTag;
-        
+        id toAdd;
+
         if ([self.detailType isEqualToString:@"Instructions"]) {
-            TimerStep *t = [[TimerStep alloc] init];
-            [data addObject:t];
-            
+            toAdd = [[TimerStep alloc] init];
             newFirstResponderTag = TIME_TAG;
         } else {
-            [data addObject:@""];
-            
+            toAdd = @"";
             newFirstResponderTag = DESCRIPTION_TAG;
         }
-
+        
+        [data addObject:toAdd];
+        
+        [self.tableView beginUpdates];
+        
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
                               withRowAnimation:UITableViewRowAnimationRight];
+        [self.tableView endUpdates];
         
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         
@@ -432,6 +452,11 @@ replacementString:(NSString *)string
     }
     
     if ([self.detailType isEqualToString:@"Instructions"]) {
+        if (textField.text.length < 4) { // Convert to a sensible integer value
+            textField.text = @"";
+            return YES;
+        }
+        
         // Only update data source if we aren't removing an empty cell
         if (![textField.text isEqualToString:@""]) {
             TimerStep *t = [data objectAtIndex:indexPath.row];
