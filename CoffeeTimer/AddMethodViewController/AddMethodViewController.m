@@ -43,6 +43,15 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - Custom back button
+
+- (IBAction)checkData:(id)sender
+{
+    NSLog(@"Check");
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 /* Function: - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
  * Get the cell images based on the cell's placement in the table. Make sure that
  * top and bottom cells have rounded corners and that  
@@ -229,6 +238,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         self.adVC.detailType = label;
         
         [self.adVC.navigationItem setTitle:label];
+    
+        
+        self.adVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"NewTitle" 
+                                                                                 style:UIBarButtonItemStyleBordered 
+                                                                                target:self.adVC
+                                                                                action:@selector(checkData:)];
+        
 
         [self.navigationController pushViewController:self.adVC animated:YES];
     }
@@ -307,6 +323,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(popViewControllerAnimated:)];
     
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
     

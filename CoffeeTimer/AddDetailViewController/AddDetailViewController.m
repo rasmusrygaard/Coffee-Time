@@ -500,6 +500,36 @@ replacementString:(NSString *)string
     return YES;
 }
 
+- (BOOL)hasDummyCells:(UITableView *)tableView
+{
+    for (int i = [data count] - 1; i >= 0; --i) {
+        if ([self.detailType isEqualToString:@"Instructions"]) {
+            TimerStep *t = [data objectAtIndex:i];
+            
+            if ([t.descriptionWithoutTime isEqualToString:@""] || t.timeInSeconds == 0) {
+                return YES;
+            }
+        } else {
+            if ([[data objectAtIndex:i] isEqualToString:@""]) {
+                return YES;
+            }
+        }
+    }
+    
+    return NO;
+}
+
+- (IBAction)checkData:(id)sender
+{
+    NSLog(@"Check in adVC");
+    
+    if ([self hasDummyCells:self.tableView]) {
+        <#statements#>
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)dealloc {
     [data release];
     data = nil;
