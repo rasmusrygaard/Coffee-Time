@@ -41,11 +41,10 @@
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUITextField" id="709413663">
 								<reference key="NSNextResponder" ref="428731963"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">290</int>
 								<string key="NSFrame">{{9, 5}, {286, 31}}</string>
 								<reference key="NSSuperview" ref="428731963"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:304</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
