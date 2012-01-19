@@ -324,11 +324,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(popViewControllerAnimated:)];
-    
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"SimpleMatteBackground.png"]];
     
     self.view.backgroundColor = [UIColor blackColor];

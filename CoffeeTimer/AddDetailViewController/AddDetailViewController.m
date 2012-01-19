@@ -119,6 +119,42 @@
     return [img autorelease];
 }
 
+/* Function: - (void)setUpAccessibilityForCell:(UITableViewCell *)cell 
+ atIndexPath:(NSIndexPath *)indexPath
+ * Set up the accessibility labels and hints for the cell ad indexPath. Use the indexPath to 
+ * generate dynamic content (ie. "Step 1: Time"). Make this a bit smarter eventually.
+ */
+
+- (void)setUpAccessibilityForCell:(UITableViewCell *)cell 
+                      atIndexPath:(NSIndexPath *)indexPath
+{
+    UITextField *tf;
+    // Have the indexes start at 1
+    int stepNum = indexPath.row + 1;
+    
+    if ([self.detailType isEqualToString:@"Instructions"]) {
+        
+        tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
+        
+        tf.isAccessibilityElement   = YES;
+        tf.accessibilityLabel       = [NSString stringWithFormat:@"Instruction %d: Time", stepNum];
+        tf.accessibilityHint        = [NSString stringWithFormat:@"The duration of step %d", stepNum];
+        
+        tf = (UITextField *)[cell viewWithTag:TIME_TAG];
+        
+        tf.isAccessibilityElement   = YES;
+        tf.accessibilityLabel       = [NSString stringWithFormat:@"Step %d: Description", stepNum];
+        tf.accessibilityHint        = [NSString stringWithFormat:@"The description for step %d", stepNum];
+
+    } else if ([self.detailType isEqualToString:@"Preparation"]) {
+        
+        tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
+        
+        tf.isAccessibilityElement   = YES;
+        tf.accessibilityLabel       = [NSString stringWithFormat:@"Preparation %d", stepNum];
+    }
+}
+
 /* Function: - (UITableViewCell *)loadCellLayout
  * Load the cell layout from the corresponding nib file. For now, this method assumes
  * that the only instructions and preparation steps will be stored in this class' data
@@ -127,10 +163,8 @@
  * more graceful for this.
  */
 
-- (UITableViewCell *)loadCellLayout
+- (UITableViewCell *)loadCellLayoutForCell:(UITableViewCell *)cell
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    
     NSString *nibToLoad;
     
     if ([self.detailType isEqualToString:@"Instructions"]) {
@@ -191,63 +225,43 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    
-    if (indexPath.section == 0) {
-        
-        if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section] - 1) {
-            
-            /*
-             * "Add New Instructions..." cell
-             */
-            
-            cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-            
-            if (!cell) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                              reuseIdentifier:@"UITableViewCell"];
-            }
-            
-            cell.textLabel.text = [NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]];
-            
-            cell.textLabel.textColor    = [UIColor darkGrayColor];
-            cell.selectionStyle         = UITableViewCellSelectionStyleNone;
-            
-        } else {
-            
-            /* 
-             * Instructions cells
-             */
-            
-            cell = [self loadCellLayout];
-            [self loadCellData:cell 
-                   atIndexPath:indexPath 
-                      withData:data];
-        }
-    } else {
+    UITableViewCell *cell;        
+    if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section] - 1) {
         
         /*
-         * "Save" button
+         * "Add New Instructions..." cell
          */
         
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
         
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"DefaultCell"];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                          reuseIdentifier:@"UITableViewCell"];
         }
         
-        cell.textLabel.text = @"Save";
-        cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.textLabel.shadowColor = [UIColor lightTextColor];
-        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
-        cell.textLabel.textAlignment = UITextAlignmentCenter;
-
+        cell.textLabel.text = [NSString stringWithFormat:@"Add New %@...", [self.navigationItem title]];
+        
+        cell.textLabel.textColor    = [UIColor darkGrayColor];
+        cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+        
+    } else {
+        
+        cell = [self loadCellLayoutForCell:cell];
+        
+        [self loadCellData:cell 
+               atIndexPath:indexPath 
+                  withData:data];
+        
+        [self setUpAccessibilityForCell:cell 
+                            atIndexPath:indexPath];
     }
 
     UIImageView *img = [self imageForCellAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundView:img];
+    
+    /* Accessibility */
+    cell.isAccessibilityElement = NO;
     
     return cell;	
 }
@@ -274,12 +288,11 @@
     
     if (indexPath.section == 0 &&
         indexPath.row == numRows - 1) {
+     
         [self tableView:self.tableView 
      commitEditingStyle:UITableViewCellEditingStyleInsert 
       forRowAtIndexPath:[NSIndexPath indexPathForRow:(numRows - 1) inSection:0]];
-      /*  -  (void)tableView:(UITableView *)tableView 
-    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
-    forRowAtIndexPath:(NSIndexPath *)indexPath*/
+        
     }
     if (indexPath.section == 1) {
         if ([self.detailType isEqualToString:@"Instructions"]) {

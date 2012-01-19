@@ -105,7 +105,7 @@
 -(IBAction)addMethod:(id)sender
 {
     AddMethodViewController *addMethodVC = [[AddMethodViewController alloc] init];
-    addMethodVC.navigationItem.backBarButtonItem.title = @"Methods";
+    addMethodVC.navigationItem.backBarButtonItem.title = @"Cancel";
     [self.navigationController pushViewController:addMethodVC 
                                          animated:YES];
     
@@ -298,12 +298,6 @@
     label.numberOfLines = 0;
 
     UIColor *color;    
-    
-    /* Accessibility */
-/*  
-    label.isAccessibilityElement = YES;
-    label.accessibilityLabel = [method name];
-*/
     
     if (self.bmViewController != nil &&
         [[method name] isEqualToString:[self.bmViewController methodBeingTimed]]) {
