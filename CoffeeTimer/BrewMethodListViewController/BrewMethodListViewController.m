@@ -163,15 +163,15 @@
     
     if (indexPath.row == 0) { // Top cell
         
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedTop.png"]];
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellRoundedTop.png"]];
 
     } else if (indexPath.row == [self.brewMethods count] - 1) {
     
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellWRoundedBottom.png"]];
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellRoundedBottom.png"]];
 
     } else { // Remaining Cells
         
-        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCell.png"]];
+        img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BigCellTest.png"]];
     
     }
     
