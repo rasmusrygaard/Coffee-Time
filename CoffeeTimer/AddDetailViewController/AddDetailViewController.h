@@ -15,10 +15,13 @@
     NSMutableArray *data;
     
     IBOutlet UITableViewCell *detailCell;
+    
+    BOOL wantsToLeaveView;
 }
 
 @property (nonatomic, assign) NSString *detailType;
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, assign) IBOutlet UITableViewCell *detailCell;
+@property (nonatomic, assign) BOOL wantsToLeaveView;
 
 @end

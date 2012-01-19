@@ -13,7 +13,7 @@
 
 @implementation AddDetailViewController
 
-@synthesize detailType, data, detailCell;
+@synthesize detailType, data, detailCell, wantsToLeaveView;
 
 #define TIME_TAG 1
 #define DESCRIPTION_TAG 2
@@ -24,6 +24,7 @@
     
     self.tableView.editing = YES;
     self.tableView.allowsSelectionDuringEditing = YES;
+    self.wantsToLeaveView = YES;
     
     return self;
 }
@@ -42,6 +43,7 @@
 {
     [super viewWillAppear:animated];
     
+    self.wantsToLeaveView = NO;
     [self.tableView reloadData];
 }
 
@@ -268,6 +270,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int numRows = [self.tableView numberOfRowsInSection:0];
+    
+    if (indexPath.section == 0 &&
+        indexPath.row == numRows - 1) {
+        [self tableView:self.tableView 
+     commitEditingStyle:UITableViewCellEditingStyleInsert 
+      forRowAtIndexPath:[NSIndexPath indexPathForRow:(numRows - 1) inSection:0]];
+      /*  -  (void)tableView:(UITableView *)tableView 
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
+    forRowAtIndexPath:(NSIndexPath *)indexPath*/
+    }
     if (indexPath.section == 1) {
         if ([self.detailType isEqualToString:@"Instructions"]) {
             for (TimerStep *t in data) {
@@ -470,7 +483,10 @@ replacementString:(NSString *)string
         return (textField.tag == DESCRIPTION_TAG ||
                 textField.text.length == 5);
     } else {
-        [data replaceObjectAtIndex:indexPath.row withObject:textField.text];
+        NSString *text = textField.text;
+        if (![text isEqualToString:@""]) {
+            [data replaceObjectAtIndex:indexPath.row withObject:textField.text];
+        }
         return YES;
     }
 }
@@ -500,6 +516,11 @@ replacementString:(NSString *)string
     return YES;
 }
 
+/* Function: - (BOOL)hasDummyCells:(UITableView *)tableView
+ * This function iterates over the internal data array of this class and returns
+ * true if all fields are filled out.
+ */
+
 - (BOOL)hasDummyCells:(UITableView *)tableView
 {
     for (int i = [data count] - 1; i >= 0; --i) {
@@ -519,15 +540,45 @@ replacementString:(NSString *)string
     return NO;
 }
 
+/* Function: - (IBAction)checkData:(id)sender
+ * This function makes sure that the user is aware that leaving the View means
+ * deleting any incomplete cells. If the tableView has half-filled or emtpy cells
+ * this method displays a UIAlertView, warning the user that those cells will be
+ * lost if the user returns.
+ * This method uses the instance variable wantsToLeaveView to determine whether
+ * the user really wants to leave. This variable should be set to true only if
+ * the user hits the cancel button on the UIAlertView.
+ */
+
 - (IBAction)checkData:(id)sender
 {
-    NSLog(@"Check in adVC");
-    
-    if ([self hasDummyCells:self.tableView]) {
-        <#statements#>
+    if (!self.wantsToLeaveView && 
+        [self hasDummyCells:self.tableView]) { // Still dummy cells 
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Cancel?" 
+                                                     message:@"It looks like some of your steps are missing times or descriptions. Are you sure you want to quit adding the method? This would delete all incomplete steps." 
+                                                    delegate:self
+                                           cancelButtonTitle:@"Yes, cancel"
+                                           otherButtonTitles:@"No, I'll stay", nil];
+            [av show];
+            [av release];
+    } else {
+         [self.navigationController popViewControllerAnimated:YES];
     }
-    
-    [self.navigationController popViewControllerAnimated:YES];
+}
+
+/* Function: -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+ * This function is called after the user taps one of the buttons on the UIAlertView
+ * presented by checkData:(id)sender. It sets the wantsToLeaveView instance variable
+ * to true iff the user clicks the cancel button at index 0 and calls checkData: if
+ * the user does so.
+ */
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ((self.wantsToLeaveView = (buttonIndex == 0))) { 
+        [self checkData:nil];
+    }
 }
 
 - (void)dealloc {
