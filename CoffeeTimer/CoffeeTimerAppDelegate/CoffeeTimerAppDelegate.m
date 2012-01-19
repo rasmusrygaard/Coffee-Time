@@ -36,7 +36,6 @@
     if ([bmlViewController hasStarredMethod]) {
         [bmlViewController launchWithStarredMethod];
     }
-    
     [self.window makeKeyAndVisible];
     
     #if RUN_KIF_TESTS
