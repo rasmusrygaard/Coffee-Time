@@ -137,14 +137,15 @@
         tf = (UITextField *)[cell viewWithTag:DESCRIPTION_TAG];
         
         tf.isAccessibilityElement   = YES;
-        tf.accessibilityLabel       = [NSString stringWithFormat:@"Instruction %d: Time", stepNum];
-        tf.accessibilityHint        = [NSString stringWithFormat:@"The duration of step %d", stepNum];
+        tf.accessibilityLabel       = [NSString stringWithFormat:@"Instruction %d: Description", stepNum];
+        tf.accessibilityHint        = [NSString stringWithFormat:@"The description for step %d", stepNum];
         
         tf = (UITextField *)[cell viewWithTag:TIME_TAG];
         
         tf.isAccessibilityElement   = YES;
-        tf.accessibilityLabel       = [NSString stringWithFormat:@"Step %d: Description", stepNum];
-        tf.accessibilityHint        = [NSString stringWithFormat:@"The description for step %d", stepNum];
+        tf.accessibilityLabel       = [NSString stringWithFormat:@"Instruction %d: Time", stepNum];
+        tf.accessibilityHint        = [NSString stringWithFormat:@"The duration of step %d", stepNum];
+
 
     } else if ([self.detailType isEqualToString:@"Preparation"]) {
         
@@ -243,6 +244,10 @@
         
         cell.textLabel.textColor    = [UIColor darkGrayColor];
         cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+        
+        /* Accessibility */
+        cell.accessibilityLabel = [NSString stringWithFormat:@"Add %@", [self.navigationItem title]];
+        cell.isAccessibilityElement = YES;
         
     } else {
         

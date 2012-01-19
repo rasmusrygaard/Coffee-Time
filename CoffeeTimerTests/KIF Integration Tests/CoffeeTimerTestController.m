@@ -14,10 +14,13 @@
 
 - (void)initializeScenarios;
 {
+    [self addScenario:[KIFTestScenario scenarioToAddInstructions]];
+    
     [self addScenario:[KIFTestScenario scenarioToOpenAllMethods]];
     [self addScenario:[KIFTestScenario scenarioToRunMethod]];
-    [self addScenario:[KIFTestScenario scenarioToSwitchMethod]];
+    [self addScenario:[KIFTestScenario scenarioToSwitchMethod]];    
     [self addScenario:[KIFTestScenario scenarioToOpenAllMethods]];
+
 }
 
 @end

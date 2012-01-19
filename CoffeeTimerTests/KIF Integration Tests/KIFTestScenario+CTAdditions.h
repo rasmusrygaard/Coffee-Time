@@ -20,4 +20,6 @@
 
 + (id)scenarioToRunManyMethods;
 
++ (id)scenarioToAddInstructions;
+
 @end

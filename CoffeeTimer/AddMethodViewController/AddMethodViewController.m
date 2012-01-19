@@ -240,7 +240,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self.adVC.navigationItem setTitle:label];
     
         
-        self.adVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"NewTitle" 
+        self.adVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
                                                                                  style:UIBarButtonItemStyleBordered 
                                                                                 target:self.adVC
                                                                                 action:@selector(checkData:)];
@@ -265,7 +265,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     int tag = textField.tag;
     UILabel *label = (UILabel *)[self.view viewWithTag:(tag + 10)];
     
-    if (![label.text isEqualToString:@""]) {
+    if (label != nil &&
+        ![label.text isEqualToString:@""]) {
+        NSLog(@"tf: %@ label: %@", textField.text, label.text);
         [basicInfo setValue:textField.text forKey:label.text];
     }
 }
@@ -304,19 +306,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     return YES;
 }
 
+
 /* Function: -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
  *                                                                 replacementString:(NSString *)string
  * Make sure we never exceed the bounds of the text field.
  */
-
+/*
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
                                                       replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByAppendingString:string];
     CGSize textSize = [newString sizeWithFont:[textField font]];
-    
-    return textSize.width < TEXTFIELD_MAX_WIDTH;
-}
+    return YES;
+//    return textSize.width < TEXTFIELD_MAX_WIDTH;
+} */
 
 #pragma mark - View lifecycle
 

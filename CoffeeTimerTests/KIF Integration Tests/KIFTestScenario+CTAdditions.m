@@ -141,4 +141,31 @@
     return sc;
 }
 
++ (id)scenarioToAddInstructions
+{
+    KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test adding instructions to a custom method"];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add"]];
+    
+    // Enter some brew method information
+    [sc addStep:[KIFTestStep stepToEnterText:@"MadCap Hario V60" intoViewWithAccessibilityLabel:@"Name"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"Hario V60" intoViewWithAccessibilityLabel:@"Equipment"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"21" intoViewWithAccessibilityLabel:@"Coffee"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"290" intoViewWithAccessibilityLabel:@"Water"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Instructions"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"00:30" intoViewWithAccessibilityLabel:@"Instruction 1: Time"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"Pour 60 g of water, scrape the sides of the filter" intoViewWithAccessibilityLabel:@"Instruction 1: Description"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"01:30" intoViewWithAccessibilityLabel:@"Instruction 2: Time"]];
+    
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Back"]];
+    
+    return sc;
+}
+
 @end

@@ -13,4 +13,6 @@
 
 + (id)stepToTapSliderTabWithLabel:(NSString *)label;
 
++ (id)stepToDismissKeyboard;
+
 @end

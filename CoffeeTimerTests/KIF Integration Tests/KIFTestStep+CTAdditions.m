@@ -27,4 +27,9 @@
     return [KIFTestStep stepToTapScreenAtPoint:p];
 }
 
++ (id)stepToDismissKeyboard
+{
+    return [KIFTestStep stepToTapViewWithAccessibilityLabel:@"done"];
+}
+
 @end
