@@ -166,6 +166,9 @@
 		00B096A6147DC46700004B9A /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B096A5147DC46700004B9A /* FileHelpers.m */; };
 		00D359521437E9FA00BFA6E0 /* MethodBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359441437E9FA00BFA6E0 /* MethodBackground.png */; };
 		00D359531437E9FA00BFA6E0 /* MethodBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D359451437E9FA00BFA6E0 /* MethodBackground@2x.png */; };
+		00E2623314C8A99E00DDCD38 /* AddMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098523A147EF072002B540C /* AddMethodTableViewCell.xib */; };
+		00E2623414C8A9CC00DDCD38 /* AddInstructionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00397E24149D3F0100FDF07B /* AddInstructionsCell.xib */; };
+		00E2623514C8A9CE00DDCD38 /* AddPreparationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A207E014BA9A90006F327C /* AddPreparationCell.xib */; };
 		00E5F649149D313100A97E64 /* AddDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F647149D313100A97E64 /* AddDetailViewController.m */; };
 		00E5F64A149D313100A97E64 /* AddDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F648149D313100A97E64 /* AddDetailViewController.xib */; };
 /* End PBXBuildFile section */
@@ -284,7 +287,7 @@
 		008EF7E314B3B9FF00E0E60B /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "CoffeeTimer/Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		00985235147EEBD2002B540C /* AddMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodViewController.h; path = AddMethodViewController/AddMethodViewController.h; sourceTree = "<group>"; };
 		00985236147EEBD2002B540C /* AddMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodViewController.m; path = AddMethodViewController/AddMethodViewController.m; sourceTree = "<group>"; };
-		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = "<group>"; };
+		0098523A147EF072002B540C /* AddMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddMethodTableViewCell.xib; path = CoffeeTimer/AddMethodViewController/AddMethodTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		0098523E147EF9AA002B540C /* AddMethodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMethodView.h; path = AddMethodViewController/AddMethodView.h; sourceTree = "<group>"; };
 		0098523F147EF9AA002B540C /* AddMethodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMethodView.m; path = AddMethodViewController/AddMethodView.m; sourceTree = "<group>"; };
 		00A207E014BA9A90006F327C /* AddPreparationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPreparationCell.xib; path = AddDetailViewController/AddPreparationCell.xib; sourceTree = "<group>"; };
@@ -846,6 +849,9 @@
 				008EF7D914B3B98700E0E60B /* CoffeeTime112.png in Resources */,
 				008EF7DA14B3B98700E0E60B /* Default.png in Resources */,
 				008EF7DB14B3B98700E0E60B /* Default@2x.png in Resources */,
+				00E2623314C8A99E00DDCD38 /* AddMethodTableViewCell.xib in Resources */,
+				00E2623414C8A9CC00DDCD38 /* AddInstructionsCell.xib in Resources */,
+				00E2623514C8A9CE00DDCD38 /* AddPreparationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
