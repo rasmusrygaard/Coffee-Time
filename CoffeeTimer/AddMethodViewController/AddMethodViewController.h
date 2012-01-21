@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AddMethodView.h"
+#import "BrewMethod.h"
 
 #import "AddDetailViewController.h"
 
@@ -20,7 +21,11 @@
     NSMutableDictionary *basicInfo;
     NSMutableArray *instructions;
     NSMutableArray *preparation;
+    
+    id delegate;
 }
+
+- (void)userDidFinishEditingBrewMethod:(BrewMethod *)bm;
 
 - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath;
 

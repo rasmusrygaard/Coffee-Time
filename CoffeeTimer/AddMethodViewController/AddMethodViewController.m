@@ -52,6 +52,26 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/* Function: - (BOOL)hasCompleteBrewMethod
+ * Returns true iff the view controller contains sufficient information about a
+ * complete method. This means that at least one instruction and preparation step
+ * exist and that all the data in this view has been filled (ie. Name, Equipment, 
+ * Coffee, and Water).
+ */
+
+- (BOOL)hasCompleteBrewMethod
+{
+    return ([instructions count] != 0 && [preparation count] != 0 &&
+            [basicInfo objectForKey:@"Name"]        != nil &&
+            [basicInfo objectForKey:@"Name"]        != @"" &&
+            [basicInfo objectForKey:@"Equipment"]   != nil &&
+            [basicInfo objectForKey:@"Equipment"]   != @"" &&
+            [basicInfo objectForKey:@"Coffee"]      != nil &&
+            [basicInfo objectForKey:@"Coffee"]      != @"" &&
+            [basicInfo objectForKey:@"Water"]       != nil &&
+            [basicInfo objectForKey:@"Water"]       != @"");
+}
+
 /* Function: - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
  * Get the cell images based on the cell's placement in the table. Make sure that
  * top and bottom cells have rounded corners and that  
@@ -180,7 +200,12 @@
         }
         
         cell.textLabel.text = @"Save";
-        cell.textLabel.textColor = [UIColor darkGrayColor];
+        if ([self hasCompleteBrewMethod]) {
+            cell.textLabel.textColor = [UIColor darkGrayColor];
+        } else {
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+        }
+//        cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.shadowColor = [UIColor lightTextColor];
         cell.textLabel.shadowOffset = CGSizeMake(0, 1);
         cell.textLabel.textAlignment = UITextAlignmentCenter;
@@ -215,19 +240,16 @@
     }
 }
 
-- (void) tableView:(UITableView *)tableView 
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)openAddDetailViewControllerOfType:(NSString *)type
 {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSString *label = cell.textLabel.text;
-    if ([label isEqualToString:@"Instructions"] ||
-        [label isEqualToString:@"Preparation"]) {
-
+    if ([type isEqualToString:@"Instructions"] ||
+        [type isEqualToString:@"Preparation"]) {
+        
         if (!self.adVC) {
             self.adVC = [[AddDetailViewController alloc] init];
         }
-
-        if ([label isEqualToString:@"Instructions"]) {
+        
+        if ([type isEqualToString:@"Instructions"]) {
             self.adVC.data          = instructions;
             self.adVC.detailType    = @"Instructions";
         } else {
@@ -235,19 +257,36 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             self.adVC.detailType    = @"Preparation";
         }
         
-        self.adVC.detailType = label;
+        self.adVC.detailType = type;
         
-        [self.adVC.navigationItem setTitle:label];
-    
+        [self.adVC.navigationItem setTitle:type];
         
-        self.adVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
-                                                                                 style:UIBarButtonItemStyleBordered 
-                                                                                target:self.adVC
-                                                                                action:@selector(checkData:)];
         
-
+        self.adVC.navigationItem.leftBarButtonItem = 
+            [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                             style:UIBarButtonItemStyleBordered 
+                                            target:self.adVC
+                                            action:@selector(checkData:)];
+        
+        
         [self.navigationController pushViewController:self.adVC animated:YES];
     }
+}
+
+- (void) tableView:(UITableView *)tableView 
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *label = cell.textLabel.text;
+    if (indexPath.section == 1) { // Tapped Instructions/preparation
+        [self openAddDetailViewControllerOfType:label];
+    } else if (indexPath.section == 2) { // Tapped save
+        if ([self hasCompleteBrewMethod]) {
+            NSLog(@"Sufficient information!");
+//            [self saveBrewMethod];
+        }
+    }
+    
     
     
 }
@@ -264,12 +303,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     int tag = textField.tag;
     UILabel *label = (UILabel *)[self.view viewWithTag:(tag + 10)];
+    NSString *text = textField.text;
     
     if (label != nil &&
         ![label.text isEqualToString:@""]) {
-        NSLog(@"tf: %@ label: %@", textField.text, label.text);
-        [basicInfo setValue:textField.text forKey:label.text];
+        
+        if ([text isEqualToString:@""]) {
+            [basicInfo removeObjectForKey:label.text];
+        } else {
+            [basicInfo setValue:textField.text forKey:label.text];
+        }
     }
+    
+    // Reload data to possibly enable Save button. Somewhat inefficient
+    if ([self hasCompleteBrewMethod]) {
+        [self.tableView reloadData];
+    }
+
 }
 
 /* - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -332,7 +382,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     self.view.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = background;
     
-    self.tableView.bounces = FALSE;
+    self.tableView.bounces = NO;
     
     self.navigationItem.title = @"Add Method";
     self.navigationItem.backBarButtonItem.title = @"Methods";
