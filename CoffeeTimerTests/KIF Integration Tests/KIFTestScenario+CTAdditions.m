@@ -173,4 +173,35 @@
     return sc;
 }
 
++ (id)scenarioToTestFullBrewMethod
+{
+    KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test that the user"];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Instructions"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"00:30" intoViewWithAccessibilityLabel:@"Instruction 1: Time"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"Pour 60 g of water, scrape the sides of the filter" intoViewWithAccessibilityLabel:@"Instruction 1: Description"]];
+    
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Back"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"MadCap Hario V60" intoViewWithAccessibilityLabel:@"Name"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"Hario V60" intoViewWithAccessibilityLabel:@"Equipment"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"21" intoViewWithAccessibilityLabel:@"Coffee"]];
+    [sc addStep:[KIFTestStep stepToEnterText:@"290" intoViewWithAccessibilityLabel:@"Water"]];
+
+    // Try hitting Save without enough data, dismiss debug popup
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"" intoViewWithAccessibilityLabel:@"Equipment"]];
+    
+    return sc;
+}
+
 @end

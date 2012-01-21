@@ -284,6 +284,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         if ([self hasCompleteBrewMethod]) {
             NSLog(@"Sufficient information!");
 //            [self saveBrewMethod];
+        } else {
+            #if RUN_KIF_TESTS
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not full method" message:@"Insufficient information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];
+            #endif
         }
     }
     
