@@ -7,6 +7,14 @@
 //
 
 #import "KIFTestStep+CTAdditions.h"
+#import "CGGeometry-KIFAdditions.h"
+#import "UIAccessibilityElement-KIFAdditions.h"
+#import "UIApplication-KIFAdditions.h"
+#import "UIScrollView-KIFAdditions.h"
+#import "UITouch-KIFAdditions.h"
+#import "UIView-KIFAdditions.h"
+#import "UIWindow-KIFAdditions.h"
+
 
 @implementation KIFTestStep (CTAdditions)
 
@@ -23,7 +31,7 @@
     } else {
         return nil;
     }
-  
+    
     return [KIFTestStep stepToTapScreenAtPoint:p];
 }
 
@@ -31,5 +39,6 @@
 {
     return [KIFTestStep stepToTapViewWithAccessibilityLabel:@"done"];
 }
+
 
 @end

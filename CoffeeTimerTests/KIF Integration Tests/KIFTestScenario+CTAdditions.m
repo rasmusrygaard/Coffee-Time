@@ -178,6 +178,7 @@
     KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test that the user"];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add"]];
     
+    // Add an instruction
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Instructions"]];
@@ -189,15 +190,62 @@
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Back"]];
     
+    // Add a preparation step
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Preparation"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Preparation"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"Place the filter in the V60 and run hot water through it" intoViewWithAccessibilityLabel:@"Preparation 1"]];
+    
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Back"]];
+    
+    // Fill out basic info
     [sc addStep:[KIFTestStep stepToEnterText:@"MadCap Hario V60" intoViewWithAccessibilityLabel:@"Name"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"Hario V60" intoViewWithAccessibilityLabel:@"Equipment"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"21" intoViewWithAccessibilityLabel:@"Coffee"]];
-    [sc addStep:[KIFTestStep stepToEnterText:@"290" intoViewWithAccessibilityLabel:@"Water"]];
 
     // Try hitting Save without enough data, dismiss debug popup
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+    
+    // Enter water info, tap Save again
+    [sc addStep:[KIFTestStep stepToEnterText:@"290" intoViewWithAccessibilityLabel:@"Water"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToClearTextInViewWithAccessibilityLabel:@"Coffee"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+    
+    // Take out equipment info, insert water info
+    [sc addStep:[KIFTestStep stepToEnterText:@"21" intoViewWithAccessibilityLabel:@"Coffee"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToClearTextInViewWithAccessibilityLabel:@"Equipment"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+    
+    // Take out name info, insert equipment info
+    [sc addStep:[KIFTestStep stepToEnterText:@"Hario V60" intoViewWithAccessibilityLabel:@"Equipment"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToClearTextInViewWithAccessibilityLabel:@"Name"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
+    
+    [sc addStep:[KIFTestStep stepToEnterText:@"MadCap Hario V60" intoViewWithAccessibilityLabel:@"Name"]];
+    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    
+    // No warning
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+
     
     [sc addStep:[KIFTestStep stepToEnterText:@"" intoViewWithAccessibilityLabel:@"Equipment"]];
     
