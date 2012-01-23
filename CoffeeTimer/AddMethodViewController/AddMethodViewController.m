@@ -61,6 +61,7 @@
 
 - (BOOL)hasCompleteBrewMethod
 {
+    NSLog(@"Name: '%@', Equipment: '%@', Coffee: '%@', Water: '%@'", [basicInfo objectForKey:@"Name"], [basicInfo objectForKey:@"Equipment"], [basicInfo objectForKey:@"Coffee"], [basicInfo objectForKey:@"Water"]);
     return ([instructions count] != 0 && [preparation count] != 0 &&
             [basicInfo objectForKey:@"Name"]        != nil &&
             [basicInfo objectForKey:@"Name"]        != @"" &&
@@ -118,13 +119,20 @@
             text = @"Name";
             label.font = [UIFont systemFontOfSize:22];
             tf.font = [UIFont systemFontOfSize:22];
+            nameField = tf;
             break;
         case 1:
-            text = @"Equipment"; break;
+            text = @"Equipment"; 
+            equipmentField = tf;
+            break;
         case 2:
-            text = @"Coffee"; break;
+            text = @"Coffee"; 
+            coffeeField = tf;
+            break;
         case 3:
-            text = @"Water"; break;
+            text = @"Water";
+            waterField = tf;
+            break;
         default:
             break;
     }

@@ -22,6 +22,11 @@
     NSMutableArray *instructions;
     NSMutableArray *preparation;
     
+    IBOutlet UITextField *nameField;
+    IBOutlet UITextField *equipmentField;
+    IBOutlet UITextField *coffeeField;
+    IBOutlet UITextField *waterField;
+    
     id delegate;
 }
 
