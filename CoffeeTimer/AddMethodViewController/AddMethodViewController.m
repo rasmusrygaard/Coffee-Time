@@ -61,16 +61,22 @@
 
 - (BOOL)hasCompleteBrewMethod
 {
-    NSLog(@"Name: '%@', Equipment: '%@', Coffee: '%@', Water: '%@'", [basicInfo objectForKey:@"Name"], [basicInfo objectForKey:@"Equipment"], [basicInfo objectForKey:@"Coffee"], [basicInfo objectForKey:@"Water"]);
-    return ([instructions count] != 0 && [preparation count] != 0 &&
-            [basicInfo objectForKey:@"Name"]        != nil &&
-            [basicInfo objectForKey:@"Name"]        != @"" &&
-            [basicInfo objectForKey:@"Equipment"]   != nil &&
-            [basicInfo objectForKey:@"Equipment"]   != @"" &&
-            [basicInfo objectForKey:@"Coffee"]      != nil &&
-            [basicInfo objectForKey:@"Coffee"]      != @"" &&
-            [basicInfo objectForKey:@"Water"]       != nil &&
-            [basicInfo objectForKey:@"Water"]       != @"");
+    NSString *name, *equipment, *coffee, *water;
+    
+    if (![(name      = nameField.text)      isEqualToString:@""] &&
+        ![(equipment = equipmentField.text) isEqualToString:@""] &&
+        ![(coffee    = coffeeField.text)    isEqualToString:@""] &&
+        ![(water     = waterField.text)     isEqualToString:@""]) {
+        
+        [basicInfo setObject:name       forKey:@"Name"];
+        [basicInfo setObject:equipment  forKey:@"Equipment"];
+        [basicInfo setObject:coffee     forKey:@"Coffee"];
+        [basicInfo setObject:water      forKey:@"Water"];
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 /* Function: - (UIImageView *)imageForCellAtIndexPath:(NSIndexPath *)indexPath
