@@ -11,7 +11,7 @@
 
 @implementation AddMethodViewController
 
-@synthesize amCell, adVC;
+@synthesize amCell, adVC, nameField, equipmentField, coffeeField, waterField;
 
 -(id)init
 {
@@ -22,6 +22,7 @@
     preparation = [[NSMutableArray alloc] init];
     
     self.tableView.isAccessibilityElement = NO;
+    self.tableView.scrollEnabled = NO;
     
     return self;
 }
@@ -62,7 +63,10 @@
 - (BOOL)hasCompleteBrewMethod
 {
     NSString *name, *equipment, *coffee, *water;
-    
+    NSLog(@"Field: %@", nameField);
+    NSLog(@"Field: %@", equipmentField);
+    NSLog(@"Field: %@", coffeeField);
+    NSLog(@"Field: %@", waterField);
     if (![(name      = nameField.text)      isEqualToString:@""] &&
         ![(equipment = equipmentField.text) isEqualToString:@""] &&
         ![(coffee    = coffeeField.text)    isEqualToString:@""] &&
@@ -101,7 +105,7 @@
             img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell.png"]];
         }
     }
-
+    
     return [img autorelease];
 }
 
@@ -119,25 +123,25 @@
     UITextField *tf = (UITextField *)[cell viewWithTag:2];
     
     NSString *text, *textField;
-        
+    
     switch (indexPath.row) {
         case 0:
             text = @"Name";
             label.font = [UIFont systemFontOfSize:22];
             tf.font = [UIFont systemFontOfSize:22];
-            nameField = tf;
+            self.nameField = tf;
             break;
         case 1:
             text = @"Equipment"; 
-            equipmentField = tf;
+            self.equipmentField = tf;
             break;
         case 2:
             text = @"Coffee"; 
-            coffeeField = tf;
+            self.coffeeField = tf;
             break;
         case 3:
             text = @"Water";
-            waterField = tf;
+            self.waterField = tf;
             break;
         default:
             break;
@@ -147,6 +151,7 @@
     tf.tag = MAX_TEXTFIELD_TAG - ADD_METHOD_UPPER_ROWS + indexPath.row;
     tf.isAccessibilityElement   = YES;
     tf.accessibilityLabel       = text;
+    tf.delegate = self;
     
     textField = [basicInfo objectForKey:text]; // Get existing text
     if (textField == nil) {                    // Otherwise initialize it
@@ -179,14 +184,19 @@
     UITableViewCell *cell;
     
     if (indexPath.section == 0) {
-        cell = [[UITableViewCell alloc] init];
         
-        [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
-                                      owner:self 
-                                    options:nil];
-        cell = amCell;
-        self.amCell = nil;
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddMethodCell"];
         
+        if (!cell) {
+            
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMethodCell"] autorelease];
+            
+            [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
+                                          owner:self 
+                                        options:nil];
+            cell = amCell;
+            self.amCell = nil;
+        }
         [self setTextForCell:cell 
                  atIndexPath:indexPath];
     } else if (indexPath.section == 1) { // Initialize lower cells
@@ -219,7 +229,7 @@
         } else {
             cell.textLabel.textColor = [UIColor lightGrayColor];
         }
-//        cell.textLabel.textColor = [UIColor darkGrayColor];
+        //        cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.shadowColor = [UIColor lightTextColor];
         cell.textLabel.shadowOffset = CGSizeMake(0, 1);
         cell.textLabel.textAlignment = UITextAlignmentCenter;
@@ -230,7 +240,7 @@
     UIImageView *img = [self imageForCellAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundView:img];
-
+    
     /* Accessibility */
     cell.isAccessibilityElement = NO;
     
@@ -277,10 +287,10 @@
         
         
         self.adVC.navigationItem.leftBarButtonItem = 
-            [[UIBarButtonItem alloc] initWithTitle:@"Back" 
-                                             style:UIBarButtonItemStyleBordered 
-                                            target:self.adVC
-                                            action:@selector(checkData:)];
+        [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                         style:UIBarButtonItemStyleBordered 
+                                        target:self.adVC
+                                        action:@selector(checkData:)];
         
         
         [self.navigationController pushViewController:self.adVC animated:YES];
@@ -297,13 +307,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     } else if (indexPath.section == 2) { // Tapped save
         if ([self hasCompleteBrewMethod]) {
             NSLog(@"Sufficient information!");
-//            [self saveBrewMethod];
+            //            [self saveBrewMethod];
         } else {
-            #if RUN_KIF_TESTS
+#if RUN_KIF_TESTS
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not full method" message:@"Insufficient information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [av show];
             [av release];
-            #endif
+#endif
         }
     }
     
@@ -321,25 +331,45 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)textFieldDidEndEditing:(UITextField *)textField;
 {
-    int tag = textField.tag;
-    UILabel *label = (UILabel *)[self.view viewWithTag:(tag + 10)];
-    NSString *text = textField.text;
+    /*int tag = textField.tag;
+     UILabel *label = (UILabel *)[self.view viewWithTag:(tag + 10)];
+     NSString *text = textField.text;
+     
+     if (label != nil &&
+     ![label.text isEqualToString:@""]) {
+     
+     if ([text isEqualToString:@""]) {
+     [basicInfo removeObjectForKey:label.text];
+     } else {
+     [basicInfo setValue:textField.text forKey:label.text];
+     }
+     }*/
     
-    if (label != nil &&
-        ![label.text isEqualToString:@""]) {
-        
-        if ([text isEqualToString:@""]) {
-            [basicInfo removeObjectForKey:label.text];
-        } else {
-            [basicInfo setValue:textField.text forKey:label.text];
-        }
+    NSString *key = nil;
+    if ([textField isEqual:nameField]) {
+        key = @"Name";
+    } else if ([textField isEqual:equipmentField]) {
+        key = @"Equipment";
+    } else if ([textField isEqual:coffeeField]) {
+        key = @"Coffee";
+    } else if ([textField isEqual:waterField]) {
+        key = @"Water";
     }
     
+    if (key != nil) {
+        [basicInfo setObject:textField.text forKey:key];
+    }
+    
+    //    NSLog(@"nf: %@, ef: %@, cf: %@, wf: %@", nameField, equipmentField, coffeeField, waterField);
+    NSLog(@"Field: %@", nameField);
+    NSLog(@"Field: %@", equipmentField);
+    NSLog(@"Field: %@", coffeeField);
+    NSLog(@"Field: %@", waterField);
     // Reload data to possibly enable Save button. Somewhat inefficient
     if ([self hasCompleteBrewMethod]) {
         [self.tableView reloadData];
     }
-
+    
 }
 
 /* - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -382,14 +412,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  * Make sure we never exceed the bounds of the text field.
  */
 /*
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
-                                                      replacementString:(NSString *)string
-{
-    NSString *newString = [textField.text stringByAppendingString:string];
-    CGSize textSize = [newString sizeWithFont:[textField font]];
-    return YES;
-//    return textSize.width < TEXTFIELD_MAX_WIDTH;
-} */
+ -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+ replacementString:(NSString *)string
+ {
+ NSString *newString = [textField.text stringByAppendingString:string];
+ CGSize textSize = [newString sizeWithFont:[textField font]];
+ return YES;
+ //    return textSize.width < TEXTFIELD_MAX_WIDTH;
+ } */
 
 #pragma mark - View lifecycle
 
@@ -413,8 +443,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+ 
+    [nameField release];
+    nameField = nil;
+    
+    [equipmentField release];
+    equipmentField = nil;
+    
+    [coffeeField release];
+    coffeeField = nil;
+    
+    [waterField release];
+    waterField = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

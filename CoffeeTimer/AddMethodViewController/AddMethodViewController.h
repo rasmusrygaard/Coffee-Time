@@ -38,4 +38,9 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell *amCell;
 @property (nonatomic, retain) AddDetailViewController *adVC;
 
+@property (nonatomic, retain) IBOutlet UITextField *nameField;
+@property (nonatomic, retain) IBOutlet UITextField *equipmentField;
+@property (nonatomic, retain) IBOutlet UITextField *coffeeField;
+@property (nonatomic, retain) IBOutlet UITextField *waterField;
+
 @end

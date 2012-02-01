@@ -483,7 +483,8 @@ replacementString:(NSString *)string
     }
     
     if ([self.detailType isEqualToString:@"Instructions"]) {
-        if (textField.text.length < 4) { // Convert to a sensible integer value
+        if (textField.tag == TIME_TAG &&
+            textField.text.length < 4) { // Convert to a sensible integer value
             textField.text = @"";
             return YES;
         }
