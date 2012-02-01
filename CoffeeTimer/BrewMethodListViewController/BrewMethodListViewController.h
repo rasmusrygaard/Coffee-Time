@@ -14,6 +14,7 @@
 
     NSArray *brewMethods;
     BrewMethodViewController *bmViewController;
+    AddMethodViewController *amViewController;
     UITableViewCell *tvlCell;
     
     NSIndexPath *activeCell;

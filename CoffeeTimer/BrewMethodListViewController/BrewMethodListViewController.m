@@ -104,9 +104,9 @@
 
 -(IBAction)addMethod:(id)sender
 {
-    AddMethodViewController *addMethodVC = [[AddMethodViewController alloc] init];
-    addMethodVC.navigationItem.backBarButtonItem.title = @"Cancel";
-    [self.navigationController pushViewController:addMethodVC 
+    amViewController = [[AddMethodViewController alloc] init];
+    amViewController.navigationItem.backBarButtonItem.title = @"Cancel";
+    [self.navigationController pushViewController:amViewController 
                                          animated:YES];
     
 }
