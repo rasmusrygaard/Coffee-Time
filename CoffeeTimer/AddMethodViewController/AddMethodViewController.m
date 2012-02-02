@@ -47,9 +47,7 @@
 #pragma mark - Custom back button
 
 - (IBAction)checkData:(id)sender
-{
-    NSLog(@"Check");
-    
+{    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -63,10 +61,7 @@
 - (BOOL)hasCompleteBrewMethod
 {
     NSString *name, *equipment, *coffee, *water;
-    NSLog(@"Field: %@", nameField);
-    NSLog(@"Field: %@", equipmentField);
-    NSLog(@"Field: %@", coffeeField);
-    NSLog(@"Field: %@", waterField);
+    NSLog(@"nf: '%@', eF: '%@', cF: '%@', wF: '%@'", nameField.text, equipmentField.text, coffeeField.text, waterField.text);
     if (![(name      = nameField.text)      isEqualToString:@""] &&
         ![(equipment = equipmentField.text) isEqualToString:@""] &&
         ![(coffee    = coffeeField.text)    isEqualToString:@""] &&
@@ -178,6 +173,87 @@
     tf.adjustsFontSizeToFitWidth = YES;
 }
 
+/* Function: - (UITableViewCell *)createBasicInfoCellAtIndexPath:(NSIndexPath *)indexPath
+ * Create a cell for the top section of the tableView. All of those cells should be of 
+ * the type AddMethodCell (see nib), where each cell contains a UILabel indicating the
+ * type of information to be stored and a UITextField indicating the value for the given
+ * parameter.
+ * Returns the cell initialized with information according to setTextForCell:atIndexPath:
+ */
+
+- (UITableViewCell *)createBasicInfoCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddMethodCell"];
+    
+    if (!cell) {
+        
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMethodCell"] autorelease];
+        
+        [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
+                                      owner:self 
+                                    options:nil];
+        cell = amCell;
+        self.amCell = nil;
+    }
+    
+    [self setTextForCell:cell 
+             atIndexPath:indexPath];
+    
+    return cell;
+}
+
+/* Function: - (UITableViewCell *)createDetailCellAtIndexPath:(NSIndexPath *)indexPath
+ * Initialize and return a UITableViewCell with stle UITableViewCellStyleDefault with
+ * a label matching the indexPath (eg. either "Instructions" or "Preparation"
+ */
+
+- (UITableViewCell *)createDetailCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"DefaultCell"];
+        
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.shadowColor = [UIColor lightTextColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Instructions";
+    } else {
+        cell.textLabel.text = @"Preparation";
+    }
+    
+    return cell;
+}
+
+-(UITableViewCell *)createSaveButton
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultSaveCell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"DefaultSaveCell"];
+        
+        cell.textLabel.text = @"Save";
+        
+        //        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.shadowColor = [UIColor lightTextColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+    }    
+    
+    if ([self hasCompleteBrewMethod]) {
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+    } else {
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+    }
+    
+    return cell;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -185,54 +261,16 @@
     
     if (indexPath.section == 0) {
         
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddMethodCell"];
+        cell = [self createBasicInfoCellAtIndexPath:indexPath];
         
-        if (!cell) {
-            
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddMethodCell"] autorelease];
-            
-            [[NSBundle mainBundle] loadNibNamed:@"AddMethodTableViewCell" 
-                                          owner:self 
-                                        options:nil];
-            cell = amCell;
-            self.amCell = nil;
-        }
-        [self setTextForCell:cell 
-                 atIndexPath:indexPath];
     } else if (indexPath.section == 1) { // Initialize lower cells
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"DefaultCell"];
-        }
         
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Instructions";
-        } else {
-            cell.textLabel.text = @"Preparation";
-        }
+        cell = [self createDetailCellAtIndexPath:indexPath];
         
-        cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.textLabel.shadowColor = [UIColor lightTextColor];
-        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"DefaultCell"];
-        }
         
-        cell.textLabel.text = @"Save";
-        if ([self hasCompleteBrewMethod]) {
-            cell.textLabel.textColor = [UIColor darkGrayColor];
-        } else {
-            cell.textLabel.textColor = [UIColor lightGrayColor];
-        }
-        //        cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.textLabel.shadowColor = [UIColor lightTextColor];
-        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
-        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell = [self createSaveButton];
+        
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -360,15 +398,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [basicInfo setObject:textField.text forKey:key];
     }
     
-    //    NSLog(@"nf: %@, ef: %@, cf: %@, wf: %@", nameField, equipmentField, coffeeField, waterField);
-    NSLog(@"Field: %@", nameField);
-    NSLog(@"Field: %@", equipmentField);
-    NSLog(@"Field: %@", coffeeField);
-    NSLog(@"Field: %@", waterField);
     // Reload data to possibly enable Save button. Somewhat inefficient
-    if ([self hasCompleteBrewMethod]) {
-        [self.tableView reloadData];
-    }
+    [self.tableView reloadData];
+    
     
 }
 
@@ -378,11 +410,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField.tag == MAX_TEXTFIELD_TAG - 1) {
-        textField.returnKeyType = UIReturnKeyDone;
-    } else {
-        textField.returnKeyType = UIReturnKeyNext;
-    }
+    /* if (textField.tag == MAX_TEXTFIELD_TAG - 1) {*/
+    textField.returnKeyType = UIReturnKeyDone;
+    /*    } else {
+     textField.returnKeyType = UIReturnKeyNext;
+     }*/
     return YES;
 }
 
@@ -395,13 +427,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    int nextTag = textField.tag + 1;
+    /*
+     int nextTag = textField.tag + 1;*/
     [textField resignFirstResponder];
     
-    if (nextTag < MAX_TEXTFIELD_TAG) {
-        UITextField *tf = (UITextField *)[self.view viewWithTag:nextTag];
-        [tf becomeFirstResponder];
-    }
+    /*    if (nextTag < MAX_TEXTFIELD_TAG) {
+     UITextField *tf = (UITextField *)[self.view viewWithTag:nextTag];
+     [tf becomeFirstResponder];
+     }*/
     
     return YES;
 }
@@ -411,15 +444,37 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  *                                                                 replacementString:(NSString *)string
  * Make sure we never exceed the bounds of the text field.
  */
-/*
- -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
- replacementString:(NSString *)string
- {
- NSString *newString = [textField.text stringByAppendingString:string];
- CGSize textSize = [newString sizeWithFont:[textField font]];
- return YES;
- //    return textSize.width < TEXTFIELD_MAX_WIDTH;
- } */
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range 
+replacementString:(NSString *)string
+{
+    NSLog(@"string: %@", string);
+    
+    NSString *key = nil;
+    if ([textField isEqual:nameField]) {
+        key = @"Name";
+    } else if ([textField isEqual:equipmentField]) {
+        key = @"Equipment";
+    } else if ([textField isEqual:coffeeField]) {
+        key = @"Coffee";
+    } else if ([textField isEqual:waterField]) {
+        key = @"Water";
+    }
+    
+    if (key != nil) {
+        if (![string isEqualToString:@""]) {
+            [basicInfo setObject:textField.text forKey:key];
+        } else {
+            [basicInfo removeObjectForKey:key];
+        }
+    } 
+    /*     
+     NSString *newString = [textField.text stringByAppendingString:string];
+     CGSize textSize = [newString sizeWithFont:[textField font]];
+     return YES;*/
+    //    return textSize.width < TEXTFIELD_MAX_WIDTH;
+    return YES;
+} 
 
 #pragma mark - View lifecycle
 
@@ -443,7 +498,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)viewDidUnload
 {
     [super viewDidUnload];
- 
+    
     [nameField release];
     nameField = nil;
     
