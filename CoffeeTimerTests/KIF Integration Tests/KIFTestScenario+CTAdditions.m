@@ -241,7 +241,6 @@
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
-    
     [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
@@ -251,9 +250,6 @@
     // No warning
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
-    
-    
-    [sc addStep:[KIFTestStep stepToEnterText:@"" intoViewWithAccessibilityLabel:@"Equipment"]];
     
     return sc;
 }
