@@ -344,8 +344,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self openAddDetailViewControllerOfType:label];
     } else if (indexPath.section == 2) { // Tapped save
         if ([self hasCompleteBrewMethod]) {
-            
-            [basicInfo objectForKey:@"Equipment"], [basicInfo objectForKey:@"Coffee"], [basicInfo objectForKey:@"Water"]);
             //            [self saveBrewMethod];
         } else {
 #if RUN_KIF_TESTS
