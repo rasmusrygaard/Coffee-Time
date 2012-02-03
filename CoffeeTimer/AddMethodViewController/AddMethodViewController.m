@@ -61,7 +61,7 @@
 - (BOOL)hasCompleteBrewMethod
 {
     NSString *name, *equipment, *coffee, *water;
-    NSLog(@"nf: '%@', eF: '%@', cF: '%@', wF: '%@'", nameField.text, equipmentField.text, coffeeField.text, waterField.text);
+    NSLog(@"nf: '%@', eF: '%@', cF: '%@', wF: '%@' in: %d p: %d", nameField.text, equipmentField.text, coffeeField.text, waterField.text, instructions.count, preparation.count);
     if (![(name      = nameField.text)      isEqualToString:@""] &&
         ![(equipment = equipmentField.text) isEqualToString:@""] &&
         ![(coffee    = coffeeField.text)    isEqualToString:@""] &&
@@ -72,7 +72,7 @@
         [basicInfo setObject:coffee     forKey:@"Coffee"];
         [basicInfo setObject:water      forKey:@"Water"];
         
-        return YES;
+        return ([instructions count] > 0 && [preparation count] > 0);
     }
     
     return NO;
@@ -246,9 +246,9 @@
     }    
     
     if ([self hasCompleteBrewMethod]) {
-        cell.textLabel.textColor = [UIColor darkGrayColor];
-    } else {
         cell.textLabel.textColor = [UIColor lightGrayColor];
+    } else {
+        cell.textLabel.textColor = [UIColor darkGrayColor];
     }
     
     return cell;
@@ -344,7 +344,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self openAddDetailViewControllerOfType:label];
     } else if (indexPath.section == 2) { // Tapped save
         if ([self hasCompleteBrewMethod]) {
-            NSLog(@"Sufficient information!");
+            
+            [basicInfo objectForKey:@"Equipment"], [basicInfo objectForKey:@"Coffee"], [basicInfo objectForKey:@"Water"]);
             //            [self saveBrewMethod];
         } else {
 #if RUN_KIF_TESTS
@@ -383,6 +384,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
      }
      }*/
     
+    
     NSString *key = nil;
     if ([textField isEqual:nameField]) {
         key = @"Name";
@@ -395,8 +397,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     if (key != nil) {
-        [basicInfo setObject:textField.text forKey:key];
+        if ([textField.text isEqualToString:@""]) {
+            [basicInfo removeObjectForKey:key];
+        } else {
+            [basicInfo setValue:textField.text forKey:key];
+        }
     }
+    
     
     // Reload data to possibly enable Save button. Somewhat inefficient
     [self.tableView reloadData];
@@ -491,6 +498,9 @@ replacementString:(NSString *)string
     
     self.navigationItem.title = @"Add Method";
     self.navigationItem.backBarButtonItem.title = @"Methods";
+    
+    self.tableView.isAccessibilityElement   = YES;
+    self.tableView.accessibilityLabel       = @"Add Method Table";
     
     [background release]; 
 }
