@@ -37,7 +37,7 @@
     // Select and start the "Aeropress" method
     [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Start"]];
-
+    
     // Return to the list screen
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
     // Return to the method
@@ -52,11 +52,11 @@
     [sc addStep:t];
     
     [sc addStep:[KIFTestStep stepToWaitForTimeInterval:2 description:@"Wait after method has completed"]];
-
+    
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
-
+    
     return sc;
 }
 
@@ -81,7 +81,7 @@
     // Reopen the Chemex method
     [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Brew method list" 
                                                                atIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]]];
-
+    
     // Return to list
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
     
@@ -128,7 +128,7 @@
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
-
+    
     
     return sc;
 }
@@ -159,7 +159,7 @@
     
     [sc addStep:[KIFTestStep stepToEnterText:@"00:30" intoViewWithAccessibilityLabel:@"Instruction 1: Time"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"Pour 60 g of water, scrape the sides of the filter" intoViewWithAccessibilityLabel:@"Instruction 1: Description"]];
-
+    
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Instructions"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"01:30" intoViewWithAccessibilityLabel:@"Instruction 2: Time"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"Pour the remaining water in concentric circles" intoViewWithAccessibilityLabel:@"Instruction 2: Description"]];
@@ -204,48 +204,54 @@
     [sc addStep:[KIFTestStep stepToEnterText:@"MadCap Hario V60" intoViewWithAccessibilityLabel:@"Name"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"Hario V60" intoViewWithAccessibilityLabel:@"Equipment"]];
     [sc addStep:[KIFTestStep stepToEnterText:@"21" intoViewWithAccessibilityLabel:@"Coffee"]];
-
+    
     // Try hitting Save without enough data, dismiss debug popup
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    //    [sc addStep:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Add Method Table" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]]];
     [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     // Enter water info, tap Save again
     [sc addStep:[KIFTestStep stepToEnterText:@"290" intoViewWithAccessibilityLabel:@"Water"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    //    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     [sc addStep:[KIFTestStep stepToClearTextInViewWithAccessibilityLabel:@"Coffee"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    //    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     // Take out equipment info, insert water info
     [sc addStep:[KIFTestStep stepToEnterText:@"21" intoViewWithAccessibilityLabel:@"Coffee"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     [sc addStep:[KIFTestStep stepToClearTextInViewWithAccessibilityLabel:@"Equipment"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     // Take out name info, insert equipment info
     [sc addStep:[KIFTestStep stepToEnterText:@"Hario V60" intoViewWithAccessibilityLabel:@"Equipment"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     [sc addStep:[KIFTestStep stepToClearTextInViewWithAccessibilityLabel:@"Name"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    
     [sc addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"OK"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK"]];
     
     [sc addStep:[KIFTestStep stepToEnterText:@"MadCap Hario V60" intoViewWithAccessibilityLabel:@"Name"]];
-    [sc addStep:[KIFTestStep stepToDismissPopover]];
+    [sc addStep:[KIFTestStep stepToDismissKeyboard]];
     
     // No warning
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
-
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    
     
     [sc addStep:[KIFTestStep stepToEnterText:@"" intoViewWithAccessibilityLabel:@"Equipment"]];
     
