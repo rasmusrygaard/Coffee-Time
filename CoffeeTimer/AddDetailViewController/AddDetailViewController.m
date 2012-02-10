@@ -43,7 +43,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.wantsToLeaveView = NO;
+    self.wantsToLeaveView = YES;
     [self.tableView reloadData];
 }
 
@@ -428,6 +428,10 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
             
             textField.text = [textField.text substringToIndex:2];
             
+        }
+        
+        if (textField.text.length == 3 && [string characterAtIndex:0] >= '6') {
+            return NO;
         }
         
         int len = textField.text.length + string.length;
