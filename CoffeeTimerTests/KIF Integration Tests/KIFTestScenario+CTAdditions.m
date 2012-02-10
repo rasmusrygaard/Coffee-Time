@@ -251,6 +251,31 @@
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
+    
+    return sc;
+}
+
++ (id)scenarioToTestInstructions
+{
+    KIFTestScenario *sc = [KIFTestScenario scenarioWithDescription:@"Test adding and removing instructions"];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Instructions"]];
+    
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Instructions"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Add Instructions"]];
+    
+    [sc addStepsFromArray:[KIFTestStep steptoTapDeleteAtCellWithIndex:0]];
+
+    [sc addStepsFromArray:[KIFTestStep steptoTapDeleteAtCellWithIndex:0]];
+
+    [sc addStep:[KIFTestStep stepToWaitForTimeInterval:4 description:@"Pause"]];
+    
+    // Return to start screen
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Back"]];
+    [sc addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Brew Methods"]];
+    
     return sc;
 }
 

@@ -15,4 +15,6 @@
 
 + (id)stepToDismissKeyboard;
 
++ (id)steptoTapDeleteAtCellWithIndex:(int)index;
+
 @end

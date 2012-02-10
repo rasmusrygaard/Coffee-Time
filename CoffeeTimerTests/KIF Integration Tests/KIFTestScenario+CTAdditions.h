@@ -24,4 +24,6 @@
 
 + (id)scenarioToTestFullBrewMethod;
 
++ (id)scenarioToTestInstructions;
+
 @end

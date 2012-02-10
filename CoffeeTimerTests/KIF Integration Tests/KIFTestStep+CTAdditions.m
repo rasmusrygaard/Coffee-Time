@@ -40,5 +40,23 @@
     return [KIFTestStep stepToTapViewWithAccessibilityLabel:@"done"];
 }
 
+#define TOP_DELETE_BUTTON 75
+#define DELETE_BUTTON_HEIGHT 44
+#define CONFIRM_DELETE_W 74
+#define CONFIRM_DELETE_X 235
+
++ (NSArray *)steptoTapDeleteAtCellWithIndex:(int)index
+{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    [array addObject:[KIFTestStep stepToTapScreenAtPoint:CGPointMake( DELETE_BUTTON_HEIGHT / 2, TOP_DELETE_BUTTON + index * DELETE_BUTTON_HEIGHT + (DELETE_BUTTON_HEIGHT / 2))]];
+    
+    [array addObject:[KIFTestStep stepToWaitForTimeInterval:1 description:@"Wait for delete button to appear"]];
+    
+    [array addObject:[KIFTestStep stepToTapScreenAtPoint:CGPointMake(CONFIRM_DELETE_X + CONFIRM_DELETE_W / 2, TOP_DELETE_BUTTON + index * DELETE_BUTTON_HEIGHT + (DELETE_BUTTON_HEIGHT / 2))]];
+    
+    return array;
+}
+
 
 @end
